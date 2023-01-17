@@ -1,0 +1,15 @@
+{%  extends 'base.html.twig' %}
+
+{% block title "Se connecter - Le quai antique" %}
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Se connecter</h1>
+</div>
+<div class="container">
+{{ form_start(connect_form)}}
+        {{ form_row(connect_form.email)}}
+        {{ form_row(connect_form.password)}}
+                <input type="submit" value="Se connecter">
+{{ form_end(connect_form)}}
+</div>
+{% endblock %}

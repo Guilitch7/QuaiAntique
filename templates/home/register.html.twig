@@ -5,6 +5,7 @@
 <div class="jumbotron text-center">
         <h1>S'inscrire</h1>
 </div>
+<div class="container">
 {{ form_start(register_form)}}
         {{ form_row(register_form.email)}}
         {{ form_row(register_form.password)}}
@@ -13,4 +14,5 @@
         {{ form_row(register_form.allergies)}}
                 <input type="submit" value="Envoyer">
 {{ form_end(register_form)}}
+</div>
 {% endblock %}
