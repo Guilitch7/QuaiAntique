@@ -1,0 +1,21 @@
+{%  extends 'base.html.twig' %}
+
+{% block title "Enregistrer un plat - Le quai antique" %}
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Enregistrer / modifier un plat</h1>
+</div>
+<div class="container">
+{{ form_start(dishes_form)}}
+        {{ form_row(dishes_form.DISHESname)}}
+        {{ form_row(dishes_form.DISHEScategory)}}
+        {{ form_row(dishes_form.DISHEStype)}}
+        {{ form_row(dishes_form.DISHESprice)}}
+        {{ form_row(dishes_form.DISHESdescription)}}
+        {{ form_row(dishes_form.DISHESphoto)}}
+        {{ form_row(dishes_form.DISHESmenusExpress)}}
+        {{ form_row(dishes_form.DISHESmenusMontagnard)}}
+        <input type="submit" value="Envoyer">
+{{ form_end(dishes_form)}}
+</div>
+{% endblock %}

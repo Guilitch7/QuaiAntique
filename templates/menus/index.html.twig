@@ -3,18 +3,23 @@
 {% block title %}Nos menus{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/apps/symfony/src/Controller/MenusController.php'|file_link(0) }}">src/Controller/MenusController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/apps/symfony/templates/menus/index.html.twig'|file_link(0) }}">templates/menus/index.html.twig</a></code></li>
-    </ul>
-</div>
+<main class="container">
+    <div class="container">
+        <div class="row">
+            {% for menu in menus %}
+            <div class="col">
+                <h2>{{ menu.MenuName }}</h2>
+                    <div>
+                        <h3>{{ menu.MenuCategory1 }}</h3>
+                        <h3>{{ menu.MenuCategory2 }}</h3>
+                        <h3>{{ menu.MenuCategory3 }}</h3>
+                    </div>
+                    <div>
+                        <p>{{ menu.MenuFormula }}</p>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
 {% endblock %}
