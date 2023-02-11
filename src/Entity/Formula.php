@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,31 +14,35 @@ class Formula
     #[ORM\Id()]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private int $FORMULA_id;
+    private int $FORMULAid;
 
     #[ORM\Column(type: "float", nullable: false)]
-    private float $FORMULA_price;
+    private float $FORMULAprice;
 
     #[ORM\Column(type: "string", nullable: true)]
-    private string $FORMULA_description;
+    private string $FORMULAdescription;
 
-    #[ORM\ManyToOne(targetEntity:"app\Entity\Menus", inversedBy:"MENUS_formula")]
-    private string $FORMULA_menu;
+    #[ORM\ManyToOne(targetEntity:"App\Entity\Menus", inversedBy:"MENUSformula")]
+    private $FORMULAmenu;
+
+    public function __construct() {
+        $this->FORMULAmenu = new ArrayCollection();
+    }
 
     public function getId(): int
     {
-            return $this->FORMULA_id;
+            return $this->FORMULAid;
     }
 
     
     public function getFormulaPrice()
     {
-            return $this->FORMULA_price;
+            return $this->FORMULAprice;
     }
 
-    public function setFormulaPrice($FORMULA_price)
+    public function setFormulaPrice($FORMULAprice)
     {
-            $this->FORMULA_price = $FORMULA_price;
+            $this->FORMULAprice = $FORMULAprice;
 
             return $this;
     }    
@@ -46,12 +51,12 @@ class Formula
        
     public function getFormulaDescription()
     {
-            return $this->FORMULA_description;
+            return $this->FORMULAdescription;
     }
 
-    public function setFormulaDescription($FORMULA_description)
+    public function setFormulaDescription($FORMULAdescription)
     {
-            $this->FORMULA_description = $FORMULA_description;
+            $this->FORMULAdescription = $FORMULAdescription;
 
             return $this;
     }    
@@ -59,13 +64,13 @@ class Formula
     
     public function getFormulaMenu()
     {
-            return $this->FORMULA_menu;
+            return $this->FORMULAmenu;
     }
 
 
-    public function setFormulaMenu($FORMULA_menu)
+    public function setFormulaMenu($FORMULAmenu)
     {
-            $this->FORMULA_menu = new Collection();
+            $this->FORMULAmenu = $FORMULAmenu;
 
             return $this;
     }

@@ -47,6 +47,90 @@ class PlatsController extends AbstractController
         ]);
     }
 
+    #[Route('/plats/entree', name: 'entrées')]
+
+    public function entree(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $entree = $repository->findBy(['DISHEScategory' => 'Entrée']);
+        return $this->render('home/plats_entrée.html.twig', [
+            'entrees' => $entree,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos entrées',
+            'current_menu' => 'plats'
+        ]);
+    }
+
+    #[Route('/plats/specialite', name: 'spécialités')]
+
+    public function speciality(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $specialites = $repository->findBy(['DISHEStype' => 'Spécialité']);
+        return $this->render('home/plats_spécialités.html.twig', [
+            'specialites' => $specialites,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos spécialités',
+            'current_menu' => 'plats'
+        ]);
+    }
+
+    #[Route('/plats/viandes', name: 'viandes')]
+
+    public function meat(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $meat = $repository->findBy(['DISHEStype' => 'Viande']);
+        return $this->render('home/plats_viandes.html.twig', [
+            'viandes' => $meat,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos viandes',
+            'current_menu' => 'plats'
+        ]);
+    }
+
+    #[Route('/plats/poissons', name: 'poissons')]
+
+    public function fish(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $fish = $repository->findBy(['DISHEStype' => 'Poisson']);
+        return $this->render('home/plats_poissons.html.twig', [
+            'poissons' => $fish,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos poissons',
+            'current_menu' => 'plats'
+        ]);
+    }
+
+    #[Route('/plats/dessert', name: 'desserts')]
+
+    public function desert(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $desert = $repository->findBy(['DISHEScategory' => 'Dessert']);
+        return $this->render('home/plats_desserts.html.twig', [
+            'desserts' => $desert,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos desserts',
+            'current_menu' => 'plats'
+        ]);
+    }
+
+    #[Route('/plats/boisson', name: 'boissons')]
+
+    public function drinks(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Dishes::class);
+        $drinks = $repository->findBy(['DISHEScategory' => 'Boissons']);
+        return $this->render('home/plats_boissons.html.twig', [
+            'boissons' => $drinks,
+            'controller_name' => 'PlatsController',
+            'title' => 'Nos boissons',
+            'current_menu' => 'plats'
+        ]);
+    }
+
     #[Route('/plats/delete/{id<\d+>}', name:"delete-dish")]
     public function delete(Dishes $dishes, ManagerRegistry $doctrine): Response
      {

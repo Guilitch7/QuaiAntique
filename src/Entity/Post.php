@@ -12,34 +12,34 @@ class Post
         #[ORM\Id()]
         #[ORM\GeneratedValue(strategy: "AUTO")]
         #[ORM\Column(type: "integer")]
-        private int $CLIENTS_id;
+        private int $CLIENTSid;
 
         #[ORM\Column(type: "string", nullable: false, length: 255)]
-        private string $CLIENTS_email;
+        private string $CLIENTSemail;
 
         #[ORM\Column(type: "string", nullable: false)]
-        private string $CLIENTS_password;
+        private string $CLIENTSpassword;
         private string $confirmPassword;
 
         #[ORM\Column(type: "integer", nullable: true)]
-        private int $CLIENTS_covers_number;
+        private int $CLIENTScovers_number;
 
         #[ORM\Column(type: "string", nullable: false)]
-        private string $CLIENTS_food_allergies;
+        private string $CLIENTSfood_allergies;
 
         public function getId(): int
         {
-                return $this->CLIENTS_id;
+                return $this->CLIENTSid;
         }
 
         public function getConvives()
         {
-                return $this->CLIENTS_covers_number;
+                return $this->CLIENTScovers_number;
         }
 
-        public function setConvives($CLIENTS_covers_number)
+        public function setConvives($CLIENTScovers_number)
         {
-                $this->CLIENTS_covers_number = $CLIENTS_covers_number;
+                $this->CLIENTScovers_number = $CLIENTScovers_number;
 
                 return $this;
         }
@@ -47,13 +47,13 @@ class Post
    
         public function getAllergies()
         {
-                return $this->CLIENTS_food_allergies;
+                return $this->CLIENTSfood_allergies;
         }
 
     
-        public function setAllergies($CLIENTS_food_allergies)
+        public function setAllergies($CLIENTSfood_allergies)
         {
-                $this->CLIENTS_food_allergies = $CLIENTS_food_allergies;
+                $this->CLIENTSfood_allergies = $CLIENTSfood_allergies;
 
                 return $this;
         }
@@ -61,13 +61,13 @@ class Post
 
         public function getEmail()
         {
-                return $this->CLIENTS_email;
+                return $this->CLIENTSemail;
         }
 
   
-        public function setEmail($CLIENTS_email)
+        public function setEmail($CLIENTSemail)
         {
-                $this->CLIENTS_email = $CLIENTS_email;
+                $this->CLIENTSemail = $CLIENTSemail;
 
                 return $this;
         }
@@ -75,13 +75,13 @@ class Post
 
         public function getPassword()
         {
-                return $this->CLIENTS_password;
+                return $this->CLIENTSpassword;
         }
 
 
-        public function setPassword($CLIENTS_password)
+        public function setPassword($CLIENTSpassword)
         {
-                $this->CLIENTS_password = $CLIENTS_password;
+                $this->CLIENTSpassword = $CLIENTSpassword;
 
                 return $this;
         }

@@ -5,13 +5,14 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Entity\Connect;
 use App\Form\RegisterType;
-use App\Form\ConnectType;
+use App\Form\LoginType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class RegisterController extends AbstractController 
+class SecurityController extends AbstractController 
 {
     /**
      * @Route("/sinscrire", name="sinscrire")
@@ -32,21 +33,26 @@ class RegisterController extends AbstractController
         ]);
    }
    /**
-     * @Route("/seconnecter", name="seconnecter")
+     * @Route("/login", name="login")
      * @return Response
      */
-    public function connect(Request $request): Response
+    public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
-         $register = new Connect();
-         $form = $this->createForm(ConnectType::class, $register);
+         $error = $authenticationUtils->getLastAuthenticationError();
+         $lastUsername = $authenticationUtils->getLastUsername();
+
+         $form = $this->createForm(LoginType::class);
          $form->handleRequest($request);
          if ($form->isSubmitted() && $form->isValid()) {
-             dump($register);
+             
          } 
-         return $this->render('home/connect.html.twig', [
-             "connect_form" => $form->createView(),
-             'title' => 'seconnecter',
-             'current_menu' => 'seconnecter'
+         return $this->render('home/login.html.twig', [
+            "login_form" => $form->createView(),
+             'title' => 'se connecter',
+             'current_menu' => 'login',
+             'last_username' => $lastUsername,
+             'error'        => $error,
+             'form' => $form->createView()
          ]);
     }
 }

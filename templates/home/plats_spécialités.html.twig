@@ -1,0 +1,26 @@
+{%  extends 'base.html.twig' %}
+
+{% block title "Nos spécialités - Le quai antique" %}
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Nos Spécialités</h1>
+</div>
+<main class="container">
+    <div class="container">
+        <div class="row">
+            {% for specialite in specialites %}
+            <div class="col-4">
+                <h2>{{ specialite.DISHESname }}</h2>
+                    <div>
+                        <img class="img-fluid" src={{specialite.DISHESphoto}} alt={{specialite.DISHESname}}>
+                        <h3>{{ specialite.DISHESdescription }}</h3>
+                        <h3>{{ specialite.DISHESprice }}</h3>
+                        <a href="{{ path ('delete-dish', {'id' : specialite.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
+                        <a href="{{ path ('edit-dish', {'id' : specialite.DISHESid}) }}" class="btn btn-warning">Modifier</a>
+                    </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

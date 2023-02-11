@@ -7,34 +7,34 @@ use Doctrine\DBAL\Types\DateType;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity()]
-#[ORM\Table(name: "OPENING_DAYS")]
+#[ORM\Table(name: "OPENINGDAYS")]
 
 class Dishes
 {
     #[ORM\Id()]    
     #[ORM\Column(type: "string", nullable: false)]
-    private string $OPENING_DAYS_day;
+    private string $OPENINGDAYSday;
 
     #[ORM\Column(type: "time", nullable: false)]
-    private string $OPENING_DAYS_opening_time_lunch;
+    private string $OPENINGDAYSopeningtimelunch;
 
     #[ORM\Column(type: "time", nullable: false)]
-    private string $OPENING_DAYS_closing_time_lunch;
+    private string $OPENINGDAYSclosingtimelunch;
 
     #[ORM\Column(type: "time", nullable: false)]
-    private string $OPENING_DAYS_opening_time_diner;
+    private string $OPENINGDAYSopeningtimediner;
 
     #[ORM\Column(type: "time", nullable: false)]
-    private string $OPENING_DAYS_closing_time_diner;
+    private string $OPENINGDAYSclosingtimediner;
 
     public function getDay()
     {
-            return $this->OPENING_DAYS_day;
+            return $this->OPENINGDAYSday;
     }
 
-    public function setDay($OPENING_DAYS_day)
+    public function setDay($OPENINGDAYSday)
     {
-            $this->OPENING_DAYS_day = $OPENING_DAYS_day;
+            $this->OPENINGDAYSday = $OPENINGDAYSday;
 
             return $this;
     }
@@ -42,12 +42,12 @@ class Dishes
 
     public function getOpenLunch()
     {
-            return $this->OPENING_DAYS_opening_time_lunch;
+            return $this->OPENINGDAYSopeningtimelunch;
     }
 
-    public function setOpenLunch($OPENING_DAYS_opening_time_lunch)
+    public function setOpenLunch($OPENINGDAYSopeningtimelunch)
     {
-            $this->OPENING_DAYS_opening_time_lunch = $OPENING_DAYS_opening_time_lunch;
+            $this->OPENINGDAYSopeningtimelunch = $OPENINGDAYSopeningtimelunch;
 
             return $this;
     }
@@ -55,12 +55,12 @@ class Dishes
     
     public function getCloseLunch()
     {
-            return $this->OPENING_DAYS_closing_time_lunch;
+            return $this->OPENINGDAYSclosingtimelunch;
     }
 
-    public function setCloseLunch($OPENING_DAYS_closing_time_lunch)
+    public function setCloseLunch($OPENINGDAYSclosingtimelunch)
     {
-            $this->OPENING_DAYS_closing_time_lunch = $OPENING_DAYS_closing_time_lunch;
+            $this->OPENINGDAYSclosingtimelunch = $OPENINGDAYSclosingtimelunch;
 
             return $this;
     }    
@@ -69,12 +69,12 @@ class Dishes
        
     public function getOpenDiner()
     {
-            return $this->OPENING_DAYS_opening_time_diner;
+            return $this->OPENINGDAYSopeningtimediner;
     }
 
-    public function setOpenDiner($OPENING_DAYS_opening_time_diner)
+    public function setOpenDiner($OPENINGDAYSopeningtimediner)
     {
-            $this->OPENING_DAYS_opening_time_diner = $OPENING_DAYS_opening_time_diner;
+            $this->OPENINGDAYSopeningtimediner = $OPENINGDAYSopeningtimediner;
 
             return $this;
     }    
@@ -83,13 +83,13 @@ class Dishes
 
     public function getCloseDiner()
     {
-            return $this->OPENING_DAYS_closing_time_diner;
+            return $this->OPENINGDAYSclosingtimediner;
     }
 
 
-    public function setCloseDiner($OPENING_DAYS_closing_time_diner)
+    public function setCloseDiner($OPENINGDAYSclosingtimediner)
     {
-            $this->OPENING_DAYS_closing_time_diner = $OPENING_DAYS_closing_time_diner;
+            $this->OPENINGDAYSclosingtimediner = $OPENINGDAYSclosingtimediner;
 
             return $this;
     }

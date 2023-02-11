@@ -15,7 +15,9 @@
                         <h3>{{ menu.MenuCategory3 }}</h3>
                     </div>
                     <div>
-                        <p>{{ menu.MenuFormula }}</p>
+                        {% for formula in menu.MenuFormula %}
+                            <p>{{ formula }}</p>
+                        {% endfor %}
                     </div>
             </div>
             {% endfor %}

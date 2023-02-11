@@ -5,6 +5,7 @@
         <title>{% block title %}Le Quai Antique{% endblock %}</title>
         <link rel="icon" type="image/jpg" href="quaiAntique_logo_small.jpg"/>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css" media="screen">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -15,19 +16,24 @@
         {% endblock %}
     </head>
     <body>
-        <div>
-          <div class='row'>
-            <div class='col'>
+        <div class="container justify-content-center pre-nav">
+          <div class="row">
+            <div class="col">
             <address>
                 <a href="tel:+3321110700">03-21-11-07-00</a>
                 3, rue de l'Abbaye, Chambéry
             </address>
             </div>
-            <div class='col'>
+            <div class="col">
             <button type="button" class="btn btn-danger">Réserver</button>
             </div>
-            <div class='col'>
-                    <a class="nav-link {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('seconnecter')}}">Se connecter</a>
+            <div class="col">  
+                {% if app.user %}
+                    Bonjour {{ app.user.username }}
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('logout')}}">Se déconnecter</a>
+                {% else %}
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('login')}}">Se connecter</a>
+                {% endif %}
             </div>
           </div>
         </div>
@@ -39,8 +45,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link {% if current_menu is defined and current_menu == 'plats' %}active{% endif %}" aria-current="page" href="{{path('plats')}}">Nos plats</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle {% if current_menu is defined and current_menu == 'plats' %}active{% endif %}" aria-current="page" href="{{path('plats')}}" role="button" id="dropdownMenuLink" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">Nos plats</a>
+                                      <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{path('entrées')}}">Entrées</a></li>
+                                        <li><a class="dropdown-item" href="{{path('spécialités')}}">Spécialités</a></li>
+                                        <li><a class="dropdown-item" href="{{path('viandes')}}">Viandes</a></li>
+                                        <li><a class="dropdown-item" href="{{path('poissons')}}">Poissons</a></li>
+                                        <li><a class="dropdown-item" href="{{path('desserts')}}">Desserts</a></li>
+                                        <li><a class="dropdown-item" href="{{path('boissons')}}">Boissons</a></li>
+                                      </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if current_menu is defined and current_menu == 'menus' %}active{% endif %}" aria-current="page" href="{{path('menus')}}">Nos menus</a>

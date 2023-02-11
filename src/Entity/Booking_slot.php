@@ -8,43 +8,43 @@ use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
 
 #[ORM\Entity()]
-#[ORM\Table(name: "BOOKING_SLOT")]
+#[ORM\Table(name: "BOOKINGSLOT")]
 
-class Dishes
+class Bookingslot
 {
     #[ORM\Id()]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private Integer $BOOKING_SLOT_id;
+    private Integer $BOOKINGSLOTid;
 
     #[ORM\Column(type: "datetime", nullable: false)]
-    private DateTime $BOOKING_SLOT_date_time;
+    private DateTime $BOOKINGSLOTdatetime;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private String $BOOKING_SLOT_last_name_user;
+    private String $BOOKINGSLOTlastnameuser;
 
     #[ORM\Column(type: "integer", nullable: false)]
-    private Integer $BOOKING_SLOT_covers_number;
+    private Integer $BOOKINGSLOTcoversnumber;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private string $BOOKING_SLOT_food_allergies;
+    private string $BOOKINGSLOTfoodallergies;
 
     #[ORM\Column(type: "boolean")]
-    private Boolean $BOOKING_SLOT_booked;
+    private Boolean $BOOKINGSLOTbooked;
 
     public function getId(): integer
     {
-            return $this->BOOKING_SLOT_id;
+            return $this->BOOKINGSLOTid;
     }
 
     public function getBookSlotDate()
     {
-            return $this->BOOKING_SLOT_date_time;
+            return $this->BOOKINGSLOTdatetime;
     }
 
-    public function setBookSlotDate($BOOKING_SLOT_date_time)
+    public function setBookSlotDate($BOOKINGSLOTdatetime)
     {
-            $this->BOOKING_SLOT_date_time = $BOOKING_SLOT_date_time;
+            $this->BOOKINGSLOTdatetime = $BOOKINGSLOTdatetime;
 
             return $this;
     }
@@ -52,12 +52,12 @@ class Dishes
 
     public function getBookSlotUser()
     {
-            return $this->BOOKING_SLOT_last_name_user;
+            return $this->BOOKINGSLOTlastnameuser;
     }
 
-    public function setBookSlotUser($BOOKING_SLOT_last_name_user)
+    public function setBookSlotUser($BOOKINGSLOTlastnameuser)
     {
-            $this->BOOKING_SLOT_last_name_user = $BOOKING_SLOT_last_name_user;
+            $this->BOOKINGSLOTlastnameuser = $BOOKINGSLOTlastnameuser;
 
             return $this;
     }
@@ -65,12 +65,12 @@ class Dishes
     
     public function getBookSlotCovers()
     {
-            return $this->BOOKING_SLOT_covers_number;
+            return $this->BOOKINGSLOTcoversnumber;
     }
 
-    public function setBookSlotCovers($BOOKING_SLOT_covers_number)
+    public function setBookSlotCovers($BOOKINGSLOTcoversnumber)
     {
-            $this->BOOKING_SLOT_covers_number = $BOOKING_SLOT_covers_number;
+            $this->BOOKINGSLOTcoversnumber = $BOOKINGSLOTcoversnumber;
 
             return $this;
     }    
@@ -79,12 +79,12 @@ class Dishes
        
     public function getBookSlotAllergies()
     {
-            return $this->BOOKING_SLOT_food_allergies;
+            return $this->BOOKINGSLOTfoodallergies;
     }
 
-    public function setBookSlotAllergies($BOOKING_SLOT_food_allergies)
+    public function setBookSlotAllergies($BOOKINGSLOTfoodallergies)
     {
-            $this->BOOKING_SLOT_food_allergies = $BOOKING_SLOT_food_allergies;
+            $this->BOOKINGSLOTfoodallergies = $BOOKINGSLOTfoodallergies;
 
             return $this;
     }    
@@ -93,13 +93,13 @@ class Dishes
 
     public function getBookSlotBooked()
     {
-            return $this->BOOKING_SLOT_booked;
+            return $this->BOOKINGSLOTbooked;
     }
 
 
-    public function setBookSlotBooked($BOOKING_SLOT_booked)
+    public function setBookSlotBooked($BOOKINGSLOTbooked)
     {
-            $this->BOOKING_SLOT_booked = $BOOKING_SLOT_booked;
+            $this->BOOKINGSLOTbooked = $BOOKINGSLOTbooked;
 
             return $this;
     }
