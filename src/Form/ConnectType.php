@@ -17,8 +17,8 @@ class ConnectType extends AbstractType
     {
         $builder
             ->add("email", EmailType::class, [  "label" => "Email",
-                                                 "required" => true,
-                                                 "constraints" => [
+                                                "required" => true,
+                                                "constraints" => [
                                                     new NotBlank(["message" => 'Ce champ ne peut être vide'])]
                                             ])
             ->add("password", PasswordType::class, [    "label" => "Mot de passe",

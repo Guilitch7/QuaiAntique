@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ClientsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: ClientsRepository::class)]
+#[ORM\Table(name: "CLIENTS")]
+#[UniqueEntity('CLIENTSemail')]
 class Clients implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -16,12 +19,21 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $CLIENTSid = null;
 
-    private array $roles = [];
+    #[ORM\Column (type: 'json')]
+    private array $CLIENTSrole = [];
 
-    #[ORM\Column]
+    #[ORM\Column (unique: true)]
     private ?string $CLIENTSemail = null;
 
     private $passwordHasher;
+
+    private ?string $CLIENTSconfirm = null;
+
+    #[ORM\Column(type: "integer", nullable: true)]
+    private int $CLIENTScoversNumber;
+
+    #[ORM\Column(type: "string", nullable: false)]
+    private ?string $CLIENTSfoodAllergies;
 
     /**
      * @var string The hashed password
@@ -29,6 +41,7 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column(length: 180, unique: true)]
     private ?string $CLIENTSpassword = null;
+
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
@@ -40,17 +53,16 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->CLIENTSid;
     }
 
-    public function setId(int $CLIENTSid): self
-    {
-        $this->CLIENTSid = $CLIENTSid;
-
-        return $this;
-    }
-
-
     public function getUserIdentifier(): string
     {
         return (string) $this->CLIENTSemail;
+    }
+
+    public function setUserIdentifier($CLIENTSemail)
+    {
+        $this->CLIENTSemail = $CLIENTSemail;
+        
+        return $this;
     }
 
     /**
@@ -58,16 +70,15 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $CLIENTSrole = $this->CLIENTSrole;
+        $CLIENTSrole[] = 'ROLE_USER';
 
-        return array_unique($roles);
+        return array_unique($CLIENTSrole);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(array $CLIENTSrole): self
     {
-        $this->roles = $roles;
+        $this->CLIENTSrole = $CLIENTSrole;
 
         return $this;
     }
@@ -75,12 +86,12 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->CLIENTSpassword;
     }
 
-    public function setPassword(string $CLIENTSpassword): self
+    public function setPassword(?string $CLIENTSpassword): self
     {
         $this->CLIENTSpassword = $this->passwordHasher->hashPassword($this, $CLIENTSpassword);
 
@@ -92,9 +103,48 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function eraseCredentials()
     {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+       // $this->CLIENTSpassword = null;
     }
 
     
+    public function getfoodAllergies()
+    {
+        return $this->CLIENTSfoodAllergies;
+    }
+
+
+    public function setfoodAllergies($CLIENTSfoodAllergies)
+    {
+        $this->CLIENTSfoodAllergies = $CLIENTSfoodAllergies;
+
+        return $this;
+    }
+
+
+    public function getcoversNumber()
+    {
+        return $this->CLIENTScoversNumber;
+    }
+
+
+    public function setcoversNumber($CLIENTScoversNumber)
+    {
+        $this->CLIENTScoversNumber = $CLIENTScoversNumber;
+
+        return $this;
+    }
+
+    
+    public function getconfirm()
+    {
+        return $this->CLIENTSconfirm;
+    }
+
+    
+    public function setconfirm($CLIENTSconfirm)
+    {
+        $this->CLIENTSconfirm = $CLIENTSconfirm;
+
+        return $this;
+    }
 }

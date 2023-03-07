@@ -2,8 +2,7 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity()]
@@ -14,22 +13,19 @@ class Formula
     #[ORM\Id()]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private int $FORMULAid;
+    private ?int $FORMULAid;
 
     #[ORM\Column(type: "float", nullable: false)]
-    private float $FORMULAprice;
+    private ?float $FORMULAprice;
 
     #[ORM\Column(type: "string", nullable: true)]
-    private string $FORMULAdescription;
+    private ?string $FORMULAdescription;
 
-    #[ORM\ManyToOne(targetEntity:"App\Entity\Menus", inversedBy:"MENUSformula")]
+    #[ORM\ManyToOne(targetEntity: Menus::class, inversedBy: 'MENUSformulas')]
+    #[ORM\JoinColumn(nullable: false)]
     private $FORMULAmenu;
 
-    public function __construct() {
-        $this->FORMULAmenu = new ArrayCollection();
-    }
-
-    public function getId(): int
+    public function getId()
     {
             return $this->FORMULAid;
     }

@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\File;
 
 class DishesType extends AbstractType 
 {
@@ -50,7 +51,20 @@ class DishesType extends AbstractType
                                                             ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
-            ->add("DISHESphoto", TextType::class, ["label" => "Photo", "required" => false])
+            ->add("DISHESphoto", FileType::class, ["label" =>"Image",
+                                            'mapped' => false,
+                                            "required" => false,
+                                            'constraints' => [ new File ([
+                                                                            'maxSize' => '2048k',
+                                                                            'mimeTypes' => [
+                                                                                'image/jpeg',
+                                                                                'image/jpg',
+                                                                                'image/svg+xml',
+                                                                                'image/png',
+                                                                                'image/bmp',
+                                                                                'image/gif'],
+                                                                            'mimeTypesMessage' => 'Veuillez proposer une image valide',
+                                                                                ])]])
             ->add("DISHESmenusMontagnard", CheckboxType::class, ["label" => "inclus dans le menu Montagnard", "required" => false])
             ->add("DISHESmenusExpress", CheckboxType::class, ["label" => "inclus dans le menu Express", "required" => false]);
     }

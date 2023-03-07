@@ -6,10 +6,10 @@
         <h1>Se connecter</h1>
 </div>
 {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey }}</div>
+        <div class="alert alert-danger">{{ error.messageKey | trans(error.messagedata, 'security') }}</div>
 {% endif %}
 
-{# <form method="post" class="container">
+<form method="post" class="container">
         <label for="username">Nom d'utilisateur</label>
         <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" required
 
@@ -19,13 +19,14 @@
         <input type="hidden" name="_target_path" value="/"/>
 
         <button type="submit" class="btn btn-primary mt-3">Connexion</button>
-</form> #}
+</form>
 
-<div class="container">
+{# <div class="container">
 {{ form_start(login_form)}}
-        {{ form_row(login_form.email)}}
+        {{ form_row(login_form.UserIdentifier)}}
         {{ form_row(login_form.password)}}
                 <input type="submit" value="Se connecter">
 {{ form_end(login_form)}}
-</div>
+<a href="/sinscrire" class="btn btn-link">Créer son compte</a>
+</div> #}
 {% endblock %}

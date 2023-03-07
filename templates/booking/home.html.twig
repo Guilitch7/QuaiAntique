@@ -1,0 +1,19 @@
+{%  extends 'base.html.twig' %}
+
+{% block title "Réserver - Le quai antique" %}
+{% block body %}
+<div class="jumbotron text-center">
+        <h1>Réserver</h1>
+        <p>Afin de pouvoir vous accueillir dans les meilleures conditions, merci de procéder à une réservation en ligne</p>
+</div>
+<div class="container">
+        {{ form_start(booking_form)}}
+                {{ form_row(booking_form.BOOKINGStimeslot)}}
+                {{ form_row(booking_form.BookSlotDate)}}
+                {{ form_row(booking_form.BookSlotUser)}}
+                {{ form_row(booking_form.BookSlotCovers)}}
+                {{ form_row(booking_form.BookSlotAllergies)}}
+                <input type="submit" value="Envoyer">
+        {{ form_end(booking_form)}}
+</div>
+{% endblock %}

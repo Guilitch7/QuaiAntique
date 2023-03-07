@@ -16,7 +16,7 @@ class LoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("email", EmailType::class, [  "label" => "Email",
+            ->add("UserIdentifier", EmailType::class, [  "label" => "Email",
                                                  "required" => true,
                                                  "attr" => array('name' => '_username'),
                                                  "constraints" => [
@@ -27,7 +27,7 @@ class LoginType extends AbstractType
                                                         "constraints" => [
                                                             new Length(["min" => 8, "minMessage" => 'Ce champ doit comporter au minimum 8 caractères']),
                                                             new NotBlank(["message" => 'Ce champ ne peut être vide'])]
-                                                        ]);
+                                            ]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

@@ -15,12 +15,17 @@
                         <h3>{{ menu.MenuCategory3 }}</h3>
                     </div>
                     <div>
-                        {% for formula in menu.MenuFormula %}
-                            <p>{{ formula }}</p>
+                        {% for Formula in menu.MenusFormulas %}
+                        <p>{{ Formula }}</p>
                         {% endfor %}
                     </div>
             </div>
             {% endfor %}
+           {# <div>
+            {% for formula in formulas %}
+                        <p>{{ formula }}</p>
+            {% endfor %}
+            </div> #}
         </div>
     </div>
 </main>

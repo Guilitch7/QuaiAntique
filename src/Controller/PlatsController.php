@@ -7,30 +7,52 @@ use App\Form\DishesType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PlatsController extends AbstractController
 {
 
     #[Route('/plats_adm', name: 'plats_adm')]
    
-   public function create(Request $request, ManagerRegistry $doctrine): Response
+   public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
-         $createDish = new Dishes();
-         $form = $this->createForm(DishesType::class, $createDish);
-         $form->handleRequest($request);
-         if ($form->isSubmitted() && $form->isValid()) {
-             $entityManager = $doctrine->getManager();
-             $entityManager->persist($createDish);
-             $entityManager->flush();
-             return $this->redirectToRoute('plats');
-         } 
-         return $this->render('home/plats_adm.html.twig', [
-             "dishes_form" => $form->createView(),
-             'title' => 'Enregistrer un plat',
-             'current_menu' => 'plats_adm'
-         ]);
+            $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+            $createDish = new Dishes();
+            $form = $this->createForm(DishesType::class, $createDish);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+
+                $image = $form->get('DISHESphoto')->getData();
+
+                if ($image) {
+                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+                    try {
+                        $image->move(
+                            $this->getParameter('uploads'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        dump($e);
+                    }
+                    $createDish->setDISHESphoto($newFilename);
+                }
+
+
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($createDish);
+                $entityManager->flush();
+                return $this->redirectToRoute('plats');
+            } 
+            return $this->render('home/plats_adm.html.twig', [
+                "dishes_form" => $form->createView(),
+                'title' => 'Enregistrer un plat',
+                'current_menu' => 'plats_adm'
+            ]);
     }
 
     #[Route('/plats', name: 'plats')]

@@ -3,19 +3,25 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\MenusRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity()]
+#[ORM\Entity(repositoryClass: MenusRepository::class)]
 #[ORM\Table(name: "MENUS")]
 
 class Menus
 {
     #[ORM\Id()]
-    #[ORM\Column(type: "string")]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\Column(type: "integer", nullable: false)]
+    private int $MENUSid;
+
+    #[ORM\Column(type: "string", nullable: false)]
     private string $MENUSname;
 
-    #[ORM\OneToMany(targetEntity:"App\Entity\Formula", mappedBy:"FORMULAmenu")]
-    private $MENUSformula;
+    #[ORM\OneToMany(targetEntity: Formula::class, mappedBy: 'FORMULAmenu')]
+    private $MENUSformulas;
 
     #[ORM\Column(type: "string", nullable: false)]
     private string $MENUScategory1;
@@ -26,6 +32,10 @@ class Menus
     #[ORM\Column(type: "string", nullable: false)]
     private string $MENUScategory3;
 
+
+    public function __construct() {
+        $this->MENUSformulas = new ArrayCollection();
+    }
 
     public function getMenuName()
     {
@@ -39,15 +49,18 @@ class Menus
             return $this;
     }    
 
+    /**
+     * @return Collection|MenusFormulas[]
+     */
 
-    public function getMenuFormula()
+    public function getMenusFormulas():?Collection
     {
-            return $this->MENUSformula;
+            return $this->MENUSformulas;
     }
 
-    public function setMenuFormula($MenuFormula)
+    public function setMenusFormulas($MenusFormulas)
     {
-        $this->MENUSformula = $MenuFormula;
+        $this->MENUSformulas = $MenusFormulas;
 
             return $this;
     }  
@@ -87,4 +100,9 @@ class Menus
 
             return $this;
     }  
+
+    public function getMenuId()
+    {
+        return $this->MENUSid;
+    }
 }

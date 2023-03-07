@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Context\ExecutionContext;
+use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -18,7 +20,7 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("email", EmailType::class, [  "label" => "Email",
+            ->add("UserIdentifier", EmailType::class, [  "label" => "Email",
                                                  "required" => true,
                                                  "constraints" => [
                                                     new NotBlank(["message" => 'Ce champ ne peut être vide'])]
@@ -29,14 +31,27 @@ class RegisterType extends AbstractType
                                                             new Length(["min" => 8, "minMessage" => 'Ce champ doit comporter au minimum 8 caractères']),
                                                             new NotBlank(["message" => 'Ce champ ne peut être vide'])]
                                                     ])
-            ->add("confirmPassword", PasswordType::class, [ "label" => "Confirmation mot de passe",
-                                                            "required" => true,
-                                                            "constraints" => [
-                                                                new Length(["min" => 8, "minMessage" => 'Ce champ doit comporter au minimum 8 caractères']),
-                                                                new NotBlank(["message" => 'Ce champ ne peut être vide'])]
-                                                            ])
-            ->add("convives", IntegerType::class, ["label" => "Convives", "required" => false])
-            ->add("allergies", ChoiceType::class, ["label" => "Allergies", "required" => false]);
+            ->add("confirm", PasswordType::class,  [
+                                                        "label" => "Confirmer le mot de passe",
+                                                        "required" => true,
+                                                        "constraints" => [
+                                                            new NotBlank(["message" => "Le mot de passe ne peut pas être vide !"]),
+                                                            // new EqualTo(["propertyPath" => "password", "message" => "Les mots de passe doivent être identique !"])
+                                                            new Callback(['callback' => function ($value, ExecutionContext $ec) {
+                                                                if ($ec->getRoot()['password']->getViewData() !== $value) {
+                                                                    $ec->addViolation("Les mots de passe doivent être identiques !");
+                                                                }
+                                                            }])
+                                                        ]
+                                                    ])
+            ->add("coversNumber", IntegerType::class, ["label" => "Convives", "required" => false])
+            ->add("foodAllergies", ChoiceType::class, ["label" => "Allergies", "required" => false,
+                                                        'choices'  => [
+                                                            'Crustacés' => 'Crustacés',
+                                                            'Viande' => 'Viande',
+                                                            'Poisson' => 'Poisson',
+                                                            'Gluten' => 'Gluten'
+                                                        ],]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

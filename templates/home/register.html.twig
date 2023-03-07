@@ -7,11 +7,11 @@
 </div>
 <div class="container">
 {{ form_start(register_form)}}
-        {{ form_row(register_form.email)}}
+        {{ form_row(register_form.UserIdentifier)}}
         {{ form_row(register_form.password)}}
-        {{ form_row(register_form.confirmPassword)}}
-        {{ form_row(register_form.convives)}}
-        {{ form_row(register_form.allergies)}}
+        {{ form_row(register_form.confirm)}}
+        {{ form_row(register_form.coversNumber)}}
+        {{ form_row(register_form.foodAllergies)}}
                 <input type="submit" value="Envoyer">
 {{ form_end(register_form)}}
 </div>

@@ -15,8 +15,10 @@
                         <img class="img-fluid" src={{specialite.DISHESphoto}} alt={{specialite.DISHESname}}>
                         <h3>{{ specialite.DISHESdescription }}</h3>
                         <h3>{{ specialite.DISHESprice }}</h3>
+                        {% if is_granted('ROLE_ADMIN') %}                      
                         <a href="{{ path ('delete-dish', {'id' : specialite.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
                         <a href="{{ path ('edit-dish', {'id' : specialite.DISHESid}) }}" class="btn btn-warning">Modifier</a>
+                        {% endif %}
                     </div>
             </div>
             {% endfor %}
