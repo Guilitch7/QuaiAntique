@@ -11,20 +11,22 @@
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">          
             <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
         {% endblock %}
+
+
     </head>
-    <body class="main">
+    <body>
         <div class="justify-content-center pre-nav">
-          <div class="row navbar navbar-expand-lg m-0">
-            <div class="col address">
+          <div class="row navbar navbar-expand-lg">
+            <div class="col">
                 <a href="tel:+3321110700">03-21-11-07-00</a>
-                <p>3, rue de l'Abbaye, Chambéry</p>
+                3, rue de l'Abbaye, Chambéry
             </div>
             <div class="col">
-            <button type="button" class="btn btn-warning"><a href="{{path('book')}}">Réserver</a></button>
+            <button type="button" class="btn btn-danger"><a href="{{path('book')}}">Réserver</a></button>
             </div>
-            <div class="col p-0">  
+            <div class="col">  
                 {% if app.user %}
-                    <a class="nav-link p-0 {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('logout')}}">Se déconnecter</a>
+                    <a class="nav-link {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('logout')}}">Se déconnecter</a>
                 {% else %}
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li><a class="nav-link text-white {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('login')}}">Se connecter</a>
@@ -34,7 +36,7 @@
             </div>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark navbarMain">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{path('home')}}">Le Quai Antique</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,22 +81,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         <script src="{{ asset('scripts/script.js') }}"></script>
         {% endblock %}
-        <footer class="footer mt-5">
-            <div class="container-fluid">
-                    <div class="row text-center justify-content-center">
-                    {% for horaire in horaires %}
-                        <div class="col-1">
-                            <p class="day">{{ horaire.Day }}</p>
-                                <div>
-                                    <p>{%if horaire.OpenLunch and horaire.closelunch %}{{ horaire.OpenLunch|date('H:i')}} - {{ horaire.closelunch|date('H:i')}} {%else %} Fermé le midi {% endif %}</p>
-                                    <p>{%if horaire.OpenDinner and horaire.closedinner %}{{ horaire.OpenDinner|date('H:i')}} - {{ horaire.closedinner|date('H:i')}} {%else %} Fermé le soir {% endif %}</p>
-                                </div>
-                        </div>
-
-                    {% endfor %}
-                    </div>
-            </div>
-        </footer>
     </body>
 
 </html>

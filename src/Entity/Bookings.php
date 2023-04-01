@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
@@ -15,29 +17,38 @@ class Bookings
     #[ORM\Id()]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private Integer $BOOKINGSid;
+    private ?int $BOOKINGSLOTid;
 
-    #[ORM\Column(type: "datetime", nullable: false)]
-    private DateTime $BOOKINGSdatetime;
+    #[ORM\Column(type: "date", nullable: false)]
+    private ?DateTime $BOOKINGSdatetime;
 
-    #[ORM\Column(type: "datetime", nullable: false)]
-    private DateTime $BOOKINGStimeslot;
+    #[ORM\Column(nullable: false)]
+    private ?string $BOOKINGSday;
+
+    #[ORM\OneToMany(mappedBy: 'slotLunch', targetEntity: Openingdays::class)]
+    private Collection $slotLunch;
+
+    #[ORM\OneToMany(mappedBy: 'slotDinner', targetEntity: Openingdays::class)]
+    private Collection $slotDinner;
+
+    public function __construct()
+    {
+        $this->slotLunch = new ArrayCollection();
+        $this->slotDinner = new ArrayCollection();
+    }
 
     #[ORM\Column(type: "string", nullable: false)]
-    private String $BOOKINGSlastnameuser;
+    private ?string $BOOKINGSlastnameuser;
 
     #[ORM\Column(type: "integer", nullable: false)]
-    private Integer $BOOKINGScoversnumber;
+    private ?int $BOOKINGScoversnumber;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private string $BOOKINGSfoodallergies;
+    private ?string $BOOKINGSfoodallergies;
 
-    #[ORM\Column(type: "boolean")]
-    private Boolean $BOOKINGSbooked;
-
-    public function getId(): integer
+    public function getId(): int
     {
-            return $this->BOOKINGSid;
+            return $this->BOOKINGSLOTid;
     }
 
     public function getBookSlotDate()
@@ -92,32 +103,75 @@ class Bookings
             return $this;
     }    
  
-
-
-    public function getSlotBooked()
+ 
+    /**
+     * @return Collection<int, slotLunch>
+     */
+    public function getslotLunch(): Collection
     {
-            return $this->BOOKINGSbooked;
+        return $this->slotLunch;
     }
 
 
-    public function setSlotBooked($BOOKINGSLOTbooked)
+    public function addslotLunch(Openingdays $slotLunch): self
     {
-            $this->BOOKINGSbooked = $BOOKINGSLOTbooked;
+        if (!$this->slotLunch->contains($slotLunch)) {
+            $this->slotLunch->add($slotLunch);
+            $slotLunch->setslotLunch($this);
+        }
 
-            return $this;
+        return $this;
+    }
+
+    public function removeslotLunch(Openingdays $slotLunch): void
+    {
+        if ($this->slotLunch->removeElement($slotLunch)) {
+            // set the owning side to null (unless already changed)
+            if ($slotLunch->getslotLunch() === $this) {
+                $slotLunch->setslotLunch(null);
+            }
+        }
+    }
+
+    /**
+     * @return Collection<int, slotDinner>
+     */
+    public function getslotDinner(): Collection
+    {
+        return $this->slotDinner;
     }
 
 
-
-    public function getBOOKINGStimeslot()
+    public function addslotDinner(Openingdays $slotDinner): self
     {
-        return $this->BOOKINGStimeslot;
+        if (!$this->slotDinner->contains($slotDinner)) {
+            $this->slotDinner->add($slotDinner);
+            $slotDinner->setslotDinner($this);
+        }
+
+        return $this;
+    }
+
+    public function removeslotDinner(Openingdays $slotDinner): void
+    {
+        if ($this->slotDinner->removeElement($slotDinner)) {
+            // set the owning side to null (unless already changed)
+            if ($slotDinner->getslotDinner() === $this) {
+                $slotDinner->setslotDinner(null);
+            }
+        }
     }
 
 
-    public function setBOOKINGStimeslot($BOOKINGStimeslot)
+    public function getday()
     {
-        $this->BOOKINGStimeslot = $BOOKINGStimeslot;
+        return $this->BOOKINGSday;
+    }
+
+
+    public function setday($BOOKINGSday)
+    {
+        $this->BOOKINGSday = $BOOKINGSday;
 
         return $this;
     }

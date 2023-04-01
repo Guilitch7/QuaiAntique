@@ -8,10 +8,10 @@
 </div>
 <div class="container">
         {{ form_start(booking_form)}}
-                {{ form_row(booking_form.BOOKINGStimeslot)}}
+                {#{ form_row(booking_form.BOOKINGStimeslot)|date('H:i')}#}
                 {{ form_row(booking_form.BookSlotDate)}}
                 {{ form_row(booking_form.BookSlotUser)}}
-                {{ form_row(booking_form.BookSlotCovers)}}
+                {{ form_row(booking_form.BookSlotCovers )}}
                 {{ form_row(booking_form.BookSlotAllergies)}}
                 <input type="submit" value="Envoyer">
         {{ form_end(booking_form)}}

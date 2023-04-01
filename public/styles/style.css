@@ -1,13 +1,56 @@
 .pre-nav {
     background-color: #473c57;
     color: #f9f5f4;
+    margin : 0;
 }
-
-.calendar {
-    width : 80%;
-    margin : auto;
+h1 {
+    color: #473c57;
 }
-
 .address {
     margin : 0;
+}
+
+.carouselcaption
+{
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    top: 5;
+    padding-bottom: 1.25rem;
+    width: 100%; 
+}
+
+.description-dish
+{
+    display: none;
+}
+
+.carousel-inner:hover + .description-dish
+{
+    display: block;
+}
+
+.day
+{
+    font-weight: bold;
+    color:#a35e4c;
+}
+.navbarMain
+{
+    background-color: #754d51;
+}
+.address {
+    margin: 2px;
+}
+.footer {
+    background-color: #473c57;
+    color: #f9f5f4;
+}
+.main {
+    color:#a35e4c;
+    list-style-type: none;
+}
+.bg-menu {
+    background-color:#cc9c90;
+    color:#473c57;
 }

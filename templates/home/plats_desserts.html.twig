@@ -12,7 +12,7 @@
             <div class="col-4">
                 <h2>{{ dessert.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{dessert.DISHESphoto}} alt={{dessert.DISHESname}}>
+                        <img class="img-fluid" src={{ vich_uploader_asset(dessert, 'DISHESphotofile') }} alt={{dessert.DISHESname}}>
                         <h3>{{ dessert.DISHESdescription }}</h3>
                         <h3>{{ dessert.DISHESprice }}</h3>
                         {% if is_granted('ROLE_ADMIN') %}

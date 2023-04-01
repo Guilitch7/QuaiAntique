@@ -2,65 +2,66 @@
 
 namespace App\Entity;
 
-use App\Repository\ClientsRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: ClientsRepository::class)]
-#[ORM\Table(name: "CLIENTS")]
-#[UniqueEntity('CLIENTSemail')]
-class Clients implements UserInterface, PasswordAuthenticatedUserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: "user")]
+#[UniqueEntity('userEmail')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue (strategy:"AUTO")]
     #[ORM\Column]
-    private ?int $CLIENTSid = null;
+    private ?int $userId = null;
 
     #[ORM\Column (type: 'json')]
-    private array $CLIENTSrole = [];
+    private array $userRole = [];
 
     #[ORM\Column (unique: true)]
-    private ?string $CLIENTSemail = null;
+    private ?string $userEmail = null;
 
     private $passwordHasher;
 
-    private ?string $CLIENTSconfirm = null;
+    private ?string $userConfirm = null;
 
     #[ORM\Column(type: "integer", nullable: true)]
-    private int $CLIENTScoversNumber;
+    private ?int $userCoversNumber;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private ?string $CLIENTSfoodAllergies;
+    private ?string $userFoodAllergies;
 
     /**
      * @var string The hashed password
      *
      */
     #[ORM\Column(length: 180, unique: true)]
-    private ?string $CLIENTSpassword = null;
+    private ?string $userPassword = null;
 
 
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
+        $this->userRole[] = 'ROLE_USER';
     }
 
     public function getId(): ?int
     {
-        return $this->CLIENTSid;
+        return $this->userId;
     }
 
     public function getUserIdentifier(): string
     {
-        return (string) $this->CLIENTSemail;
+        return (string) $this->userEmail;
     }
 
-    public function setUserIdentifier($CLIENTSemail)
+    public function setUserIdentifier($userEmail)
     {
-        $this->CLIENTSemail = $CLIENTSemail;
+        $this->userEmail = $userEmail;
         
         return $this;
     }
@@ -70,15 +71,14 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        $CLIENTSrole = $this->CLIENTSrole;
-        $CLIENTSrole[] = 'ROLE_USER';
-
-        return array_unique($CLIENTSrole);
+        $userRole = $this->userRole;
+        
+        return array_unique($userRole);
     }
 
-    public function setRoles(array $CLIENTSrole): self
+    public function setRoles(array $userRole): self
     {
-        $this->CLIENTSrole = $CLIENTSrole;
+        $this->userRole = $userRole;
 
         return $this;
     }
@@ -88,12 +88,12 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getPassword(): ?string
     {
-        return $this->CLIENTSpassword;
+        return $this->userPassword;
     }
 
-    public function setPassword(?string $CLIENTSpassword): self
+    public function setPassword(?string $userPassword): self
     {
-        $this->CLIENTSpassword = $this->passwordHasher->hashPassword($this, $CLIENTSpassword);
+        $this->userPassword = $this->passwordHasher->hashPassword($this, $userPassword);
 
         return $this;
     }
@@ -103,19 +103,19 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function eraseCredentials()
     {
-       // $this->CLIENTSpassword = null;
+       // $this->userPassword = null;
     }
 
     
     public function getfoodAllergies()
     {
-        return $this->CLIENTSfoodAllergies;
+        return $this->userFoodAllergies;
     }
 
 
-    public function setfoodAllergies($CLIENTSfoodAllergies)
+    public function setfoodAllergies($userFoodAllergies)
     {
-        $this->CLIENTSfoodAllergies = $CLIENTSfoodAllergies;
+        $this->userFoodAllergies = $userFoodAllergies;
 
         return $this;
     }
@@ -123,13 +123,13 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getcoversNumber()
     {
-        return $this->CLIENTScoversNumber;
+        return $this->userCoversNumber;
     }
 
 
-    public function setcoversNumber($CLIENTScoversNumber)
+    public function setcoversNumber($userCoversNumber)
     {
-        $this->CLIENTScoversNumber = $CLIENTScoversNumber;
+        $this->userCoversNumber = $userCoversNumber;
 
         return $this;
     }
@@ -137,13 +137,13 @@ class Clients implements UserInterface, PasswordAuthenticatedUserInterface
     
     public function getconfirm()
     {
-        return $this->CLIENTSconfirm;
+        return $this->userConfirm;
     }
 
     
-    public function setconfirm($CLIENTSconfirm)
+    public function setconfirm($userConfirm)
     {
-        $this->CLIENTSconfirm = $CLIENTSconfirm;
+        $this->userConfirm = $userConfirm;
 
         return $this;
     }

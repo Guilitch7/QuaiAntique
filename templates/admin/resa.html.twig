@@ -1,0 +1,16 @@
+{%  extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<h1>Réservations à venir</h1>
+    {% for Booking in Bookings %}
+        {% if Booking.BookSlotDate >= date() %}
+                        <ul>
+                            <li>Date - {{ Booking.BookSlotDate|date('l-m-y') }}</li>
+                            <li>Nom du client - {{ Booking.BookSlotUser }}</li>
+                            <li>Nombre de couverts - {{ Booking.BookSlotCovers }}</li>
+                            <li>Allergies éventuelles - {{ Booking.BookSlotAllergies }}</li>
+                        </ul>
+                </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

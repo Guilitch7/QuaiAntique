@@ -1,0 +1,26 @@
+{%  extends 'baseAdmin.html.twig' %}
+{% block title %}Gestion des horaires{% endblock %}
+
+{% block body %}
+<h1>Gestion des horaires du restaurant</h1>
+<div class="container">
+        {{ form_start(opening_form)}}
+                {{ form_row(opening_form.day)}}
+                <div id="hoursLunch">
+                {{ form_row(opening_form.Openlunch)}}
+                {{ form_row(opening_form.Closelunch)}}
+                </div>
+                <div id="hoursDinner">
+                {{ form_row(opening_form.Opendinner)}}
+                {{ form_row(opening_form.Closedinner)}}
+                </div>
+                <div>
+                {{ form_row(opening_form.coversPossible)}}
+                </div>
+                <input type="submit" value="Envoyer">
+        {{ form_end(opening_form)}}
+</div>
+
+{% endblock %}
+{% block javascript %}
+{% endblock %}

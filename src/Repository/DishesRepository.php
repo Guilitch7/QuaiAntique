@@ -23,6 +23,8 @@ class DishesRepository extends ServiceEntityRepository
         parent::__construct($registry, Dishes::class);
     }
 
+
+    
     public function save(Dishes $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

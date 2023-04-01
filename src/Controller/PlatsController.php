@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Dishes;
+use App\Entity\Openingdays;
 use App\Form\DishesType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,9 +16,9 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class PlatsController extends AbstractController
 {
 
-    #[Route('/plats_adm', name: 'plats_adm')]
+    #[Route('/plats_admin', name: 'plats_admin')]
    
-   public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
+    public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
             $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
             $createDish = new Dishes();
@@ -25,22 +26,22 @@ class PlatsController extends AbstractController
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
 
-                $image = $form->get('DISHESphoto')->getData();
+//                $image = $form->get('DISHESphoto')->getData();
 
-                if ($image) {
-                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                    $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-                    try {
-                        $image->move(
-                            $this->getParameter('uploads'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        dump($e);
-                    }
-                    $createDish->setDISHESphoto($newFilename);
-                }
+//              if ($image) {
+//                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+//                    $safeFilename = $slugger->slug($originalFilename);
+//                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+//                    try {
+//                        $image->move(
+//                            $this->getParameter('uploads'),
+//                            $newFilename
+//                        );
+//                    } catch (FileException $e) {
+//                        dump($e);
+//                    }
+//                    $createDish->setDISHESphoto($newFilename);
+//                }
 
 
                 $entityManager = $doctrine->getManager();
@@ -48,10 +49,10 @@ class PlatsController extends AbstractController
                 $entityManager->flush();
                 return $this->redirectToRoute('plats');
             } 
-            return $this->render('home/plats_adm.html.twig', [
+            return $this->render('home/plats_admin.html.twig', [
                 "dishes_form" => $form->createView(),
                 'title' => 'Enregistrer un plat',
-                'current_menu' => 'plats_adm'
+                'current_menu' => 'admin'
             ]);
     }
 
@@ -61,11 +62,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $dishes = $repository->findAll();
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats.html.twig', [
             'plats' => $dishes,
             'controller_name' => 'PlatsController',
             'title' => 'Nos plats',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -75,11 +81,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $entree = $repository->findBy(['DISHEScategory' => 'Entrée']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_entrée.html.twig', [
             'entrees' => $entree,
             'controller_name' => 'PlatsController',
             'title' => 'Nos entrées',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -89,11 +100,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $specialites = $repository->findBy(['DISHEStype' => 'Spécialité']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_spécialités.html.twig', [
             'specialites' => $specialites,
             'controller_name' => 'PlatsController',
             'title' => 'Nos spécialités',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -103,11 +119,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $meat = $repository->findBy(['DISHEStype' => 'Viande']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_viandes.html.twig', [
             'viandes' => $meat,
             'controller_name' => 'PlatsController',
             'title' => 'Nos viandes',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -117,11 +138,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $fish = $repository->findBy(['DISHEStype' => 'Poisson']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_poissons.html.twig', [
             'poissons' => $fish,
             'controller_name' => 'PlatsController',
             'title' => 'Nos poissons',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -131,11 +157,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $desert = $repository->findBy(['DISHEScategory' => 'Dessert']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_desserts.html.twig', [
             'desserts' => $desert,
             'controller_name' => 'PlatsController',
             'title' => 'Nos desserts',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -145,11 +176,16 @@ class PlatsController extends AbstractController
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $drinks = $repository->findBy(['DISHEScategory' => 'Boissons']);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('home/plats_boissons.html.twig', [
             'boissons' => $drinks,
             'controller_name' => 'PlatsController',
             'title' => 'Nos boissons',
-            'current_menu' => 'plats'
+            'current_menu' => 'plats',
+            'horaires' => $isOpen,
         ]);
     }
 
@@ -172,11 +208,11 @@ class PlatsController extends AbstractController
              $entityManager->flush();
              return $this->redirectToRoute('plats');
       }
-        return $this->render('home/plats_adm.html.twig', 
+        return $this->render('home/plats_admin.html.twig', 
         [
         "dishes_form" => $form->createView(),
         'title' => 'Enregistrer un plat',
-        'current_menu' => 'plats_adm'
+        'current_menu' => 'admin'
         ]);
       }
 }

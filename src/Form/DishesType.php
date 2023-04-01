@@ -8,11 +8,11 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\File;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class DishesType extends AbstractType 
 {
@@ -51,8 +51,7 @@ class DishesType extends AbstractType
                                                             ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
-            ->add("DISHESphoto", FileType::class, ["label" =>"Image",
-                                            'mapped' => false,
+            ->add("DISHESphotofile", VichImageType::class, ["label" =>"Image",
                                             "required" => false,
                                             'constraints' => [ new File ([
                                                                             'maxSize' => '2048k',

@@ -12,7 +12,7 @@
             <div class="col-4">
                 <h2>{{ boisson.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{boisson.DISHESphoto}} alt={{boisson.DISHESname}}>
+                        <img class="img-fluid" src={{ '/public/uploads/' ~ boisson.DISHESphotofile }} alt={{boisson.DISHESname}}>
                         <h3>{{ boisson.DISHESdescription }}</h3>
                         <h3>{{ boisson.DISHESprice }}</h3>
                         {% if is_granted('ROLE_ADMIN') %}

@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Entity\Clients;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -50,13 +50,14 @@ class RegisterType extends AbstractType
                                                             'Crustacés' => 'Crustacés',
                                                             'Viande' => 'Viande',
                                                             'Poisson' => 'Poisson',
-                                                            'Gluten' => 'Gluten'
+                                                            'Gluten' => 'Gluten',
+                                                            'Lactose' => 'Lactose'
                                                         ],]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            "data_class" => Clients::class,
+            "data_class" => User::class,
             'csrf_protection' => true,
             'csrf_field_name' => '_token',
             'csrf_token_id' => 'register_item',

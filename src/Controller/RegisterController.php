@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Clients;
+use App\Entity\User;
+use App\Entity\Openingdays;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,9 +18,13 @@ class RegisterController extends AbstractController
 
    public function create(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $userPasswordHasher): Response
    {
-        $register = new Clients($userPasswordHasher);
+        $register = new User($userPasswordHasher);
         $form = $this->createForm(RegisterType::class, $register);
         $form->handleRequest($request);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
             $entityManager->persist($register);
@@ -29,7 +34,8 @@ class RegisterController extends AbstractController
         return $this->render('home/register.html.twig', [
             "register_form" => $form->createView(),
             'title' => 'Sinscrire',
-            'current_menu' => 'sinscrire'
+            'current_menu' => 'sinscrire',
+            'horaires' => $isOpen,
         ]);
    }
 }

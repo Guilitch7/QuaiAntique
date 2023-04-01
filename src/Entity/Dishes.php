@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity()]
 #[ORM\Table(name: "DISHES")]
+#[Vich\Uploadable]
 
 class Dishes
 {
@@ -29,8 +32,11 @@ class Dishes
     #[ORM\Column(type: "string")]
     private ?string $DISHESdescription;
 
-    #[ORM\Column(type: "text", nullable: true)]
-    private ?string $DISHESphoto;
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $DISHESphoto = null;
+
+    #[Vich\UploadableField(mapping: 'DISHES', fileNameProperty: 'DISHESphoto')]
+    private ?File $DISHESphotofile = null;
 
     #[ORM\Column(type: "boolean", nullable: true)]
     private string $DISHESmenusexpress;
@@ -126,17 +132,15 @@ class Dishes
     }
 
    
-    public function getDISHESphoto()
+    public function getDISHESphoto(): ?string
     {
         return $this->DISHESphoto;
     }
 
   
-    public function setDISHESphoto($DISHESphoto)
+    public function setDISHESphoto(? string $DISHESphoto): void
     {
         $this->DISHESphoto = $DISHESphoto;
-
-        return $this;
     }
 
   
@@ -166,4 +170,14 @@ class Dishes
 
         return $this;
     }
+
+    public function setDISHESphotoFile(?File $DISHESphotofile = null): void
+    {
+        $this->DISHESphotofile = $DISHESphotofile;
+    }
+
+    public function getDISHESphotofile(): ?File
+    {
+        return $this->DISHESphotofile;
+}
 }

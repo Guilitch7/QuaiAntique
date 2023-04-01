@@ -1,32 +1,84 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nos menus{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-<main class="container">
-    <div class="container">
-        <div class="row">
-            {% for menu in menus %}
-            <div class="col">
-                <h2>{{ menu.MenuName }}</h2>
-                    <div>
-                        <h3>{{ menu.MenuCategory1 }}</h3>
-                        <h3>{{ menu.MenuCategory2 }}</h3>
-                        <h3>{{ menu.MenuCategory3 }}</h3>
-                    </div>
-                    <div>
-                        {% for Formula in menu.MenusFormulas %}
-                        <p>{{ Formula }}</p>
-                        {% endfor %}
-                    </div>
-            </div>
+<main>
+<h1 class="text-center">Nos Menus</h1>
+<div class="container">
+<div class="row">   
+    <div class="col">
+    {% for men1 in menu1 %}
+        <h2>{{ men1.name }}</h2>
+    {% endfor %}
+        <ul>
+            <li>Entrées</li>
+            <ul>
+            {% for dishe1c1 in dishes1c1 %}
+                <li>{{ dishe1c1.DISHESname }}</li>
             {% endfor %}
-           {# <div>
-            {% for formula in formulas %}
-                        <p>{{ formula }}</p>
+            </ul>
+            <li>Plats</li>
+            <ul>
+            {% for dishe1c2 in dishes1c2 %}
+                <li>{{ dishe1c2.DISHESname }}</li>
             {% endfor %}
-            </div> #}
+            </ul>
+            <li>Desserts</li>
+            <ul>
+            {% for dishe1c3 in dishes1c3 %}
+                <li>{{ dishe1c3.DISHESname }}</li>
+            {% endfor %}
+             </ul>
+        </ul>
+            {% for formul1 in formule1 %}
+        <ul>
+            <li>{{ formul1.name }}</li>
+            <li>{{ formul1.price }} €</li>
+        </ul>
+            {% endfor %}
         </div>
+        <div class="col">
+    {% for men2 in menu2 %}
+        <h2>{{ men2.name }}</h2>
+    {% endfor %}
+        <ul>
+            <li>Entrées</li>
+            <ul>
+            {% for dishe2c1 in dishes2c1 %}
+                <li>{{ dishe2c1.DISHESname }}</li>
+            {% endfor %}
+            </ul>
+            <li>Plats</li>
+            <ul>
+            {% for dishe2c2 in dishes2c2 %}
+                <li>{{ dishe2c2.DISHESname }}</li>
+            {% endfor %}
+            </ul>
+            <li>Desserts</li>
+            <ul>
+            {% for dishe2c3 in dishes2c3 %}
+                <li>{{ dishe2c3.DISHESname }}</li>
+            {% endfor %}
+             </ul>
+        </ul>
+            {% for formul2 in formule2 %}
+        <ul>
+            <li>{{ formul2.name }}</li>
+            <li>{{ formul2.price }} €</li>
+        </ul>
+            {% endfor %}
+        </div>
+        <div class="col">
+        <h2>Menu Intégral</h2>
+        <ul>
+            <li>Entrées</li>
+            <p>Toutes les entrées de la carte</p>
+            <li>Plats</li>
+            <p>Tous les plats de la carte</p>
+            <li>Desserts</li>
+            <p>Tous les desserts de la carte</p>
     </div>
+</div>
 </main>
 {% endblock %}
