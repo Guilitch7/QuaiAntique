@@ -51,7 +51,7 @@ class DishesType extends AbstractType
                                                             ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
-            ->add("DISHESphotofile", VichImageType::class, ["label" =>"Image",
+            ->add("DISHESphoto", FileType::class, ["label" =>"Image",
                                             "required" => false,
                                             'constraints' => [ new File ([
                                                                             'maxSize' => '2048k',

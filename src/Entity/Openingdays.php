@@ -5,8 +5,6 @@ namespace App\Entity;
 use App\Repository\OpeningdaysRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Boolean;
-use Symfony\Component\Validator\Constraints\Time;
 
 #[ORM\Entity(repositoryClass: OpeningdaysRepository::class)]
 #[ORM\Table(name: "OPENINGDAYS")]
@@ -18,7 +16,7 @@ class Openingdays
     private int $OPENINGDAYSid;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private string $OPENINGDAYSday;
+    private $OPENINGDAYSday;
 
     #[ORM\Column(type: "boolean")]
     private ?bool $OPENINGDAYSnotOpenLunch;
@@ -29,12 +27,6 @@ class Openingdays
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYScloseslotlunch;
 
-    #[ORM\ManyToOne(inversedBy: 'slotLunch')]
-    private ?Bookings $slotLunch = null;
-
-    #[ORM\ManyToOne(inversedBy: 'slotDinner')]
-    private ?Bookings $slotDinner = null;
-
     #[ORM\Column(type: "boolean")]
     private ?bool $OPENINGDAYSnotOpenDinner;
 
@@ -43,6 +35,9 @@ class Openingdays
 
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYScloseslotdinner;
+
+    #[ORM\Column(type: "time")]
+    private $slotLunch;
 
     #[ORM\Column(type: "integer", nullable: false)]
     private ?int $OPENINGDAYScoversPossible;
@@ -62,12 +57,12 @@ class Openingdays
     }
 
 
-    public function getday()
+    public function getOPENINGDAYSday()
     {
             return $this->OPENINGDAYSday;
     }
 
-    public function setday($OPENINGDAYSday)
+    public function setOPENINGDAYSday($OPENINGDAYSday)
     {
             $this->OPENINGDAYSday = $OPENINGDAYSday;
 
@@ -165,29 +160,39 @@ class Openingdays
         return $this;
     }
 
-    public function getSlotLunch(): ?time
+
+    public function getslotLunch()
     {
         return $this->slotLunch;
     }
 
 
-    public function setSlotLunch($slotLunch)
+    public function setslotLunch($slotLunch, $OPENINGDAYStimeslotlunch, $OPENINGDAYStimeslotdinner, $OPENINGDAYScloseslotlunch, $OPENINGDAYScloseslotdinner)
     {
-        $this->slotLunch = $slotLunch;
+        $OPENINGDAYStimeslotlunch->getOpenLunch;
+        $LunchOpen = mktime($OPENINGDAYStimeslotlunch);
+        $OPENINGDAYScloseslotlunch->getCloseLunch();
+        $LunchClose = mktime($OPENINGDAYScloseslotlunch);
 
-        return $this;
-    }
+        $OPENINGDAYStimeslotdinner->getOpenDinner;
+        $DinnerOpen = mktime($OPENINGDAYStimeslotdinner);
+        $OPENINGDAYScloseslotdinner->getCloseDinner();
+        $DinnerClose = mktime($OPENINGDAYScloseslotdinner);
 
+        $OPENINGDAYSslotLunch = [];
 
-    public function getSlotDinner(): ?time
-    {
-        return $this->slotDinner;
-    }
-
-
-    public function setSlotDinner($slotDinner)
-    {
-        $this->slotDinner = $slotDinner;
+        $i=0;
+        while(($LunchClose-($LunchOpen+$i+3600))>0){
+            array_push($daySlots,($LunchClose-($LunchOpen+$i+3600)));
+            $i+=900;
+        }
+        $j=0;
+        while(($DinnerClose-($DinnerOpen+$j+3600))>0){
+            array_push($daySlots,($DinnerClose-($DinnerOpen+$j+3600)));
+            $j+900;
+        } 
+        
+        $this->slotLunch = $OPENINGDAYSslotLunch;
 
         return $this;
     }

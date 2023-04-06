@@ -7,7 +7,7 @@
     <div class="row">
         {% for horaire in horaires %}
         <div class="col-3">
-          <h2>{{ horaire.Day }}</h2>
+          <h2>{{ horaire.OPENINGDAYSday }}</h2>
                 <div>
                 <p>Midi : {%if horaire.OpenLunch and horaire.closelunch %}{{ horaire.OpenLunch|date('H:i')}} - {{ horaire.closelunch|date('H:i')}} {%else %} Fermé le midi {% endif %}</p>
                 <p>Soir : {%if horaire.OpenDinner and horaire.closedinner %}{{ horaire.OpenDinner|date('H:i')}} - {{ horaire.closedinner|date('H:i')}} {%else %} Fermé le soir {% endif %}</p>

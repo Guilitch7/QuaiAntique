@@ -35,9 +35,6 @@ class Dishes
     #[ORM\Column(type: "string", nullable: true)]
     private ?string $DISHESphoto = null;
 
-    #[Vich\UploadableField(mapping: 'DISHES', fileNameProperty: 'DISHESphoto')]
-    private ?File $DISHESphotofile = null;
-
     #[ORM\Column(type: "boolean", nullable: true)]
     private string $DISHESmenusexpress;
 
@@ -170,14 +167,4 @@ class Dishes
 
         return $this;
     }
-
-    public function setDISHESphotoFile(?File $DISHESphotofile = null): void
-    {
-        $this->DISHESphotofile = $DISHESphotofile;
-    }
-
-    public function getDISHESphotofile(): ?File
-    {
-        return $this->DISHESphotofile;
-}
 }

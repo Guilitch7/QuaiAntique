@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Bookings;
 use App\Entity\Openingdays;
+use App\Controller\OpeningsController;
 use App\Entity\User;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,6 +20,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +33,7 @@ class BookingType extends AbstractType
     public function __construct(
         private Security $security,
     ){
+        return $this->security->getUser();
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -42,37 +45,42 @@ class BookingType extends AbstractType
           $covers = $user->getcoversNumber();
           $allergies = $user->getfoodAllergies();
           $builder
-            ->add('day', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir', 'class' => Openingdays::class,])
-            ->add('slotLunch', EntityType::class, [ 'placeholder' => 'Choisir un créneau de réservation', 'class' => Openingdays::class,])
-            ->add('slotDinner', EntityType::class, ['placeholder' => 'Choisir un créneau de réservation', 'class' => Openingdays::class,])
+            ->add('OPENINGDAYSday', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir ?', 'class' => Openingdays::class, 'mapped' => false, 'choice_label' => 'OPENINGDAYSday', 'placeholder' => 'Jour ?',])
             ->add('BookSlotDate', DateType::class, [
-                'label' => "Date",
+                'label' => "A quelle date ?",
                 'widget' => 'single_text',
                 'required' => true,])
-
-//            ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) {
-//                $date = $event->getForm()->getViewData('BookSlotDate');
-//                $dateDay = date('l', $date);
-//                switch ($dateDay) {
-//                    case "lundi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "mardi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "mercredi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "jeudi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "vendredi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "samedi" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                    case "dimanche" : $event->getForm()->add('Bookingstimeslot', TimeType::class);
-//                }
-//            })
-            ->add("BookSlotUser", TextType::class, ["label" => "Votre nom",
-                        "required" => true,])
-            ->add("BookSlotCovers", IntegerType::class, ["label" => "Convives", "required" => true, "data" => $covers])
-            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Allergies", "required" => false, "data" => $allergies,
-                            'choices'  => [
-                                'Crustacés' => 'Crustacés',
-                                'Viande' => 'Viande',
-                                'Poisson' => 'Poisson',
-                                'Gluten' => 'Gluten'],])
+            ->add('slotLunch', ChoiceType::class, [ 'label' => 'Choisissez un créneau de réservation', 'placeholder' => 'Créneau', 'required' => false])
+            ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?",
+            "required" => true,])
+            ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true, "data" => $covers])
+            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false, "data" => $allergies,
+                'choices'  => [
+                    'Crustacés' => 'Crustacés',
+                    'Viande' => 'Viande',
+                    'Poisson' => 'Poisson',
+                    'Gluten' => 'Gluten'],])
             ->getForm();
+
+          $formMofidier = function(FormInterface $form, $day = null) {
+            $slotLunch = null === $day ? ['Le restaurant est fermé ce jour'] : $day->getslotLunch();
+
+            $form->add('slotLunch', EntityType::class, [
+                'class' => OPENINGDAYS::class,
+                'choices' => $slotLunch,
+                'required' => false,
+                'choice_label' => 'slotLunch',
+                'placeholder' => 'Créneau',
+                'attr' => ['class' => 'custom-select'],
+                'label' => 'Choisissez un créneau de réservation'
+            ]);
+        };
+          $builder->get('OPENINGDAYSday')->addEventListener(
+            FormEvents::POST_SUBMIT, 
+            function(FormEvent $event) use ($formMofidier) {
+                $day = $event->getForm()->getData();
+                $formMofidier($event->getForm()->getParent(), $day);
+                    });
         }
         else {
           $builder
@@ -80,14 +88,6 @@ class BookingType extends AbstractType
                 'label' => "Date",
                 'widget' => 'single_text',
                 "required" => true,])
-//            ->add("BOOKINGStimeslot", EntityType::class, [  
-//                    "class" => Openingdays::class,
-//                    "choice_label" => "timeslotlunch",
-//                    'multiple' => true,
-//                    'expanded' => true,
-//                    "choice_label" => "timeslotdinner",
-//                    'label' => 'Créneau horaire',
-//                    "required" => true])
             ->add("BookSlotUser", TextType::class, ["label" => "Votre nom",
                         "required" => true,])
             ->add("BookSlotCovers", IntegerType::class, ["label" => "Convives", "required" => true])
@@ -100,7 +100,6 @@ class BookingType extends AbstractType
                                 'Lactose' => 'Lactose'],]);
         }
     }
-
         public function configureOptions(OptionsResolver $resolver)
         {
             $resolver->setDefaults([

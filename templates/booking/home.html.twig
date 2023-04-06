@@ -9,11 +9,41 @@
 <div class="container">
         {{ form_start(booking_form)}}
                 {#{ form_row(booking_form.BOOKINGStimeslot)|date('H:i')}#}
+                {{ form_row(booking_form.OPENINGDAYSday)}}
                 {{ form_row(booking_form.BookSlotDate)}}
+                {{ form_row(booking_form.slotLunch)}}
+                {#{ form_row(booking_form.slotDinner)}#}
                 {{ form_row(booking_form.BookSlotUser)}}
                 {{ form_row(booking_form.BookSlotCovers )}}
                 {{ form_row(booking_form.BookSlotAllergies)}}
                 <input type="submit" value="Envoyer">
         {{ form_end(booking_form)}}
 </div>
+{% endblock %}
+{% block javascript %}
+
+<script>
+window.onload = () => {
+        let day = document.querySelector("#booking_OPENINGDAYSday");
+        day.addEventListener("change", function() {
+                let form = this.closest("form");
+                let data = this.name + "=" + this.value;
+                fetch(form.action, {
+                        method: form.getAttribute("method"),
+                        body: data,
+                        headers: {
+                                "Content-Type": "application/x-www-form-urlencoded; charset: utf-8"
+                        }
+                })
+                .then(response => response.text())
+                .then(html => {
+                        let content = document.createElement("html");
+                        content.innerHTML = html;
+                        let nouveauSelect = content.querySelector("#booking_slotLunch");
+                        document.querySelector("#booking_slotLunch").replaceWith(nouveauSelect);
+                })
+        });
+}
+</script>
+
 {% endblock %}

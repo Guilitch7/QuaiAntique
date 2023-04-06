@@ -13,8 +13,8 @@
                 <h2>{{ viande.DISHESname }}</h2>
                     <div>
                         <img class="img-fluid" src={{vich_uploader_asset(viande, 'DISHESphotofile') }} alt={{viande.DISHESname}}>
-                        <h3>{{ viande.DISHESdescription }}</h3>
-                        <h3>{{ viande.DISHESprice }}</h3>
+                        <p class="description">{{ viande.DISHESdescription }}</p>
+                        <p class="price">{{ viande.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path ('delete-dish', {'id' : viande.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
                         <a href="{{ path ('edit-dish', {'id' : viande.DISHESid}) }}" class="btn btn-warning">Modifier</a>

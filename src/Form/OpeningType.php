@@ -18,7 +18,7 @@ class OpeningType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("day", ChoiceType::class, [  
+            ->add("OPENINGDAYSday", ChoiceType::class, [  
                     "label" => "Jour",
                     "required" => true,
                     'choices'  => [
@@ -41,6 +41,7 @@ class OpeningType extends AbstractType
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
             ])
+            
             ->add('Closelunch', TimeType::class, [
                 "label" => "Fermeture midi",
                 'widget' => 'choice',
@@ -61,7 +62,8 @@ class OpeningType extends AbstractType
                 'hours' => [ '16' => '16','17' => '17', '18' => '18','19' => '19','20' => '20'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
-                ])
+            ])
+
             ->add('Closedinner', TimeType::class, [
                 "label" => "Fermeture soir",
                 'widget' => 'choice',
@@ -71,10 +73,11 @@ class OpeningType extends AbstractType
                 'hours' => ['20' => '20', '21' => '21','22' => '22','23' => '23', '00' => '00'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
-                ])
+            ])
+
             ->add('coversPossible', IntegerType::class, [
                     "label" => "Nombre de couverts possibles ?",
-                    ]);
+            ]);
 
     }
     public function configureOptions(OptionsResolver $resolver)

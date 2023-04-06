@@ -12,9 +12,9 @@
             <div class="col-4">
                 <h2>{{ dessert.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{ vich_uploader_asset(dessert, 'DISHESphotofile') }} alt={{dessert.DISHESname}}>
-                        <h3>{{ dessert.DISHESdescription }}</h3>
-                        <h3>{{ dessert.DISHESprice }}</h3>
+                        <img class="img-fluid" src={{vich_uploader_asset(dessert, 'DISHESphotofile')}} alt={{dessert.DISHESname}}>
+                        <p class="description">{{ dessert.DISHESdescription }}</p>
+                        <p class="price">{{ dessert.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{ path ('delete-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
                         <a href="{{ path ('edit-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-warning">Modifier</a>

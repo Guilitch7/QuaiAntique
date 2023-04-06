@@ -13,8 +13,8 @@
                 <h2>{{ poisson.DISHESname }}</h2>
                     <div>
                         <img class="img-fluid" src={{poisson.DISHESphoto}} alt={{poisson.DISHESname}}>
-                        <h3>{{ poisson.DISHESdescription }}</h3>
-                        <h3>{{ poisson.DISHESprice }}</h3>
+                        <p class="description">{{ poisson.DISHESdescription }}</p>
+                        <p class="price">{{ poisson.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}                 
                         <a href="{{ path ('delete-dish', {'id' : poisson.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
                         <a href="{{ path ('edit-dish', {'id' : poisson.DISHESid}) }}" class="btn btn-warning">Modifier</a>
