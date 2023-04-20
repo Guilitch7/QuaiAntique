@@ -1,0 +1,45 @@
+{%  extends 'base.html.twig' %}
+{% block head %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/index-style.css') }}">
+</head>
+{% endblock %}
+{% block body %}
+<div class="jumbotron text-center mt-4">
+        <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
+        <p class="font-weight-bold">Votre restaurant Savoyard de référence</p>
+</div>
+        <main class="main">
+          <div class="container">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="13000">
+                      <img class="d-block w-100 rounded" src="{{asset('uploads/IMAG0086-63f9b3704c7c.jpg')}}" alt="Restaurant le Quai Antique">
+                      <div class="carouselcaption d-none d-md-block">
+                      </div>
+                    </div>
+                    {% for plat in plats %}
+                     {% if plat.DISHESphoto %}
+                      <div class="carousel-item" data-bs-interval="13000">
+                        <img class="d-block w-100 rounded" src="{{ plat.DISHESphoto }}" alt="{{plat.DISHESname}}">
+                        <div class="carouselcaption d-none d-md-block description-dish">
+                          <h2>{{ plat.DISHESname }}</h2>
+                          <p>{{ plat.DISHESdescription }}</p>
+                        </div>
+                      </div>
+                      
+                     {% endif %}
+                    {% endfor %}
+                </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+            </div>
+          </div>
+        </main>
+{% endblock %}

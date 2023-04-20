@@ -3,12 +3,10 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use App\Repository\DishesRepository;
 
-#[ORM\Entity()]
+#[ORM\Entity(repositoryClass: DishesRepository::class)]
 #[ORM\Table(name: "DISHES")]
-#[Vich\Uploadable]
 
 class Dishes
 {
@@ -135,7 +133,7 @@ class Dishes
     }
 
   
-    public function setDISHESphoto(? string $DISHESphoto): void
+    public function setDISHESphoto(string $DISHESphoto): void
     {
         $this->DISHESphoto = $DISHESphoto;
     }

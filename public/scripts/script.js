@@ -1,6 +1,3 @@
-
-
-
 /* window.onload = () => {
     // On va chercher la région
     let region = document.querySelector("#city_country");
@@ -30,4 +27,4 @@
             console.log(error)
         })
     });
-}
+}*/

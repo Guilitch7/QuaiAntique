@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
 use phpDocumentor\Reflection\Types\Integer;
-use Symfony\Component\Validator\Constraints\Time;
 
 #[ORM\Entity()]
 #[ORM\Table(name: "BOOKINGS")]
@@ -21,25 +20,25 @@ class Bookings
     private ?int $BOOKINGSLOTid;
 
     #[ORM\Column(type: "date", nullable: false)]
-    private ?DateTime $BOOKINGSdatetime;
+    private ?DateTime $BOOKINGSLOTdatetime;
 
     #[ORM\Column(nullable: false)]
     private ?string $BOOKINGSday;
 
     #[ORM\Column(nullable: true)]
-    private Time $slotLunch;
+    private ?DateTime $slotLunch;
 
     #[ORM\Column(nullable: true)]
-    private Time $slotDinner;
+    private ?DateTime $slotDinner;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private ?string $BOOKINGSlastnameuser;
+    private ?string $BOOKINGSLOTlastnameuser;
 
     #[ORM\Column(type: "integer", nullable: false)]
-    private ?int $BOOKINGScoversnumber;
+    private ?int $BOOKINGSLOTcoversnumber;
 
     #[ORM\Column(type: "string", nullable: false)]
-    private ?string $BOOKINGSfoodallergies;
+    private ?string $BOOKINGSLOTfoodallergies;
 
     public function getId(): int
     {
@@ -48,12 +47,12 @@ class Bookings
 
     public function getBookSlotDate()
     {
-            return $this->BOOKINGSdatetime;
+            return $this->BOOKINGSLOTdatetime;
     }
 
     public function setBookSlotDate($BOOKINGSdatetime)
     {
-            $this->BOOKINGSdatetime = $BOOKINGSdatetime;
+            $this->BOOKINGSLOTdatetime = $BOOKINGSdatetime;
 
             return $this;
     }
@@ -61,12 +60,12 @@ class Bookings
 
     public function getBookSlotUser()
     {
-            return $this->BOOKINGSlastnameuser;
+            return $this->BOOKINGSLOTlastnameuser;
     }
 
     public function setBookSlotUser($BOOKINGSlastnameuser)
     {
-            $this->BOOKINGSlastnameuser = $BOOKINGSlastnameuser;
+            $this->BOOKINGSLOTlastnameuser = $BOOKINGSlastnameuser;
 
             return $this;
     }
@@ -74,12 +73,12 @@ class Bookings
     
     public function getBookSlotCovers()
     {
-            return $this->BOOKINGScoversnumber;
+            return $this->BOOKINGSLOTcoversnumber;
     }
 
     public function setBookSlotCovers($BOOKINGScoversnumber)
     {
-            $this->BOOKINGScoversnumber = $BOOKINGScoversnumber;
+            $this->BOOKINGSLOTcoversnumber = $BOOKINGScoversnumber;
 
             return $this;
     }    
@@ -88,12 +87,12 @@ class Bookings
        
     public function getBookSlotAllergies()
     {
-            return $this->BOOKINGSfoodallergies;
+            return $this->BOOKINGSLOTfoodallergies;
     }
 
     public function setBookSlotAllergies($BOOKINGSfoodallergies)
     {
-            $this->BOOKINGSfoodallergies = $BOOKINGSfoodallergies;
+            $this->BOOKINGSLOTfoodallergies = $BOOKINGSfoodallergies;
 
             return $this;
     }    

@@ -9,8 +9,8 @@
         <div class="col-3">
           <h2>{{ horaire.OPENINGDAYSday }}</h2>
                 <div>
-                <p>Midi : {%if horaire.OpenLunch and horaire.closelunch %}{{ horaire.OpenLunch|date('H:i')}} - {{ horaire.closelunch|date('H:i')}} {%else %} Fermé le midi {% endif %}</p>
-                <p>Soir : {%if horaire.OpenDinner and horaire.closedinner %}{{ horaire.OpenDinner|date('H:i')}} - {{ horaire.closedinner|date('H:i')}} {%else %} Fermé le soir {% endif %}</p>
+                <p>Midi : {% if horaire.OpenLunch and horaire.closelunch %}<span id="openLunch">{{ horaire.OpenLunch|date('H:i')}}</span> - <span id="closeLunch">{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
+                <p>Soir : {% if horaire.OpenDinner and horaire.closedinner %}<span id="openDinner">{{ horaire.OpenDinner|date('H:i')}}</span> - <span id="closeDinner">{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
                 <p>Couverts disponibles : {{ horaire.coversPossible }}</p>
                 {% if is_granted('ROLE_ADMIN') %}
                 <a href="{{ path ('edit-horaires', {'id' : horaire.id}) }}" class="btn btn-warning">Modifier</a>
@@ -25,16 +25,8 @@
 
 
 {% block javascript %}
-{{ encore_entry_script_tags('app') }}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script>
-        document.getElementById('isOpen').addEventListener('click', function () 
-{
-        document.getElementById('hours').style.display = 'none';    
-})
-        document.getElementById('isOpen').addEventListener('click', function () 
-{
-        document.getElementById('hours').style.display = 'block';    
-})
+<script src=">
+
 </script>
 {% endblock %}

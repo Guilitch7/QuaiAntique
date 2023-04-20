@@ -43,6 +43,23 @@ class DishesRepository extends ServiceEntityRepository
         }
     }
 
+    public function getLastDishesRegistered(string $category)
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT d
+            FROM App\Entity\Dishes d
+            WHERE d.DISHEScategory = :category AND d.DISHESphoto IS NOT NULL
+            ORDER BY d.DISHESid
+            DESC'
+        )
+        ->setParameter("category", $category)
+        ->setMaxResults(1);
+        
+        return $query -> getResult();
+    }
+
 //    /**
 //     * @return Dishes[] Returns an array of Dishes objects
 //     */

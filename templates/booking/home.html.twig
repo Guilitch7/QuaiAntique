@@ -1,5 +1,9 @@
 {%  extends 'base.html.twig' %}
-
+{% block stylesheets %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/booking-style.css') }}">
+</head>
+{% endblock %}
 {% block title "Réserver - Le quai antique" %}
 {% block body %}
 <div class="jumbotron text-center">
@@ -8,42 +12,32 @@
 </div>
 <div class="container">
         {{ form_start(booking_form)}}
+            <div id="form1">
+              <img src="{{asset('uploads/1-square.svg')}}" alt="icone">
                 {#{ form_row(booking_form.BOOKINGStimeslot)|date('H:i')}#}
-                {{ form_row(booking_form.OPENINGDAYSday)}}
+                {#{ form_row(booking_form.OPENINGDAYSday)}#}
                 {{ form_row(booking_form.BookSlotDate)}}
+                {#{ form_row(booking_form.OpenLunch)}#}
                 {{ form_row(booking_form.slotLunch)}}
-                {#{ form_row(booking_form.slotDinner)}#}
+                <button type="btn" id="btn1">suite</button>
+            </div>
+            <p id="alert" class="text-danger text-center fw-bold">Le créneau de réservation souhaité n'est pas disponible, reportez-vous aux horaires d'ouverture</p>
+            <div id="form2">
+              <img src="{{asset('uploads/2-square.svg')}}" alt="icone">
                 {{ form_row(booking_form.BookSlotUser)}}
                 {{ form_row(booking_form.BookSlotCovers )}}
                 {{ form_row(booking_form.BookSlotAllergies)}}
-                <input type="submit" value="Envoyer">
+                <button type="btn" id="btn2">retour</button>
+                <input type="submit" id="submit" value="Envoyer">
+            </div>
         {{ form_end(booking_form)}}
+</div>
+<div class="jumbotron">
+        <img src="{{asset('uploads/bookings.jpg')}}" alt="table de restaurant">
 </div>
 {% endblock %}
 {% block javascript %}
 
-<script>
-window.onload = () => {
-        let day = document.querySelector("#booking_OPENINGDAYSday");
-        day.addEventListener("change", function() {
-                let form = this.closest("form");
-                let data = this.name + "=" + this.value;
-                fetch(form.action, {
-                        method: form.getAttribute("method"),
-                        body: data,
-                        headers: {
-                                "Content-Type": "application/x-www-form-urlencoded; charset: utf-8"
-                        }
-                })
-                .then(response => response.text())
-                .then(html => {
-                        let content = document.createElement("html");
-                        content.innerHTML = html;
-                        let nouveauSelect = content.querySelector("#booking_slotLunch");
-                        document.querySelector("#booking_slotLunch").replaceWith(nouveauSelect);
-                })
-        });
-}
-</script>
+<script src="{{ asset('scripts/booking-script.js') }}"></script>
 
 {% endblock %}

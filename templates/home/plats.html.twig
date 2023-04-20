@@ -1,5 +1,11 @@
 {%  extends 'base.html.twig' %}
 
+{% block stylesheet %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title "Nos plats - Le quai antique" %}
 {% block body %}
 <div class="jumbotron text-center">
@@ -12,7 +18,7 @@
             <div class="col-4">
                 <h2>{{ plat.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{plat.DISHESphoto}} alt={{plat.DISHESname}}>
+                        <img class="img-fluid" src="{{plat.DISHESphoto}}" alt="{{plat.DISHESname}}">
                         <p class="description">{{ plat.DISHESdescription }}</p>
                         <p class="price">{{ plat.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}

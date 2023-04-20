@@ -1,0 +1,26 @@
+h1 {
+    color: #f9f5f1;
+}
+
+.description
+{
+    position: absolute;
+    width : 356 px;
+    height : 267 px;
+}
+
+.main {
+    color:#faf5f1;
+    background-color: #754d51;
+    list-style-type: none;
+}
+
+.dishes {
+    background-color: #faf5f1;
+    color: #754d51;
+}
+
+.dishes > h1 {
+    background-color: #faf5f1;
+    color: #754d51;
+}

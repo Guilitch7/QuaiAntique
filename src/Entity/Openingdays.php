@@ -37,11 +37,15 @@ class Openingdays
     private ?DateTime $OPENINGDAYScloseslotdinner;
 
     #[ORM\Column(type: "time")]
-    private $slotLunch;
+    private ?DateTime $slotLunch;
 
     #[ORM\Column(type: "integer", nullable: false)]
     private ?int $OPENINGDAYScoversPossible;
 
+//    public function __construct($OPENINGDAYStimeslotlunch)
+//    {
+//        $this->OPENINGDAYStimeslotlunch = $OPENINGDAYStimeslotlunch;
+//    }
 
     public function getid()
     {
@@ -161,13 +165,7 @@ class Openingdays
     }
 
 
-    public function getslotLunch()
-    {
-        return $this->slotLunch;
-    }
-
-
-    public function setslotLunch($slotLunch, $OPENINGDAYStimeslotlunch, $OPENINGDAYStimeslotdinner, $OPENINGDAYScloseslotlunch, $OPENINGDAYScloseslotdinner)
+    public function getslotLunch($OPENINGDAYStimeslotlunch, $OPENINGDAYStimeslotdinner, $OPENINGDAYScloseslotlunch, $OPENINGDAYScloseslotdinner)
     {
         $OPENINGDAYStimeslotlunch->getOpenLunch;
         $LunchOpen = mktime($OPENINGDAYStimeslotlunch);
@@ -194,6 +192,19 @@ class Openingdays
         
         $this->slotLunch = $OPENINGDAYSslotLunch;
 
+        return $this->slotLunch;
+    }
+
+
+    public function setslotLunch($OPENINGDAYSslotLunch)
+    {
+        $this->slotLunch = $OPENINGDAYSslotLunch;
+
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getOpenLunch();
     }
 }

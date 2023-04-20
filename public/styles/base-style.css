@@ -1,0 +1,44 @@
+.pre-nav {
+    background-color: #473c57;
+    color: #f9f5f4;
+    margin : 0;
+    font-weight: bold;
+}
+
+.pre-nav a {
+    color: #a35e4c;
+}
+
+.pre-nav a:hover {
+    color: #f9f5f4;
+}
+
+.btn {
+    color: #473c57;
+    border-color: #f9f5f4;
+}
+
+.btn:hover {
+    color:  #f9f5f4;
+    background-color: #a35e4c;
+}
+
+.address {
+    margin : 0;
+}
+
+.day
+{
+    font-weight: bold;
+    color:#a35e4c;
+}
+
+.navbarMain
+{
+    background-color: #754d51;
+}
+
+.footer {
+    background-color: #473c57;
+    color:#f9f5f4;
+}

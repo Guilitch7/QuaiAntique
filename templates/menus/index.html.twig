@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/menu-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title %}{% endblock %}
 
 {% block body %}
-<main>
+<main class="main">
 <h1 class="text-center">Nos Menus</h1>
 <div class="container">
 <div class="row">   
@@ -78,6 +84,7 @@
             <p>Tous les plats de la carte</p>
             <li>Desserts</li>
             <p>Tous les desserts de la carte</p>
+        </ul>
     </div>
 </div>
 </main>

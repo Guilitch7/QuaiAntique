@@ -1,0 +1,14 @@
+.main {
+    background-color:#cc9c90;
+    color: #f9f5f4;   
+    list-style-type: none;
+}
+
+h1 {
+    color: #1a2c5d
+}
+
+.jumbotron {
+    width : 600px;
+    height : auto;
+}

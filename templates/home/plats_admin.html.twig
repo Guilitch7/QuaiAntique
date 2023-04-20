@@ -1,5 +1,11 @@
 {%  extends 'baseAdmin.html.twig' %}
 
+{% block stylesheet %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title "Enregistrer un plat - Le quai antique" %}
 {% block body %}
 {% if is_granted("ROLE_ADMIN") %}
@@ -13,7 +19,7 @@
                 {{ form_row(dishes_form.DISHEStype)}}
                 {{ form_row(dishes_form.DISHESprice)}}
                 {{ form_row(dishes_form.DISHESdescription)}}
-                {{ form_row(dishes_form.DISHESphotofile)}}
+                {{ form_row(dishes_form.DISHESphoto)}}
                 {{ form_row(dishes_form.DISHESmenusExpress)}}
                 {{ form_row(dishes_form.DISHESmenusMontagnard)}}
                 <input type="submit" value="Envoyer">

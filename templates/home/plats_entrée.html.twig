@@ -1,5 +1,11 @@
 {%  extends 'base.html.twig' %}
 
+{% block stylesheet %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title "Nos entrées - Le quai antique" %}
 {% block body %}
 <div class="jumbotron text-center">
@@ -12,11 +18,13 @@
             <div class="col-4 text-center ">
                 <h2>{{ entree.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{entree.DISHESphoto}} alt={{entree.DISHESname}}>
+                      {% if entree.DISHESphoto %}
+                        <img class="img-fluid" src="{{asset(entree.DISHESphoto)}}" alt="{{ entree.DISHESname }}">
+                      {% endif %}
                         <p class="description">{{ entree.DISHESdescription }}</p>
                         <p class="price">{{ entree.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path ('delete-dish', {'id' : entree.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
+                        <a href="{{ path ('delete-dish', {'id' : entree.DISHESid}) }}" class="btn btn-danger">Supprimer</a>"
                         <a href="{{ path ('edit-dish', {'id' : entree.DISHESid}) }}" class="btn btn-warning">Modifier</a>
                         {% endif %}
                     </div>

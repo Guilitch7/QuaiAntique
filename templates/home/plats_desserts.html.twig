@@ -1,5 +1,11 @@
 {%  extends 'base.html.twig' %}
 
+{% block stylesheet %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title "Nos desserts - Le quai antique" %}
 {% block body %}
 <div class="jumbotron text-center">
@@ -9,10 +15,10 @@
     <div class="container">
         <div class="row">
             {% for dessert in desserts %}
-            <div class="col-4">
+            <div class="col-4 text-center">
                 <h2>{{ dessert.DISHESname }}</h2>
                     <div>
-                        <img class="img-fluid" src={{vich_uploader_asset(dessert, 'DISHESphotofile')}} alt={{dessert.DISHESname}}>
+                        <img class="img-fluid" src="{{asset(dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
                         <p class="description">{{ dessert.DISHESdescription }}</p>
                         <p class="price">{{ dessert.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}

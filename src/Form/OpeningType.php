@@ -37,7 +37,7 @@ class OpeningType extends AbstractType
                 'placeholder' => [
                     'hour' => 'Fermé', 'minute' => 'Fermé',
                 ],
-                'hours' => [ '7' => '7','8' => '8', '9' => '9','10' => '10','11' => '11', '12' => '12'],
+                'hours' => [ '11' => '11', '12' => '12'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
             ])
@@ -48,7 +48,7 @@ class OpeningType extends AbstractType
                 'placeholder' => [
                     'hour' => 'Fermé', 'minute' => 'Fermé',
                 ],
-                'hours' => [ '10' => '10','11' => '11', '12' => '12','13' => '13','14' => '14', '15' => '15'],
+                'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
             ])
@@ -59,7 +59,7 @@ class OpeningType extends AbstractType
                 'placeholder' => [
                     'hour' => 'Fermé', 'minute' => 'Fermé',
                 ],
-                'hours' => [ '16' => '16','17' => '17', '18' => '18','19' => '19','20' => '20'],
+                'hours' => [ '18' => '18','19' => '19','20' => '20'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
             ])
@@ -70,7 +70,7 @@ class OpeningType extends AbstractType
                 'placeholder' => [
                     'hour' => 'Fermé', 'minute' => 'Fermé',
                 ],
-                'hours' => ['20' => '20', '21' => '21','22' => '22','23' => '23', '00' => '00'],
+                'hours' => ['20' => '20', '21' => '21','22' => '22','23' => '23'],
                 'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
                 'required' => false
             ])

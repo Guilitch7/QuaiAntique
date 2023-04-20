@@ -1,5 +1,11 @@
 {%  extends 'base.html.twig' %}
 
+{% block stylesheet %}
+<head>
+<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+</head>
+{% endblock %}
+
 {% block title "Nos boissons - Le quai antique" %}
 {% block body %}
 <div class="jumbotron text-center">
@@ -12,8 +18,8 @@
             <div class="col-4">
                 <h2>{{ boisson.DISHESname }}</h2>
                     <div>
-                      {% if boisson.DISHESphotofile %}
-                        <img class="img-fluid" src={{ '/public/uploads/' ~ boisson.DISHESphotofile }} alt={{boisson.DISHESname}}>
+                      {% if boisson.DISHESphoto %}
+                        <img class="img-fluid" src="{{asset(boisson.DISHESphoto)}}" alt="{{ boisson.DISHESname }}">
                       {% endif %}
                         <p class="description">{{ boisson.DISHESdescription }}</p>
                         <p class="price">{{ boisson.DISHESprice }} €</p>

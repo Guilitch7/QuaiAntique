@@ -3,43 +3,58 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Le Quai Antique{% endblock %}</title>
-        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('styles/base-style.css') }}">
         {% block stylesheets %}
-            <link rel="icon" type="Logo miniature" href="uploads/Logo_min.png"/>
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">          
-            <link rel="stylesheet" href="{{ asset('styles/style.css') }}">
+            <link rel="icon" type="Logo miniature" href="uploads/Logo_min.png"/>            
         {% endblock %}
     </head>
-    <body class="main">
-        <div class="justify-content-center pre-nav">
-          <div class="row navbar navbar-expand-lg m-0">
-            <div class="col address">
-                <a href="tel:+3321110700">03-21-11-07-00</a>
-                <p>3, rue de l'Abbaye, Chambéry</p>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-warning"><a href="{{path('book')}}">Réserver</a></button>
-            </div>
-            <div class="col p-0">  
+    <body>
+        <div class="pre-nav">
+          <div class="flex-row navbar navbar-expand-lg m-0">
+              <div class="col-5 address d-flex justify-content-around p-0">
+                <div class="mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                    </svg>
+                    <a href="tel:+3321110700" class="text-white">03-21-11-07-00</a>
+                </div>
+                <div class="d-flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="mt-2 bi bi-geo-alt" viewBox="0 0 16 16">
+                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    <p class="mb-0 p-1">3, rue de l'Abbaye à Chambéry</p>
+                </div>
+              </div>
+              <div class="col-2 d-flex justify-content-center">
+                    <a href="{{path('book')}}"><button type="button" class="btn btn-warning">Réserver</button></a>
+              </div>
+              <div class="col-5 p-0">  
                 {% if app.user %}
-                    <a class="nav-link p-0 {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('logout')}}">Se déconnecter</a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
+                        <li><a class="nav-link p-0 {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('logout')}}">Se déconnecter</a>
+                        </li>
+                    </ul>
                 {% else %}
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li><a class="nav-link text-white {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('login')}}">Se connecter</a>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
+                        <li><a class="nav-link {% if current_menu is defined and current_menu == 'seconnecter' %}active{% endif %}" aria-current="page" href="{{path('login')}}">Se connecter</a>
                         </li>
                     </ul>
                 {% endif %}
-            </div>
+              </div>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark navbarMain">
+        <nav class="navbar navbar-expand-lg navbar-dark navbarMain justify-content-around">
             <div class="container-fluid">
-                <a class="navbar-brand" href="{{path('home')}}">Le Quai Antique</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'home' %}active{% endif %}" aria-current="page" href="{{path('home')}}">Accueil</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle {% if current_menu is defined and current_menu == 'plats' %}active{% endif %}" aria-current="page" href="{{path('plats')}}" role="button" id="dropdownMenuLink" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">Nos plats</a>
                                       <ul class="dropdown-menu">
@@ -55,7 +70,7 @@
                             <a class="nav-link {% if current_menu is defined and current_menu == 'menus' %}active{% endif %}" aria-current="page" href="{{path('menus')}}">Nos menus</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if current_menu is defined and current_menu == 's_inscrire' %}active{% endif %}" aria-current="page" href="{{path('sinscrire')}}">S'inscrire</a>
+                            <a class="nav-link {% if current_menu is defined and current_menu == 'sinscrire' %}active{% endif %}" aria-current="page" href="{{path('sinscrire')}}">S'inscrire</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}" aria-current="page" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
@@ -71,20 +86,19 @@
         </nav>
 
         {% block body %}{% endblock %}
-
-        {% block javascript %}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        {% block javascript %} 
             <script src="{{ asset('scripts/script.js') }}"></script>
         {% endblock %}
-        <footer class="footer mt-5">
-            <div class="container-fluid">
-                <div class="row text-center justify-content-center">
+        <footer class="footer">
+            <div class="container-fluid p-0">
+                <div class="row justify-content-center text-center m-0">
                     {% for horaire in horaires %}
-                        <div class="col-1">
-                            <p class="day">{{ horaire.OPENINGDAYSday }}</p>
+                        <div class="col-md-1 p-0">
+                            <p class="day">{{ horaire.OPENINGDAYSday }}</p>                        
                                 <div>
-                                    <p>{%if horaire.OpenLunch and horaire.closelunch %}{{ horaire.OpenLunch|date('H:i')}} - {{ horaire.closelunch|date('H:i')}} {%else %} Fermé le midi {% endif %}</p>
-                                    <p>{%if horaire.OpenDinner and horaire.closedinner %}{{ horaire.OpenDinner|date('H:i')}} - {{ horaire.closedinner|date('H:i')}} {%else %} Fermé le soir {% endif %}</p>
+                                    <p>{% if horaire.OpenLunch and horaire.closelunch %}<span id={{ 'openLunch' ~ horaire.id }}>{{ horaire.OpenLunch|date('H:i')}}</span> - <span id={{ 'closeLunch' ~ horaire.id }}>{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
+                                    <p>{% if horaire.OpenDinner and horaire.closedinner %}<span id={{ 'openDinner' ~ horaire.id }}>{{ horaire.OpenDinner|date('H:i')}}</span> - <span id={{ 'closeDinner' ~ horaire.id }}>{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
                                 </div>
                         </div>
                     {% endfor %}
