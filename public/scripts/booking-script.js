@@ -2,30 +2,26 @@ window.onload = () => {
 // document.getElementById('submit').style.display = 'none';
 document.getElementById('form2').style.display = 'none';
 document.getElementById('alert').style.display = 'none';
+document.getElementById('alert2').style.display = 'none';
+document.getElementById('submit').disabled = true;
 
-var date
-var slotMin
-var slotHour
+var date = document.getElementById('booking_BookSlotDate').value;
+var slotMin = document.getElementById('booking_slotLunch_minute').value;
+var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
-/* function checkDate() {
-    date = document.getElementById('booking_BookSlotDate').value;
-    bookDate = new Date(date);
-    daybooked = bookDate.getDay();
-    dayBooked = document.getElementById('booking_OPENINGDAYSday').value;
+var bookDate = new Date(date);
+var dayBooked = bookDate.getDay();
+var openLunch = 'openLunch' + dayBooked;
+var closeLunch = 'closeLunch' + dayBooked;
+var openDinner = 'openDinner' + dayBooked;
+var closeDinner = 'closeDinner' + dayBooked;
 
-    if (day == dayBooked) {
-        return true;
-    } else {
-        return false;
-    };
-}
-*/
 
 function checkSlot() {
     date = document.getElementById('booking_BookSlotDate').value;
+    console.log(date);
     bookDate = new Date(date);
     dayBooked = bookDate.getDay();
-//    var dayBooked = document.getElementById('booking_OPENINGDAYSday').value;
     var openLunch = 'openLunch' + dayBooked;
     var closeLunch = 'closeLunch' + dayBooked;
     var openDinner = 'openDinner' + dayBooked;
@@ -72,7 +68,6 @@ function checkSlot() {
 };
 
 
-
 document.getElementById('btn1').addEventListener('click', () => {
     var isSlot = checkSlot();
     if (!isSlot) { 
@@ -95,6 +90,91 @@ document.getElementById('btn1').addEventListener('click', () => {
 document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('form2').style.display = 'none';
     document.getElementById('form1').style.display = 'block';
-    document.getElementById('alert').style.display = 'block';
-                                                                })               
+                                                                })        
+                                                                
+document.getElementById('btn1').addEventListener('click', () => {
+    service = document.getElementById('booking_service');
+    att3 = document.createAttribute("value");
+    if (slotHour >= 16 || slotHour <= 2) {
+        att3 = 'Diner'
+        service.setAttribute('value', att3);
+    }
+    else {
+        att3 = 'Déjeuner'
+        service.setAttribute('value', att3);
+    };
+})
+
+
+  function object ()
+        {
+    dateBooked = document.getElementById('booking_BookSlotDate').value;
+    dateBookedTimestamp = (Date.parse(dateBooked)/1000)-7200;
+    serviceBooked = document.getElementById('booking_service').value;
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://localhost/api/resa/liste');
+    xhr.send();
+    xhr.addEventListener('readystatechange', function() {
+        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            object = JSON.parse(xhr.response);
+        }
+    })
+    }
+
+  function numberBooked () { 
+            let totalCovers = [];
+            let sum = 0;
+            object.forEach(element =>{
+                    if(element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp) {
+                    totalCovers.push(element.BOOKINGSLOTcoversnumber) }
+                                        })
+            totalCovers.forEach( num => { sum += num;} );
+    };
+
+
+document.getElementById('btn1').addEventListener('click', () => {  
+        let sum = numberBooked();
+        console.log(sum);
+        coversAvailable = document.getElementById(dayBooked).innerHTML;
+        let coversWished = document.getElementById('booking_BookSlotCovers').value;
+        
+        if(coversWished > (coversAvailable - sum)) {
+            document.getElementById('form2').style.display = 'none';
+            document.getElementById('alert2').style.display = 'block';
+            
+        }
+        {
+            document.getElementById('form2').style.display = 'block';
+            document.getElementById('alert2').style.display = 'none';
+        }
+})
 }
+
+/* document.getElementById('booking_BookSlotCovers').addEventListener('input', () => {
+
+window.onload = () => {
+    // On va chercher la région
+    let region = document.querySelector("#annonces_regions");
+
+    region.addEventListener("change", function(){
+        let form = this.closest("form");
+        let data = this.name + "=" + this.value;
+        
+        fetch(form.action, {
+            method: form.getAttribute("method"),
+            body: data,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded; charset:UTF-8"
+            }
+        })
+        .then(response => response.text())
+        .then(html => {
+            let content = document.createElement("html");
+            content.innerHTML = html;
+            let nouveauSelect = content.querySelector("#annonces_departements");
+            document.querySelector("#annonces_departements").replaceWith(nouveauSelect);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }); */

@@ -10,6 +10,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class BookingController extends AbstractController
 {
@@ -44,16 +45,33 @@ class BookingController extends AbstractController
             
     }
 
+    #[Route('/bookings_admin', name: 'bookings_admin')]
+
+    public function newBookings(ManagerRegistry $doctrine, SerializerInterface $serializer): Response
+    {
+        $repository = $doctrine->getRepository(Bookings::class);
+        $newBookings = $repository->findAll();
+        $json= $serializer->serialize($newBookings, 'json');
+
+        return $this->render('admin/resa.html.twig', [
+            'Bookings' => $json,
+            'controller_name' => 'BookingController',
+            'current_menu' => 'admin',
+            'title' => 'Bookings',
+        ]);
+    }
+
     #[Route('/resa_admin', name: 'resa_admin')]
 
-    public function newBookings(ManagerRegistry $doctrine): Response
+    public function newBookingsDisplayed(ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(Bookings::class);
         $newBookings = $repository->findAll();
 
-        return $this->render('admin/resa.html.twig', [
+        return $this->render('admin/reservations.html.twig', [
             'Bookings' => $newBookings,
             'controller_name' => 'BookingController',
+            'current_menu' => 'admin',
             'title' => 'Réservations à venir',
         ]);
     }

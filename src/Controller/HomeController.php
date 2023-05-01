@@ -33,19 +33,23 @@ class HomeController extends AbstractController
             $isOpen = $repository->findAll();
 
             $category = 'Entrée';
-            $category2 = 'Plats';
-            $category3 = 'Desserts';
+            
             /** @var DishesRepository */
             $dishesRepository = $doctrine->getRepository(Dishes::class);
             $entree = $dishesRepository->getLastDishesRegistered($category);
-            $plats = $dishesRepository->getLastDishesRegistered($category2);
-            $desserts = $dishesRepository->getLastDishesRegistered($category3);
+
+            $category = 'Plat';
+            $plats = $dishesRepository->getLastDishesRegistered($category);
+
+            $category = 'Dessert';
+            $desserts = $dishesRepository->getLastDishesRegistered($category);
 
             return $this->render('home/home.html.twig', [
                 'horaires' => $isOpen,
                 'entrees' => $entree,
                 'plats' => $plats,
                 'desserts' => $desserts,
+                'current_menu' => 'home',
                 'title' => 'Le quai antique - restaurant savoyard',
             ]);
         }

@@ -20,16 +20,16 @@ class Bookings
     private ?int $BOOKINGSLOTid;
 
     #[ORM\Column(type: "date", nullable: false)]
-    private ?DateTime $BOOKINGSLOTdatetime;
+    private ?Datetime $BOOKINGSLOTdatetime;
 
-    #[ORM\Column(nullable: false)]
-    private ?string $BOOKINGSday;
+    #[ORM\Column(type: "string", nullable: false)]
+    private ?string $service;
+
+    #[ORM\Column(type: "integer", nullable: false)]
+    private ?int $OPENINGDAYS_id;
 
     #[ORM\Column(nullable: true)]
     private ?DateTime $slotLunch;
-
-    #[ORM\Column(nullable: true)]
-    private ?DateTime $slotDinner;
 
     #[ORM\Column(type: "string", nullable: false)]
     private ?string $BOOKINGSLOTlastnameuser;
@@ -39,6 +39,9 @@ class Bookings
 
     #[ORM\Column(type: "string", nullable: false)]
     private ?string $BOOKINGSLOTfoodallergies;
+
+    #[ORM\Column(type: "integer", nullable: false)]
+    private ?int $avaibilities;
 
     public function getId(): int
     {
@@ -96,19 +99,6 @@ class Bookings
 
             return $this;
     }    
- 
-    public function getday()
-    {
-        return $this->BOOKINGSday;
-    }
-
-
-    public function setday($BOOKINGSday)
-    {
-        $this->BOOKINGSday = $BOOKINGSday;
-
-        return $this;
-    }
 
     public function getSlotLunch()
     {
@@ -122,16 +112,38 @@ class Bookings
         return $this;
     }
 
-    
-    public function getSlotDinner()
+    public function getday()
     {
-        return $this->slotDinner;
+        return $this->OPENINGDAYS_id;
     }
 
-
-    public function setSlotDinner($slotDinner)
+    public function setday($OPENINGDAYS_id)
     {
-        $this->slotDinner = $slotDinner;
+        $this->OPENINGDAYS_id = $OPENINGDAYS_id;
+
+        return $this;
+    }
+
+    public function getAvaibilities()
+    {
+        return $this->avaibilities;
+    }
+ 
+    public function setAvaibilities($avaibilities)
+    {
+        $this->avaibilities = $avaibilities;
+
+        return $this;
+    }
+
+    public function getService()
+    {
+        return $this->service;
+    }
+
+    public function setService($service)
+    {
+        $this->service = $service;
 
         return $this;
     }

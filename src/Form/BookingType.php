@@ -13,18 +13,14 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormEvent;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 
@@ -46,20 +42,21 @@ class BookingType extends AbstractType
           $covers = $user->getcoversNumber();
           $allergies = $user->getfoodAllergies();
           $builder
-            ->add('OPENINGDAYSday', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir ?', 'class' => Openingdays::class, 'mapped' => false, 'choice_label' => 'OPENINGDAYSday', 'placeholder' => 'Jour ?',])
+//          ->add('OPENINGDAYSday', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir ?', 'class' => Openingdays::class, 'mapped' => false, 'choice_label' => 'OPENINGDAYSday', 'placeholder' => 'Jour ?',])
+            ->add('day', HiddenType::class, [])
+            ->add('avaibilities', HiddenType::class, [])
+            ->add('service', HiddenType::class, ['data' => 'null'])
             ->add('BookSlotDate', DateType::class, [
                 'label' => "A quelle date ?",
                 'widget' => 'single_text',
                 'required' => true,])
-            ->add('slotLunch', TimeType::class, [ 'label' => 'Choisissez un créneau de réservation', 'placeholder' => 'Créneau', 'required' => false,
-                                                    'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
-                                                    'minutes' => [ '00' => '00', '15' => '15','30' => '30', '45' => '45' ]
-                                                    ])
-    //        ->add('OpenLunch', ChoiceType::class, ['mapped' => false,])
-            ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?",
-            "required" => true,])
-            ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true, "data" => $covers])
-            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false, "data" => $allergies,
+            ->add('slotLunch', TimeType::class, [ 'label' => 'Choisissez un créneau de réservation', 'placeholder' => 'Créneau', 'required' => true,
+                                                'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
+                                                'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45']
+                                                ])
+            ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,])
+            ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true])
+            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false,
                 'choices'  => [
                     'Crustacés' => 'Crustacés',
                     'Viande' => 'Viande',
@@ -89,7 +86,9 @@ class BookingType extends AbstractType
         }
         else {
           $builder
-//          ->add('OPENINGDAYSday', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir ?', 'class' => Openingdays::class, 'mapped' => false, 'choice_label' => 'OPENINGDAYSday', 'placeholder' => 'Jour ?',])
+          ->add('day', HiddenType::class, [])
+          ->add('avaibilities', HiddenType::class, [])
+          ->add('service', HiddenType::class, ['data' => 'null'])
           ->add('BookSlotDate', DateType::class, [
               'label' => "A quelle date ?",
               'widget' => 'single_text',
@@ -98,10 +97,9 @@ class BookingType extends AbstractType
                                                 'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
                                                 'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45']
                                                 ])
-//          ->add('save', SubmitType::class)
-//          ->add('OpenLunch', ChoiceType::class, ['mapped' => false,])
           ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,])
-          ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true])
+          ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true, 'invalid_message' => 'Le nombre de personne doit être au minimum de 1',
+          'invalid_message_parameters' => ['%num%' => 0],])
           ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false,
               'choices'  => [
                   'Crustacés' => 'Crustacés',

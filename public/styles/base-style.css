@@ -16,6 +16,8 @@
 .btn {
     color: #473c57;
     border-color: #f9f5f4;
+    font-weight: bold;
+    
 }
 
 .btn:hover {
@@ -36,9 +38,14 @@
 .navbarMain
 {
     background-color: #754d51;
+    font-weight: bold;
 }
 
 .footer {
     background-color: #473c57;
     color:#f9f5f4;
+}
+
+.tables {
+    display: none;
 }

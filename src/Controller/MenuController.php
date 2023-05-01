@@ -53,4 +53,18 @@ class MenuController extends AbstractController
             "horaires" => $isOpen,
         ]);
     }
+
+    #[Route('/menu}', name:'carte')]
+    public function menu(ManagerRegistry $doctrine): Response
+     {
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
+         return $this->render('menus/carte.html.twig', [
+            'controller_name' => 'MenuController',
+            'title' => 'La carte',
+            'current_menu' => 'carte',
+            'horaires' => $isOpen,
+        ]);
+     }
 }

@@ -12,8 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
 class Openingdays
 {
     #[ORM\Id()]
-    #[ORM\Column(type: "integer")]
-    private int $OPENINGDAYSid;
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private int $id;
 
     #[ORM\Column(type: "string", nullable: false)]
     private $OPENINGDAYSday;
@@ -27,39 +28,20 @@ class Openingdays
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYScloseslotlunch;
 
-    #[ORM\Column(type: "boolean")]
-    private ?bool $OPENINGDAYSnotOpenDinner;
-
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYStimeslotdinner;
 
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYScloseslotdinner;
 
-    #[ORM\Column(type: "time")]
-    private ?DateTime $slotLunch;
-
     #[ORM\Column(type: "integer", nullable: false)]
-    private ?int $OPENINGDAYScoversPossible;
+    private ?int $avaibilities;
 
-//    public function __construct($OPENINGDAYStimeslotlunch)
-//    {
-//        $this->OPENINGDAYStimeslotlunch = $OPENINGDAYStimeslotlunch;
-//    }
 
-    public function getid()
+    public function getId(): ?int
     {
-        return $this->OPENINGDAYSid;
+        return $this->id;
     }
-
-
-    public function setid($id)
-    {
-        $this->OPENINGDAYSid = $id;
-
-        return $this;
-    }
-
 
     public function getOPENINGDAYSday()
     {
@@ -139,72 +121,20 @@ class Openingdays
         return $this;
     }
 
-    public function getnotOpenDinner()
-    {
-        return $this->OPENINGDAYSnotOpenDinner;
-    }
-
-
-    public function setnotOpenDinner($OPENINGDAYSnotOpenDinner)
-    {
-        $this->OPENINGDAYSnotOpenDinner = $OPENINGDAYSnotOpenDinner;
-
-        return $this;
-    }
-
     public function getcoversPossible()
     {
-        return $this->OPENINGDAYScoversPossible;
+        return $this->avaibilities;
     }
 
-    public function setcoversPossible($OPENINGDAYScoversPossible)
+    public function setcoversPossible($avaibilities)
     {
-        $this->OPENINGDAYScoversPossible = $OPENINGDAYScoversPossible;
-
-        return $this;
-    }
-
-
-    public function getslotLunch($OPENINGDAYStimeslotlunch, $OPENINGDAYStimeslotdinner, $OPENINGDAYScloseslotlunch, $OPENINGDAYScloseslotdinner)
-    {
-        $OPENINGDAYStimeslotlunch->getOpenLunch;
-        $LunchOpen = mktime($OPENINGDAYStimeslotlunch);
-        $OPENINGDAYScloseslotlunch->getCloseLunch();
-        $LunchClose = mktime($OPENINGDAYScloseslotlunch);
-
-        $OPENINGDAYStimeslotdinner->getOpenDinner;
-        $DinnerOpen = mktime($OPENINGDAYStimeslotdinner);
-        $OPENINGDAYScloseslotdinner->getCloseDinner();
-        $DinnerClose = mktime($OPENINGDAYScloseslotdinner);
-
-        $OPENINGDAYSslotLunch = [];
-
-        $i=0;
-        while(($LunchClose-($LunchOpen+$i+3600))>0){
-            array_push($daySlots,($LunchClose-($LunchOpen+$i+3600)));
-            $i+=900;
-        }
-        $j=0;
-        while(($DinnerClose-($DinnerOpen+$j+3600))>0){
-            array_push($daySlots,($DinnerClose-($DinnerOpen+$j+3600)));
-            $j+900;
-        } 
-        
-        $this->slotLunch = $OPENINGDAYSslotLunch;
-
-        return $this->slotLunch;
-    }
-
-
-    public function setslotLunch($OPENINGDAYSslotLunch)
-    {
-        $this->slotLunch = $OPENINGDAYSslotLunch;
+        $this->avaibilities = $avaibilities;
 
         return $this;
     }
 
     public function __toString()
     {
-        return $this->getOpenLunch();
+        return gettype($this->getOpenLunch());
     }
 }

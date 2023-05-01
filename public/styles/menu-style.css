@@ -1,14 +1,49 @@
 .main {
-    background-color:#cc9c90;
+    background-color: #f9f5f4;
     color: #f9f5f4;   
     list-style-type: none;
 }
 
 h1 {
-    color: #1a2c5d
+    color: #473c57;
+    text-align: center;
 }
 
 .jumbotron {
     width : 600px;
     height : auto;
+}
+
+.card {
+    background-color:#754d51;
+    color: #f9f5f4;
+}
+
+h2 {
+    font-family: 'Youth Action', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.price{
+    color:black;
+}
+.mainLi {
+    text-align: center;
+}
+
+.card a {
+    color: #f9f5f4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #8d95d8;
+}
+
+.card-title {
+    color:#8d95d8;
 }

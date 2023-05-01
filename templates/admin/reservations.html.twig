@@ -1,6 +1,5 @@
 {% block body %}
-{{ Bookings|json_encode() }}
-            {#        <table class="table">
+                    <table class="table">
                         <thead>
                             <tr class="text-center">
                             <th scope="col">N° résa.</th>
@@ -17,16 +16,16 @@
             {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
                             <tr class="text-center">
                             <th scope="row">{{ Booking.id }}</th>
-                            <td>{{ Booking.BookSlotDate|date('d-m-y') }}</td>
-                            <td>{{ Booking.service }}</td>
+                            <td id="date{{ Booking.id }}">{{ Booking.BookSlotDate|date('d-m-y') }}</td>
+                            <td id="service{{ Booking.id }}">{{ Booking.service }}</td>
                             <td>{{ Booking.slotLunch|date('H:i') }}</td>
+                            <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
                             <td>{{ Booking.BookSlotUser }}</td>
-                            <td>{{ Booking.BookSlotCovers }}</td>
                             <td>{{ Booking.BookSlotAllergies }}</td>
                             </tr>
             {% endif %}
         {% endfor %}
                         </tbody>
                     </table>
-            #}
+            
 {% endblock %}

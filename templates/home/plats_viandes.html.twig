@@ -18,7 +18,9 @@
             <div class="col-4 text-center">
                 <h2>{{ viande.DISHESname }}</h2>
                     <div>
+                    {% if viande.DISHESphoto %}
                         <img class="img-fluid" src="{{asset(viande.DISHESphoto)}}" alt="{{ viande.DISHESname }}">
+                    {% endif %}
                         <p class="description">{{ viande.DISHESdescription }}</p>
                         <p class="price">{{ viande.DISHESprice }} €</p>
                         {% if is_granted('ROLE_ADMIN') %}

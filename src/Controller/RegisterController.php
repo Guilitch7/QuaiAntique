@@ -29,7 +29,7 @@ class RegisterController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($register);
             $entityManager->flush();
-            return $this->redirectToRoute('home');
+//            return $this->redirectToRoute('register');
         } 
         return $this->render('home/register.html.twig', [
             "register_form" => $form->createView(),

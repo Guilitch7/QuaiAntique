@@ -44,7 +44,7 @@ class RegisterType extends AbstractType
                                                             }])
                                                         ]
                                                     ])
-            ->add("coversNumber", IntegerType::class, ["label" => "Votre nombre de convives par défaut ?-", "required" => false])
+            ->add("coversNumber", IntegerType::class, ["label" => "Votre nombre de convives par défaut ?", "required" => false])
             ->add("foodAllergies", ChoiceType::class, ["label" => "Vos éventuelles allergies alimentaires ?", "required" => false,
                                                         'choices'  => [
                                                             'Crustacés' => 'Crustacés',

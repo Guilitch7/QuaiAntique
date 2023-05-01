@@ -2,12 +2,6 @@ h1 {
     color: #f9f5f1;
 }
 
-.description
-{
-    position: absolute;
-    width : 356 px;
-    height : 267 px;
-}
 
 .main {
     color:#faf5f1;
@@ -15,12 +9,31 @@ h1 {
     list-style-type: none;
 }
 
-.dishes {
-    background-color: #faf5f1;
-    color: #754d51;
+.description
+{
+    color:#faf5f1;
+    text-align: center; 
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #473c57;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .2s, visibility .2s;
+    margin: auto;
 }
 
-.dishes > h1 {
-    background-color: #faf5f1;
-    color: #754d51;
+.card
+{
+    position: relative;
+    height: auto;
+    width: 410px; 
 }
+  
+  .card:hover .description {
+    visibility: visible;
+    opacity: 0.70;
+  }
+

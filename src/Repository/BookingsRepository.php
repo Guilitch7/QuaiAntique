@@ -39,6 +39,16 @@ class BookingsRepository extends ServiceEntityRepository
         }
     }
 
+    public function apiFindAll():array
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->select('b.BOOKINGSLOTid', 'b.BOOKINGSLOTdatetime', 'b.slotLunch', 'b.BOOKINGSLOTlastnameuser', 'b.BOOKINGSLOTcoversnumber', 'b.service')
+        ->orderBy('b.BOOKINGSLOTdatetime','DESC');
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
 //    /**
 //     * @return Bookings[] Returns an array of Bookings objects
 //     */
