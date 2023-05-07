@@ -1,9 +1,9 @@
 window.onload = () => {
-// document.getElementById('submit').style.display = 'none';
 document.getElementById('form2').style.display = 'none';
+document.getElementById('form3').style.display = 'none';
 document.getElementById('alert').style.display = 'none';
 document.getElementById('alert2').style.display = 'none';
-document.getElementById('submit').disabled = true;
+document.getElementById('btn5').style.display = 'none';
 
 var date = document.getElementById('booking_BookSlotDate').value;
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
@@ -11,15 +11,9 @@ var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
 var bookDate = new Date(date);
 var dayBooked = bookDate.getDay();
-var openLunch = 'openLunch' + dayBooked;
-var closeLunch = 'closeLunch' + dayBooked;
-var openDinner = 'openDinner' + dayBooked;
-var closeDinner = 'closeDinner' + dayBooked;
-
 
 function checkSlot() {
     date = document.getElementById('booking_BookSlotDate').value;
-    console.log(date);
     bookDate = new Date(date);
     dayBooked = bookDate.getDay();
     var openLunch = 'openLunch' + dayBooked;
@@ -70,27 +64,21 @@ function checkSlot() {
 
 document.getElementById('btn1').addEventListener('click', () => {
     var isSlot = checkSlot();
-    if (!isSlot) { 
-        //  var isDate = checkDate();
-        
-        //  if (isDate == false) {
-        //    document.getElementById('submit').addEventListener('click', alert('Le jour choisit ne coïncide pas avec la date sélectionnée'));
-        //} else { 
- 
+    if (!isSlot) {  
         document.getElementById('form2').style.display = 'none';
         document.getElementById('alert').style.display = 'block';
                 }
-                else {
+    else {
         document.getElementById('form2').style.display = 'block';
         document.getElementById('form1').style.display = 'none';
         document.getElementById('alert').style.display = 'none';
-                                    }
+                }
                                                                 })
 
 document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('form2').style.display = 'none';
     document.getElementById('form1').style.display = 'block';
-                                                                })        
+})        
                                                                 
 document.getElementById('btn1').addEventListener('click', () => {
     service = document.getElementById('booking_service');
@@ -105,76 +93,73 @@ document.getElementById('btn1').addEventListener('click', () => {
     };
 })
 
+function object() {
 
-  function object ()
-        {
-    dateBooked = document.getElementById('booking_BookSlotDate').value;
-    dateBookedTimestamp = (Date.parse(dateBooked)/1000)-7200;
-    serviceBooked = document.getElementById('booking_service').value;
+    const dateBooked = document.getElementById('booking_BookSlotDate').value;
+    const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
+    const serviceBooked = document.getElementById('booking_service').value;
+  
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost/api/resa/liste');
     xhr.send();
-    xhr.addEventListener('readystatechange', function() {
-        if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-            object = JSON.parse(xhr.response);
+  
+    return new Promise((resolve, reject) => {
+      xhr.addEventListener('readystatechange', function covers() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+          const object = JSON.parse(xhr.response);
+          const covers = object
+            .filter(element => element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp)
+            .map(element => element.BOOKINGSLOTcoversnumber);
+          const sum = covers.reduce((a, b) => a + b, 0);
+          resolve(sum);
         }
-    })
+      });
+    });
+  }
+
+let coversBooked;
+
+document.getElementById('booking_BookSlotCovers').addEventListener('input', () => {  
+    object()
+    .then(result => {
+       coversBooked = result;
+      });
+});
+
+document.getElementById('btn3').addEventListener('click', () => {  
+    coversAvailable = document.getElementById(dayBooked).innerHTML;
+    let coversWished = document.getElementById('booking_BookSlotCovers').value;
+    let test = coversWished > (coversAvailable - coversBooked);
+    console.log(test);
+    if (!test) {
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('form3').style.display = 'block';
+        document.getElementById('alert2').style.display = 'none';
+        document.getElementsByClassName('hour').innerHTML = 'none';
+        document.getElementsByClassName('date').innerHTML = 'none';
+        document.getElementsByClassName('allergie').innerHTML = 'none';
+        document.getElementsByClassName('number').innerHTML = coversWished;
     }
-
-  function numberBooked () { 
-            let totalCovers = [];
-            let sum = 0;
-            object.forEach(element =>{
-                    if(element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp) {
-                    totalCovers.push(element.BOOKINGSLOTcoversnumber) }
-                                        })
-            totalCovers.forEach( num => { sum += num;} );
-    };
-
-
-document.getElementById('btn1').addEventListener('click', () => {  
-        let sum = numberBooked();
-        console.log(sum);
-        coversAvailable = document.getElementById(dayBooked).innerHTML;
-        let coversWished = document.getElementById('booking_BookSlotCovers').value;
-        
-        if(coversWished > (coversAvailable - sum)) {
-            document.getElementById('form2').style.display = 'none';
-            document.getElementById('alert2').style.display = 'block';
-            
-        }
-        {
-            document.getElementById('form2').style.display = 'block';
-            document.getElementById('alert2').style.display = 'none';
-        }
+    else
+    {
+        document.getElementById('form3').style.display = 'none';
+        document.getElementById('alert2').style.display = 'block';
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('btn5').style.display = 'block';
+    }
 })
+    
+document.getElementById('btn5').addEventListener('click', () => {  
+    document.getElementById('form2').style.display = 'block';
+    document.getElementById('form3').style.display = 'none';
+    document.getElementById('btn5').style.display = 'none';
+    document.getElementById('alert2').style.display = 'none';
+})
+
+document.getElementById('btn4').addEventListener('click', () => {  
+    document.getElementById('form3').style.display = 'none';
+    document.getElementById('form2').style.display = 'block';
+})
+
+
 }
-
-/* document.getElementById('booking_BookSlotCovers').addEventListener('input', () => {
-
-window.onload = () => {
-    // On va chercher la région
-    let region = document.querySelector("#annonces_regions");
-
-    region.addEventListener("change", function(){
-        let form = this.closest("form");
-        let data = this.name + "=" + this.value;
-        
-        fetch(form.action, {
-            method: form.getAttribute("method"),
-            body: data,
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded; charset:UTF-8"
-            }
-        })
-        .then(response => response.text())
-        .then(html => {
-            let content = document.createElement("html");
-            content.innerHTML = html;
-            let nouveauSelect = content.querySelector("#annonces_departements");
-            document.querySelector("#annonces_departements").replaceWith(nouveauSelect);
-        })
-        .catch(error => {
-            console.log(error);
-        })
-    }); */

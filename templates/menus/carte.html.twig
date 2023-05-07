@@ -1,12 +1,48 @@
 {% extends 'base.html.twig' %}
+
 {% block stylesheets %}
 <head>
+<link rel="stylesheet" href="{{ asset('styles/carte-style.css') }}">
+<link href="https://fonts.cdnfonts.com/css/youth-action" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/franklin-gothic-demi-2" rel="stylesheet">         
 </head>
 {% endblock %}
 
-{% block title %}{% endblock %}
+{% block title %}
+
+{% endblock %}
 
 {% block body %}
 <main>
+  <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : La carte</h1>
+    <div class="container">
+            <h2>Les entrées</h2>
+            {% for dishe in dishes %}
+                {% if dishe.DISHEScategory == 'Entrée' %}
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                {% endif %}
+            {% endfor %}
+            <h2>Les plats</h2>
+            {% for dishe in dishes %}
+                {% if dishe.DISHEScategory == 'Plat' %} 
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                {% endif %}
+            {% endfor %}
+            <h2>Les desserts</h2>
+            {% for dishe in dishes %}
+                {% if dishe.DISHEScategory == 'Dessert' %}
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                {% endif %}
+            {% endfor %}
+            <h2>Les boissons</h2>
+            {% for dishe in dishes %}
+                {% if dishe.DISHEScategory == 'Boissons' %}
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                {% endif %}
+            {% endfor %}
+    </div>
 </main>
 {% endblock %}

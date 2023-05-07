@@ -11,7 +11,7 @@
         <h1>Réserver</h1>
         <p>Afin de pouvoir vous accueillir dans les meilleures conditions, merci de procéder à une réservation en ligne</p>
 </div>
-<div class="container">
+<div class="container form">
         {{ form_start(booking_form)}}
             <div id="form1">
               <img src="{{asset('uploads/1-square.svg')}}" width="60" alt="icone" class="mb-3 text-center">
@@ -20,19 +20,29 @@
                 {{ form_row(booking_form.BookSlotDate)}}
                 {#{ form_row(booking_form.OpenLunch)}#}
                 {{ form_row(booking_form.slotLunch)}}
-                {{ form_row(booking_form.BookSlotCovers )}}
-                <button type="button" id="btn1" class="mb-3">Suite</button>
+
+                <button type="button" id="btn1" class="btn btn-secondary mb-3">Suite</button>
             </div>
             <p id="alert" class="text-danger text-center fw-bold">Il n'est pas possible de réserver dans l'heure précédant la fermeture ou nous sommes fermés à cette heure, reportez-vous aux horaires d'ouverture</p>
             <p id="alert2" class="text-danger text-center fw-bold">Nous n'avons plus de disponibilités pour cette date, désolé</p>
+            <button type="button" id="btn5" class="btn btn-secondary mb-3">Retour</button>
             <div id="form2">
               <img src="{{asset('uploads/2-square.svg')}}" width="60" alt="icone" class="mb-3">
                 {{ form_row(booking_form.BookSlotUser)}}
-                
+                {{ form_row(booking_form.BookSlotCovers )}}
                 {{ form_row(booking_form.BookSlotAllergies)}}
-                <button type="button" id="btn2" class="mb-3">Retour</button>
+                <button type="button" id="btn2" class="btn btn-secondary mb-3">Retour</button>
+                <button type="button" id="btn3" class="btn btn-secondary mb-3">Suite</button>  
+            </div>
+            <div id="form3">
+              <img src="{{asset('uploads/3-square.svg')}}" width="60" alt="icone" class="mb-3">
                 <div>
-                  <input type="submit" id="submit" value="Envoyer" class="btn btn-Info mb-3">
+                  <p>Vous souhaitez réserver pour le <span class="date"></span> à <span class="hour"></span> pour <span class="number"></span> couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : <span class="allergie"></span><p>
+                  <p>Cliquez sur "Envoyer" pour confirmer votre réservation ou "Retour" pour la modifier</p>
+                  <button type="button" id="btn4" class="btn btn-secondary mb-3">Retour</button>
+                </div>
+                <div>
+                  <input type="submit" id="submit" value="Envoyer" class="btn btn-dark mb-3">
                 </div>
             </div>
         {{ form_end(booking_form)}}

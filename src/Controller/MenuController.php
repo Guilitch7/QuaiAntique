@@ -60,11 +60,15 @@ class MenuController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
+        $repositoryDishes = $doctrine->getRepository(Dishes::class);
+        $dishes = $repositoryDishes->findAll();
+
          return $this->render('menus/carte.html.twig', [
             'controller_name' => 'MenuController',
             'title' => 'La carte',
             'current_menu' => 'carte',
             'horaires' => $isOpen,
+            'dishes' => $dishes,
         ]);
      }
 }

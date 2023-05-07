@@ -46,7 +46,7 @@
               </div>
           </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark navbarMain ">
+        <nav class="navbar navbar-expand-lg navbar-dark navbarMain p-0">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -96,16 +96,16 @@
         {% block javascript %} 
             <script src="{{ asset('scripts/script.js') }}"></script>
         {% endblock %}
-        <footer class="footer">
+        <footer class="footer sticky-bottom">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center text-center m-0">
                     {% for horaire in horaires %}
                         <div class="col-md-1 p-0">
                             <p class="tables" id={{ '' ~ horaire.id }}>{{ horaire.coversPossible }}</p>
-                            <p class="day">{{ horaire.OPENINGDAYSday }}</p>                        
+                            <p class="day m-1">{{ horaire.OPENINGDAYSday }}</p>                        
                                 <div>
-                                    <p>{% if horaire.OpenLunch and horaire.closelunch %}<span id={{ 'openLunch' ~ horaire.id }}>{{ horaire.OpenLunch|date('H:i')}}</span> - <span id={{ 'closeLunch' ~ horaire.id }}>{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
-                                    <p>{% if horaire.OpenDinner and horaire.closedinner %}<span id={{ 'openDinner' ~ horaire.id }}>{{ horaire.OpenDinner|date('H:i')}}</span> - <span id={{ 'closeDinner' ~ horaire.id }}>{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
+                                    <p class="m-1">{% if horaire.OpenLunch and horaire.closelunch %}<span id={{ 'openLunch' ~ horaire.id }}>{{ horaire.OpenLunch|date('H:i')}}</span> - <span id={{ 'closeLunch' ~ horaire.id }}>{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
+                                    <p class="m-1">{% if horaire.OpenDinner and horaire.closedinner %}<span id={{ 'openDinner' ~ horaire.id }}>{{ horaire.OpenDinner|date('H:i')}}</span> - <span id={{ 'closeDinner' ~ horaire.id }}>{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
                                 </div>
                         </div>
                     {% endfor %}
@@ -113,5 +113,4 @@
             </div>
         </footer>
     </body>
-
 </html>

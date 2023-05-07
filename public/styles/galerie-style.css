@@ -1,13 +1,19 @@
-h1 {
-    color: #f9f5f1;
-}
-
-
-.main {
-    color:#faf5f1;
-    background-color: #754d51;
+main {  
     list-style-type: none;
+    margin-top: 40px;
+    flex-grow: 1;
 }
+.card
+{
+    position: relative;
+    height: auto;
+    width: auto; 
+}
+  
+.card:hover .description {
+    visibility: visible;
+    opacity: 0.70;
+  }
 
 .description
 {
@@ -24,16 +30,10 @@ h1 {
     transition: opacity .2s, visibility .2s;
     margin: auto;
 }
-
-.card
-{
-    position: relative;
-    height: auto;
-    width: 410px; 
+h1 {
+    color : #754d51
 }
-  
-.card:hover .description {
-    visibility: visible;
-    opacity: 0.70;
-  }
-
+body{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,12 +1,12 @@
-.main {
-    background-color: #f9f5f4;
+main {
     color: #f9f5f4;   
     list-style-type: none;
+    margin-top: 40px;
 }
 
 h1 {
-    color: #473c57;
-    text-align: center;
+    color:#754d51;
+    font-family: 'Franklin Gothic Demi', sans-serif;
 }
 
 .jumbotron {
@@ -15,27 +15,28 @@ h1 {
 }
 
 .card {
-    background-color:#754d51;
-    color: #f9f5f4;
+    color: #754d51;
+    border: 2px solid #754d51;
+    background-color: #f8d2d7;
 }
 
 h2 {
-    font-family: 'Youth Action', sans-serif;
+    color:#8d95d8;
+    font-family: 'Style Script', cursive;
+    font-size: 3rem;
 }
 
 ul {
     list-style-type: none;
+    padding: 0;
 }
 
-.price{
-    color:black;
-}
 .mainLi {
     text-align: center;
 }
 
 .card a {
-    color: #f9f5f4;
+    color: #754d51;
     text-decoration: none;
     font-weight: bold;
 }
@@ -46,4 +47,14 @@ a:hover {
 
 .card-title {
     color:#8d95d8;
+}
+
+.price {
+    font-size: 1.8rem;
+    font-weight: 250;
+    color:black;
+}
+
+.card-footer {
+    background-color: white;
 }
