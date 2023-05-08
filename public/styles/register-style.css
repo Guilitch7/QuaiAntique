@@ -1,13 +1,9 @@
-body {
-    background-image: url("../uploads/bookings.jpg");
-}
-
 h1 {
-    color : white
+    color : #473c57;
 }
 
 main {
-    color : white;
+    color : #473c57;
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -22,7 +18,13 @@ main {
     color: white;
 }
 
-img {
+.icon {
+    margin-bottom: 2;
+    margin-right: 2;
+    float: left;
+}
+
+.logo {
     text-align: center;
-    clear:left;
+    clear: left;
 }

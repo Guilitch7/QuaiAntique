@@ -18,7 +18,7 @@
     <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos menus</h1>
         <div class="container">
           <div class="row">   
-            <div class="col card me-2">
+            <div class="col card me-5">
               <div class="card-body">
               {% for men1 in menu1 %}
                 <h2 class="text-center card-title">{{ men1.name }}</h2>
@@ -53,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <div class="col card me-2">
+            <div class="col card me-5">
               <div class="card-body">
                 {% for men2 in menu2 %}
                 <h2 class="text-center card-title">{{ men2.name }}</h2>
@@ -99,6 +99,14 @@
                         <a href="{{path('desserts')}}"><li class="mainLi">Desserts</li></a>
                             <p>Tous les desserts de la carte</p>
                     </ul>
+                    <div class="card-footer">
+                        <h3 class="text-center">Les formules</h3>
+                        {% for formul3 in formule3 %}
+                    <ul>
+                        <li>{{ formul3.name }}:<span class="price"> {{ formul3.price }} €</span></li>
+                    </ul>
+                        {% endfor %}
+                    </div>
               </div>
             </div>
         </div>

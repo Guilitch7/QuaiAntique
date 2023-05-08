@@ -25,7 +25,7 @@
                     <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                     <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
                     </svg>
-                    <p class="mb-0 p-1">3, rue de l'Abbaye à Chambéry</p>
+                    <a href="https://www.google.com/maps/place/restaurant+l'Antique/@45.048325,4.4403226,10z/data=!4m10!1m2!2m1!1srestaurant+antique!3m6!1s0x47f54d7773598825:0xabd550b24b61ced1!8m2!3d45.048325!4d5.0500638!15sChJyZXN0YXVyYW50IGFudGlxdWVaFCIScmVzdGF1cmFudCBhbnRpcXVlkgERZnJlbmNoX3Jlc3RhdXJhbnTgAQA!16s%2Fg%2F1tf429m0" class="mb-0 p-1 text-white" target="_blank">3, rue de l'Abbaye à Chambéry</a>
                 </div>
               </div>
               <div class="col-2 d-flex justify-content-center">
@@ -67,7 +67,6 @@
                                         <li><a class="dropdown-item" href="{{path('viandes')}}">Viandes</a></li>
                                         <li><a class="dropdown-item" href="{{path('poissons')}}">Poissons</a></li>
                                         <li><a class="dropdown-item" href="{{path('desserts')}}">Desserts</a></li>
-                                        <li><a class="dropdown-item" href="{{path('boissons')}}">Boissons</a></li>
                                       </ul>
                         </li>
                         <li class="nav-item">
@@ -90,13 +89,12 @@
                 </div>
             </div>
         </nav>
-
         {% block body %}{% endblock %}
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
         {% block javascript %} 
             <script src="{{ asset('scripts/script.js') }}"></script>
         {% endblock %}
-        <footer class="footer sticky-bottom">
+        <footer class="footer">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center text-center m-0">
                     {% for horaire in horaires %}

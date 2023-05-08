@@ -170,25 +170,6 @@ class PlatsController extends AbstractController
         ]);
     }
 
-    #[Route('/plats/boisson', name: 'boissons')]
-
-    public function drinks(ManagerRegistry $doctrine): Response
-    {
-        $repository = $doctrine->getRepository(Dishes::class);
-        $drinks = $repository->findBy(['DISHEScategory' => 'Boissons']);
-
-        $repository = $doctrine->getRepository(Openingdays::class);
-        $isOpen = $repository->findAll();
-
-        return $this->render('home/plats_boissons.html.twig', [
-            'boissons' => $drinks,
-            'controller_name' => 'PlatsController',
-            'title' => 'Nos boissons',
-            'current_menu' => 'plats',
-            'horaires' => $isOpen,
-        ]);
-    }
-
     #[Route('/plats/delete/{id<\d+>}', name:"delete-dish")]
     public function delete(Dishes $dishes, ManagerRegistry $doctrine): Response
      {

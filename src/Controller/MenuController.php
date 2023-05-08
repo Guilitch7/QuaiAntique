@@ -32,6 +32,7 @@ class MenuController extends AbstractController
         $repository = $doctrine->getRepository(Formule::class);
         $formula1 = $repository->findBy(['menu' => '1']);
         $formula2 = $repository->findBy(['menu' => '2']);
+        $formula3 = $repository->findBy(['menu' => '3']);
 
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
@@ -47,6 +48,7 @@ class MenuController extends AbstractController
             'dishes2c3' => $dishes2c3,
             'formule1' => $formula1,
             'formule2' => $formula2,
+            'formule3' => $formula3,
             'controller_name' => 'MenusController',
             'title' => 'Nos menus',
             'current_menu' => 'menus',

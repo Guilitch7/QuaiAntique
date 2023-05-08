@@ -1,26 +1,34 @@
 {%  extends 'base.html.twig' %}
 
+{% block stylesheets %}
+        <head>
+                <link rel="stylesheet" href="{{ asset('styles/register-style.css') }}">
+        </head>
+{% endblock %}
+
 {% block title "S'inscrire - Le quai antique" %}
 {% block body %}
-<div class="jumbotron text-center">
-        <img class="mt-3" src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
-        <h1>S'inscrire</h1>
-<p>Afin de pouvoir réserver plus facilement et de nous permettre de connaître à l'avance vos informations de réservations, inscrivez-vous dès à présent</p>
-</div>
-<div class="container mb-4">
-{{ form_start(register_form)}}
-        {{ form_row(register_form.UserIdentifier)}}
-        {{ form_row(register_form.password)}}
-        {{ form_row(register_form.confirm)}}
-        {{ form_row(register_form.coversNumber)}}
-        {{ form_row(register_form.foodAllergies)}}
-                <input type="submit" value="Envoyer">
-{{ form_end(register_form)}}
-</div>
-<p id="alert" class="text-success text-center fw-bold">Votre compte utilisateur a bien été créé, connectez-vous dès à présent !</p>
+        <div class="jumbotron text-center">
+                <img class="mt-3 logo" src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
+                <h1>S'inscrire</h1>
+                <p>Afin de pouvoir réserver plus facilement et de nous permettre de connaître à l'avance vos informations de réservations, inscrivez-vous dès à présent</p>
+        </div>
+        <div class="container mb-4">
+            <div class="row d-flex justify-content-center">
+                <div class="col-3">
+                        {{ form_start(register_form, {'attr': {'class': 'form-group-sm'}})}}
+                                <img src="{{asset('uploads/envelope-at.svg')}}" width="30" alt="icone" class="mr-2 icon" align="top">{{ form_row(register_form.UserIdentifier)}}
+                                {{ form_row(register_form.password)}}
+                                {{ form_row(register_form.confirm)}}
+                                {{ form_row(register_form.coversNumber)}}
+                                {{ form_row(register_form.foodAllergies)}}
+                                <input type="submit" id="submit" value="Envoyer" class="btn btn-dark mb-3">
+                        {{ form_end(register_form)}}
+                </div>
+            </div>
+        </div>
+                <p id="alert" class="text-success text-center fw-bold">Votre compte utilisateur a bien été créé, connectez-vous dès à présent !</p>
 {% endblock %}
 {% block javascript %}
-
-<script src="{{ asset('scripts/register-script.js') }}"></script>
-
+        <script src="{{ asset('scripts/register-script.js') }}"></script>
 {% endblock %}

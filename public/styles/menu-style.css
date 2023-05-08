@@ -9,19 +9,14 @@ h1 {
     font-family: 'Franklin Gothic Demi', sans-serif;
 }
 
-.jumbotron {
-    width : 600px;
-    height : auto;
-}
-
 .card {
     color: #754d51;
     border: 2px solid #754d51;
-    background-color: #f8d2d7;
+    background-color: #f7e7e9;
 }
 
 h2 {
-    color:#8d95d8;
+    color: #754d51;
     font-family: 'Style Script', cursive;
     font-size: 3rem;
 }
@@ -33,6 +28,7 @@ ul {
 
 .mainLi {
     text-align: center;
+    font-family: 'Franklin Gothic Demi', sans-serif;
 }
 
 .card a {
@@ -51,10 +47,10 @@ a:hover {
 
 .price {
     font-size: 1.8rem;
-    font-weight: 250;
-    color:black;
+    font-weight: 400;
+    color:#754d51;
 }
 
 .card-footer {
-    background-color: white;
+    background-color: #f7e7e9;  
 }

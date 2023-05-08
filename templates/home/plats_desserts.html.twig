@@ -1,34 +1,49 @@
 {%  extends 'base.html.twig' %}
 
-{% block stylesheet %}
+{% block stylesheets %}
 <head>
-<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
 </head>
 {% endblock %}
 
-{% block title "Nos desserts - Le quai antique" %}
+
+{% block title %} "Nos desserts - La galerie photo"{% endblock %}
+
 {% block body %}
-<div class="jumbotron text-center">
-        <h1>Nos Desserts</h1>
-</div>
+<body>
 <main class="container">
-    <div class="container">
-        <div class="row">
-            {% for dessert in desserts %}
-            <div class="col-4 text-center">
-                <h2>{{ dessert.DISHESname }}</h2>
-                    <div>
-                        <img class="img-fluid" src="{{asset(dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
-                        <p class="description">{{ dessert.DISHESdescription }}</p>
-                        <p class="price">{{ dessert.DISHESprice }} €</p>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path ('delete-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
-                        <a href="{{ path ('edit-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-warning">Modifier</a>
-                        {% endif %}
-                    </div>
-            </div>
-            {% endfor %}
+    <div class="jumbotron text-center">
+            <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos desserts - la galerie photo</h1>
+    </div>
+    <div class="row">   
+        {% for dessert in desserts %}
+        {% if dessert.DISHESphoto %}
+            <div class="col-4">
+                <div class="card mb-4 mt-2">
+                    <img class="img-fluid" src="{{asset (dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
+                        <div class="description">
+                            </br>
+                            </br>
+                            </br>
+                            <h2>{{ dessert.DISHESname }}</h2>
+                            <p>{{ dessert.DISHESdescription }}</p>
+                        </div>
+                </div>
+              </div>  
+        {% endif %}
+        {% endfor %} 
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
         </div>
     </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path ('delete-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-danger">Supprimer</a>"
+                <a href="{{ path ('edit-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
+            </div>
+        {% endif %}
 </main>
+</body>
 {% endblock %}

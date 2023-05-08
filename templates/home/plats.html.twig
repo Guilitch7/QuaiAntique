@@ -1,35 +1,51 @@
 {%  extends 'base.html.twig' %}
 
-{% block stylesheet %}
+{% block stylesheets %}
 <head>
-<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
+<link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
 </head>
 {% endblock %}
 
-{% block title "Nos plats - Le quai antique" %}
+
+{% block title %} "Nos plats - La galerie photo"{% endblock %}
+
 {% block body %}
-<div class="jumbotron text-center">
-        <h1>Nos plats</h1>
-</div>
+<body>
 <main class="container">
-    <div class="container">
-        <div class="row">
-            {% for plat in plats %}
+    <div class="jumbotron text-center">
+            <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos plats - la galerie photo</h1>
+    </div>
+    <div class="row">   
+        {% for plat in plats %}
+        {% if plat.DISHESphoto %}
             <div class="col-4">
-                <h2>{{ plat.DISHESname }}</h2>
-                    <div>
-                        <img class="img-fluid" src="{{plat.DISHESphoto}}" alt="{{plat.DISHESname}}">
-                        <p class="description">{{ plat.DISHESdescription }}</p>
-                        <p class="price">{{ plat.DISHESprice }} €</p>
-                        {% if is_granted('ROLE_ADMIN') %}
-                        <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
-                        <a href="{{ path ('edit-dish', {'id' : plat.DISHESid}) }}" class="btn btn-warning">Modifier</a>
-                        {% endif %}
-                    </div>
-            </div>
-            {% endfor %}
+                <div class="card mb-4 mt-2">
+                    <img class="img-fluid" src="{{asset (plat.DISHESphoto)}}" alt="{{ plat.DISHESname }}">
+                        <div class="description">
+                            </br>
+                            </br>
+                            </br>
+                            <h2>{{ plat.DISHESname }}</h2>
+                            <p>{{ plat.DISHESdescription }}</p>
+                        </div>
+                </div>
+              </div>  
+        {% endif %}
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
         </div>
     </div>
+        {% if is_granted('ROLE_ADMIN') %}
+            <div>
+                <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>"
+                <a href="{{ path ('edit-dish', {'id' : plat.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
+            </div>
+        {% endif %}
+        </div>
 </main>
+</body>
 {% endblock %}
 

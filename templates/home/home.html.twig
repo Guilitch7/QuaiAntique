@@ -2,62 +2,63 @@
 {% block stylesheets %}
 <head>
 <link rel="stylesheet" href="{{ asset('styles/index-style.css') }}">
+<link href="https://fonts.cdnfonts.com/css/franklin-gothic-demi-2" rel="stylesheet">
 </head>
 {% endblock %}
 {% block body %}
 <div class="jumbotron text-center mt-4">
         <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
 </div>
-        <main class="main">
-          <div class="container">
-            <div class="row imgMain">
-              <img class="d-block w-100 rounded" src="{{asset('uploads/IMAG0086-63f9b3704c7c.jpg')}}" alt="Restaurant le Quai Antique">
-            </div>
-            <div class="row pb-3">
-              <h1 class="text-center">Retrouvez chez nous...</h1>
-                <div class="col-4">
-                {% for entree in entrees %}
-                      <div class="card">
-                          <img class="d-block w-100 rounded" src="{{ entree.DISHESphoto }}" alt="{{ entree.DISHESname }}">
-                          <div class="description">
-                            </br>
-                            </br>
-                            </br>
-                            <h2>{{ entree.DISHESname }}</h2>
-                            <p>{{ entree.DISHESdescription }}</p>
-                          </div>
-                      </div>        
-                {% endfor %}
-                </div>
-                <div class="col-4">
-                {% for plat in plats %}
-                      <div class="card">
-                          <img class="d-block w-100 rounded img-fluid" src="{{ plat.DISHESphoto }}" alt="{{ plat.DISHESname }}">
-                          <div class="description">
-                            </br>
-                            </br>
-                            </br>
-                            <h2>{{ plat.DISHESname }}</h2>
-                            <p>{{ plat.DISHESdescription }}</p>
-                          </div>
-                      </div>
-                {% endfor %}
-                </div>
-                <div class="col-4">
-                {% for dessert in desserts %}
-                      <div class="card">
-                          <img class="d-block w-100 rounded" src="{{ dessert.DISHESphoto }}" alt="{{ dessert.DISHESname }}">
-                          <div class="description">
-                            </br>
-                            </br>
-                            </br>
-                            <h2>{{ dessert.DISHESname }}</h2>
-                            <p>{{ dessert.DISHESdescription }}</p>
-                          </div>
-                      </div>
-                {% endfor %}
-                </div>
-            </div>
-          </div>                  
-      </main>
+<main class="main">
+    <div class="container">
+      <div class="row imgMain">
+        <img class="d-block w-100 rounded" src="{{asset('uploads/IMAG0086-63f9b3704c7c.jpg')}}" alt="Restaurant le Quai Antique">
+      </div>
+      <div class="row pb-3 mt-2">
+        <h1 class="text-center">Retrouvez chez nous...</h1>
+          <div class="col-4">
+            {% for entree in entrees %}
+              <div class="card">
+                <img class="d-block w-100 rounded" src="{{ entree.DISHESphoto }}" alt="{{ entree.DISHESname }}">
+                  <div class="description">
+                    </br>
+                    </br>
+                    </br>
+                    <h2>{{ entree.DISHESname }}</h2>
+                    <p>{{ entree.DISHESdescription }}</p>
+                  </div>
+              </div>        
+            {% endfor %}
+          </div>
+          <div class="col-4">
+            {% for plat in plats %}
+              <div class="card">
+                <img class="d-block w-100 rounded img-fluid" src="{{ plat.DISHESphoto }}" alt="{{ plat.DISHESname }}">
+                  <div class="description">
+                    </br>
+                    </br>
+                    </br>
+                    <h2>{{ plat.DISHESname }}</h2>
+                    <p>{{ plat.DISHESdescription }}</p>
+                  </div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="col-4">
+            {% for dessert in desserts %}
+              <div class="card">
+                <img class="d-block w-100 rounded" src="{{ dessert.DISHESphoto }}" alt="{{ dessert.DISHESname }}">
+                  <div class="description">
+                    </br>
+                    </br>
+                    </br>
+                    <h2>{{ dessert.DISHESname }}</h2>
+                    <p>{{ dessert.DISHESdescription }}</p>
+                  </div>
+              </div>
+            {% endfor %}
+          </div>
+      </div>
+    </div>                  
+</main>
 {% endblock %}
