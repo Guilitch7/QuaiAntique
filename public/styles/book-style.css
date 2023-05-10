@@ -1,13 +1,13 @@
-body {
-    background-image: url("../uploads/bookings.jpg");
+main {
+    background: linear-gradient(#754d51, #a35e4c);
 }
 
 h1 {
-    color : white
+    color : #473c57;
 }
 
 main {
-    color : white;
+    color : #473c57;
     font-weight: 600;
     font-size: 1.5rem;
 }
@@ -25,4 +25,14 @@ main {
 img {
     text-align: center;
     clear:left;
+}
+form {
+    background :linear-gradient(white, #f3dcd6);
+    padding: 5px;
+    border-radius: 5%;
+    border: 2px solid #473c57;
+}
+
+.intro {
+    color : white;
 }

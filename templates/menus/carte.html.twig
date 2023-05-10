@@ -22,25 +22,25 @@
             <h2>Les entrées</h2>
             {% for dishe in dishes %}
                 {% if dishe.DISHEScategory == 'Entrée' %}
-                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                 {% endif %}
             {% endfor %}
             <h2>Les plats</h2>
             {% for dishe in dishes %}
                 {% if dishe.DISHEScategory == 'Plat' %} 
-                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                 {% endif %}
             {% endfor %}
             <h2>Les desserts</h2>
             {% for dishe in dishes %}
                 {% if dishe.DISHEScategory == 'Dessert' %}
-                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                 {% endif %}
             {% endfor %}
             <h2>Les boissons</h2>
             {% for dishe in dishes %}
                 {% if dishe.DISHEScategory == 'Boissons' %}
-                    <article><h3 class="ms-5">{{ dishe.DISHESname }}</h3><p class="ms-5">{{ dishe.DISHESdescription }} - <span class="price">{{ dishe.DISHESprice }}€</span></p></article>
+                    <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                 {% endif %}
             {% endfor %}
     </div>

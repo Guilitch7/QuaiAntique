@@ -42,7 +42,6 @@ class BookingType extends AbstractType
           $covers = $user->getcoversNumber();
           $allergies = $user->getfoodAllergies();
           $builder
-//          ->add('OPENINGDAYSday', EntityType::class, ['label' => 'Quel jour souhaitez-vous venir ?', 'class' => Openingdays::class, 'mapped' => false, 'choice_label' => 'OPENINGDAYSday', 'placeholder' => 'Jour ?',])
             ->add('day', HiddenType::class, [])
             ->add('avaibilities', HiddenType::class, [])
             ->add('service', HiddenType::class, ['data' => 'null'])
@@ -55,34 +54,15 @@ class BookingType extends AbstractType
                                                 'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45']
                                                 ])
             ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,])
-            ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true])
-            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false,
+            ->add("BookSlotCovers", IntegerType::class, ["label" => "Nombre de personnes ?", "required" => true, "data" => $covers])
+            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "data" => $allergies,
                 'choices'  => [
                     'Crustacés' => 'Crustacés',
                     'Viande' => 'Viande',
+                    'Arachide' => 'Arachide',
                     'Poisson' => 'Poisson',
                     'Gluten' => 'Gluten'],])
             ->getForm();
-
-//          $formMofidier = function(FormInterface $form, $day = null) {
-//            $slotLunch = null === $day ? ['Le restaurant est fermé ce jour'] : $day->getslotLunch();
-
-//            $form->add('slotLunch', EntityType::class, [
-//                'class' => OPENINGDAYS::class,
-//                'choices' => $slotLunch,
-//                'required' => false,
-//                'choice_label' => 'slotLunch',
-//                'placeholder' => 'Créneau',
-//                'attr' => ['class' => 'custom-select'],
-//                'label' => 'Choisissez un créneau de réservation'
-//           ]);
-//        };
-//          $builder->get('OPENINGDAYSday')->addEventListener(
-//            FormEvents::POST_SUBMIT, 
-//            function(FormEvent $event) use ($formMofidier) {
-//                $day = $event->getForm()->getData();
-//                $formMofidier($event->getForm()->getParent(), $day);
-//                    });
         }
         else {
           $builder
@@ -100,42 +80,20 @@ class BookingType extends AbstractType
           ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,])
           ->add("BookSlotCovers", IntegerType::class, ["label" => "Combien de convives serez-vous ?", "required" => true, 'invalid_message' => 'Le nombre de personne doit être au minimum de 1',
           'invalid_message_parameters' => ['%num%' => 0],])
-          ->add("BookSlotAllergies", ChoiceType::class, ["label" => "De quelles éventuelles allergies alimentaires les convives souffrent-ils ?", "required" => false,
+          ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false,
               'choices'  => [
                   'Crustacés' => 'Crustacés',
                   'Viande' => 'Viande',
                   'Poisson' => 'Poisson',
                   'Gluten' => 'Gluten'],])
           ->getForm();
-//          $formMofidier = function(FormInterface $form, $day = null) {
-//                $Lunch = null === $day ? ['Le restaurant est fermé ce jour'] : $day->getOpenLunch();
-//                $form->add('OpenLunch', EntityType::class, [
-//                    'class' => OPENINGDAYS::class,
-//                    'choices' => $Lunch,
-//                    'required' => true,
-//                    'choice_label' => 'OpenLunch',
-//                    'placeholder' => 'Ouverture du jour',
-    //                'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
-    //                'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
-    //                'attr' => ['class' => 'custom-select'],
-    //        ]);
         };
-//          $builder->get('OPENINGDAYSday')->addEventListener(
-//            FormEvents::POST_SUBMIT, 
-//            function(FormEvent $event) use ($formMofidier) {
-//                $day = $event->getForm()->getData();
-//                $formMofidier($event->getForm()->getParent(), $day);
-//                    });    
-//    }
 }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             "data_class" => Bookings::class,
-//            'csrf_protection' => true,
-//            'csrf_field_name' => '_token',
-//            'csrf_token_id' => 'register_item',
         ]);
     }
 }

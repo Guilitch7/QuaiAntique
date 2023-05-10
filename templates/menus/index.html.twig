@@ -21,25 +21,25 @@
             <div class="col card me-5">
               <div class="card-body">
               {% for men1 in menu1 %}
-                <h2 class="text-center card-title">{{ men1.name }}</h2>
+                <h2 class="text-center card-title mb-2">{{ men1.name }}</h2>
               {% endfor %}
-                <ul>
+                <ul class="details">
                     <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
                         <ul>
                         {% for dishe1c1 in dishes1c1 %}
-                            <li>{{ dishe1c1.DISHESname }}</li>
+                            <li class="text-center">{{ dishe1c1.DISHESname }}</li>
                         {% endfor %}
                         </ul>
-                    <a href="{{path('plats')}}"><li class="mainLi">Plats</li></a>
+                    <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
                         <ul>
                         {% for dishe1c2 in dishes1c2 %}
-                            <li>{{ dishe1c2.DISHESname }}</li>
+                            <li class="text-center">{{ dishe1c2.DISHESname }}</li>
                         {% endfor %}
                         </ul>
-                    <a href="{{path('desserts')}}"><li class="mainLi">Desserts</li></a>
+                    <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
                         <ul>
                         {% for dishe1c3 in dishes1c3 %}
-                            <li>{{ dishe1c3.DISHESname }}</li>
+                            <li class="text-center">{{ dishe1c3.DISHESname }}</li>
                         {% endfor %}
                         </ul>
                 </ul>
@@ -56,25 +56,25 @@
             <div class="col card me-5">
               <div class="card-body">
                 {% for men2 in menu2 %}
-                <h2 class="text-center card-title">{{ men2.name }}</h2>
+                <h2 class="text-center card-title mb-2">{{ men2.name }}</h2>
                 {% endfor %}
-                <ul>
+                <ul class="details">
                     <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
                         <ul>
                             {% for dishe2c1 in dishes2c1 %}
-                            <li>{{ dishe2c1.DISHESname }}</li>
+                            <li class="text-center">{{ dishe2c1.DISHESname }}</li>
                             {% endfor %}
                         </ul>
-                    <a href="{{path('plats')}}"><li class="mainLi">Plats</li></a>
+                    <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
                         <ul>
                             {% for dishe2c2 in dishes2c2 %}
-                            <li>{{ dishe2c2.DISHESname }}</li>
+                            <li class="text-center">{{ dishe2c2.DISHESname }}</li>
                             {% endfor %}
                         </ul>
-                    <a href="{{path('desserts')}}"><li class="mainLi">Desserts</li></a>
+                    <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
                         <ul>
                             {% for dishe2c3 in dishes2c3 %}
-                            <li>{{ dishe2c3.DISHESname }}</li>
+                            <li class="text-center">{{ dishe2c3.DISHESname }}</li>
                             {% endfor %}
                         </ul>
                 </ul>
@@ -90,14 +90,14 @@
             </div>
             <div class="col card">
               <div class="card-body">
-                <h2 class="text-center card-title">Menu Intégral</h2>
-                    <ul>
+                <h2 class="text-center card-title mb-2">Menu Intégral</h2>
+                    <ul class="details">
                         <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
-                            <p>Toutes les entrées de la carte</p>
-                        <a href="{{path('plats')}}"><li class="mainLi">Plats</li></a>
-                            <p>Tous les plats de la carte</p>
-                        <a href="{{path('desserts')}}"><li class="mainLi">Desserts</li></a>
-                            <p>Tous les desserts de la carte</p>
+                            <p class="text-center">Toutes les entrées de la carte</p>
+                        <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
+                            <p class="text-center">Tous les plats de la carte</p>
+                        <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
+                            <p class="text-center">Tous les desserts de la carte</p>
                     </ul>
                     <div class="card-footer">
                         <h3 class="text-center">Les formules</h3>

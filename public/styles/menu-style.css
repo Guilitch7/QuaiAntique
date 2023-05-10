@@ -46,11 +46,15 @@ a:hover {
 }
 
 .price {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 400;
     color:#754d51;
 }
 
 .card-footer {
     background-color: #f7e7e9;  
+}
+
+.details {
+    font-size: 1.5rem;
 }

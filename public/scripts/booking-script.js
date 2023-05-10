@@ -8,6 +8,7 @@ document.getElementById('btn5').style.display = 'none';
 var date = document.getElementById('booking_BookSlotDate').value;
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
 var slotHour = document.getElementById('booking_slotLunch_hour').value;
+var allergie = document.getElementById('booking_BookSlotAllergies').value;
 
 var bookDate = new Date(date);
 var dayBooked = bookDate.getDay();
@@ -135,10 +136,22 @@ document.getElementById('btn3').addEventListener('click', () => {
         document.getElementById('form2').style.display = 'none';
         document.getElementById('form3').style.display = 'block';
         document.getElementById('alert2').style.display = 'none';
-        document.getElementsByClassName('hour').innerHTML = 'none';
-        document.getElementsByClassName('date').innerHTML = 'none';
-        document.getElementsByClassName('allergie').innerHTML = 'none';
-        document.getElementsByClassName('number').innerHTML = coversWished;
+ 
+        
+        // create a new div element
+        const newDiv = document.createElement("p");
+
+        // and give it some content
+        const newContent = document.createTextNode("Vous souhaitez réserver pour le"+ date +"à"+ slotHour +":"+ slotMin +"pour"+ coversWished +"couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante :"+ allergie);
+
+        // add the text node to the newly created div
+        newDiv.appendChild(newContent);
+
+        // add the newly created element and its content into the DOM
+        const currentDiv = document.getElementById("send");
+        document.body.insertBefore(newDiv, currentDiv);
+
+
     }
     else
     {
