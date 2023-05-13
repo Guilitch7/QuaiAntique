@@ -26,13 +26,21 @@ img {
     text-align: center;
     clear:left;
 }
-form {
+article, form {
     background :linear-gradient(white, #f3dcd6);
-    padding: 5px;
+    padding: 10px;
     border-radius: 5%;
     border: 2px solid #473c57;
 }
 
 .intro {
     color : white;
+}
+
+.confirm {
+    margin-top: 180px;
+}
+
+.value {
+    color:#a35e4c
 }

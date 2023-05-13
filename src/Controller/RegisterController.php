@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Entity\Openingdays;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class RegisterController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($register);
             $entityManager->flush();
-//            return $this->redirectToRoute('register');
+            return $this->redirectToRoute('confirm_subscribe');
         } 
         return $this->render('home/register.html.twig', [
             "register_form" => $form->createView(),
@@ -37,5 +38,18 @@ class RegisterController extends AbstractController
             'current_menu' => 'sinscrire',
             'horaires' => $isOpen,
         ]);
+   }
+
+   #[Route('/register_check', name: 'confirm_subscribe')]
+
+   public function confirm_subscribe(ManagerRegistry $doctrine): Response
+   {
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
+       return $this->render('home/register_check.html.twig', [
+           'controller_name' => 'BookingController',
+           'horaires' => $isOpen,
+       ]);
    }
 }

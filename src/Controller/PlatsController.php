@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
@@ -24,32 +25,37 @@ class PlatsController extends AbstractController
             $createDish = new Dishes();
             $form = $this->createForm(DishesType::class, $createDish);
             $form->handleRequest($request);
+
+            $repository = $doctrine->getRepository(Openingdays::class);
+            $isOpen = $repository->findAll();
+
             if ($form->isSubmitted() && $form->isValid()) {
 
-//                $image = $form->get('DISHESphoto')->getData();
+                $image = $form->get('DISHESphoto')->getData();
 
-//              if ($image) {
-//                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-//                    $safeFilename = $slugger->slug($originalFilename);
-//                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-//                    try {
-//                        $image->move(
-//                            $this->getParameter('uploads'),
-//                            $newFilename
-//                        );
-//                    } catch (FileException $e) {
-//                        dump($e);
-//                    }
-//                    $createDish->setDISHESphoto($newFilename);
-//                }
+              if ($image) {
+                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                    $safeFilename = $slugger->slug($originalFilename);
+                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+                    try {
+                        $image->move(
+                            $this->getParameter('uploads'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        dump($e);
+                    }
+                    $createDish->setDISHESphoto($newFilename);
+                }
 
 
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($createDish);
                 $entityManager->flush();
-                return $this->redirectToRoute('plats');
+                return $this->redirectToRoute('plats_confirm');
             } 
             return $this->render('home/plats_admin.html.twig', [
+                "horaires" => $isOpen,
                 "dishes_form" => $form->createView(),
                 'title' => 'Enregistrer un plat',
                 'current_menu' => 'admin'
@@ -180,20 +186,56 @@ class PlatsController extends AbstractController
      }
 
      #[Route('/plats/edit/{id<\d+>}', name:"edit-dish")]
-     public function update(Request $request, Dishes $createDish, ManagerRegistry $doctrine): Response
+     public function update(Request $request, Dishes $createDish, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
       {
          $form = $this->createForm(DishesType::class, $createDish);
          $form->handleRequest($request);
+
+         $repository = $doctrine->getRepository(Openingdays::class);
+         $isOpen = $repository->findAll();
+
          if ($form->isSubmitted() && $form->isValid()) {
+
+            $image = $form->get('DISHESphoto')->getData();
+
+            if ($image) {
+                  $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                  $safeFilename = $slugger->slug($originalFilename);
+                  $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+                  try {
+                      $image->move(
+                          $this->getParameter('uploads'),
+                          $newFilename
+                      );
+                  } catch (FileException $e) {
+                      dump($e);
+                  }
+                  $createDish->setDISHESphoto($newFilename);
+              }
+
              $entityManager = $doctrine->getManager();
              $entityManager->flush();
              return $this->redirectToRoute('plats');
       }
         return $this->render('home/plats_admin.html.twig', 
         [
+        "horaires" => $isOpen,
         "dishes_form" => $form->createView(),
         'title' => 'Enregistrer un plat',
         'current_menu' => 'admin'
         ]);
+      }
+
+      #[Route('/plats_check', name: 'plats_confirm')]
+
+      public function confirm_subscribe(ManagerRegistry $doctrine): Response
+      {
+           $repository = $doctrine->getRepository(Openingdays::class);
+           $isOpen = $repository->findAll();
+   
+          return $this->render('home/plats_check.html.twig', [
+              'controller_name' => 'BookingController',
+              'horaires' => $isOpen,
+          ]);
       }
 }

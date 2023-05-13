@@ -1,25 +1,26 @@
-{%  extends 'baseAdmin.html.twig' %}
+{%  extends 'base.html.twig' %}
+
 {% block title %}Gestion des horaires!{% endblock %}
 
 {% block body %}
-<div class="container">
-  <h1>Gestion des horaires du restaurant</h1>
+<main class="container">
+  <h1 class="text-center mt-5 mb-3">Gestion des horaires du restaurant</h1>
     <div class="row">
         {% for horaire in horaires %}
         <div class="col-3">
-          <h2>{{ horaire.OPENINGDAYSday }}</h2>
-                <div>
-                <p>Midi : {% if horaire.OpenLunch and horaire.closelunch %}<span id="openLunch">{{ horaire.OpenLunch|date('H:i')}}</span> - <span id="closeLunch">{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
-                <p>Soir : {% if horaire.OpenDinner and horaire.closedinner %}<span id="openDinner">{{ horaire.OpenDinner|date('H:i')}}</span> - <span id="closeDinner">{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
-                <p>Couverts disponibles : {{ horaire.coversPossible }}</p>
+          <h2 class="text-center mt-3">{{ horaire.OPENINGDAYSday }}</h2>
+                <div class="text-center">
+                <p><span class="fw-bold">Midi :</span> {% if horaire.OpenLunch and horaire.closelunch %}<span id="openLunch">{{ horaire.OpenLunch|date('H:i')}}</span> - <span id="closeLunch">{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
+                <p><span class="fw-bold">Soir :</span> {% if horaire.OpenDinner and horaire.closedinner %}<span id="openDinner">{{ horaire.OpenDinner|date('H:i')}}</span> - <span id="closeDinner">{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
+                <p><span class="fw-bold">Couverts disponibles :</span> {{ horaire.coversPossible }}</p>
                 {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path ('edit-horaires', {'id' : horaire.id}) }}" class="btn btn-warning">Modifier</a>
+                <a href="{{ path ('edit-horaires', {'id' : horaire.id}) }}" class="btn btn-primary">Modifier</a>
                 {% endif %}
                 </div>
         </div>
         {% endfor %}
     </div>
-</div>
+</main>
 {% endblock %}
 
 

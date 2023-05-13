@@ -8,7 +8,7 @@ document.getElementById('btn5').style.display = 'none';
 var date = document.getElementById('booking_BookSlotDate').value;
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
 var slotHour = document.getElementById('booking_slotLunch_hour').value;
-var allergie = document.getElementById('booking_BookSlotAllergies').value;
+
 
 var bookDate = new Date(date);
 var dayBooked = bookDate.getDay();
@@ -131,25 +131,28 @@ document.getElementById('btn3').addEventListener('click', () => {
     coversAvailable = document.getElementById(dayBooked).innerHTML;
     let coversWished = document.getElementById('booking_BookSlotCovers').value;
     let test = coversWished > (coversAvailable - coversBooked);
-    console.log(test);
+    var allergie = document.getElementById('booking_BookSlotAllergies').value;
+
+    let year = date.substring(0, 4);
+    let month = date.substring(5, 7);
+    let day = date.substring(8, 10);
+    dateFr = day +'/'+ month +'/'+ year;
+
+
+
+
     if (!test) {
         document.getElementById('form2').style.display = 'none';
         document.getElementById('form3').style.display = 'block';
         document.getElementById('alert2').style.display = 'none';
  
-        
-        // create a new div element
-        const newDiv = document.createElement("p");
+        messages = document.getElementById("messages");
+        send = document.getElementById("send");
 
-        // and give it some content
-        const newContent = document.createTextNode("Vous souhaitez réserver pour le"+ date +"à"+ slotHour +":"+ slotMin +"pour"+ coversWished +"couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante :"+ allergie);
+        const confirmMessage = document.createElement("p");
+        confirmMessage.textContent = "Vous souhaitez réserver pour le " + dateFr +" à "+ slotHour +":"+ slotMin +"h pour "+ coversWished +" couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ allergie;
 
-        // add the text node to the newly created div
-        newDiv.appendChild(newContent);
-
-        // add the newly created element and its content into the DOM
-        const currentDiv = document.getElementById("send");
-        document.body.insertBefore(newDiv, currentDiv);
+        messages.insertBefore(confirmMessage, send);
 
 
     }

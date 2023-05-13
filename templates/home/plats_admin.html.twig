@@ -1,10 +1,5 @@
-{%  extends 'baseAdmin.html.twig' %}
+{%  extends 'base.html.twig' %}
 
-{% block stylesheet %}
-<head>
-<link rel="stylesheet" href="{{ asset('styles/plat-style.css') }}">
-</head>
-{% endblock %}
 
 {% block title "Enregistrer un plat - Le quai antique" %}
 {% block body %}
@@ -12,7 +7,7 @@
 <div class="jumbotron text-center">
         <h1>Enregistrer / modifier un plat</h1>
 </div>
-<div class="container">
+<main class="container">
         {{ form_start(dishes_form)}}
                 {{ form_row(dishes_form.DISHESname)}}
                 {{ form_row(dishes_form.DISHEScategory)}}
@@ -24,7 +19,7 @@
                 {{ form_row(dishes_form.DISHESmenusMontagnard)}}
                 <input type="submit" value="Envoyer">
         {{ form_end(dishes_form)}}
-</div>
+</main>
 {% else %}
         <h1 class="text-center">Vous n'êtes pas habilité à accéder à cette partie du site</h1>
 {% endif %}

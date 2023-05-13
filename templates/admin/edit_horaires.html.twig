@@ -1,9 +1,15 @@
-{%  extends 'baseAdmin.html.twig' %}
+{%  extends 'base.html.twig' %}
 {% block title %}Gestion des horaires{% endblock %}
+
+{% block stylesheets %}
+        <head>
+                <link rel="stylesheet" href="{{ asset('styles/base-style.css') }}">
+        </head>
+{% endblock %}
 
 {% block body %}
 <h1>Gestion des horaires du restaurant</h1>
-<div class="container">
+<main class="container">
         {{ form_start(opening_form)}}
                 {{ form_row(opening_form.OPENINGDAYSday)}}
                 <div id="hoursLunch">
@@ -19,7 +25,7 @@
                 </div>
                 <input type="submit" value="Envoyer">
         {{ form_end(opening_form)}}
-</div>
+</main>
 
 {% endblock %}
 {% block javascript %}

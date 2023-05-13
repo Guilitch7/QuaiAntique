@@ -53,11 +53,12 @@ class DishesType extends AbstractType
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
             ->add("DISHESphoto", FileType::class, ["label" =>"Image",
                                             "required" => false,
+                                            "mapped" => false,
                                             'constraints' => [ new File ([
                                                                             'maxSize' => '2048k',
                                                                             'mimeTypes' => [
                                                                                 'image/jpeg',
-                                                                                'image/jpg',
+                                                                               'image/jpg',
                                                                                 'image/svg+xml',
                                                                                 'image/png',
                                                                                 'image/bmp',

@@ -1,0 +1,30 @@
+{%  extends 'base.html.twig' %}
+
+{% block stylesheets %}
+        <head>
+                <link rel="stylesheet" href="{{ asset('styles/book-style.css') }}">
+        </head>
+{% endblock %}
+
+{% block title "S'inscrire - Le quai antique" %}
+
+{% block body %}
+
+<div class="jumbotron text-center mt-4">
+        <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
+</div>
+<main>
+  <article class="container confirm">
+    <div class="row d-flex justify-content-center">
+      <div class="col-4">
+                <p>Votre compte utilisateur a bien été créé, <a href="{{path('login')}}">connectez-vous</a> dès à présent !</p>
+      </div>
+    </div>
+  </article>
+</main>
+
+{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}

@@ -83,6 +83,7 @@
                                         <li><a class="dropdown-item" href="{{path('plats_admin')}}">Enregistrer un plats</a></li>
                                         <li><a class="dropdown-item" href="{{path('horaires')}}">Gérer les horaires</a></li>
                                         <li><a class="dropdown-item" href="{{path('resa_admin')}}">Réservations à venir</a></li>
+                                        <li><a class="dropdown-item" href="{{path('plats')}}">Plats - suppr. / modif.</a></li>
                                       </ul>
                         </li>
                         {% endif %}
@@ -107,7 +108,11 @@
                                     <p class="m-1">{% if horaire.OpenDinner and horaire.closedinner %}<span id={{ 'openDinner' ~ horaire.id }}>{{ horaire.OpenDinner|date('H:i')}}</span> - <span id={{ 'closeDinner' ~ horaire.id }}>{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
                                 </div>
                         </div>
-                    {% endfor %}
+                    {% endfor %}  
+                </div>
+                <div class="rs">
+                        <a href="http://www.twitter.com"><img src="{{asset('uploads/twitter.svg')}}" width="25" alt="Logo twitter" class="me-2"></a>
+                        <a href="http://www.facebook.com"><img src="{{asset('uploads/facebook.svg')}}" width="25" alt="Logo Facebook" class="me-2"></a>
                 </div>
             </div>
         </footer>

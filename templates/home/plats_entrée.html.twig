@@ -19,7 +19,7 @@
         {% if entree.DISHESphoto %}
             <div class="col-4">
                 <div class="card mb-4 mt-2">
-                    <img class="img-fluid" src="{{asset (entree.DISHESphoto)}}" alt="{{ entree.DISHESname }}">
+                    <img class="img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto)}}" alt="{{ entree.DISHESname }}">
                         <div class="description">
                             </br>
                             </br>
@@ -28,21 +28,15 @@
                             <p>{{ entree.DISHESdescription }}</p>
                         </div>
                 </div>
-            </div>  
+            </div>
         {% endif %}
         {% endfor %}
-    </div>
+    </div> 
     <div class="row">
         <div class="d-grid gap-2 d-md-flex justify-content-md-center">
             <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
         </div>
     </div>
-    {% if is_granted('ROLE_ADMIN') %}
-        <div>
-            <a href="{{ path ('delete-dish', {'id' : entree.DISHESid}) }}" class="btn btn-danger">Supprimer</a>"
-            <a href="{{ path ('edit-dish', {'id' : entree.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
-        </div>
-    {% endif %}
   </main>
 </body>
 {% endblock %}

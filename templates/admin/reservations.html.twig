@@ -1,31 +1,43 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block stylesheets %}
+        <head>
+                <link rel="stylesheet" href="{{ asset('styles/admin-style.css') }}">
+        </head>
+{% endblock %}
+
 {% block body %}
-                    <table class="table">
-                        <thead>
-                            <tr class="text-center">
-                            <th scope="col">N° résa.</th>
-                            <th scope="col">Date</th>
-                            <th scope="col">Service</th>
-                            <th scope="col">Créneau horaire</th>
-                            <th scope="col">Nom client</th>
-                            <th scope="col">Nombre de couvert</th>
-                            <th scope="col">Allergies</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-        {% for Booking in Bookings|sort((a, b) => a.slotLunch <=> b.slotLunch)|sort((a, b) => a.BookSlotDate <=> b.BookSlotDate) %}
-            {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
-                            <tr class="text-center">
-                            <th scope="row">{{ Booking.id }}</th>
-                            <td id="date{{ Booking.id }}">{{ Booking.BookSlotDate|date('d-m-y') }}</td>
-                            <td id="service{{ Booking.id }}">{{ Booking.service }}</td>
-                            <td>{{ Booking.slotLunch|date('H:i') }}</td>
-                            <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
-                            <td>{{ Booking.BookSlotUser }}</td>
-                            <td>{{ Booking.BookSlotAllergies }}</td>
-                            </tr>
-            {% endif %}
-        {% endfor %}
-                        </tbody>
-                    </table>
-            
+<main>
+    <h1 class="text-center mt-5 mb-3">Liste des réservations à venir</h1>
+                        <table class="table">
+                            <thead>
+                                <tr class="text-center">
+                                <th scope="col">N° résa.</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Service</th>
+                                <th scope="col">Créneau horaire</th>
+                                <th scope="col">Nom client</th>
+                                <th scope="col">Nombre de couvert</th>
+                                <th scope="col">Allergies</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            {% for Booking in Bookings|sort((a, b) => a.slotLunch <=> b.slotLunch)|sort((a, b) => a.BookSlotDate <=> b.BookSlotDate) %}
+                {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
+                                <tr class="text-center">
+                                <th scope="row">{{ Booking.id }}</th>
+                                <td id="date{{ Booking.id }}">{{ Booking.BookSlotDate|date('d-m-y') }}</td>
+                                <td id="service{{ Booking.id }}">{{ Booking.service }}</td>
+                                <td>{{ Booking.slotLunch|date('H:i') }}</td>
+                                <td>{{ Booking.BookSlotUser }}</td>
+                                <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
+                                <td>{{ Booking.BookSlotAllergies }}</td>
+                                </tr>
+                {% endif %}
+            {% endfor %}
+                            </tbody>
+                        </table>
+</main> 
 {% endblock %}

@@ -58,3 +58,12 @@ body {
 main {
     flex-grow: 1;
 }
+
+.rs {
+    position: fixed; 
+    display: flex;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 15px;
+    margin-right: 10px;
+}

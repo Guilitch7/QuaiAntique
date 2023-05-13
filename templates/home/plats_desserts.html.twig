@@ -1,9 +1,9 @@
 {%  extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<head>
-<link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
-</head>
+    <head>
+        <link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
+    </head>
 {% endblock %}
 
 
@@ -20,7 +20,7 @@
         {% if dessert.DISHESphoto %}
             <div class="col-4">
                 <div class="card mb-4 mt-2">
-                    <img class="img-fluid" src="{{asset (dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
+                    <img class="img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
                         <div class="description">
                             </br>
                             </br>
@@ -38,12 +38,6 @@
             <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
         </div>
     </div>
-        {% if is_granted('ROLE_ADMIN') %}
-            <div>
-                <a href="{{ path ('delete-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-danger">Supprimer</a>"
-                <a href="{{ path ('edit-dish', {'id' : dessert.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
-            </div>
-        {% endif %}
 </main>
 </body>
 {% endblock %}

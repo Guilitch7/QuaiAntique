@@ -30,7 +30,7 @@ class BookingController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($booking);
             $entityManager->flush();
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('confirm_booking');
         }
         
         $repository = $doctrine->getRepository(Openingdays::class);
@@ -53,7 +53,11 @@ class BookingController extends AbstractController
         $newBookings = $repository->findAll();
         $json= $serializer->serialize($newBookings, 'json');
 
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('admin/resa.html.twig', [
+            'horaires' => $isOpen,
             'Bookings' => $json,
             'controller_name' => 'BookingController',
             'current_menu' => 'admin',
@@ -68,11 +72,28 @@ class BookingController extends AbstractController
         $repository = $doctrine->getRepository(Bookings::class);
         $newBookings = $repository->findAll();
 
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         return $this->render('admin/reservations.html.twig', [
+            'horaires' => $isOpen,
             'Bookings' => $newBookings,
             'controller_name' => 'BookingController',
             'current_menu' => 'admin',
             'title' => 'Réservations à venir',
+        ]);
+    }
+
+    #[Route('/booking_check', name: 'confirm_booking')]
+
+    public function confirm_booking(ManagerRegistry $doctrine): Response
+    {
+         $repository = $doctrine->getRepository(Openingdays::class);
+         $isOpen = $repository->findAll();
+ 
+        return $this->render('booking/booking_check.html.twig', [
+            'controller_name' => 'BookingController',
+            'horaires' => $isOpen,
         ]);
     }
 }

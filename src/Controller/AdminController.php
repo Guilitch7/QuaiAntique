@@ -29,6 +29,9 @@ class AdminController extends AbstractController
         $form = $this->createForm(OpeningType::class, $openings);
         $form->handleRequest($request);
 
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
         
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $doctrine->getManager();
@@ -41,6 +44,7 @@ class AdminController extends AbstractController
         $isOpen = $repository->findAll();
         
         return $this->render('admin/horaires.html.twig', [
+            "horaires" => $isOpen,
             "opening_form" => $form->createView(),
             'controller_name' => 'AdminController',
             'title' => 'Gérer les horaires',
@@ -55,6 +59,9 @@ class AdminController extends AbstractController
      {
         $form = $this->createForm(OpeningType::class, $openings);
         $form->handleRequest($request);
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
         //    $slotLunch = [];
@@ -72,6 +79,7 @@ class AdminController extends AbstractController
      }
 
      return $this->render('admin/edit_horaires.html.twig', [
+        "horaires" => $isOpen,
         "opening_form" => $form->createView(),
         'controller_name' => 'AdminController',
         'title' => 'Gérer les horaires',
