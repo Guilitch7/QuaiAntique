@@ -1,7 +1,5 @@
 .card {
     position: relative;
-    height: auto;
-    width: 410px; 
 }
 
 .card:hover .description {

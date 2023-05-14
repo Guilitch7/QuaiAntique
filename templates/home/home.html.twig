@@ -10,16 +10,16 @@
           <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
   </div>
   <main class="main">
-      <div class="container">
+      <div class="container-lg">
         <div class="row imgMain">
           <img class="d-block w-100 rounded" src="{{asset('uploads/IMAG0086-63f9b3704c7c.jpg')}}" alt="Restaurant le Quai Antique">
         </div>
-        <div class="row pb-3 mt-2">
+        <div class="row pb-3 mt-2 text-center">
           <h1 class="text-center">Récemment ajoutés à la carte...</h1>
-            <div class="col-4">
+            <div class="col-sm-12 col-md-6 col-xl-4">
               {% for entree in entrees %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-responsive" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
+                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
                     <div class="description">
                       </br>
                       </br>
@@ -30,10 +30,10 @@
                 </div>        
               {% endfor %}
             </div>
-            <div class="col-4">
+            <div class="col-sm-12 col-md-6 col-xxl-4">
               {% for plat in plats %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-responsive" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
+                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
                     <div class="description">
                       </br>
                       </br>
@@ -44,10 +44,10 @@
                 </div>
               {% endfor %}
             </div>
-            <div class="col-4">
+            <div class="col-sm-12 col-md-6 col-xl-4">
               {% for dessert in desserts %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-responsive" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
+                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
                     <div class="description">
                       </br>
                       </br>

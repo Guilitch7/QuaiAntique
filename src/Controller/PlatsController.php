@@ -86,7 +86,7 @@ class PlatsController extends AbstractController
 
     // page présentation des entrées
 
-    #[Route('/plats/entree', name: 'entrées')]
+    #[Route('/plats-entree', name: 'entrées')]
 
     public function entree(ManagerRegistry $doctrine): Response
     {
@@ -108,7 +108,7 @@ class PlatsController extends AbstractController
 
     // page présentation des spécialités
 
-    #[Route('/plats/specialite', name: 'spécialités')]
+    #[Route('/plats-specialite', name: 'spécialités')]
 
     public function speciality(ManagerRegistry $doctrine): Response
     {
@@ -129,7 +129,7 @@ class PlatsController extends AbstractController
 
     // page présentation des viandes
 
-    #[Route('/plats/viandes', name: 'viandes')]
+    #[Route('/plats-viandes', name: 'viandes')]
 
     public function meat(ManagerRegistry $doctrine): Response
     {
@@ -150,7 +150,7 @@ class PlatsController extends AbstractController
 
     // page présentation des poissons
 
-    #[Route('/plats/poissons', name: 'poissons')]
+    #[Route('/plats-poissons', name: 'poissons')]
 
     public function fish(ManagerRegistry $doctrine): Response
     {
@@ -171,7 +171,7 @@ class PlatsController extends AbstractController
 
     // page présentation des desserts
 
-    #[Route('/plats/dessert', name: 'desserts')]
+    #[Route('/plats-dessert', name: 'desserts')]
 
     public function desert(ManagerRegistry $doctrine): Response
     {
@@ -192,7 +192,7 @@ class PlatsController extends AbstractController
 
     // suppression d'un plat à partir de page récap plats
 
-    #[Route('/plats/delete/{id<\d+>}', name:"delete-dish")]
+    #[Route('/plats-delete-{id<\d+>}', name:"delete-dish")]
     public function delete(Dishes $dishes, ManagerRegistry $doctrine): Response
      {
          $em = $doctrine->getManager();
@@ -203,7 +203,7 @@ class PlatsController extends AbstractController
 
     // modifcation d'un plat à partir de page récap plats
 
-     #[Route('/plats/edit/{id<\d+>}', name:"edit-dish")]
+     #[Route('/plats-edit-{id<\d+>}', name:"edit-dish")]
      public function update(Request $request, Dishes $createDish, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
       {
          $form = $this->createForm(DishesType::class, $createDish);

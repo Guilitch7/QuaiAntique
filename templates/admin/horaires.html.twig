@@ -7,15 +7,15 @@
   <h1 class="text-center mt-5 mb-3">Gestion des horaires du restaurant</h1>
     <div class="row">
         {% for horaire in horaires %}
-        <div class="col-3">
+        <div class="col-sm-6 col-md-4 col-xl-3">
           <h2 class="text-center mt-3">{{ horaire.OPENINGDAYSday }}</h2>
                 <div class="text-center">
-                <p><span class="fw-bold">Midi :</span> {% if horaire.OpenLunch and horaire.closelunch %}<span id="openLunch">{{ horaire.OpenLunch|date('H:i')}}</span> - <span id="closeLunch">{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
-                <p><span class="fw-bold">Soir :</span> {% if horaire.OpenDinner and horaire.closedinner %}<span id="openDinner">{{ horaire.OpenDinner|date('H:i')}}</span> - <span id="closeDinner">{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
-                <p><span class="fw-bold">Couverts disponibles :</span> {{ horaire.coversPossible }}</p>
-                {% if is_granted('ROLE_ADMIN') %}
-                <a href="{{ path ('edit-horaires', {'id' : horaire.id}) }}" class="btn btn-primary">Modifier</a>
-                {% endif %}
+                  <p><span class="fw-bold">Midi :</span> {% if horaire.OpenLunch and horaire.closelunch %}<span id="openLunch">{{ horaire.OpenLunch|date('H:i')}}</span> - <span id="closeLunch">{{ horaire.closelunch|date('H:i')}}</span> {% else %} Fermé le midi {% endif %}</p>
+                  <p><span class="fw-bold">Soir :</span> {% if horaire.OpenDinner and horaire.closedinner %}<span id="openDinner">{{ horaire.OpenDinner|date('H:i')}}</span> - <span id="closeDinner">{{ horaire.closedinner|date('H:i')}}</span> {% else %} Fermé le soir {% endif %}</p>
+                  <p><span class="fw-bold">Couverts disponibles :</span> {{ horaire.coversPossible }}</p>
+                  {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path ('edit-horaires', {'id' : horaire.id}) }}" class="btn btn-primary">Modifier</a>
+                  {% endif %}
                 </div>
         </div>
         {% endfor %}

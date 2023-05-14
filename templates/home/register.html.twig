@@ -14,9 +14,9 @@
                         <h1>S'inscrire</h1>
                         <p>Afin de pouvoir réserver plus facilement et de nous permettre de connaître à l'avance vos informations de réservations, inscrivez-vous dès à présent</p>
                 </div>
-                <div class="container mb-4">
+                <div class="container-lg mb-4">
                 <div class="row d-flex justify-content-center">
-                        <div class="col-4">
+                        <div class="col-sm-12 col-md-6 col-xl-4">
                                 {{ form_start(register_form, {'attr': {'class': 'form-group-sm'}})}}
                                         <img src="{{asset('uploads/envelope-at.svg')}}" width="30" alt="icone" class="me-2 icon">{{ form_row(register_form.UserIdentifier)}}
                                         <img src="{{asset('uploads/key.svg')}}" width="30" alt="icone" class="me-2 icon">{{ form_row(register_form.password)}}

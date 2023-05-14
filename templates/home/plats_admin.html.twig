@@ -3,24 +3,30 @@
 
 {% block title "Enregistrer un plat - Le quai antique" %}
 {% block body %}
-        {% if is_granted("ROLE_ADMIN") %}
-                <div class="jumbotron text-center">
-                        <h1>Enregistrer / modifier un plat</h1>
-                </div>
-                <main class="container">
-                        {{ form_start(dishes_form)}}
-                                {{ form_row(dishes_form.DISHESname)}}
-                                {{ form_row(dishes_form.DISHEScategory)}}
-                                {{ form_row(dishes_form.DISHEStype)}}
-                                {{ form_row(dishes_form.DISHESprice)}}
-                                {{ form_row(dishes_form.DISHESdescription)}}
-                                {{ form_row(dishes_form.DISHESphoto)}}
-                                {{ form_row(dishes_form.DISHESmenusExpress)}}
-                                {{ form_row(dishes_form.DISHESmenusMontagnard)}}
-                                <input type="submit" value="Envoyer">
-                        {{ form_end(dishes_form)}}
-                </main>
-        {% else %}
-                <h1 class="text-center">Vous n'êtes pas habilité à accéder à cette partie du site</h1>
-        {% endif %}
+<main class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-12 col-xl-6">
+                {% if is_granted("ROLE_ADMIN") %}
+                        <div class="jumbotron text-center">
+                                <h1>Enregistrer / modifier un plat</h1>
+                        </div>
+                        <main class="container">
+                                {{ form_start(dishes_form)}}
+                                        {{ form_row(dishes_form.DISHESname)}}
+                                        {{ form_row(dishes_form.DISHEScategory)}}
+                                        {{ form_row(dishes_form.DISHEStype)}}
+                                        {{ form_row(dishes_form.DISHESprice)}}
+                                        {{ form_row(dishes_form.DISHESdescription)}}
+                                        {{ form_row(dishes_form.DISHESphoto)}}
+                                        {{ form_row(dishes_form.DISHESmenusExpress)}}
+                                        {{ form_row(dishes_form.DISHESmenusMontagnard)}}
+                                        <input type="submit" value="Envoyer">
+                                {{ form_end(dishes_form)}}
+                        </main>
+                {% else %}
+                        <h1 class="text-center">Vous n'êtes pas habilité à accéder à cette partie du site</h1>
+                {% endif %}
+        </div>
+    </div>
+</main>
 {% endblock %}

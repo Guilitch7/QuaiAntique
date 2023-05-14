@@ -51,8 +51,6 @@ class BookingType extends AbstractType
             ->add('BookSlotDate', DateType::class, [
                 'label' => "A quelle date ?",
                 'widget' => 'single_text',
-//                'format' => 'dd-MM-yyyy',
-//                'years' => ['2023'],
                 'required' => true,
                 'attr' => ['class' => 'text-center fw-bold'],
                 'constraints' => [new Assert\GreaterThanOrEqual(new DateTime(), message: 'Il n\'est pas possible de réserver dans le passé !')
@@ -82,8 +80,6 @@ class BookingType extends AbstractType
           ->add('BookSlotDate', DateType::class, [
               'label' => "A quelle date ?",
               'widget' => 'single_text',
-//                'format' => 'dd-MM-yyyy',
-//                'years' => ['2023'],
               'required' => true,
               'attr' => ['class' => 'text-center fw-bold'],
               'constraints' => [new Assert\GreaterThanOrEqual(new DateTime(), message: 'Il n\'est pas possible de réserver dans le passé !')

@@ -16,12 +16,15 @@
         </div>
         <div class="row">   
             {% for plat in plats %}
-                <div class="col-4">
-                    <div class="card mb-4 mt-2">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="card mb-4 mt-2 text-center">
                                 <h2>{{ plat.DISHESname }}</h2>
                                 <p>{{ plat.DISHESdescription }}</p>
-                                {{ plat.DISHESphoto }}
-                    
+                                {% if plat.DISHESphoto %}
+                                    <div class="text-center">
+                                        <img class="mt-3 mb-3" width="50" src="uploads/{{ plat.DISHESphoto }}">
+                                    </div>
+                                {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <div>
                                 <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
@@ -29,9 +32,9 @@
                             </div>
                         {% endif %}
                     </div>
-                </div>  
+                </div>
+            {% endfor %}
         </div>
-    {% endfor %}
     </main>
 {% endblock %}
 

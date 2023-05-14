@@ -8,24 +8,28 @@
 {% endblock %}
 
 {% block body %}
-        <h1>Gestion des horaires du restaurant</h1>
-        <main class="container">
-                {{ form_start(opening_form)}}
-                        {{ form_row(opening_form.OPENINGDAYSday)}}
-                        <div id="hoursLunch">
-                                {{ form_row(opening_form.Openlunch)}}
-                                {{ form_row(opening_form.Closelunch)}}
+    <main class="container">
+        <div class="row justify-content-center">
+                <h1 class="text-center mt-3">Gestion des horaires du restaurant</h1>
+                        <div class="col-sm-6 col-md-4 col-xl-6">
+                                {{ form_start(opening_form)}}
+                                        <p class="fw-bold">{{ form_row(opening_form.OPENINGDAYSday)}}</p>
+                                        <div id="hoursLunch">
+                                                {{ form_row(opening_form.Openlunch)}}
+                                                {{ form_row(opening_form.Closelunch)}}
+                                        </div>
+                                        <div id="hoursDinner">
+                                                {{ form_row(opening_form.Opendinner)}}
+                                                {{ form_row(opening_form.Closedinner)}}
+                                        </div>
+                                        <div>
+                                                {{ form_row(opening_form.coversPossible)}}
+                                        </div>
+                                        <input type="submit" value="Envoyer">
+                                {{ form_end(opening_form)}}
                         </div>
-                        <div id="hoursDinner">
-                                {{ form_row(opening_form.Opendinner)}}
-                                {{ form_row(opening_form.Closedinner)}}
-                        </div>
-                        <div>
-                                {{ form_row(opening_form.coversPossible)}}
-                        </div>
-                        <input type="submit" value="Envoyer">
-                {{ form_end(opening_form)}}
-        </main>
+        </div>
+    </main>
 {% endblock %}
 {% block javascript %}
 {% endblock %}

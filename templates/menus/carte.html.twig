@@ -16,9 +16,9 @@
 {% endblock %}
 
 {% block body %}
-    <main>
+    <main class="container-lg">
         <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : La carte</h1>
-        <div class="container">
+        <div>
                 <h2>Les entrées</h2>
                 {% for dishe in dishes %}
                     {% if dishe.DISHEScategory == 'Entrée' %}

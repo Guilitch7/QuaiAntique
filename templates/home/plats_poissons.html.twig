@@ -17,7 +17,7 @@
         <div class="row">   
             {% for poisson in poissons %}
             {% if poisson.DISHESphoto %}
-                <div class="col-4">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card mb-4 mt-2">
                         <img class="img-fluid" src="{{ asset('uploads/' ~ poisson.DISHESphoto)}}" alt="{{ poisson.DISHESname }}">
                             <div class="description">
@@ -26,16 +26,14 @@
                                 </br>
                                 <h2>{{ poisson.DISHESname }}</h2>
                                 <p>{{ poisson.DISHESdescription }}</p>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+                                </div>
                             </div>
                     </div>
                 </div>  
             {% endif %}
             {% endfor %}
-        </div>
-        <div class="row">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
-            </div>
         </div>
     </main>
 {% endblock %}

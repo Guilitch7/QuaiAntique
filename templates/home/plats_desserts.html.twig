@@ -3,11 +3,12 @@
 {% block stylesheets %}
     <head>
         <link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
+        <link rel="icon" type="Logo miniature" href="uploads/Logo_min.png"/> 
     </head>
 {% endblock %}
+      
 
-
-{% block title %} "Nos desserts - La galerie photo"{% endblock %}
+{% block title "Nos desserts - La galerie photo" %}
 
 {% block body %}
     <main class="container">
@@ -17,7 +18,7 @@
         <div class="row">   
             {% for dessert in desserts %}
             {% if dessert.DISHESphoto %}
-                <div class="col-4">
+                <div class="col-sm-12 col-md-6 col-lg-4">
                     <div class="card mb-4 mt-2">
                         <img class="img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
                             <div class="description">
@@ -26,16 +27,14 @@
                                 </br>
                                 <h2>{{ dessert.DISHESname }}</h2>
                                 <p>{{ dessert.DISHESdescription }}</p>
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+                                </div>
                             </div>
                     </div>
                 </div>  
             {% endif %}
             {% endfor %} 
-        </div>
-        <div class="row">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
-            </div>
         </div>
     </main>
 {% endblock %}

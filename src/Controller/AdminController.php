@@ -14,7 +14,7 @@ class AdminController extends AbstractController
 {
     // page admin de gestion des horaires
 
-    #[Route('admin/horaires', name: 'horaires')] 
+    #[Route('admin-horaires', name: 'horaires')] 
     public function horaires(Request $request, ManagerRegistry $doctrine): Response
     {
         $openings = new Openingdays();
@@ -48,7 +48,7 @@ class AdminController extends AbstractController
     
     // modification d'un horaire ou disponibilités
 
-    #[Route('admin/horaires/{id<\d+>}', name:"edit-horaires")]
+    #[Route('admin-horaires-{id<\d+>}', name:"edit-horaires")]
 
     public function update(Request $request, Openingdays $openings, ManagerRegistry $doctrine): Response
      {
