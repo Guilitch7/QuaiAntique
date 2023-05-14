@@ -1,17 +1,13 @@
-h1 {
-    color: #f9f5f1;
+.card {
+    position: relative;
+    height: auto;
+    width: 410px; 
 }
 
-.main {
-    color:#faf5f1;
-    background-color: #754d51;
-    list-style-type: none;
-    font-family: 'Franklin Gothic Demi', sans-serif;
-}
-
-.jumbotron {
-    background-color: white;
-}
+.card:hover .description {
+    visibility: visible;
+    opacity: 0.70;
+  }
 
 .description {
     color:#faf5f1;
@@ -28,13 +24,17 @@ h1 {
     margin: auto;
 }
 
-.card {
-    position: relative;
-    height: auto;
-    width: 410px; 
+h1 {
+    color: #f9f5f1;
 }
-  
-.card:hover .description {
-    visibility: visible;
-    opacity: 0.70;
-  }
+
+.jumbotron {
+    background-color: white;
+}
+
+.main {
+    color:#faf5f1;
+    background: linear-gradient(#754d51, #a35e4c);
+    list-style-type: none;
+    font-family: 'Franklin Gothic Demi', sans-serif;
+}

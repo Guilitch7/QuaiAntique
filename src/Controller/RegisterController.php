@@ -6,7 +6,6 @@ use App\Entity\User;
 use App\Entity\Openingdays;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,6 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RegisterController extends AbstractController 
 {
+
+    // page d'inscription
+
     #[Route('/sinscrire', name: "sinscrire")]
 
    public function create(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $userPasswordHasher): Response
@@ -40,6 +42,8 @@ class RegisterController extends AbstractController
         ]);
    }
 
+   // page de confirmation d'inscription
+   
    #[Route('/register_check', name: 'confirm_subscribe')]
 
    public function confirm_subscribe(ManagerRegistry $doctrine): Response

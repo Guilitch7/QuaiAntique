@@ -81,9 +81,9 @@
                             <a class="nav-link dropdown-toggle {% if current_menu is defined and current_menu == 'admin' %}active{% endif %}" aria-current="page" href="#" role="button" id="dropdownMenuLink" aria-haspopup="true" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                                       <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{path('plats_admin')}}">Enregistrer un plats</a></li>
-                                        <li><a class="dropdown-item" href="{{path('horaires')}}">Gérer les horaires</a></li>
                                         <li><a class="dropdown-item" href="{{path('resa_admin')}}">Réservations à venir</a></li>
                                         <li><a class="dropdown-item" href="{{path('plats')}}">Plats - suppr. / modif.</a></li>
+                                        <li><a class="dropdown-item" href="{{path('horaires')}}">Gérer les horaires</a></li>
                                       </ul>
                         </li>
                         {% endif %}

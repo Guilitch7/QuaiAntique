@@ -1,43 +1,41 @@
 {%  extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<head>
-<link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
-</head>
+    <head>
+        <link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
+    </head>
 {% endblock %}
 
 
 {% block title %} "Nos viandes - La galerie photo"{% endblock %}
 
 {% block body %}
-<body>
-<main class="container">
-    <div class="jumbotron text-center">
-            <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos viandes - la galerie photo</h1>
-    </div>
-    <div class="row">   
-        {% for viande in viandes %}
-        {% if viande.DISHESphoto %}
-            <div class="col-4">
-                <div class="card mb-4 mt-2">
-                    <img class="img-fluid" src="{{ asset('uploads/' ~ viande.DISHESphoto)}}" alt="{{ viande.DISHESname }}">
-                        <div class="description">
-                            </br>
-                            </br>
-                            </br>
-                            <h2>{{ viande.DISHESname }}</h2>
-                            <p>{{ viande.DISHESdescription }}</p>
-                        </div>
-                </div>
-              </div>  
-        {% endif %}
-        {% endfor %}
-    </div>
-    <div class="row">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+    <main class="container">
+        <div class="jumbotron text-center">
+                <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos viandes - la galerie photo</h1>
         </div>
-    </div>
-</main>
-</body>
+        <div class="row">   
+            {% for viande in viandes %}
+            {% if viande.DISHESphoto %}
+                <div class="col-4">
+                    <div class="card mb-4 mt-2">
+                        <img class="img-fluid" src="{{ asset('uploads/' ~ viande.DISHESphoto)}}" alt="{{ viande.DISHESname }}">
+                            <div class="description">
+                                </br>
+                                </br>
+                                </br>
+                                <h2>{{ viande.DISHESname }}</h2>
+                                <p>{{ viande.DISHESdescription }}</p>
+                            </div>
+                    </div>
+                </div>  
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+            </div>
+        </div>
+    </main>
 {% endblock %}

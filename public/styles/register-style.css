@@ -1,11 +1,5 @@
-h1 {
-    color : #473c57;
-}
-
-main {
-    color : #473c57;
-    font-weight: 600;
-    font-size: 1.3rem;
+.btn {
+    color: white;
 }
 
 .form {
@@ -14,8 +8,8 @@ main {
     width: 600;
 }
 
-.btn {
-    color: white;
+h1 {
+    color : #473c57;
 }
 
 .icon {
@@ -24,11 +18,17 @@ main {
     float: left;
 }
 
+.login {
+    margin-top: 70px;
+}
+
 .logo {
     text-align: center;
     clear: left;
 }
 
-.login {
-    margin-top: 70px;
+main {
+    color : #473c57;
+    font-weight: 600;
+    font-size: 1.3rem;
 }

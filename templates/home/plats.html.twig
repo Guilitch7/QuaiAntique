@@ -1,39 +1,37 @@
 {%  extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<head>
-<link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
-</head>
+    <head>
+        <link rel="stylesheet" href="{{ asset('styles/galerie-style.css') }}">
+    </head>
 {% endblock %}
 
 
 {% block title %} "Nos plats"{% endblock %}
 
 {% block body %}
-<body>
-<main class="container">
-    <div class="jumbotron text-center">
-            <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos plats</h1>
-    </div>
-    <div class="row">   
-        {% for plat in plats %}
-            <div class="col-4">
-                <div class="card mb-4 mt-2">
-                            <h2>{{ plat.DISHESname }}</h2>
-                            <p>{{ plat.DISHESdescription }}</p>
-                            {{ plat.DISHESphoto }}
-                
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <div>
-                            <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
-                            <a href="{{ path ('edit-dish', {'id' : plat.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
-                        </div>
-                    {% endif %}
-                </div>
-            </div>  
-    </div>
-  {% endfor %}
-</main>
-</body>
+    <main class="container">
+        <div class="jumbotron text-center">
+                <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos plats</h1>
+        </div>
+        <div class="row">   
+            {% for plat in plats %}
+                <div class="col-4">
+                    <div class="card mb-4 mt-2">
+                                <h2>{{ plat.DISHESname }}</h2>
+                                <p>{{ plat.DISHESdescription }}</p>
+                                {{ plat.DISHESphoto }}
+                    
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <div>
+                                <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
+                                <a href="{{ path ('edit-dish', {'id' : plat.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>  
+        </div>
+    {% endfor %}
+    </main>
 {% endblock %}
 

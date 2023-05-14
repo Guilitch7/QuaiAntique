@@ -3,14 +3,12 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 use App\Entity\Dishes;
 use App\Entity\Openingdays;
 use App\Repository\DishesRepository;
-use Doctrine\ORM\Query\ResultSetMapping;
 
 class HomeController extends AbstractController
 {
@@ -24,6 +22,8 @@ class HomeController extends AbstractController
     {
         $this->twig = $twig;
     }
+
+    // page d'accueil
 
     #[Route('/', name: 'home')]
 

@@ -1,27 +1,39 @@
 window.onload = () => {
+
+// initialisation des vues du form
+
 document.getElementById('form2').style.display = 'none';
 document.getElementById('form3').style.display = 'none';
 document.getElementById('alert').style.display = 'none';
 document.getElementById('alert2').style.display = 'none';
 document.getElementById('btn5').style.display = 'none';
 
+// initialisation des variables
+
 var date = document.getElementById('booking_BookSlotDate').value;
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
 var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
+// récupération du jour réservé
 
 var bookDate = new Date(date);
 var dayBooked = bookDate.getDay();
+
+
+// fonction de vérification si ouvert au jour et heure réservé
 
 function checkSlot() {
     date = document.getElementById('booking_BookSlotDate').value;
     bookDate = new Date(date);
     dayBooked = bookDate.getDay();
+
+    // transcription du jour réservé en 'id' de 'openinngs days'
     var openLunch = 'openLunch' + dayBooked;
     var closeLunch = 'closeLunch' + dayBooked;
     var openDinner = 'openDinner' + dayBooked;
     var closeDinner = 'closeDinner' + dayBooked;
 
+    // Récupération des heures d'ouverture et fermeture pour chaque jour sinon données factices
     if ((document.getElementById(openLunch))) { 
     var startLunch = document.getElementById(openLunch).innerHTML;
     }
@@ -47,6 +59,7 @@ function checkSlot() {
     var endDinner = '00:00';
     };
 
+    // calcul de concordance en timestamp du créneau horaire souhaité et des horaires d'ouverture
     slotHour = document.getElementById('booking_slotLunch_hour').value;
     slotMin = document.getElementById('booking_slotLunch_minute').value;
     slotInSeconds = (slotHour * 3600) + (slotMin * 60);
@@ -55,6 +68,7 @@ function checkSlot() {
     var secondsCloseLunch = (endLunch.substring(0, 2) * 3600) + (endLunch.substring(3, 5) * 60);
     var secondsCloseDinner = (endDinner.substring(0, 2) * 3600) + (endDinner.substring(3, 5) * 60);
 
+    // vérification de concordance du créneau horaire souhaité et des horaires d'ouverture
     if (((slotInSeconds >= secondsOpenLunch) && ((slotInSeconds) <= secondsCloseLunch - 3600)) || ((slotInSeconds >= secondsOpenDinner) && ((slotInSeconds) <= secondsCloseDinner - 3600))) {
         return true;
     } else {
@@ -62,6 +76,7 @@ function checkSlot() {
     };
 };
 
+// ouverture ou non de 2ème partie du form si horaires valables
 
 document.getElementById('btn1').addEventListener('click', () => {
     var isSlot = checkSlot();
@@ -75,12 +90,13 @@ document.getElementById('btn1').addEventListener('click', () => {
         document.getElementById('alert').style.display = 'none';
                 }
                                                                 })
-
+// bouton de retour à la première partie du formulaire
 document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('form2').style.display = 'none';
     document.getElementById('form1').style.display = 'block';
 })        
-                                                                
+  
+// définition automatique du 'service' concerné
 document.getElementById('btn1').addEventListener('click', () => {
     service = document.getElementById('booking_service');
     att3 = document.createAttribute("value");
@@ -94,29 +110,39 @@ document.getElementById('btn1').addEventListener('click', () => {
     };
 })
 
-function object() {
+// fonction de récupération en api des réservations selon date pour disponibilités
 
+function object() {
+    // récupération de la date souhaitée pour réservation et service et convertion en timestamp
     const dateBooked = document.getElementById('booking_BookSlotDate').value;
     const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
     const serviceBooked = document.getElementById('booking_service').value;
-  
+    
+    // appel à l'api
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'http://localhost/api/resa/liste');
+    xhr.open('GET', 'http://localhost/api/resa/api-liste');
     xhr.send();
   
     return new Promise((resolve, reject) => {
       xhr.addEventListener('readystatechange', function covers() {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
           const object = JSON.parse(xhr.response);
+
+          // récupération des éléments souhaités (réservation selon date et service)
           const covers = object
             .filter(element => element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp)
             .map(element => element.BOOKINGSLOTcoversnumber);
+
+          // calcul du total réservé à la date et service souhaité
           const sum = covers.reduce((a, b) => a + b, 0);
           resolve(sum);
         }
       });
     });
   }
+
+
+// récupération du nombre de couverts souhaités pour réservation
 
 let coversBooked;
 
@@ -127,25 +153,31 @@ document.getElementById('booking_BookSlotCovers').addEventListener('input', () =
       });
 });
 
-document.getElementById('btn3').addEventListener('click', () => {  
+
+// ou verture de dernière partie du form si disponibilités toujours possibles
+
+document.getElementById('btn3').addEventListener('click', () => { 
+    // récupération des couverts réservés et tests si possible de réserver
     coversAvailable = document.getElementById(dayBooked).innerHTML;
     let coversWished = document.getElementById('booking_BookSlotCovers').value;
     let test = coversWished > (coversAvailable - coversBooked);
+
+    // récupération de l'allergie déclarée
     var allergie = document.getElementById('booking_BookSlotAllergies').value;
 
+    // transformation de la date format US en format FR
     let year = date.substring(0, 4);
     let month = date.substring(5, 7);
     let day = date.substring(8, 10);
     dateFr = day +'/'+ month +'/'+ year;
 
-
-
-
+    //affichage du message d'alerte ou de la dernière partie du form si places toujours disponibles
     if (!test) {
         document.getElementById('form2').style.display = 'none';
         document.getElementById('form3').style.display = 'block';
         document.getElementById('alert2').style.display = 'none';
- 
+        
+        // création du récapitulatif de réservation avant validation
         messages = document.getElementById("messages");
         send = document.getElementById("send");
 
@@ -153,8 +185,6 @@ document.getElementById('btn3').addEventListener('click', () => {
         confirmMessage.textContent = "Vous souhaitez réserver pour le " + dateFr +" à "+ slotHour +":"+ slotMin +"h pour "+ coversWished +" couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ allergie;
 
         messages.insertBefore(confirmMessage, send);
-
-
     }
     else
     {
@@ -164,7 +194,8 @@ document.getElementById('btn3').addEventListener('click', () => {
         document.getElementById('btn5').style.display = 'block';
     }
 })
-    
+
+// bouton de retour pour corrections des données
 document.getElementById('btn5').addEventListener('click', () => {  
     document.getElementById('form2').style.display = 'block';
     document.getElementById('form3').style.display = 'none';
@@ -172,6 +203,7 @@ document.getElementById('btn5').addEventListener('click', () => {
     document.getElementById('alert2').style.display = 'none';
 })
 
+// bouton de retour pour changements des données de réservation
 document.getElementById('btn4').addEventListener('click', () => {  
     document.getElementById('form3').style.display = 'none';
     document.getElementById('form2').style.display = 'block';

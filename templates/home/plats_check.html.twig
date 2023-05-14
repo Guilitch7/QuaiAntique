@@ -1,28 +1,26 @@
 {%  extends 'base.html.twig' %}
 
 {% block stylesheets %}
-        <head>
-                <link rel="stylesheet" href="{{ asset('styles/book-style.css') }}">
-        </head>
+  <head>
+    <link rel="stylesheet" href="{{ asset('styles/book-style.css') }}">
+  </head>
 {% endblock %}
 
 {% block title "Enregistrer un plat - Le quai antique" %}
 
 {% block body %}
-
-<div class="jumbotron text-center mt-4">
-        <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
-</div>
-<main>
-  <article class="container confirm">
-    <div class="row d-flex justify-content-center">
-      <div class="col-6">
-            <p class="text-center">Le plat a bien été enregistré / mis à jour</p>
+  <div class="jumbotron text-center mt-4">
+    <img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo">
+  </div>
+  <main>
+    <article class="container confirm">
+      <div class="row d-flex justify-content-center">
+        <div class="col-6">
+              <p class="text-center">Le plat a bien été enregistré / mis à jour</p>
+        </div>
       </div>
-    </div>
-  </article>
-</main>
-
+    </article>
+  </main>
 {% endblock %}
 
 {% block javascript %}

@@ -1,8 +1,8 @@
-main {  
-    list-style-type: none;
-    margin-top: 40px;
-    flex-grow: 1;
+body{
+    display: flex;
+    flex-direction: column;
 }
+
 .card
 {
     position: relative;
@@ -30,10 +30,13 @@ main {
     transition: opacity .2s, visibility .2s;
     margin: auto;
 }
+
 h1 {
     color : #754d51
 }
-body{
-    display: flex;
-    flex-direction: column;
+
+main {  
+    list-style-type: none;
+    margin-top: 40px;
+    flex-grow: 1;
 }

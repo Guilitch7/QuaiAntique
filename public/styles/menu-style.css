@@ -1,34 +1,5 @@
-main {
-    color: #f9f5f4;   
-    list-style-type: none;
-    margin-top: 40px;
-}
-
-h1 {
-    color:#754d51;
-    font-family: 'Franklin Gothic Demi', sans-serif;
-}
-
-.card {
-    color: #754d51;
-    border: 2px solid #754d51;
-    background-color: #f7e7e9;
-}
-
-h2 {
-    color: #754d51;
-    font-family: 'Style Script', cursive;
-    font-size: 3rem;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.mainLi {
-    text-align: center;
-    font-family: 'Franklin Gothic Demi', sans-serif;
+a:hover {
+    color: #8d95d8;
 }
 
 .card a {
@@ -37,12 +8,44 @@ ul {
     font-weight: bold;
 }
 
-a:hover {
-    color: #8d95d8;
+.card {
+    color: #754d51;
+    border: 2px solid #754d51;
+    background-color: #f7e7e9;
+}
+
+.card-footer {
+    background-color: #f7e7e9;  
 }
 
 .card-title {
     color:#8d95d8;
+}
+
+.details {
+    font-size: 1.5rem;
+}
+
+h1 {
+    color:#754d51;
+    font-family: 'Franklin Gothic Demi', sans-serif;
+}
+
+h2 {
+    color: #754d51;
+    font-family: 'Style Script', cursive;
+    font-size: 3rem;
+}
+
+main {
+    color: #f9f5f4;   
+    list-style-type: none;
+    margin-top: 40px;
+}
+
+.mainLi {
+    text-align: center;
+    font-family: 'Franklin Gothic Demi', sans-serif;
 }
 
 .price {
@@ -51,10 +54,7 @@ a:hover {
     color:#754d51;
 }
 
-.card-footer {
-    background-color: #f7e7e9;  
-}
-
-.details {
-    font-size: 1.5rem;
+ul {
+    list-style-type: none;
+    padding: 0;
 }

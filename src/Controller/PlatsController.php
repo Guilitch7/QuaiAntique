@@ -9,13 +9,14 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PlatsController extends AbstractController
 {
+
+    // page création d'un plat
 
     #[Route('/plats_admin', name: 'plats_admin')]
    
@@ -62,6 +63,8 @@ class PlatsController extends AbstractController
             ]);
     }
 
+    // page récapitulatif plats
+
     #[Route('/plats', name: 'plats')]
 
     public function plats(ManagerRegistry $doctrine): Response
@@ -80,6 +83,8 @@ class PlatsController extends AbstractController
             'horaires' => $isOpen,
         ]);
     }
+
+    // page présentation des entrées
 
     #[Route('/plats/entree', name: 'entrées')]
 
@@ -100,6 +105,9 @@ class PlatsController extends AbstractController
         ]);
     }
 
+
+    // page présentation des spécialités
+
     #[Route('/plats/specialite', name: 'spécialités')]
 
     public function speciality(ManagerRegistry $doctrine): Response
@@ -118,6 +126,8 @@ class PlatsController extends AbstractController
             'horaires' => $isOpen,
         ]);
     }
+
+    // page présentation des viandes
 
     #[Route('/plats/viandes', name: 'viandes')]
 
@@ -138,6 +148,8 @@ class PlatsController extends AbstractController
         ]);
     }
 
+    // page présentation des poissons
+
     #[Route('/plats/poissons', name: 'poissons')]
 
     public function fish(ManagerRegistry $doctrine): Response
@@ -156,6 +168,8 @@ class PlatsController extends AbstractController
             'horaires' => $isOpen,
         ]);
     }
+
+    // page présentation des desserts
 
     #[Route('/plats/dessert', name: 'desserts')]
 
@@ -176,6 +190,8 @@ class PlatsController extends AbstractController
         ]);
     }
 
+    // suppression d'un plat à partir de page récap plats
+
     #[Route('/plats/delete/{id<\d+>}', name:"delete-dish")]
     public function delete(Dishes $dishes, ManagerRegistry $doctrine): Response
      {
@@ -184,6 +200,8 @@ class PlatsController extends AbstractController
          $em->flush();
          return $this->redirectToRoute('plats');
      }
+
+    // modifcation d'un plat à partir de page récap plats
 
      #[Route('/plats/edit/{id<\d+>}', name:"edit-dish")]
      public function update(Request $request, Dishes $createDish, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
@@ -225,6 +243,8 @@ class PlatsController extends AbstractController
         'current_menu' => 'admin'
         ]);
       }
+
+      // page de confirmation de bonne création d'un plat
 
       #[Route('/plats_check', name: 'plats_confirm')]
 

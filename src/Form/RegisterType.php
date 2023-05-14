@@ -8,10 +8,9 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Context\ExecutionContext;
-use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -25,24 +24,16 @@ class RegisterType extends AbstractType
                                                  "constraints" => [
                                                     new NotBlank(["message" => 'Ce champ ne peut être vide'])]
                                             ])
-            ->add("password", PasswordType::class, [    "label" => "Mot de passe",
-                                                        "required" => true,
+            ->add("password", RepeatedType::class, [
+                                                        'type' => PasswordType::class,
+                                                        'invalid_message' => 'Les mots de passe doivent correspondre',
+                                                        'options' => ['attr' => ['class' => 'password-field']],
+                                                        'required' => true,
+                                                        'first_options'  => ['label' => 'Mot de passe'],
+                                                        'second_options' => ['label' => 'Confirmation mot de passe'],
                                                         "constraints" => [
                                                             new Length(["min" => 8, "minMessage" => 'Ce champ doit comporter au minimum 8 caractères']),
                                                             new NotBlank(["message" => 'Ce champ ne peut être vide'])]
-                                                    ])
-            ->add("confirm", PasswordType::class,  [
-                                                        "label" => "Confirmer le mot de passe",
-                                                        "required" => true,
-                                                        "constraints" => [
-                                                            new NotBlank(["message" => "Le mot de passe ne peut pas être vide !"]),
-                                                            // new EqualTo(["propertyPath" => "password", "message" => "Les mots de passe doivent être identique !"])
-                                                            new Callback(['callback' => function ($value, ExecutionContext $ec) {
-                                                                if ($ec->getRoot()['password']->getViewData() !== $value) {
-                                                                    $ec->addViolation("Les mots de passe doivent être identiques !");
-                                                                }
-                                                            }])
-                                                        ]
                                                     ])
             ->add("coversNumber", IntegerType::class, ["label" => "Votre nombre de convives par défaut ?", "required" => false])
             ->add("foodAllergies", ChoiceType::class, ["label" => "Vos éventuelles allergies alimentaires ?", "required" => false,

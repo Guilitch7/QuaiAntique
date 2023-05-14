@@ -15,6 +15,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 class BookingController extends AbstractController
 {
 
+    // page de réservation
+
     #[Route('/booking', name: 'book')]
 
     public function new(Request $request, ManagerRegistry $doctrine): Response
@@ -45,25 +47,7 @@ class BookingController extends AbstractController
             
     }
 
-    #[Route('/bookings_admin', name: 'bookings_admin')]
-
-    public function newBookings(ManagerRegistry $doctrine, SerializerInterface $serializer): Response
-    {
-        $repository = $doctrine->getRepository(Bookings::class);
-        $newBookings = $repository->findAll();
-        $json= $serializer->serialize($newBookings, 'json');
-
-        $repository = $doctrine->getRepository(Openingdays::class);
-        $isOpen = $repository->findAll();
-
-        return $this->render('admin/resa.html.twig', [
-            'horaires' => $isOpen,
-            'Bookings' => $json,
-            'controller_name' => 'BookingController',
-            'current_menu' => 'admin',
-            'title' => 'Bookings',
-        ]);
-    }
+    //page de récapitulatif des réservations à venir
 
     #[Route('/resa_admin', name: 'resa_admin')]
 
@@ -84,6 +68,8 @@ class BookingController extends AbstractController
         ]);
     }
 
+    // Page de confirmation de réservation prise en compte
+    
     #[Route('/booking_check', name: 'confirm_booking')]
 
     public function confirm_booking(ManagerRegistry $doctrine): Response

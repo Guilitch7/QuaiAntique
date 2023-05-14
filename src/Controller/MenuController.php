@@ -13,6 +13,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MenuController extends AbstractController
 {
+
+    // page menus 
+
     #[Route('/menus', name: 'menus')]
 
     public function readAll(ManagerRegistry $doctrine): Response
@@ -55,6 +58,8 @@ class MenuController extends AbstractController
             "horaires" => $isOpen,
         ]);
     }
+
+    // page carte
 
     #[Route('/menu}', name:'carte')]
     public function menu(ManagerRegistry $doctrine): Response

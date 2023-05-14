@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\Dishes;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 
 /**
@@ -43,6 +42,8 @@ class DishesRepository extends ServiceEntityRepository
         }
     }
 
+    // appel en BDD pour présentation sur pas d'accueail des derniers enregistrements
+
     public function getLastDishesRegistered(string $category)
     {
         $entityManager = $this->getEntityManager();
@@ -59,29 +60,4 @@ class DishesRepository extends ServiceEntityRepository
         
         return $query -> getResult();
     }
-
-//    /**
-//     * @return Dishes[] Returns an array of Dishes objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Dishes
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

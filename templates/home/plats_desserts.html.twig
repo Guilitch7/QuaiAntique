@@ -10,34 +10,32 @@
 {% block title %} "Nos desserts - La galerie photo"{% endblock %}
 
 {% block body %}
-<body>
-<main class="container">
-    <div class="jumbotron text-center">
-            <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos desserts - la galerie photo</h1>
-    </div>
-    <div class="row">   
-        {% for dessert in desserts %}
-        {% if dessert.DISHESphoto %}
-            <div class="col-4">
-                <div class="card mb-4 mt-2">
-                    <img class="img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
-                        <div class="description">
-                            </br>
-                            </br>
-                            </br>
-                            <h2>{{ dessert.DISHESname }}</h2>
-                            <p>{{ dessert.DISHESdescription }}</p>
-                        </div>
-                </div>
-              </div>  
-        {% endif %}
-        {% endfor %} 
-    </div>
-    <div class="row">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+    <main class="container">
+        <div class="jumbotron text-center">
+                <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos desserts - la galerie photo</h1>
         </div>
-    </div>
-</main>
-</body>
+        <div class="row">   
+            {% for dessert in desserts %}
+            {% if dessert.DISHESphoto %}
+                <div class="col-4">
+                    <div class="card mb-4 mt-2">
+                        <img class="img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto)}}" alt="{{ dessert.DISHESname }}">
+                            <div class="description">
+                                </br>
+                                </br>
+                                </br>
+                                <h2>{{ dessert.DISHESname }}</h2>
+                                <p>{{ dessert.DISHESdescription }}</p>
+                            </div>
+                    </div>
+                </div>  
+            {% endif %}
+            {% endfor %} 
+        </div>
+        <div class="row">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <a href="{{path('book')}}"><button type="button" class="btn btn-lg btn-warning align-center mb-3 border border-dark">Réserver</button></a>
+            </div>
+        </div>
+    </main>
 {% endblock %}

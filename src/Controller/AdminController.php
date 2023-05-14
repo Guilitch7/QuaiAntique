@@ -12,15 +12,7 @@ use App\Form\OpeningType;
 
 class AdminController extends AbstractController
 {
-    #[Route('/app_admin', name: 'app_admin')]
-    public function index(): Response
-    {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'AdminController',
-            'title' => 'Administration',
-            'current_menu' => 'admin'
-        ]);
-    }
+    // page admin de gestion des horaires
 
     #[Route('admin/horaires', name: 'horaires')] 
     public function horaires(Request $request, ManagerRegistry $doctrine): Response
@@ -53,6 +45,9 @@ class AdminController extends AbstractController
         ]);
     }
 
+    
+    // modification d'un horaire ou disponibilités
+
     #[Route('admin/horaires/{id<\d+>}', name:"edit-horaires")]
 
     public function update(Request $request, Openingdays $openings, ManagerRegistry $doctrine): Response
@@ -64,15 +59,7 @@ class AdminController extends AbstractController
         $isOpen = $repository->findAll();
 
         if ($form->isSubmitted() && $form->isValid()) {
-        //    $slotLunch = [];
-        //    $slotLunchOpen = getOpenLunch();
-        //    $slotLunchClose = getcloselunch();
-        //    $i = 0;
-        //    while (($slotLunchClose - $SlotLunchOpen - 3600 + $i) > 0) {
-        //    $slotLunch = $SlotLunchOpen + $i;
-        //    $i+900;
-        //    }
-        //    $entityManager->setslotLunch($slotLunch);
+
             $entityManager = $doctrine->getManager();
             $entityManager->flush();
             return $this->redirectToRoute('horaires');

@@ -13,6 +13,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController 
 {
+    // page de connexion
+
     #[Route('/login', name: 'login')]
     public function login(AuthenticationUtils $authenticationUtils, Request $request, ManagerRegistry $doctrine): Response
     {
@@ -38,6 +40,8 @@ class SecurityController extends AbstractController
          ]);
     }
 
+    // action de déconnection
+    
     #[Route('/logout', name: 'logout')]
     public function logout()
     {

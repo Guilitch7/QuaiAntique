@@ -24,8 +24,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-            {% for Booking in Bookings|sort((a, b) => a.slotLunch <=> b.slotLunch)|sort((a, b) => a.BookSlotDate <=> b.BookSlotDate) %}
-                {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
+                                {% for Booking in Bookings|sort((a, b) => a.slotLunch <=> b.slotLunch)|sort((a, b) => a.BookSlotDate <=> b.BookSlotDate) %}
+                                    {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
                                 <tr class="text-center">
                                 <th scope="row">{{ Booking.id }}</th>
                                 <td id="date{{ Booking.id }}">{{ Booking.BookSlotDate|date('d-m-y') }}</td>
@@ -35,8 +35,8 @@
                                 <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
                                 <td>{{ Booking.BookSlotAllergies }}</td>
                                 </tr>
-                {% endif %}
-            {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
                             </tbody>
                         </table>
 </main> 

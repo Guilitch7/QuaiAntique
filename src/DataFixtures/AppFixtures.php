@@ -18,13 +18,15 @@ class AppFixtures extends Fixture
         $this->passwordHasher = $passwordHasher;
     }
 
+    // création de l'utilisateur admin (mot de passe masqué manuellement)
+
     public function load(ObjectManager $manager): void
     {
             $admin = new User($this->passwordHasher);
 
             $admin  ->setUserIdentifier('admin@antique.fr')
                     ->setRoles(['ROLE_ADMIN'])
-                    ->setPassword('Antique20@23');
+                    ->setPassword('*******');
 
             $manager->persist($admin);
 

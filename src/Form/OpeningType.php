@@ -9,9 +9,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormEvent;
 
 class OpeningType extends AbstractType 
 {
@@ -84,6 +81,9 @@ class OpeningType extends AbstractType
     {
         $resolver->setDefaults([
             "data_class" => Openingdays::class,
+            'csrf_protection' => true,
+            'csrf_field_name' => '_token',
+            'csrf_token_id' => 'register_item',
         ]);
     }
 }

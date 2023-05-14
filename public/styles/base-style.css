@@ -1,3 +1,46 @@
+.address {
+    margin : 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    color: #473c57;
+    border-color: #f9f5f4;
+    font-weight: bold;
+}
+
+.btn:hover {
+    color:  #f9f5f4;
+    background-color: #a35e4c;
+}
+
+.day {
+    font-weight: bold;
+    color:#a35e4c;
+}
+
+.footer {
+    background-color: #473c57;
+    color:#f9f5f4;
+}
+
+html, body {
+    height: 100%;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.navbarMain {
+    background-color: #754d51;
+    font-weight: bold;
+}
+
 .pre-nav {
     background-color: #473c57;
     color: #f9f5f4;
@@ -13,52 +56,6 @@
     color: #f9f5f4;
 }
 
-.btn {
-    color: #473c57;
-    border-color: #f9f5f4;
-    font-weight: bold;
-}
-
-.btn:hover {
-    color:  #f9f5f4;
-    background-color: #a35e4c;
-}
-
-.address {
-    margin : 0;
-}
-
-.day {
-    font-weight: bold;
-    color:#a35e4c;
-}
-
-.navbarMain {
-    background-color: #754d51;
-    font-weight: bold;
-}
-
-.footer {
-    background-color: #473c57;
-    color:#f9f5f4;
-}
-
-.tables {
-    display: none;
-}
-
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-main {
-    flex-grow: 1;
-}
-
 .rs {
     position: fixed; 
     display: flex;
@@ -67,3 +64,9 @@ main {
     margin-bottom: 15px;
     margin-right: 10px;
 }
+
+.tables {
+    display: none;
+}
+
+
