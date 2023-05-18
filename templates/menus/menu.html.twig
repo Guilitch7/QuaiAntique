@@ -3,11 +3,6 @@
 {% block stylesheets %}
     <head>
         <link rel="stylesheet" href="{{ asset('styles/menu-style.css') }}">
-        <link href="https://fonts.cdnfonts.com/css/youth-action" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Style+Script&display=swap" rel="stylesheet">
-        <link href="https://fonts.cdnfonts.com/css/franklin-gothic-demi-2" rel="stylesheet">
     </head>
 {% endblock %}
 
@@ -30,7 +25,7 @@
                                     <li class="text-center">{{ dishe1c1.DISHESname }}</li>
                                 {% endfor %}
                                 </ul>
-                            <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
+                            <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
                                 <ul>
                                 {% for dishe1c2 in dishes1c2 %}
                                     <li class="text-center">{{ dishe1c2.DISHESname }}</li>
@@ -65,7 +60,7 @@
                                     <li class="text-center">{{ dishe2c1.DISHESname }}</li>
                                     {% endfor %}
                                 </ul>
-                            <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
+                            <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
                                 <ul>
                                     {% for dishe2c2 in dishes2c2 %}
                                     <li class="text-center">{{ dishe2c2.DISHESname }}</li>
@@ -82,7 +77,7 @@
                             <h3 class="text-center">Les formules</h3>
                             {% for formul2 in formule2 %}
                         <ul>
-                            <li>{{ formul2.name }}:<span class="price"> {{ formul2.price }} €</span></li>
+                            <li>{{ formul2.name }} :<span class="price"> {{ formul2.price }} €</span></li>
                         </ul>
                             {% endfor %}
                         </div>
@@ -94,7 +89,7 @@
                         <ul class="details">
                             <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
                                 <p class="text-center">Au choix parmi les entrées de la carte</p>
-                            <a href="{{path('plats')}}"><li class="mainLi mt-2">Plats</li></a>
+                            <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
                                 <p class="text-center">Au choix parmi les plats de la carte</p>
                             <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
                                 <p class="text-center">Au choix parmi les desserts de la carte</p>
@@ -103,7 +98,7 @@
                             <h3 class="text-center">Les formules</h3>
                             {% for formul3 in formule3 %}
                         <ul>
-                            <li>{{ formul3.name }}:<span class="price"> {{ formul3.price }} €</span></li>
+                            <li>{{ formul3.name }} :<span class="price"> {{ formul3.price }} €</span></li>
                         </ul>
                             {% endfor %}
                         </div>

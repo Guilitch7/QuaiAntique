@@ -30,7 +30,7 @@ class RegisterType extends AbstractType
                                                         'options' => ['attr' => ['class' => 'password-field']],
                                                         'required' => true,
                                                         'first_options'  => ['label' => 'Mot de passe'],
-                                                        'second_options' => ['label' => 'Confirmation mot de passe'],
+                                                        'second_options' => ['label' => 'Confirmation du mot de passe'],
                                                         "constraints" => [
                                                             new Length(["min" => 8, "minMessage" => 'Ce champ doit comporter au minimum 8 caractères']),
                                                             new NotBlank(["message" => 'Ce champ ne peut être vide'])]
@@ -42,7 +42,8 @@ class RegisterType extends AbstractType
                                                             'Viande' => 'Viande',
                                                             'Poisson' => 'Poisson',
                                                             'Gluten' => 'Gluten',
-                                                            'Lactose' => 'Lactose'
+                                                            'Lactose' => 'Lactose',
+                                                            'Arachide' => 'Arachide'
                                                         ],]);
     }
     public function configureOptions(OptionsResolver $resolver)

@@ -39,7 +39,7 @@ class BookingController extends AbstractController
         $isOpen = $repository->findAll();
 
         return
-        $this->render('booking/home.html.twig',[
+        $this->render('booking/book.html.twig',[
             'title' => 'Réserver',
             'current_menu' => 'Réserver',
             "booking_form" => $form->createView(),

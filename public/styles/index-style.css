@@ -24,6 +24,7 @@
 
 h1 {
     color: #f9f5f1;
+    font-family: 'Lobster Two', cursive;
 }
 
 .jumbotron {
@@ -34,5 +35,4 @@ h1 {
     color:#faf5f1;
     background: linear-gradient(#754d51, #a35e4c);
     list-style-type: none;
-    font-family: 'Franklin Gothic Demi', sans-serif;
 }

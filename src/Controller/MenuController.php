@@ -40,7 +40,7 @@ class MenuController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('menus/index.html.twig', [
+        return $this->render('menus/menu.html.twig', [
             'menu1' => $menu1,
             'menu2' => $menu2,
             'dishes1c1' => $dishes1c1,

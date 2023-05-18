@@ -68,6 +68,7 @@ class BookingType extends AbstractType
                     'Crustacés' => 'Crustacés',
                     'Viande' => 'Viande',
                     'Arachide' => 'Arachide',
+                    'Lactose' => 'Lactose',
                     'Poisson' => 'Poisson',
                     'Gluten' => 'Gluten'],'attr' => ['class' => 'text-center fw-bold'],])
             ->getForm();
@@ -97,6 +98,7 @@ class BookingType extends AbstractType
                   'Crustacés' => 'Crustacés',
                   'Viande' => 'Viande',
                   'Arachide' => 'Arachide',
+                  'Lactose' => 'Lactose',
                   'Poisson' => 'Poisson',
                   'Gluten' => 'Gluten'],'attr' => ['class' => 'text-center fw-bold'],])
           ->getForm();

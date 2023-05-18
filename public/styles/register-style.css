@@ -9,7 +9,8 @@
 }
 
 h1 {
-    color : #473c57;
+    color:#754d51;
+    font-family: 'Lobster Two', cursive;
 }
 
 .icon {
@@ -30,5 +31,6 @@ h1 {
 main {
     color : #473c57;
     font-weight: 600;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    font-family: 'Muli', sans-serif;
 }

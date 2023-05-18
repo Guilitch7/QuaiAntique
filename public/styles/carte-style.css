@@ -1,12 +1,13 @@
 h1 {
     color:#754d51;
-    font-family: 'Franklin Gothic Demi', sans-serif;
+    font-family: 'Lobster Two', cursive;
+    font-size: 3rem;
 }
 
 h2 {
     color:#8d95d8;
-    font-family: 'Style Script', cursive;
-    font-size: 3rem;
+    font-family: 'Metamorphous', sans-serif;
+    font-size: 2rem;
     font-weight: 250;
     line-height: 1.3;
     border-bottom: 1px solid #8d95d8;
@@ -14,6 +15,7 @@ h2 {
 
 h3 {
     font-size: 1.3rem;
+    font-family: 'Muli', sans-serif;
 }
 
 main .container {

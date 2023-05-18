@@ -55,7 +55,7 @@ class PlatsController extends AbstractController
                 $entityManager->flush();
                 return $this->redirectToRoute('plats_confirm');
             } 
-            return $this->render('home/plats_admin.html.twig', [
+            return $this->render('admin/plats_admin.html.twig', [
                 "horaires" => $isOpen,
                 "dishes_form" => $form->createView(),
                 'title' => 'Enregistrer un plat',
@@ -75,7 +75,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats.html.twig', [
+        return $this->render('dishes/plats.html.twig', [
             'plats' => $dishes,
             'controller_name' => 'PlatsController',
             'title' => 'Nos plats',
@@ -96,7 +96,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats_entrée.html.twig', [
+        return $this->render('dishes/plats_entrée.html.twig', [
             'entrees' => $entree,
             'controller_name' => 'PlatsController',
             'title' => 'Nos entrées',
@@ -118,7 +118,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats_spécialités.html.twig', [
+        return $this->render('dishes/plats_spécialités.html.twig', [
             'specialites' => $specialites,
             'controller_name' => 'PlatsController',
             'title' => 'Nos spécialités',
@@ -139,7 +139,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats_viandes.html.twig', [
+        return $this->render('dishes/plats_viandes.html.twig', [
             'viandes' => $meat,
             'controller_name' => 'PlatsController',
             'title' => 'Nos viandes',
@@ -152,7 +152,7 @@ class PlatsController extends AbstractController
 
     #[Route('/plats-poissons', name: 'poissons')]
 
-    public function fish(ManagerRegistry $doctrine): Response
+    public function fish (ManagerRegistry $doctrine): Response
     {
         $repository = $doctrine->getRepository(Dishes::class);
         $fish = $repository->findBy(['DISHEStype' => 'Poisson']);
@@ -160,7 +160,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats_poissons.html.twig', [
+        return $this->render('dishes/plats_poissons.html.twig', [
             'poissons' => $fish,
             'controller_name' => 'PlatsController',
             'title' => 'Nos poissons',
@@ -168,6 +168,27 @@ class PlatsController extends AbstractController
             'horaires' => $isOpen,
         ]);
     }
+
+        // page présentation des plats principaux
+
+        #[Route('/plats-principaux', name: 'mainCourses')]
+
+        public function mainCourses (ManagerRegistry $doctrine): Response
+        {
+            $repository = $doctrine->getRepository(Dishes::class);
+            $mainDishes = $repository->findAll();
+    
+            $repository = $doctrine->getRepository(Openingdays::class);
+            $isOpen = $repository->findAll();
+    
+            return $this->render('dishes/plats_principaux.html.twig', [
+                'mainCourses' => $mainDishes,
+                'controller_name' => 'PlatsController',
+                'title' => 'Nos plats principaux',
+                'current_menu' => 'plats',
+                'horaires' => $isOpen,
+            ]);
+        }
 
     // page présentation des desserts
 
@@ -181,7 +202,7 @@ class PlatsController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        return $this->render('home/plats_desserts.html.twig', [
+        return $this->render('dishes/plats_desserts.html.twig', [
             'desserts' => $desert,
             'controller_name' => 'PlatsController',
             'title' => 'Nos desserts',
@@ -235,7 +256,7 @@ class PlatsController extends AbstractController
              $entityManager->flush();
              return $this->redirectToRoute('plats');
       }
-        return $this->render('home/plats_admin.html.twig', 
+        return $this->render('admin/plats_admin.html.twig', 
         [
         "horaires" => $isOpen,
         "dishes_form" => $form->createView(),
@@ -253,7 +274,7 @@ class PlatsController extends AbstractController
            $repository = $doctrine->getRepository(Openingdays::class);
            $isOpen = $repository->findAll();
    
-          return $this->render('home/plats_check.html.twig', [
+          return $this->render('dishes/plats_check.html.twig', [
               'controller_name' => 'BookingController',
               'horaires' => $isOpen,
           ]);

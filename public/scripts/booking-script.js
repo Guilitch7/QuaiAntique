@@ -18,7 +18,7 @@ var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
 var bookDate = new Date(date);
 var dayBooked = bookDate.getDay();
-
+var today = new Date();
 
 // fonction de vérification si ouvert au jour et heure réservé
 
@@ -76,11 +76,13 @@ function checkSlot() {
     };
 };
 
-// ouverture ou non de 2ème partie du form si horaires valables
+// ouverture ou non de 2ème partie du form si horaires valables et date pas encore passée
 
 document.getElementById('btn1').addEventListener('click', () => {
     var isSlot = checkSlot();
-    if (!isSlot) {  
+    test = (today<=bookDate);
+
+    if (!isSlot || !test) {  
         document.getElementById('form2').style.display = 'none';
         document.getElementById('alert').style.display = 'block';
                 }

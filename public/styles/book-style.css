@@ -21,7 +21,9 @@ article, form {
 }
 
 h1 {
-    color : #473c57;
+    color:#754d51;
+    font-family: 'Lobster Two', cursive;
+    font-size: 3rem;
 }
 
 img {
@@ -38,6 +40,8 @@ main {
     color : #473c57;
     font-weight: 600;
     font-size: 1.5rem;
+    font-family: 'Muli', sans-serif;
+
 }
 
 .value {

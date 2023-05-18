@@ -16,6 +16,9 @@ class Openingdays
     #[ORM\Column]
     private int $id;
 
+    #[ORM\Column(type: "integer", nullable: false)]
+    private ?int $orderDay = null;
+
     #[ORM\Column(type: "string", nullable: false)]
     private $OPENINGDAYSday;
 
@@ -136,5 +139,17 @@ class Openingdays
     public function __toString()
     {
         return gettype($this->getOpenLunch());
+    }
+
+    public function getOrderDay()
+    {
+        return $this->orderDay;
+    }
+
+    public function setOrderDay($orderDay)
+    {
+        $this->orderDay = $orderDay;
+
+        return $this;
     }
 }

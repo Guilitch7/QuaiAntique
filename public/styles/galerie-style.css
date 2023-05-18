@@ -32,7 +32,9 @@ body{
 }
 
 h1 {
-    color : #754d51
+    color : #754d51;
+    font-family: 'Lobster Two', cursive;
+    font-size: 3rem;
 }
 
 main {  
