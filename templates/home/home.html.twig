@@ -19,7 +19,7 @@
               {% for entree in entrees %}
                 <div class="card">
                   <a href="{{path('entrées')}}">
-                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
+                    <img class="d-block w-auto h-100 rounded img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
                       <div class="description">
                         </br>
                         </br>
@@ -35,7 +35,7 @@
               {% for plat in plats %}
                 <div class="card">
                   <a href="{{path('mainCourses')}}">
-                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
+                    <img class="d-block w-auto h-100 rounded img-fluid" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
                       <div class="description">
                         </br>
                         </br>
@@ -51,7 +51,7 @@
               {% for dessert in desserts %}
                 <div class="card">
                   <a href="{{path('desserts')}}">
-                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
+                    <img class="d-block w-auto h-100 rounded img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
                       <div class="description">
                         </br>
                         </br>
