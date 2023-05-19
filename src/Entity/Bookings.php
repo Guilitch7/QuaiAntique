@@ -22,7 +22,7 @@ class Bookings
     private ?string $service;
 
     #[ORM\Column(type: "integer", nullable: false)]
-    private ?int $OPENINGDAYS_id;
+    private ?int $day;
 
     #[ORM\Column(nullable: true)]
     private ?DateTime $slotLunch;
@@ -110,12 +110,12 @@ class Bookings
 
     public function getday()
     {
-        return $this->OPENINGDAYS_id;
+        return $this->day;
     }
 
-    public function setday($OPENINGDAYS_id)
+    public function setday($day)
     {
-        $this->OPENINGDAYS_id = $OPENINGDAYS_id;
+        $this->day = $day;
 
         return $this;
     }
