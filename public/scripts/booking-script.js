@@ -156,10 +156,20 @@ document.getElementById('booking_BookSlotCovers').addEventListener('input', () =
 });
 
 
-// ou verture de dernière partie du form si disponibilités toujours possibles
+// création du récapitulatif de réservation avant validation
+        messages = document.getElementById("messages");
+        send = document.getElementById("send");
+        confirmMessage = document.createElement("p");
+
+        messages.insertBefore(confirmMessage, send);
+
+
+
+// ouverture de dernière partie du form si disponibilités toujours possibles
 
 document.getElementById('btn3').addEventListener('click', () => { 
-    // récupération des couverts réservés et tests si possible de réserver
+    // récupération des couverts réservés et tests si possible de réserver et récupération nom utilisateur
+    nameUser = document.getElementById('booking_BookSlotUser').value;
     coversAvailable = document.getElementById(dayBooked).innerHTML;
     let coversWished = document.getElementById('booking_BookSlotCovers').value;
     let test = coversWished > (coversAvailable - coversBooked);
@@ -174,19 +184,12 @@ document.getElementById('btn3').addEventListener('click', () => {
     dateFr = day +'/'+ month +'/'+ year;
 
     //affichage du message d'alerte ou de la dernière partie du form si places toujours disponibles
-    if (!test) {
+    if (!test && coversWished > 0 && nameUser != "") {
         document.getElementById('form2').style.display = 'none';
         document.getElementById('form3').style.display = 'block';
         document.getElementById('alert2').style.display = 'none';
-        
-        // création du récapitulatif de réservation avant validation
-        messages = document.getElementById("messages");
-        send = document.getElementById("send");
 
-        const confirmMessage = document.createElement("p");
-        confirmMessage.textContent = "Vous souhaitez réserver pour le " + dateFr +" à "+ slotHour +":"+ slotMin +"h pour "+ coversWished +" couvert(s) dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ allergie;
-
-        messages.insertBefore(confirmMessage, send);
+        confirmMessage.innerHTML = "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +" à "+ "<span class=\"text-success fw-bold\">" + slotHour + ":"+ slotMin +"h" + "</span>" +" pour "+ "<span class=\"text-success fw-bold\">" + coversWished + " couvert(s)"+ "</span>" +" dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ "<span class=\"text-success fw-bold\">" + allergie+"</span>";
     }
     else
     {
