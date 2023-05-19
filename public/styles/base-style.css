@@ -41,6 +41,10 @@ main {
     font-weight: bold;
 }
 
+.nav-link {
+    color: #f9f5f4;
+}
+
 .pre-nav {
     background-color: #473c57;
     color: #f9f5f4;

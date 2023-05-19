@@ -34,6 +34,7 @@ class RegisterController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('confirm_subscribe');
         } 
+
         return $this->render('home/register.html.twig', [
             "register_form" => $form->createView(),
             'title' => 'Sinscrire',

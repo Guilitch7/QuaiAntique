@@ -18,42 +18,48 @@
             <div class="col-sm-12 col-md-6 col-xl-4">
               {% for entree in entrees %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
-                    <div class="description">
-                      </br>
-                      </br>
-                      </br>
-                      <h2>{{ entree.DISHESname }}</h2>
-                      <p>{{ entree.DISHESdescription }}</p>
-                    </div>
+                  <a href="{{path('entrées')}}">
+                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ entree.DISHESphoto) }}" alt="{{ entree.DISHESname }}">
+                      <div class="description">
+                        </br>
+                        </br>
+                        </br>
+                        <h2>{{ entree.DISHESname }}</h2>
+                        <p>{{ entree.DISHESdescription }}</p>
+                      </div>
+                  </a>
                 </div>        
               {% endfor %}
             </div>
             <div class="col-sm-12 col-md-6 col-xxl-4">
               {% for plat in plats %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
-                    <div class="description">
-                      </br>
-                      </br>
-                      </br>
-                      <h2>{{ plat.DISHESname }}</h2>
-                      <p>{{ plat.DISHESdescription }}</p>
-                    </div>
+                  <a href="{{path('mainCourses')}}">
+                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ plat.DISHESphoto) }}" alt="{{ plat.DISHESname }}">
+                      <div class="description">
+                        </br>
+                        </br>
+                        </br>
+                        <h2>{{ plat.DISHESname }}</h2>
+                        <p>{{ plat.DISHESdescription }}</p>
+                      </div>
+                  </a>
                 </div>
               {% endfor %}
             </div>
             <div class="col-sm-12 col-md-6 col-xl-4">
               {% for dessert in desserts %}
                 <div class="card">
-                  <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
-                    <div class="description">
-                      </br>
-                      </br>
-                      </br>
-                      <h2>{{ dessert.DISHESname }}</h2>
-                      <p>{{ dessert.DISHESdescription }}</p>
-                    </div>
+                  <a href="{{path('desserts')}}">
+                    <img class="d-block w-100 rounded img-fluid" src="{{ asset('uploads/' ~ dessert.DISHESphoto) }}" alt="{{ dessert.DISHESname }}">
+                      <div class="description">
+                        </br>
+                        </br>
+                        </br>
+                        <h2>{{ dessert.DISHESname }}</h2>
+                        <p>{{ dessert.DISHESdescription }}</p>
+                      </div>
+                  </a>
                 </div>
               {% endfor %}
             </div>
