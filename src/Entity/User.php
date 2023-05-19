@@ -47,7 +47,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
         $this->passwordHasher = $passwordHasher;
-        $this->userRole[] = 'ROLE_USER';
     }
 
     public function getId(): ?int
@@ -76,7 +75,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         
 
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $userRole[] = 'ROLE_USER';
         return array_unique($userRole);
 
     }
