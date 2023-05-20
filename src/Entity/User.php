@@ -15,10 +15,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 message: 'Cet email est déjà utilisé')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue (strategy:"AUTO")]
-    #[ORM\Column]
-    private ?int $userId = null;
+    #[ORM\Id()]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: "integer")]
+    private $id = null;
 
     #[ORM\Column (type: 'json')]
     private array $userRole = [];
@@ -51,7 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getId(): ?int
     {
-        return $this->userId;
+        return $this->id;
     }
 
     public function getUserIdentifier(): string
