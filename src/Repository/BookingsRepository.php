@@ -42,7 +42,7 @@ class BookingsRepository extends ServiceEntityRepository
     public function apiFindAll():array
     {
         $qb = $this->createQueryBuilder('b')
-        ->select('b.BOOKINGSLOTid', 'b.BOOKINGSLOTdatetime', 'b.slotLunch', 'b.BOOKINGSLOTlastnameuser', 'b.BOOKINGSLOTcoversnumber', 'b.service')
+        ->select('b.BOOKINGSLOTid', 'b.BOOKINGSLOTdatetime', 'b.slotLunch', 'b.BOOKINGSLOTcoversnumber', 'b.service')
         ->orderBy('b.BOOKINGSLOTdatetime','DESC');
 
         $query = $qb->getQuery();

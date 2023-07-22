@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Serializer;
 
 class APIController extends AbstractController
 {
-    #[Route('/api/resa/api-liste', name: 'liste_resa', methods:"GET")]
+    #[Route('/api/api-liste', name: 'liste_resa', methods:"GET")]
 
     public function liste(BookingsRepository $bookingsRepo)
     {
@@ -21,7 +21,7 @@ class APIController extends AbstractController
         //utilisation d'un encodeur JSON
         $encoders = [new JsonEncoder()];
 
-        // instanciation du normalizer pour covertir la collection en tableau
+        // instanciation du normalizer pour convertir la collection en tableau
         $normalizers = [new ObjectNormalizer()];
 
         // conversion en Json
@@ -34,13 +34,12 @@ class APIController extends AbstractController
                     }
                 ]);
 
-        // instaciation de la réponse
+        // instanciation de la réponse
         $response = new Response($jsonContent);
 
         // en-tête http ajoutée
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
-
     }
 }

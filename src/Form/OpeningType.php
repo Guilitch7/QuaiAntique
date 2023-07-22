@@ -32,10 +32,10 @@ class OpeningType extends AbstractType
                 "label" => "Ouverture midi",
                 'widget' => 'choice',
                 'placeholder' => [
-                    'hour' => 'Fermé', 'minute' => 'Fermé',
+                    'hour' => 'Fermé',
                 ],
                 'hours' => [ '11' => '11', '12' => '12'],
-                'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
+                'minutes' => [ '00' => '00', '15' => '15','30' => '30', '45' => '45'],
                 'required' => false
             ])
             
@@ -43,10 +43,10 @@ class OpeningType extends AbstractType
                 "label" => "Fermeture midi",
                 'widget' => 'choice',
                 'placeholder' => [
-                    'hour' => 'Fermé', 'minute' => 'Fermé',
+                    'hour' => 'Fermé',
                 ],
                 'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14'],
-                'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
+                'minutes' => [ '00' => '00', '15' => '15','30' => '30', '45' => '45'],
                 'required' => false
             ])
 
@@ -54,10 +54,10 @@ class OpeningType extends AbstractType
                 "label" => "Ouverture soir",
                 'widget' => 'choice',
                 'placeholder' => [
-                    'hour' => 'Fermé', 'minute' => 'Fermé',
+                    'hour' => 'Fermé',
                 ],
                 'hours' => [ '18' => '18','19' => '19','20' => '20'],
-                'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
+                'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45'],
                 'required' => false
             ])
 
@@ -65,10 +65,10 @@ class OpeningType extends AbstractType
                 "label" => "Fermeture soir",
                 'widget' => 'choice',
                 'placeholder' => [
-                    'hour' => 'Fermé', 'minute' => 'Fermé',
+                    'hour' => 'Fermé',
                 ],
                 'hours' => ['20' => '20', '21' => '21','22' => '22','23' => '23'],
-                'minutes' => [ '15' => '15','30' => '30', '45' => '45','00' => '00'],
+                'minutes' => ['00' => '00', '15' => '15','30' => '30', '45' => '45'],
                 'required' => false
             ])
 
