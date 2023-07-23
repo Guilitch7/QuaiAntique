@@ -29,7 +29,7 @@ class DishesType extends AbstractType
                                                         "constraints" => [
                                                         new NotBlank(["message" => 'Ce champ ne peut être vide'])],
                                                         "choices"  => [
-                                                            'Entrée' => 'entrée',
+                                                            'Entrée' => 'Entrée',
                                                             'Plat' => 'Plat',
                                                             'Dessert' => 'Dessert',
                                                             'Boisson' => 'Boisson',
