@@ -1,0 +1,379 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block stylesheets %}
+        <head>
+                <link rel="stylesheet" href="{{ asset('styles/admin-style.css') }}">
+        </head>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <div class="row p-0">
+      <div class="card col-3" style="width: 18rem;">
+      <h4>TRANSGENE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="date"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slug"></h6>
+          <a href="#" target="_blank" class="card-link" id="link"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>PIXIUM</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="datePix"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugPix"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkPix"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>VALNEVA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateVal"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugVal"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkVal"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ABIVAX</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAbi"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAbi"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAbi"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>NOVACYT</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateNov"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugNov"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkNov"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>MEDINCELL</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateMed"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugMed"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkMed"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ADVICENNE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAdv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAdv"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAdv"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>LUMIBIRD</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateLum"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugLum"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkLum"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>EQUASENS</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateEqu"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugEqu"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkEqu"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>AMOEBA-NATURE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAmo"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAmo"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAmo"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>THERACLION</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateThe"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugThe"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkThe"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>SOLUTIONS 30</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateSol"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugSol"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkSol"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>FONCIERE INEA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateFon"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugFon"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkFon"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>VERALLIA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateVer"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugVer"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkVer"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>CRITEO</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateCri"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugCri"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkCri"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>WAGA-ENERGY</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateWag"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugWag"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkWag"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>BONDUELLE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBon"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugBon"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkBon"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>TRANSGENE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>PIXIUM</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="datePixP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugPixP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkPixP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>VALNEVA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateValP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugValP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkValP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ABIVAX</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAbiP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAbiP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAbiP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>NOVACYT</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateNovP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugNovP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkNovP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>MEDINCELL</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateMedP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugMedP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkMedP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ADVICENNE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAdvP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAdvP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAdvP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>LUMIBIRD</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateLumP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugLumP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkLumP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>EQUASENS</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateEquP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugEquP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkEquP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>AMOEBA-NATURE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAmoP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAmoP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAmoP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>THERACLION</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateTheP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugTheP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkTheP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>SOLUTIONS 30</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateSolP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugSolP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkSolP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>FONCIERE INEA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateFonP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugFonP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkFonP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>VERALLIA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateVerP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugVerP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkVerP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>CRITEO</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateCriP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugCriP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkCriP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>WAGA-ENERGY</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateWagP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugWagP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkWagP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>BONDUELLE</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBonP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugBonP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkBonP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>AUBAY</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAub"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAub"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAub"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>AUBAY</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateAubP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAubP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkAubP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>INVENTIVAPHARMA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateInv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugInv"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkInv"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>INVENTIVAPHARMA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateInvP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugInvP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkInvP"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>MEDESISPHARMA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateMed"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugMed"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkMed"></a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>MEDESISPHARMA</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateMedP"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugMedP"></h6>
+          <a href="#" target="_blank" class="card-link" id="linkMedP"></a>
+        </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  <script src="{{ asset('scripts/wp-script.js') }}"></script>
+{% endblock %}
