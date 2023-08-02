@@ -73,4 +73,20 @@ class AdminController extends AbstractController
         'current_menu' => 'admin',
     ]);
     }
+
+    #[Route('/admin-wp', name: 'wp')]
+
+    public function wp(ManagerRegistry $doctrine): Response
+    {
+
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
+        return $this->render('admin/wp.html.twig', [
+            "horaires" => $isOpen,
+            'controller_name' => 'AdminController',
+            'current_menu' => 'admin',
+            'title' => 'wp',
+        ]);
+    }
 }

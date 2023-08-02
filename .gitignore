@@ -7,6 +7,8 @@
 /public/bundles/
 /var/
 /vendor/
+/templates/admin/wp.html.twig
+/public/scripts/wp-script.js
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
