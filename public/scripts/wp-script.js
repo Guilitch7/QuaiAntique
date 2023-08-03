@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchTheraclionP();
   fetchSolutionsP();
   fetchFonciereP();
-  fetchVeralliaP();
   fetchCriteoP();
   fetchWagaP();
   fetchBonduelleP();
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchInventiva();
   fetchInventivaP();
   fetchMedesis();
-  fetchMedesisP()
+  fetchMedesisP();
 });
 
 function fetchTransgene() {
@@ -1142,43 +1141,6 @@ function fetchFonciereP() {
       const slugElement = document.getElementById('slugFonP');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkFonP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchVeralliaP() {
-  fetch('https://verallia.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateVerP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugVerP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkVerP');
       linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
     })
