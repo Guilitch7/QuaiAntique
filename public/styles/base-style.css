@@ -41,7 +41,11 @@ main {
     font-weight: bold;
 }
 
-.navbar-nav .active {
+.nav-link:hover {
+    text-decoration: underline;
+  }
+
+.navbar-nav .nav-link.active {
     color: white;
   }
 
