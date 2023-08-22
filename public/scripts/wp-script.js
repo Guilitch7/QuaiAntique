@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchAfyren();
   fetchDolfines();
   fetchEcoslops();
+  fetchAdocia();
+  fetchAkwell();
 });
 
 function fetchTransgene() {
@@ -786,7 +788,7 @@ function fetchValnevaP() {
 }
 
 function fetchAbivaxP() {
-  fetch('https://www.abivax.com/wp-json/wp/v2/posts')
+  fetch('https://www.abivax.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1711,3 +1713,77 @@ function fetchNicox() {
           });
           }
     
+          function fetchAdocia() {
+            fetch('https://www.adocia.com/wp-json/wp/v2/media')
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Une erreur est survenue lors de la requête.');
+              }
+              return response.json();
+            })
+            .then(posts => {
+              // Tri des articles par date dans l'ordre décroissant
+              posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+              // Récupération des informations du dernier article
+              const lastPost = posts[0];
+              const lastDate = lastPost.date;
+              const lastSlug = lastPost.slug;
+              const lastLink = lastPost.link;
+            
+              // Affichage des informations dans la console
+              console.log(`Dernière Date: ${lastDate}`);
+              console.log(`Dernier Slug: ${lastSlug}`);
+              console.log(`Dernier Link: ${lastLink}`);
+            
+              // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+              const dateElement = document.getElementById('dateAdo');
+              dateElement.textContent = lastDate;
+              const slugElement = document.getElementById('slugAdo');
+              slugElement.textContent = lastSlug;
+              const linkElement = document.getElementById('linkAdo');
+              linkElement.textContent = lastLink;
+              linkElement.setAttribute('href', lastLink);
+            })
+            .catch(error => {
+              console.error(error);
+            });
+            }
+      
+            function fetchAkwell() {
+              fetch('https://akwel-automotive.com/wp-json/wp/v2/media')
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Une erreur est survenue lors de la requête.');
+                }
+                return response.json();
+              })
+              .then(posts => {
+                // Tri des articles par date dans l'ordre décroissant
+                posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+              
+                // Récupération des informations du dernier article
+                const lastPost = posts[0];
+                const lastDate = lastPost.date;
+                const lastSlug = lastPost.slug;
+                const lastLink = lastPost.link;
+              
+                // Affichage des informations dans la console
+                console.log(`Dernière Date: ${lastDate}`);
+                console.log(`Dernier Slug: ${lastSlug}`);
+                console.log(`Dernier Link: ${lastLink}`);
+              
+                // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                const dateElement = document.getElementById('dateAkw');
+                dateElement.textContent = lastDate;
+                const slugElement = document.getElementById('slugAkw');
+                slugElement.textContent = lastSlug;
+                const linkElement = document.getElementById('linkAkw');
+                linkElement.textContent = lastLink;
+                linkElement.setAttribute('href', lastLink);
+              })
+              .catch(error => {
+                console.error(error);
+              });
+              }
+        
