@@ -47,10 +47,11 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchEcoslops();
   fetchAdocia();
   fetchAkwell();
+  fetchOse();
 });
 
 function fetchTransgene() {
-  fetch('https://www.transgene.fr/wp-json/wp/v2/media')
+  fetch('https://www.transgene.fr/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -123,7 +124,7 @@ function fetchTransgene() {
 }
 
 function fetchValneva() {
-  fetch('https://valneva.com/wp-json/wp/v2/media')
+  fetch('https://valneva.com/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -419,7 +420,7 @@ function fetchAmoeba() {
 }
 
 function fetchTheraclion() {
-  fetch('https://www.theraclion.fr/wp-json/wp/v2/media')
+  fetch('https://www.theraclion.fr/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -567,7 +568,7 @@ function fetchVerallia() {
 }
 
 function fetchCriteo() {
-  fetch('https://www.criteo.com/wp-json/wp/v2/media')
+  fetch('https://www.criteo.com/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -641,7 +642,7 @@ function fetchWaga() {
 }
 
 function fetchBonduelle() {
-  fetch('https://www.bonduelle.com/wp-json/wp/v2/media')
+  fetch('https://www.bonduelle.com/fr/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -714,7 +715,7 @@ function fetchTransgeneP() {
     });
   }
     function fetchPixiumP() {
-      fetch('https://www.pixium-vision.com/wp-json/wp/v2/posts')
+      fetch('https://www.hunyvers.com/wp-json/wp/v2/media')
         .then(response => {
           if (!response.ok) {
             throw new Error('Une erreur est survenue lors de la requête.');
@@ -751,7 +752,7 @@ function fetchTransgeneP() {
 }
 
 function fetchValnevaP() {
-  fetch('https://valneva.com/wp-json/wp/v2/posts')
+  fetch('https://valneva.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1232,7 +1233,7 @@ function fetchWagaP() {
 }
 
 function fetchBonduelleP() {
-  fetch('https://www.bonduelle.com/wp-json/wp/v2/posts')
+  fetch('https://www.carbios.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1380,7 +1381,7 @@ function fetchInventiva() {
 }
 
 function fetchInventivaP() {
-  fetch('https://inventivapharma.com/wp-json/wp/v2/media')
+  fetch('https://www.dekuple.com/wp-json/wp/v2/media?doing_wp_cron=1692265931.2854321002960205078125')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1454,7 +1455,7 @@ function fetchMedesisP() {
 }
 
 function fetchMedesis() {
-  fetch('https://www.medesispharma.com/wp-json/wp/v2/media')
+  fetch('https://www.medesispharma.com/wp-json/wp/v2/media?page=2')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1787,3 +1788,39 @@ function fetchNicox() {
               });
               }
         
+              function fetchOse() {
+                fetch('https://www.ose-immuno.com/wp-json/wp/v2/media?page=2')
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Une erreur est survenue lors de la requête.');
+                  }
+                  return response.json();
+                })
+                .then(posts => {
+                  // Tri des articles par date dans l'ordre décroissant
+                  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                  // Récupération des informations du dernier article
+                  const lastPost = posts[0];
+                  const lastDate = lastPost.date;
+                  const lastSlug = lastPost.slug;
+                  const lastLink = lastPost.link;
+                
+                  // Affichage des informations dans la console
+                  console.log(`Dernière Date: ${lastDate}`);
+                  console.log(`Dernier Slug: ${lastSlug}`);
+                  console.log(`Dernier Link: ${lastLink}`);
+                
+                  // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                  const dateElement = document.getElementById('dateOse');
+                  dateElement.textContent = lastDate;
+                  const slugElement = document.getElementById('slugOse');
+                  slugElement.textContent = lastSlug;
+                  const linkElement = document.getElementById('linkOse');
+                  linkElement.textContent = lastLink;
+                  linkElement.setAttribute('href', lastLink);
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+                }
