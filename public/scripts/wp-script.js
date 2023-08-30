@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   fetchTransgene();
   fetchPixium();
-  fetchValneva();
   fetchAbivax();
   fetchNovacyt();
   fetchMedincell();
@@ -17,28 +16,13 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchCriteo();
   fetchWaga();
   fetchBonduelle();
-  fetchTransgeneP();
   fetchPixiumP();
   fetchValnevaP();
   fetchAbivaxP();
-  fetchNovacytP();
-  fetchMedincellP();
-  fetchAdvincenneP();
-  fetchLumibirdP();
-  fetchEquasensP();
-  fetchAmoebaP();
-  fetchTheraclionP();
-  fetchSolutionsP();
-  fetchFonciereP();
-  fetchCriteoP();
-  fetchWagaP();
-  fetchBonduelleP();
+  fetchCarbios();
+  fetchEramet();
   fetchAubay();
-  fetchAubayP();
-  fetchInventiva();
   fetchInventivaP();
-  fetchMedesis();
-  fetchMedesisP();
   fetchSpin();
   fetchNicox();
   fetchEnogia();
@@ -48,10 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchAdocia();
   fetchAkwell();
   fetchOse();
+  fetchMedesis();
 });
 
 function fetchTransgene() {
-  fetch('https://www.transgene.fr/wp-json/wp/v2/media?page=2')
+  fetch('https://www.transgene.fr/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -121,43 +106,6 @@ function fetchTransgene() {
         .catch(error => {
           console.error(error);
         });
-}
-
-function fetchValneva() {
-  fetch('https://valneva.com/wp-json/wp/v2/media?page=2')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateVal');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugVal');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkVal');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
 }
 
 function fetchAbivax() {
@@ -678,42 +626,6 @@ function fetchBonduelle() {
     });
 }
 
-function fetchTransgeneP() {
-  fetch('https://www.transgene.fr/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-  }
     function fetchPixiumP() {
       fetch('https://www.hunyvers.com/wp-json/wp/v2/media')
         .then(response => {
@@ -825,414 +737,7 @@ function fetchAbivaxP() {
     });
 }
 
-function fetchNovacytP() {
-  fetch('https://novacyt.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateNovP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugNovP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkNovP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchMedincellP() {
-  fetch('https://www.medincell.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateMedP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugMedP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkMedP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchAdvincenneP() {
-  fetch('https://advicenne.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAdvP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAdvP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAdvP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchLumibirdP() {
-  fetch('https://www.lumibird.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateLumP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugLumP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkLumP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchEquasensP() {
-  fetch('https://equasens.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateEquP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugEquP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkEquP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchAmoebaP() {
-  fetch('https://amoeba-nature.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAmoP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAmoP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAmoP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchTheraclionP() {
-  fetch('https://theraclion.fr/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateTheP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugTheP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkTheP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchSolutionsP() {
-  fetch('https://www.solutions30.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateSolP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugSolP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkSolP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchFonciereP() {
-  fetch('https://fonciere-inea.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateFonP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugFonP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkFonP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchCriteoP() {
-  fetch('https://www.criteo.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateCriP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugCriP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkCriP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchWagaP() {
-  fetch('https://waga-energy.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateWagP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugWagP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkWagP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchBonduelleP() {
+function fetchCarbios() {
   fetch('https://www.carbios.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
@@ -1269,45 +774,8 @@ function fetchBonduelleP() {
     });
 }
 
-function fetchAubayP() {
-  fetch('https://aubay.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAubP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAubP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAubP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
-function fetchAubay() {
-  fetch('https://aubay.com/wp-json/wp/v2/media')
+function fetchEramet() {
+  fetch('https://eramet.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1343,8 +811,8 @@ function fetchAubay() {
     });
 }
 
-function fetchInventiva() {
-  fetch('https://inventivapharma.com/wp-json/wp/v2/posts')
+function fetchAubay() {
+  fetch('https://aubay.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1367,11 +835,11 @@ function fetchInventiva() {
       console.log(`Dernier Link: ${lastLink}`);
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateInvP');
+      const dateElement = document.getElementById('dateAubP');
       dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugInvP');
+      const slugElement = document.getElementById('slugAubP');
       slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkInvP');
+      const linkElement = document.getElementById('linkAubP');
       linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
     })
@@ -1381,7 +849,7 @@ function fetchInventiva() {
 }
 
 function fetchInventivaP() {
-  fetch('https://www.dekuple.com/wp-json/wp/v2/media?doing_wp_cron=1692265931.2854321002960205078125')
+  fetch('https://www.dekuple.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -1417,79 +885,43 @@ function fetchInventivaP() {
     });
 }
 
-function fetchMedesisP() {
-  fetch('https://medesispharma.com/wp-json/wp/v2/posts')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateMedP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugMedP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkMedP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
 function fetchMedesis() {
-  fetch('https://www.medesispharma.com/wp-json/wp/v2/media?page=2')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateMed');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugMed');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkMed');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
+  fetch('https://www.biophytis.com/wp-json/wp/v2/media')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Une erreur est survenue lors de la requête.');
+    }
+    return response.json();
+  })
+  .then(posts => {
+    // Tri des articles par date dans l'ordre décroissant
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  
+    // Récupération des informations du dernier article
+    const lastPost = posts[0];
+    const lastDate = lastPost.date;
+    const lastSlug = lastPost.slug;
+    const lastLink = lastPost.link;
+  
+    // Affichage des informations dans la console
+    console.log(`Dernière Date: ${lastDate}`);
+    console.log(`Dernier Slug: ${lastSlug}`);
+    console.log(`Dernier Link: ${lastLink}`);
+  
+    // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+    const dateElement = document.getElementById('dateMed');
+    dateElement.textContent = lastDate;
+    const slugElement = document.getElementById('slugMed');
+    slugElement.textContent = lastSlug;
+    const linkElement = document.getElementById('linkMed');
+    linkElement.textContent = lastLink;
+    linkElement.setAttribute('href', lastLink);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+  }
+  
 
 function fetchSpin() {
 fetch('https://www.spineguard.com/wp-json/wp/v2/media')
