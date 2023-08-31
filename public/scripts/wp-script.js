@@ -368,7 +368,7 @@ function fetchAmoeba() {
 }
 
 function fetchTheraclion() {
-  fetch('https://www.theraclion.fr/wp-json/wp/v2/media?page=2')
+  fetch('https://www.theraclion.fr/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -516,7 +516,7 @@ function fetchVerallia() {
 }
 
 function fetchCriteo() {
-  fetch('https://www.criteo.com/wp-json/wp/v2/media?page=2')
+  fetch('https://www.criteo.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -590,7 +590,7 @@ function fetchWaga() {
 }
 
 function fetchBonduelle() {
-  fetch('https://www.bonduelle.com/fr/wp-json/wp/v2/media?page=2')
+  fetch('https://www.bonduelle.com/fr/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -664,7 +664,7 @@ function fetchBonduelle() {
 }
 
 function fetchValnevaP() {
-  fetch('https://valneva.com/wp-json/wp/v2/media')
+  fetch('https://www.valneva.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -775,7 +775,7 @@ function fetchCarbios() {
 }
 
 function fetchEramet() {
-  fetch('https://eramet.com/wp-json/wp/v2/media')
+  fetch('https://www.eramet.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
@@ -812,7 +812,7 @@ function fetchEramet() {
 }
 
 function fetchAubay() {
-  fetch('https://aubay.com/wp-json/wp/v2/media')
+  fetch('https://www.aubay.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
         throw new Error('Une erreur est survenue lors de la requête.');
