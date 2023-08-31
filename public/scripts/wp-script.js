@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchEcoslops();
   fetchAdocia();
   fetchAkwell();
-  fetchOse();
   fetchMedesis();
   fetchMem();
   fetchGui();
   fetchKla();
+  fetchOse();
 });
 
 function fetchTransgene() {
@@ -1223,44 +1223,7 @@ function fetchNicox() {
               });
               }
         
-              function fetchOse() {
-                fetch('https://www.ose-immuno.com/wp-json/wp/v2/media?page=2')
-                .then(response => {
-                  if (!response.ok) {
-                    throw new Error('Une erreur est survenue lors de la requête.');
-                  }
-                  return response.json();
-                })
-                .then(posts => {
-                  // Tri des articles par date dans l'ordre décroissant
-                  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                  // Récupération des informations du dernier article
-                  const lastPost = posts[0];
-                  const lastDate = lastPost.date;
-                  const lastSlug = lastPost.slug;
-                  const lastLink = lastPost.link;
-                
-                  // Affichage des informations dans la console
-                  console.log(`Dernière Date: ${lastDate}`);
-                  console.log(`Dernier Slug: ${lastSlug}`);
-                  console.log(`Dernier Link: ${lastLink}`);
-                
-                  // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-                  const dateElement = document.getElementById('dateOse');
-                  dateElement.textContent = lastDate;
-                  const slugElement = document.getElementById('slugOse');
-                  slugElement.textContent = lastSlug;
-                  const linkElement = document.getElementById('linkOse');
-                  linkElement.textContent = lastLink;
-                  linkElement.setAttribute('href', lastLink);
-                })
-                .catch(error => {
-                  console.error(error);
-                });
-                }
-
-                function fetchMem() {
+              function fetchMem() {
                   fetch('https://memscap.com/wp-json/wp/v2/media')
                   .then(response => {
                     if (!response.ok) {
@@ -1370,3 +1333,41 @@ function fetchNicox() {
                         console.error(error);
                       });
                       }
+
+                      
+              function fetchOse() {
+                fetch('https://www.ose-immuno.com/wp-json/wp/v2/media')
+                .then(response => {
+                  if (!response.ok) {
+                    throw new Error('Une erreur est survenue lors de la requête.');
+                  }
+                  return response.json();
+                })
+                .then(posts => {
+                  // Tri des articles par date dans l'ordre décroissant
+                  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                  // Récupération des informations du dernier article
+                  const lastPost = posts[0];
+                  const lastDate = lastPost.date;
+                  const lastSlug = lastPost.slug;
+                  const lastLink = lastPost.link;
+                
+                  // Affichage des informations dans la console
+                  console.log(`Dernière Date: ${lastDate}`);
+                  console.log(`Dernier Slug: ${lastSlug}`);
+                  console.log(`Dernier Link: ${lastLink}`);
+                
+                  // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                  const dateElement = document.getElementById('dateOse');
+                  dateElement.textContent = lastDate;
+                  const slugElement = document.getElementById('slugOse');
+                  slugElement.textContent = lastSlug;
+                  const linkElement = document.getElementById('linkOse');
+                  linkElement.textContent = lastLink;
+                  linkElement.setAttribute('href', lastLink);
+                })
+                .catch(error => {
+                  console.error(error);
+                });
+                }
