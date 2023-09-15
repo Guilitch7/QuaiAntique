@@ -106,6 +106,10 @@ document.getElementById('btn1').addEventListener('click', () => {
 document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('form2').style.display = 'none';
     document.getElementById('form1').style.display = 'block';
+    document.getElementById('alert').style.display = 'none';
+    document.getElementById('alert1').style.display = 'none';
+    document.getElementById('alert2').style.display = 'none';
+    document.getElementById('alert3').style.display = 'none';
 })        
   
 // définition automatique du 'service' concerné
@@ -233,6 +237,7 @@ document.getElementById('btn5').addEventListener('click', () => {
     document.getElementById('form3').style.display = 'none';
     document.getElementById('btn5').style.display = 'none';
     document.getElementById('alert2').style.display = 'none';
+    document.getElementById('alert3').style.display = 'none';
 })
 
 // bouton de retour pour changements des données de réservation
