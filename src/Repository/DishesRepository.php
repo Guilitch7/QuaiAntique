@@ -60,4 +60,14 @@ class DishesRepository extends ServiceEntityRepository
         
         return $query -> getResult();
     }
+
+    public function apiFindAll():array
+    {
+        $qb = $this->createQueryBuilder('b')
+        ->select('b.DISHESid', 'b.DISHESname', 'b.DISHESprice', 'b.DISHESdescription', 'b.DISHESphoto')
+        ->orderBy('b.DISHESname','ASC');
+
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
 }

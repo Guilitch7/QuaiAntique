@@ -23,12 +23,14 @@
                       <button type="button" id="btn1" class="btn btn-secondary mt-3 mb-3">Suite</button>
                   </div>
                 </div>
-                <ul id="alert" class="text-danger text-center fw-bold">La réservation ne peut aboutir pour l'une des raisons suivantes :
-                        <li>Nous ne sommes pas ouverts à l'heure souhaitée (reportez-vous à nos horaires)</li>
-                        <li>Nous ne prenons plus de réservations dans l'heure précédant la fermeture (reportez-vous à nos horaires)</li>
-                        <li>La date de réservation souhaitée est passée</li>
-                </ul>
-                <ul id="alert2" class="text-danger text-center fw-bold"><li>Nous n'avons plus assez de disponibilités pour le service souhaité à cette date, désolé</li><li>Veuillez compléter l'ensemble des champs</li></ul>
+                <p id="alert" class="text-danger text-center fw-bold">La réservation ne peut aboutir car nous ne sommes pas ouverts à l'heure souhaitée (nous ne prenons également plus de réservations dans l'heure précédant la fermeture)
+                </p>
+                <p id="alert1" class="text-danger text-center fw-bold">La réservation ne peut aboutir car la date de réservation souhaitée est passée
+                </p>
+                <p id="alert2" class="text-danger text-center fw-bold">Nous n'avons plus assez de disponibilités pour le service souhaité à cette date, désolé
+                </p>
+                <p id="alert3" class="text-danger text-center fw-bold">Veuillez compléter l'ensemble des champs
+                </p>
                 <button type="button" id="btn5" class="btn btn-secondary mb-3">Retour</button>
                 <div id="form2">
                   <div class="text-center">
@@ -61,4 +63,5 @@
 
 {% block javascript %}
   <script src="{{ asset('scripts/booking-script.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 {% endblock %}

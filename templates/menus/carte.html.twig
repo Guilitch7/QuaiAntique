@@ -12,64 +12,70 @@
 
 {% block body %}
     <main class="container-lg">
-        <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : La carte</h1>
+        <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" class="img-fluid" alt="Restaurant le Quai Antique, logo"> : La carte</h1>
+        <div class="row mt-5 mb-3 text-center">
+            <h2 class="col-3"><a href="#starter">Entrées</a></h2>
+            <h2 class="col-3"><a href="#dishes">Plats</a></h2>
+            <h2 class="col-3"><a href="#deserts">Desserts</a></h2>
+            <h2 class="col-3"><a href="#drinks">Boissons</a></h2>
+        </div>
         <div>
-                <h2>Les entrées</h2>
+                <h3 id="entrée" class="mt-5"><a href="/plats-entree">Les entrées</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
                 {% for dishe in dishes %}
                     {% if dishe.DISHEScategory == 'Entrée' %}
-                        <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                        <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                     {% endif %}
                 {% endfor %}
-                <h2>Les plats</h2>
+                <h3 id="dishes" class="mt-5"><a href="/plats-principaux">Les plats</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
                 {% for dishe in dishes %}
                     {% if dishe.DISHEScategory == 'Plat' %} 
-                        <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                        <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                     {% endif %}
                 {% endfor %}
-                <h2>Les desserts</h2>
+                <h3 id="deserts" class="mt-5"><a href="/plats-dessert">Les desserts</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
                 {% for dishe in dishes %}
                     {% if dishe.DISHEScategory == 'Dessert' %}
-                        <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                        <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                     {% endif %}
                 {% endfor %}
-                <h2>Les boissons</h2>
-                    <h3>Apéritifs</h3>
+                <h3 id="drinks" class="mt-5">Les boissons<a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
+                    <h4>Apéritifs</h4>
                         {% for dishe in dishes %}                    
                         {% if dishe.DISHEScategory == 'Boissons' %}
                             {% if dishe.DISHEStype == 'Apéritifs' %}
-                            <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                             {% endif %}
                         {% endif %}
                         {% endfor %}       
-                    <h3>Bières bouteille</h3>
+                    <h4>Bières bouteille</h4>
                         {% for dishe in dishes %}                    
                         {% if dishe.DISHEScategory == 'Boissons' %}
                             {% if dishe.DISHEStype == 'Bières bouteille' %}
-                            <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                             {% endif %}
                         {% endif %}
                         {% endfor %}
-                    <h3>Vins au verre</h3>
+                    <h4>Vins au verre</h4>
                         {% for dishe in dishes %}                    
                         {% if dishe.DISHEScategory == 'Boissons' %}
                             {% if dishe.DISHEStype == 'Vins au verre' %}
-                            <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                             {% endif %}
                         {% endif %}
                         {% endfor %}     
-                    <h3>Digestif</h3>
+                    <h4>Digestif</h4>
                         {% for dishe in dishes %}                    
                         {% if dishe.DISHEScategory == 'Boissons' %}
                             {% if dishe.DISHEStype == 'Digestif' %}
-                            <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                             {% endif %}
                         {% endif %}
                         {% endfor %}    
-                    <h3>Sans alcool</h3>
+                    <h4>Sans alcool</h4>
                         {% for dishe in dishes %}                    
                         {% if dishe.DISHEScategory == 'Boissons' %}
                             {% if dishe.DISHEStype == 'Sans alcool' %}
-                            <article><h3 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h3><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
+                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                             {% endif %}
                         {% endif %}
                         {% endfor %}    

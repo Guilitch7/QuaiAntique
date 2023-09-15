@@ -5,6 +5,8 @@ window.onload = () => {
 document.getElementById('form2').style.display = 'none';
 document.getElementById('form3').style.display = 'none';
 document.getElementById('alert').style.display = 'none';
+document.getElementById('alert1').style.display = 'none';
+document.getElementById('alert3').style.display = 'none';
 document.getElementById('alert2').style.display = 'none';
 document.getElementById('btn5').style.display = 'none';
 
@@ -82,14 +84,22 @@ document.getElementById('btn1').addEventListener('click', () => {
     var isSlot = checkSlot();
     test = (today<=bookDate);
 
-    if (!isSlot || !test) {  
+    if (!isSlot) {  
         document.getElementById('form2').style.display = 'none';
         document.getElementById('alert').style.display = 'block';
                 }
     else {
+        if (!test)
+        {
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('alert1').style.display = 'block';
+        }
+        else { 
         document.getElementById('form2').style.display = 'block';
         document.getElementById('form1').style.display = 'none';
         document.getElementById('alert').style.display = 'none';
+        document.getElementById('alert1').style.display = 'none';
+        }
                 }
                                                                 })
 // bouton de retour à la première partie du formulaire
@@ -184,19 +194,36 @@ document.getElementById('btn3').addEventListener('click', () => {
     dateFr = day +'/'+ month +'/'+ year;
 
     //affichage du message d'alerte ou de la dernière partie du form si places toujours disponibles
-    if (!test && coversWished > 0 && nameUser != "") {
+    if (!test) {
+        if(coversWished <= 0 || nameUser === "") {
+        document.getElementById('form3').style.display = 'none';
+        document.getElementById('alert3').style.display = 'block';
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('btn5').style.display = 'block';
+        }
+        else {
         document.getElementById('form2').style.display = 'none';
         document.getElementById('form3').style.display = 'block';
         document.getElementById('alert2').style.display = 'none';
-
+        document.getElementById('alert3').style.display = 'none';
+    
         confirmMessage.innerHTML = "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +" à "+ "<span class=\"text-success fw-bold\">" + slotHour + ":"+ slotMin +"h" + "</span>" +" pour "+ "<span class=\"text-success fw-bold\">" + coversWished + " couvert(s)"+ "</span>" +" dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ "<span class=\"text-success fw-bold\">" + allergie+"</span>";
+        }
     }
     else
     {
+        if(coversWished > 0 || nameUser != "") {
         document.getElementById('form3').style.display = 'none';
         document.getElementById('alert2').style.display = 'block';
         document.getElementById('form2').style.display = 'none';
         document.getElementById('btn5').style.display = 'block';
+        }
+        else {
+        document.getElementById('form3').style.display = 'none';
+        document.getElementById('alert2').style.display = 'block';
+        document.getElementById('alert3').style.display = 'block';
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('btn5').style.display = 'block';        }
     }
 })
 

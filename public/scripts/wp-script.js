@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchCarbios();
   fetchEramet();
   fetchAubay();
-  fetchInventivaP();
+  fetchDekuple();
+  fetchBiophytis();
   fetchSpin();
   fetchNicox();
   fetchEnogia();
@@ -31,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchEcoslops();
   fetchAdocia();
   fetchAkwell();
-  fetchMedesis();
   fetchMem();
   fetchGui();
   fetchKla();
@@ -801,11 +801,11 @@ function fetchEramet() {
       console.log(`Dernier Link: ${lastLink}`);
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAub');
+      const dateElement = document.getElementById('dateEra');
       dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAub');
+      const slugElement = document.getElementById('slugEra');
       slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAub');
+      const linkElement = document.getElementById('linkEra');
       linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
     })
@@ -838,11 +838,11 @@ function fetchAubay() {
       console.log(`Dernier Link: ${lastLink}`);
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAubP');
+      const dateElement = document.getElementById('dateAub');
       dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAubP');
+      const slugElement = document.getElementById('slugAub');
       slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAubP');
+      const linkElement = document.getElementById('linkAub');
       linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
     })
@@ -851,7 +851,7 @@ function fetchAubay() {
     });
 }
 
-function fetchInventivaP() {
+function fetchDekuple() {
   fetch('https://www.dekuple.com/wp-json/wp/v2/media')
     .then(response => {
       if (!response.ok) {
@@ -875,11 +875,11 @@ function fetchInventivaP() {
       console.log(`Dernier Link: ${lastLink}`);
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateInv');
+      const dateElement = document.getElementById('dateDek');
       dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugInv');
+      const slugElement = document.getElementById('slugDek');
       slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkInv');
+      const linkElement = document.getElementById('linkDek');
       linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
     })
@@ -888,7 +888,7 @@ function fetchInventivaP() {
     });
 }
 
-function fetchMedesis() {
+function fetchBiophytis() {
   fetch('https://www.biophytis.com/wp-json/wp/v2/media')
   .then(response => {
     if (!response.ok) {
@@ -912,11 +912,11 @@ function fetchMedesis() {
     console.log(`Dernier Link: ${lastLink}`);
   
     // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-    const dateElement = document.getElementById('dateMed');
+    const dateElement = document.getElementById('dateBio');
     dateElement.textContent = lastDate;
-    const slugElement = document.getElementById('slugMed');
+    const slugElement = document.getElementById('slugBio');
     slugElement.textContent = lastSlug;
-    const linkElement = document.getElementById('linkMed');
+    const linkElement = document.getElementById('linkBio');
     linkElement.textContent = lastLink;
     linkElement.setAttribute('href', lastLink);
   })

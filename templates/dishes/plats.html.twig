@@ -7,34 +7,34 @@
 {% endblock %}
 
 
-{% block title %} "Nos plats"{% endblock %}
+{% block title %}"Nos plats"{% endblock %}
 
 {% block body %}
     <main class="container">
         <div class="jumbotron text-center">
-                <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" alt="Restaurant le Quai Antique, logo"> : Nos plats</h1>
-        </div>
-        <div class="row">   
-            {% for plat in plats %}
-                <div class="col-sm-12 col-md-6 col-xl-4">
-                    <div class="card mb-4 mt-2 text-center">
-                                <h2>{{ plat.DISHESname }}</h2>
-                                <p>{{ plat.DISHESdescription }}</p>
-                                {% if plat.DISHESphoto %}
-                                    <div class="text-center">
-                                        <img class="mt-3 mb-3" width="50" src="uploads/{{ plat.DISHESphoto }}">
-                                    </div>
-                                {% endif %}
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <div>
-                                <a href="{{ path ('delete-dish', {'id' : plat.DISHESid}) }}" class="btn btn-danger">Supprimer</a>
-                                <a href="{{ path ('edit-dish', {'id' : plat.DISHESid}) }}" class="btn btn-warning">Modifier</a>           
-                            </div>
-                        {% endif %}
+                <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" class="img-fluid" alt="Restaurant le Quai Antique, logo"> : Nos plats</h1>
+                <div class="input-control">
+                    <label for="search"></label>
+                    <input class="form-control mr-sm-2 mb-4" type="search" placeholder="Recherche" aria-label="Search" id="search">
+                </div>
+                <div>
+                    <div class="row">
+                      <table class="table">
+                        <thead>
+                        <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Supprimer</th>
+                        <th scope="col">Modifier</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-results">
+                        </tbody>
+                      </table>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
     </main>
+    <script src="{{ asset('scripts/admin-dishes.js') }}"></script>
 {% endblock %}
 

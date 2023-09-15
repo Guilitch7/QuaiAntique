@@ -49,7 +49,7 @@ class BookingController extends AbstractController
 
     //page de récapitulatif des réservations à venir
 
-    #[Route('/resa_admin', name: 'resa_admin')]
+    #[Route('/admin_resa', name: 'resa_admin')]
 
     public function newBookingsDisplayed(ManagerRegistry $doctrine): Response
     {

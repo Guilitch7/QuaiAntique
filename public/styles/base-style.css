@@ -81,3 +81,9 @@ ul {
     font-size: 18px;
 }
 
+@media (max-width: 768px) {
+    #infos {
+        display: none;
+    }
+  }
+

@@ -18,7 +18,7 @@ class PlatsController extends AbstractController
 
     // page création d'un plat
 
-    #[Route('/plats_admin', name: 'plats_admin')]
+    #[Route('/admin_plats', name: 'plats_admin')]
    
     public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
     {
@@ -65,7 +65,7 @@ class PlatsController extends AbstractController
 
     // page récapitulatif plats
 
-    #[Route('/plats', name: 'plats')]
+    #[Route('/admin_platsModif', name: 'plats')]
 
     public function plats(ManagerRegistry $doctrine): Response
     {
@@ -79,7 +79,7 @@ class PlatsController extends AbstractController
             'plats' => $dishes,
             'controller_name' => 'PlatsController',
             'title' => 'Nos plats',
-            'current_menu' => 'plats',
+            'current_menu' => 'admin',
             'horaires' => $isOpen,
         ]);
     }
@@ -213,7 +213,7 @@ class PlatsController extends AbstractController
 
     // suppression d'un plat à partir de page récap plats
 
-    #[Route('/plats-delete-{id<\d+>}', name:"delete-dish")]
+    #[Route('/admin-plats-delete-{id<\d+>}', name:"delete-dish")]
     public function delete(Dishes $dishes, ManagerRegistry $doctrine): Response
      {
          $em = $doctrine->getManager();
@@ -224,7 +224,7 @@ class PlatsController extends AbstractController
 
     // modifcation d'un plat à partir de page récap plats
 
-     #[Route('/plats-edit-{id<\d+>}', name:"edit-dish")]
+     #[Route('/admin-plats-edit-{id<\d+>}', name:"edit-dish")]
      public function update(Request $request, Dishes $createDish, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
       {
          $form = $this->createForm(DishesType::class, $createDish);
