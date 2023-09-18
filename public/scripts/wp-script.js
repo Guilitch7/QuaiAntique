@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchWaga();
   fetchBonduelle();
   fetchPixiumP();
-  fetchValnevaP();
-  fetchAbivaxP();
   fetchCarbios();
   fetchEramet();
   fetchAubay();
@@ -33,9 +31,13 @@ document.addEventListener('DOMContentLoaded', function () {
   fetchAdocia();
   fetchAkwell();
   fetchMem();
-  fetchGui();
   fetchKla();
   fetchOse();
+  fetchSide();
+  fetchTheraclion();
+  fetchCiments();
+  fetchVisia();
+  fetchBioUv();
 });
 
 function fetchTransgene() {
@@ -703,43 +705,6 @@ function fetchValnevaP() {
     });
 }
 
-function fetchAbivaxP() {
-  fetch('https://www.abivax.com/wp-json/wp/v2/media')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Une erreur est survenue lors de la requête.');
-      }
-      return response.json();
-    })
-    .then(posts => {
-      // Tri des articles par date dans l'ordre décroissant
-      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-      // Récupération des informations du dernier article
-      const lastPost = posts[0];
-      const lastDate = lastPost.date;
-      const lastSlug = lastPost.slug;
-      const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-
-      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
-      const dateElement = document.getElementById('dateAbiP');
-      dateElement.textContent = lastDate;
-      const slugElement = document.getElementById('slugAbiP');
-      slugElement.textContent = lastSlug;
-      const linkElement = document.getElementById('linkAbiP');
-      linkElement.textContent = lastLink;
-      linkElement.setAttribute('href', lastLink);
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
 function fetchCarbios() {
   fetch('https://www.carbios.com/wp-json/wp/v2/media')
     .then(response => {
@@ -1371,3 +1336,188 @@ function fetchNicox() {
                   console.error(error);
                 });
                 }
+
+                function fetchSide() {
+                  fetch('https://www.sidetrade.fr/wp-json/wp/v2/media')
+                  .then(response => {
+                    if (!response.ok) {
+                      throw new Error('Une erreur est survenue lors de la requête.');
+                    }
+                    return response.json();
+                  })
+                  .then(posts => {
+                    // Tri des articles par date dans l'ordre décroissant
+                    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                  
+                    // Récupération des informations du dernier article
+                    const lastPost = posts[0];
+                    const lastDate = lastPost.date;
+                    const lastSlug = lastPost.slug;
+                    const lastLink = lastPost.link;
+                  
+                    // Affichage des informations dans la console
+                    console.log(`Dernière Date: ${lastDate}`);
+                    console.log(`Dernier Slug: ${lastSlug}`);
+                    console.log(`Dernier Link: ${lastLink}`);
+                  
+                    // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                    const dateElement = document.getElementById('dateSid');
+                    dateElement.textContent = lastDate;
+                    const slugElement = document.getElementById('slugSid');
+                    slugElement.textContent = lastSlug;
+                    const linkElement = document.getElementById('linkSid');
+                    linkElement.textContent = lastLink;
+                    linkElement.setAttribute('href', lastLink);
+                  })
+                  .catch(error => {
+                    console.error(error);
+                  });
+                  }
+
+                  function fetchThera() {
+                    fetch('https://www.theradiag.com/wp-json/wp/v2/media')
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error('Une erreur est survenue lors de la requête.');
+                      }
+                      return response.json();
+                    })
+                    .then(posts => {
+                      // Tri des articles par date dans l'ordre décroissant
+                      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    
+                      // Récupération des informations du dernier article
+                      const lastPost = posts[0];
+                      const lastDate = lastPost.date;
+                      const lastSlug = lastPost.slug;
+                      const lastLink = lastPost.link;
+                    
+                      // Affichage des informations dans la console
+                      console.log(`Dernière Date: ${lastDate}`);
+                      console.log(`Dernier Slug: ${lastSlug}`);
+                      console.log(`Dernier Link: ${lastLink}`);
+                    
+                      // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                      const dateElement = document.getElementById('dateThera');
+                      dateElement.textContent = lastDate;
+                      const slugElement = document.getElementById('slugThera');
+                      slugElement.textContent = lastSlug;
+                      const linkElement = document.getElementById('linkThera');
+                      linkElement.textContent = lastLink;
+                      linkElement.setAttribute('href', lastLink);
+                    })
+                    .catch(error => {
+                      console.error(error);
+                    });
+                    }
+
+                    function fetchCiments() {
+                      fetch('https://www.ciments-hoffmann.fr/wp-json/wp/v2/media')
+                      .then(response => {
+                        if (!response.ok) {
+                          throw new Error('Une erreur est survenue lors de la requête.');
+                        }
+                        return response.json();
+                      })
+                      .then(posts => {
+                        // Tri des articles par date dans l'ordre décroissant
+                        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                      
+                        // Récupération des informations du dernier article
+                        const lastPost = posts[0];
+                        const lastDate = lastPost.date;
+                        const lastSlug = lastPost.slug;
+                        const lastLink = lastPost.link;
+                      
+                        // Affichage des informations dans la console
+                        console.log(`Dernière Date: ${lastDate}`);
+                        console.log(`Dernier Slug: ${lastSlug}`);
+                        console.log(`Dernier Link: ${lastLink}`);
+                      
+                        // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                        const dateElement = document.getElementById('dateCim');
+                        dateElement.textContent = lastDate;
+                        const slugElement = document.getElementById('slugCim');
+                        slugElement.textContent = lastSlug;
+                        const linkElement = document.getElementById('linkCim');
+                        linkElement.textContent = lastLink;
+                        linkElement.setAttribute('href', lastLink);
+                      })
+                      .catch(error => {
+                        console.error(error);
+                      });
+                      }
+                  
+                      function fetchVisia() {
+                        fetch('https://www.visiativ.com/wp-json/wp/v2/media')
+                        .then(response => {
+                          if (!response.ok) {
+                            throw new Error('Une erreur est survenue lors de la requête.');
+                          }
+                          return response.json();
+                        })
+                        .then(posts => {
+                          // Tri des articles par date dans l'ordre décroissant
+                          posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        
+                          // Récupération des informations du dernier article
+                          const lastPost = posts[0];
+                          const lastDate = lastPost.date;
+                          const lastSlug = lastPost.slug;
+                          const lastLink = lastPost.link;
+                        
+                          // Affichage des informations dans la console
+                          console.log(`Dernière Date: ${lastDate}`);
+                          console.log(`Dernier Slug: ${lastSlug}`);
+                          console.log(`Dernier Link: ${lastLink}`);
+                        
+                          // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                          const dateElement = document.getElementById('dateVis');
+                          dateElement.textContent = lastDate;
+                          const slugElement = document.getElementById('slugVis');
+                          slugElement.textContent = lastSlug;
+                          const linkElement = document.getElementById('linkVis');
+                          linkElement.textContent = lastLink;
+                          linkElement.setAttribute('href', lastLink);
+                        })
+                        .catch(error => {
+                          console.error(error);
+                        });
+                        }
+
+                        function fetchBioUv() {
+                          fetch('https://www.bio-uv.com/wp-json/wp/v2/media')
+                          .then(response => {
+                            if (!response.ok) {
+                              throw new Error('Une erreur est survenue lors de la requête.');
+                            }
+                            return response.json();
+                          })
+                          .then(posts => {
+                            // Tri des articles par date dans l'ordre décroissant
+                            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                          
+                            // Récupération des informations du dernier article
+                            const lastPost = posts[0];
+                            const lastDate = lastPost.date;
+                            const lastSlug = lastPost.slug;
+                            const lastLink = lastPost.link;
+                          
+                            // Affichage des informations dans la console
+                            console.log(`Dernière Date: ${lastDate}`);
+                            console.log(`Dernier Slug: ${lastSlug}`);
+                            console.log(`Dernier Link: ${lastLink}`);
+                          
+                            // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
+                            const dateElement = document.getElementById('dateBioUv');
+                            dateElement.textContent = lastDate;
+                            const slugElement = document.getElementById('slugBioUv');
+                            slugElement.textContent = lastSlug;
+                            const linkElement = document.getElementById('linkBioUv');
+                            linkElement.textContent = lastLink;
+                            linkElement.setAttribute('href', lastLink);
+                          })
+                          .catch(error => {
+                            console.error(error);
+                          });
+                          }
