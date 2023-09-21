@@ -7,6 +7,7 @@ document.getElementById('form3').style.display = 'none';
 document.getElementById('alert').style.display = 'none';
 document.getElementById('alert1').style.display = 'none';
 document.getElementById('alert3').style.display = 'none';
+document.getElementById('alert4').style.display = 'none';
 document.getElementById('alert2').style.display = 'none';
 document.getElementById('btn5').style.display = 'none';
 
@@ -150,8 +151,10 @@ function object() {
             .map(element => element.BOOKINGSLOTcoversnumber);
 
           // calcul du total réservé à la date et service souhaité
+          console.log(covers);
           const sum = covers.reduce((a, b) => a + b, 0);
           resolve(sum);
+          reject(document.getElementById('alert4').style.display = 'block')
         }
       });
     });
