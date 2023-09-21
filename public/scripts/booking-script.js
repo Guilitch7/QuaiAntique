@@ -149,12 +149,11 @@ function object() {
           const covers = object
             .filter(element => element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp)
             .map(element => element.BOOKINGSLOTcoversnumber);
-
+            
           // calcul du total réservé à la date et service souhaité
-          console.log(covers);
           const sum = covers.reduce((a, b) => a + b, 0);
           resolve(sum);
-          reject(document.getElementById('alert4').style.display = 'block')
+          console.log(sum);
         }
       });
     });
