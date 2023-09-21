@@ -135,7 +135,7 @@ function object() {
     const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
     console.log(dateBookedTimestamp);
     const serviceBooked = document.getElementById('booking_service').value;
-    console.log(seviceBooked);
+    console.log(serviceBooked);
     
     // appel à l'api
     let xhr = new XMLHttpRequest();
