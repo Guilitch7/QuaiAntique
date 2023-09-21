@@ -133,7 +133,9 @@ function object() {
     // récupération de la date souhaitée pour réservation et service et convertion en timestamp
     const dateBooked = document.getElementById('booking_BookSlotDate').value;
     const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
+    console.log(dateBookedTimestamp);
     const serviceBooked = document.getElementById('booking_service').value;
+    console.log(seviceBooked);
     
     // appel à l'api
     let xhr = new XMLHttpRequest();
@@ -149,8 +151,9 @@ function object() {
           const covers = object
             .filter(element => element.service == serviceBooked && element.BOOKINGSLOTdatetime.timestamp == dateBookedTimestamp)
             .map(element => element.BOOKINGSLOTcoversnumber);
-            
+
           // calcul du total réservé à la date et service souhaité
+          console.log(covers);
           const sum = covers.reduce((a, b) => a + b, 0);
           resolve(sum);
           console.log(sum);
