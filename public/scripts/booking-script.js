@@ -129,7 +129,7 @@ document.getElementById('btn1').addEventListener('click', () => {
 
 // fonction de récupération en api des réservations selon date pour disponibilités
 
-function object() {
+/** function object() {
     // récupération de la date souhaitée pour réservation et service et convertion en timestamp
     const dateBooked = document.getElementById('booking_BookSlotDate').value;
     const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
@@ -160,8 +160,45 @@ function object() {
         }
       });
     });
-  }
+  } **/
 
+  function object() {
+    // Récupération de la date souhaitée pour la réservation et du service, et conversion en timestamp
+    const dateBooked = document.getElementById('booking_BookSlotDate').value;
+    const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
+    console.log(dateBookedTimestamp);
+    const serviceBooked = document.getElementById('booking_service').value;
+    console.log(serviceBooked);
+  
+    // Construction de l'URL de l'API
+    const apiUrl = 'https://young-coast-00769.herokuapp.com/api/api-liste';
+  
+    // Utilisation de fetch
+    return fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('La requête a échoué avec le statut : ' + response.status);
+        }
+        return response.json();
+      })
+      .then(object => {
+        // Récupération des éléments souhaités (réservation selon date et service)
+        const covers = object
+          .filter(element => element.service.toLowerCase() === serviceBooked.toLowerCase() && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
+          .map(element => element.BOOKINGSLOTcoversnumber);
+  
+        // Calcul du total réservé à la date et au service souhaité
+        console.log(covers);
+        const sum = covers.reduce((a, b) => a + b, 0);
+        console.log(sum);
+        return sum;
+      })
+      .catch(error => {
+        console.error(error);
+        throw error;
+      });
+  }
+  
 
 // récupération du nombre de couverts souhaités pour réservation
 
