@@ -188,14 +188,12 @@ document.getElementById('btn1').addEventListener('click', () => {
           .map(element => element.BOOKINGSLOTcoversnumber);
   
         // Calcul du total réservé à la date et au service souhaité
-        console.log(response.json);
         console.log(covers);
         const sum = covers.reduce((a, b) => a + b, 0);
         console.log(sum);
         return sum;
       })
       .catch(error => {
-        console.error(error);
         throw error;
       });
   }
