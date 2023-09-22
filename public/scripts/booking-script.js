@@ -184,7 +184,7 @@ document.getElementById('btn1').addEventListener('click', () => {
       .then(object => {
         // Récupération des éléments souhaités (réservation selon date et service)
         const covers = object
-          .filter(element => element.service.toLowerCase() === serviceBooked.toLowerCase() && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
+          .filter(element => element.service === serviceBooked && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
           .map(element => element.BOOKINGSLOTcoversnumber);
   
         // Calcul du total réservé à la date et au service souhaité
