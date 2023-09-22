@@ -139,7 +139,7 @@ function object() {
     
     // appel à l'api
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://young-coast-00769.herokuapp.com/api/api-liste');
+    xhr.open('GET', 'http://young-coast-00769.herokuapp.com/api/api-liste');
     xhr.send();
   
     return new Promise((resolve, reject) => {
