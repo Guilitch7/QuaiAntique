@@ -112,7 +112,7 @@ document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('alert1').style.display = 'none';
     document.getElementById('alert2').style.display = 'none';
     document.getElementById('alert3').style.display = 'none';
-    document.getElementById('booking_BookSlotCovers').value = NULL;
+    document.getElementById('booking_BookSlotCovers').value = null;
 })        
   
 // définition automatique du 'service' concerné
