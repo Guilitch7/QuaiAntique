@@ -112,6 +112,7 @@ document.getElementById('btn2').addEventListener('click', () => {
     document.getElementById('alert1').style.display = 'none';
     document.getElementById('alert2').style.display = 'none';
     document.getElementById('alert3').style.display = 'none';
+    document.getElementById('booking_BookSlotCovers').value = NULL;
 })        
   
 // définition automatique du 'service' concerné
@@ -166,7 +167,7 @@ document.getElementById('btn1').addEventListener('click', () => {
   function object() {
     // Récupération de la date souhaitée pour la réservation et du service, et conversion en timestamp
     const dateBooked = document.getElementById('booking_BookSlotDate').value;
-    const dateBookedTimestamp = (Date.parse(dateBooked) / 1000) - 7200;
+    const dateBookedTimestamp = (Date.parse(dateBooked) / 1000);
     console.log(dateBookedTimestamp);
     const serviceBooked = document.getElementById('booking_service').value;
     console.log(serviceBooked);
