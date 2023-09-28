@@ -187,7 +187,6 @@ document.getElementById('btn1').addEventListener('click', () => {
         const covers = object
           .filter(element => element.service === serviceBooked && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
           .map(element => element.BOOKINGSLOTcoversnumber);
-        console.log(element.BOOKINGSLOTdatetime.timestamp);
         // Calcul du total réservé à la date et au service souhaité
         console.log(covers);
         const sum = covers.reduce((a, b) => a + b, 0);
