@@ -14,6 +14,7 @@ document.getElementById('btn5').style.display = 'none';
 // initialisation des variables
 
 var date = document.getElementById('booking_BookSlotDate').value;
+console.log(date);
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
 var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
@@ -186,7 +187,7 @@ document.getElementById('btn1').addEventListener('click', () => {
         const covers = object
           .filter(element => element.service === serviceBooked && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
           .map(element => element.BOOKINGSLOTcoversnumber);
-  
+        console.log(element.BOOKINGSLOTdatetime.timestamp);
         // Calcul du total réservé à la date et au service souhaité
         console.log(covers);
         const sum = covers.reduce((a, b) => a + b, 0);
