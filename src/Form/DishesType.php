@@ -3,10 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Dishes;
+use App\Entity\Menu;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -49,6 +50,11 @@ class DishesType extends AbstractType
                                                         'Vins au verre' => 'Vins au verre',
                                                     ]
                                                             ])
+            ->add("menu", EntityType::class, [      "class" => Menu::class,
+                                                    "label" => "Menu",
+                                                    "required" => false,
+                                                    "choice_label"  => 'name'
+                                                            ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
             ->add("DISHESphoto", FileType::class, ["label" =>"Image",
@@ -64,9 +70,7 @@ class DishesType extends AbstractType
                                                                                 'image/bmp',
                                                                                 'image/gif'],
                                                                             'mimeTypesMessage' => 'Veuillez proposer une image valide',
-                                                                                ])]])
-            ->add("DISHESmenusMontagnard", CheckboxType::class, ["label" => "inclus dans le menu Montagnard", "required" => false])
-            ->add("DISHESmenusExpress", CheckboxType::class, ["label" => "inclus dans le menu Express", "required" => false]);
+                                                                                ])]]);
     }
     public function configureOptions(OptionsResolver $resolver)
     {

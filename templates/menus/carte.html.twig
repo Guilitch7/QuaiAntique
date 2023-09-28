@@ -20,65 +20,16 @@
             <h2 class="col-3"><a href="#drinks">Boissons</a></h2>
         </div>
         <div>
-                <h3 id="entrée" class="mt-5"><a href="/plats-entree">Les entrées</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
+            {% for category in categories %}
+
+                <h3 id="entrée" class="mt-5"><a href="/plats-entree">Les {{ category.DISHEScategory }}s</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
+
                 {% for dishe in dishes %}
-                    {% if dishe.DISHEScategory == 'Entrée' %}
+                    {% if dishe.DISHEScategory == category.DISHEScategory %}
                         <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
                     {% endif %}
                 {% endfor %}
-                <h3 id="dishes" class="mt-5"><a href="/plats-principaux">Les plats</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
-                {% for dishe in dishes %}
-                    {% if dishe.DISHEScategory == 'Plat' %} 
-                        <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                    {% endif %}
-                {% endfor %}
-                <h3 id="deserts" class="mt-5"><a href="/plats-dessert">Les desserts</a><a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
-                {% for dishe in dishes %}
-                    {% if dishe.DISHEScategory == 'Dessert' %}
-                        <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                    {% endif %}
-                {% endfor %}
-                <h3 id="drinks" class="mt-5">Les boissons<a href="#top"><img class="ms-5" width="25" src="./uploads/arrow.svg"></a></h3>
-                    <h4>Apéritifs</h4>
-                        {% for dishe in dishes %}                    
-                        {% if dishe.DISHEScategory == 'Boissons' %}
-                            {% if dishe.DISHEStype == 'Apéritifs' %}
-                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                            {% endif %}
-                        {% endif %}
-                        {% endfor %}       
-                    <h4>Bières bouteille</h4>
-                        {% for dishe in dishes %}                    
-                        {% if dishe.DISHEScategory == 'Boissons' %}
-                            {% if dishe.DISHEStype == 'Bières bouteille' %}
-                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                            {% endif %}
-                        {% endif %}
-                        {% endfor %}
-                    <h4>Vins au verre</h4>
-                        {% for dishe in dishes %}                    
-                        {% if dishe.DISHEScategory == 'Boissons' %}
-                            {% if dishe.DISHEStype == 'Vins au verre' %}
-                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                            {% endif %}
-                        {% endif %}
-                        {% endfor %}     
-                    <h4>Digestif</h4>
-                        {% for dishe in dishes %}                    
-                        {% if dishe.DISHEScategory == 'Boissons' %}
-                            {% if dishe.DISHEStype == 'Digestif' %}
-                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                            {% endif %}
-                        {% endif %}
-                        {% endfor %}    
-                    <h4>Sans alcool</h4>
-                        {% for dishe in dishes %}                    
-                        {% if dishe.DISHEScategory == 'Boissons' %}
-                            {% if dishe.DISHEStype == 'Sans alcool' %}
-                            <article><h4 class="ms-5">{{ dishe.DISHESname }} - <span class="price">{{ dishe.DISHESprice }}€</span></h4><p class="ms-5">{{ dishe.DISHESdescription }}</p></article>
-                            {% endif %}
-                        {% endif %}
-                        {% endfor %}    
+            {% endfor %}
         </div>
     </main>
 {% endblock %}

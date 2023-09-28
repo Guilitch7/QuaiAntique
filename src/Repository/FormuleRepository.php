@@ -21,6 +21,14 @@ class FormuleRepository extends ServiceEntityRepository
         parent::__construct($registry, Formule::class);
     }
 
+    public function formuleMenu ()
+    {
+        return $this->createQueryBuilder('Formule')
+            ->join('Formule.menu', 'fm')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function save(Formule $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

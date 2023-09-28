@@ -21,9 +21,6 @@ class Bookings
     #[ORM\Column(type: "string", nullable: false)]
     private ?string $service;
 
-    #[ORM\Column(type: "integer", nullable: false)]
-    private ?int $day;
-
     #[ORM\Column(nullable: true)]
     private ?DateTime $slotLunch;
 
@@ -36,8 +33,11 @@ class Bookings
     #[ORM\Column(type: "string", nullable: false)]
     private ?string $BOOKINGSLOTfoodallergies;
 
-    #[ORM\Column(type: "integer", nullable: false)]
-    private ?int $avaibilities;
+    #[ORM\ManyToOne(inversedBy: 'BOOKINGSLOTid')]
+    private ?User $user = null;
+
+    #[ORM\ManyToOne(inversedBy: 'id')]
+    private ?Openingdays $openingdays;
 
     public function getId(): int
     {
@@ -108,30 +108,6 @@ class Bookings
         return $this;
     }
 
-    public function getday()
-    {
-        return $this->day;
-    }
-
-    public function setday($day)
-    {
-        $this->day = $day;
-
-        return $this;
-    }
-
-    public function getAvaibilities()
-    {
-        return $this->avaibilities;
-    }
- 
-    public function setAvaibilities($avaibilities)
-    {
-        $this->avaibilities = $avaibilities;
-
-        return $this;
-    }
-
     public function getService()
     {
         return $this->service;
@@ -140,6 +116,30 @@ class Bookings
     public function setService($service)
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    public function getOpeningdays(): ?Openingdays
+    {
+        return $this->openingdays;
+    }
+
+    public function setOpeningdays(?Openingdays $openingdays): self
+    {
+        $this->openingdays = $openingdays;
 
         return $this;
     }

@@ -21,23 +21,15 @@ class Menu
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formule::class)]
     private Collection $formule;
 
-    #[ORM\Column(length: 255)]
-    private ?string $category1 = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $category2 = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $category3 = null;
+    #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Dishes::class)]
+    private Collection $dishes;
 
     public function __construct()
     {
         $this->formule = new ArrayCollection();
+        $this->dishes = new ArrayCollection();
     }
-    public function __toString()
-    {
-        return $this->formule;
-    }
+
 
     public function getId(): ?int
     {
@@ -56,42 +48,6 @@ class Menu
         return $this;
     }
 
-    public function getCategory1(): ?string
-    {
-        return $this->category1;
-    }
-
-    public function setCategory1(string $category1): self
-    {
-        $this->category1 = $category1;
-
-        return $this;
-    }
-
-    public function getCategory2(): ?string
-    {
-        return $this->category2;
-    }
-
-    public function setCategory2(string $category2): self
-    {
-        $this->category2 = $category2;
-
-        return $this;
-    }
-
-    public function getCategory3(): ?string
-    {
-        return $this->category3;
-    }
-
-    public function setCategory3(string $category3): self
-    {
-        $this->category3 = $category3;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Formule>
      */
@@ -105,13 +61,13 @@ class Menu
     {
         if (!$this->formule->contains($formule)) {
             $this->formule->add($formule);
-            $formule->setName($this);
+            $formule->setName(null);
         }
 
         return $this;
     }
 
-    public function removeFormula(Formule $formule): self
+    public function removeFormule(Formule $formule): self
     {
         if ($this->formule->removeElement($formule)) {
             // set the owning side to null (unless already changed)
@@ -123,5 +79,30 @@ class Menu
         return $this;
     }
 
+
+    /**
+     * Get the value of dishes
+     */ 
+    public function getDishes(): Collection
+    {
+        return $this->dishes;
+    }
+
+    /**
+     * Set the value of dishes
+     *
+     * @return  self
+     */ 
+    public function setDishes($dishes)
+    {
+        $this->dishes = $dishes;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name; // Supposons que "name" est une propriété de l'objet Menu que vous souhaitez afficher.
+    }
 
 }

@@ -12,98 +12,50 @@
     <main class="main mb-3">
         <h1 class="text-center"><img src="{{asset('uploads/Logo_paint.jpg')}}" class="img-fluid" alt="Restaurant le Quai Antique, logo"> : Nos menus</h1>
             <div class="container">
-            <div class="row">   
+            <div class="row">
+                {% for menu in menus %}
                 <div class="col-sm-12 col-md-5 col-xxl card me-5">
                     <div class="card-body">
-                    {% for men1 in menu1 %}
-                        <h2 class="text-center card-title mb-2">{{ men1.name }}</h2>
-                    {% endfor %}
+                        <h2 class="text-center card-title mb-2">{{ menu.name }}</h2>
                         <ul class="details">
                             <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
                                 <ul>
-                                {% for dishe1c1 in dishes1c1 %}
-                                    <li class="text-center">{{ dishe1c1.DISHESname }}</li>
-                                {% endfor %}
+                            {% for dishe in dishes %}
+                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Entrée" %}
+                                    <li class="text-center"> {{ dishe.DISHESname }} </li>
+                                    {% endif %}
+                            {% endfor %}
                                 </ul>
                             <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
                                 <ul>
-                                {% for dishe1c2 in dishes1c2 %}
-                                    <li class="text-center">{{ dishe1c2.DISHESname }}</li>
-                                {% endfor %}
+                            {% for dishe in dishes %}
+                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Plat" %}
+                                    <li class="text-center"> {{ dishe.DISHESname }} </li>
+                                    {% endif %}
+                            {% endfor %}
                                 </ul>
                             <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
                                 <ul>
-                                {% for dishe1c3 in dishes1c3 %}
-                                    <li class="text-center">{{ dishe1c3.DISHESname }}</li>
-                                {% endfor %}
+                            {% for dishe in dishes %}
+                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Dessert" %}
+                                    <li class="text-center"> {{ dishe.DISHESname }} </li>
+                                    {% endif %}
+                            {% endfor %}
                                 </ul>
                         </ul>
                         <div class="card-footer">
                             <h3 class="text-center">Les formules</h3>
-                            {% for formul1 in formule1 %}
-                        <ul>
-                            <li>{{ formul1.name }} :<span class="price"> {{ formul1.price }} €</span></li>
-                        </ul>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-5 col-xxl card me-5">
-                    <div class="card-body">
-                        {% for men2 in menu2 %}
-                        <h2 class="text-center card-title mb-2">{{ men2.name }}</h2>
+                        {% for formulesMenu in formulesMenus %}
+                            {% if formulesMenu.menu.name == menu.name %}
+                            <ul>
+                                <li> {{ formulesMenu.name }}  :<span class="price">  {{ formulesMenu.price }}  €</span></li>
+                            </ul>
+                            {% endif %}
                         {% endfor %}
-                        <ul class="details">
-                            <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
-                                <ul>
-                                    {% for dishe2c1 in dishes2c1 %}
-                                    <li class="text-center">{{ dishe2c1.DISHESname }}</li>
-                                    {% endfor %}
-                                </ul>
-                            <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
-                                <ul>
-                                    {% for dishe2c2 in dishes2c2 %}
-                                    <li class="text-center">{{ dishe2c2.DISHESname }}</li>
-                                    {% endfor %}
-                                </ul>
-                            <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
-                                <ul>
-                                    {% for dishe2c3 in dishes2c3 %}
-                                    <li class="text-center">{{ dishe2c3.DISHESname }}</li>
-                                    {% endfor %}
-                                </ul>
-                        </ul>
-                        <div class="card-footer">
-                            <h3 class="text-center">Les formules</h3>
-                            {% for formul2 in formule2 %}
-                        <ul>
-                            <li>{{ formul2.name }} :<span class="price"> {{ formul2.price }} €</span></li>
-                        </ul>
-                            {% endfor %}
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5 col-xxl card">
-                <div class="card-body">
-                    <h2 class="text-center card-title mb-2">Menu Intégral</h2>
-                        <ul class="details">
-                            <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
-                                <p class="text-center">Au choix parmi les entrées de la carte</p>
-                            <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
-                                <p class="text-center">Au choix parmi les plats de la carte</p>
-                            <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
-                                <p class="text-center">Au choix parmi les desserts de la carte</p>
-                        </ul>
-                        <div class="card-footer">
-                            <h3 class="text-center">Les formules</h3>
-                            {% for formul3 in formule3 %}
-                        <ul>
-                            <li>{{ formul3.name }} :<span class="price"> {{ formul3.price }} €</span></li>
-                        </ul>
-                            {% endfor %}
-                        </div>
-                </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </main>

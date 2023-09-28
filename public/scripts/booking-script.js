@@ -171,13 +171,13 @@ document.getElementById('btn1').addEventListener('click', () => {
     console.log(serviceBooked);
   
     // Construction de l'URL de l'API
-    const apiUrl = 'https://young-coast-00769.herokuapp.com/api/api-liste';
+    const apiUrl = '/api/api-liste';
   
     // Utilisation de fetch
     return fetch(apiUrl)
       .then(response => {
         if (!response.ok) {
-          throw new Error('La requête a échoué avec le statut : ' + response.status);
+          throw new Error (window.location.href = '/error');
         }
         return response.json();
       })
@@ -194,7 +194,7 @@ document.getElementById('btn1').addEventListener('click', () => {
         return sum;
       })
       .catch(error => {
-        throw error;
+        throw error (window.location.href = '/error');
       });
   }
   

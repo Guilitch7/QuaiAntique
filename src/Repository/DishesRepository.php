@@ -61,6 +61,7 @@ class DishesRepository extends ServiceEntityRepository
         return $query -> getResult();
     }
 
+
     public function apiFindAll():array
     {
         $qb = $this->createQueryBuilder('b')
@@ -69,5 +70,21 @@ class DishesRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
         return $query->execute();
+    }
+
+    public function dishesMenu ()
+    {
+        return $this->createQueryBuilder('Dishes')
+            ->join('Dishes.menu', 'dm')
+            ->getQuery()
+            ->getResult();
+    }
+    
+    public function category ()
+    {
+        return $this->createQueryBuilder('d')
+            ->select('DISTINCT d.DISHEScategory')
+            ->getQuery()
+            ->getResult();
     }
 }

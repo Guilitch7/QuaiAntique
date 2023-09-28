@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\OpeningdaysRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OpeningdaysRepository::class)]
@@ -22,9 +24,6 @@ class Openingdays
     #[ORM\Column(type: "string", nullable: false)]
     private $OPENINGDAYSday;
 
-    #[ORM\Column(type: "boolean")]
-    private ?bool $OPENINGDAYSnotOpenLunch;
-
     #[ORM\Column(type: "datetime", nullable: false)]
     private ?DateTime $OPENINGDAYStimeslotlunch;
 
@@ -39,6 +38,14 @@ class Openingdays
 
     #[ORM\Column(type: "integer", nullable: false)]
     private ?int $avaibilities;
+
+    #[ORM\OneToMany(mappedBy: 'openingdays', targetEntity: Bookings::class)]
+    private Collection $bookings;
+
+    public function __construct()
+    {
+        $this->bookings = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -111,19 +118,6 @@ class Openingdays
         return $this;
     }
 
-    public function getnotOpenLunch()
-    {
-        return $this->OPENINGDAYSnotOpenLunch;
-    }
-
-
-    public function setnotOpenLunch($OPENINGDAYSnotOpenLunch)
-    {
-        $this->OPENINGDAYSnotOpenLunch = $OPENINGDAYSnotOpenLunch;
-
-        return $this;
-    }
-
     public function getcoversPossible()
     {
         return $this->avaibilities;
@@ -149,6 +143,35 @@ class Openingdays
     public function setOrderDay($orderDay)
     {
         $this->orderDay = $orderDay;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bookings>
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Bookings $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings->add($booking);
+            $booking->setOpeningdays($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Bookings $booking): self
+    {
+        if ($this->bookings->removeElement($booking)) {
+            if ($booking->getOpeningdays() === $this) {
+                $booking->setOpeningdays(null);
+            }
+        }
 
         return $this;
     }

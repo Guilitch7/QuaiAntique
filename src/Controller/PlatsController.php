@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Dishes;
+use App\Repository\DishesRepository;
 use App\Entity\Openingdays;
 use App\Form\DishesType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,9 +16,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class PlatsController extends AbstractController
 {
-
     // page création d'un plat
-
     #[Route('/admin_plats', name: 'plats_admin')]
    
     public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response
@@ -34,21 +33,20 @@ class PlatsController extends AbstractController
 
                 $image = $form->get('DISHESphoto')->getData();
 
-              if ($image) {
-                    $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
-                    $safeFilename = $slugger->slug($originalFilename);
-                    $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
-                    try {
-                        $image->move(
-                            $this->getParameter('uploads'),
-                            $newFilename
-                        );
-                    } catch (FileException $e) {
-                        dump($e);
-                    }
-                    $createDish->setDISHESphoto($newFilename);
-                }
-
+                    if ($image) {
+                            $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                            $safeFilename = $slugger->slug($originalFilename);
+                            $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+                            try {
+                                $image->move(
+                                    $this->getParameter('uploads'),
+                                    $newFilename
+                                );
+                            } catch (FileException $e) {
+                                return $this->redirectToRoute('error');
+                            }
+                            $createDish->setDISHESphoto($newFilename);
+                        }
 
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($createDish);

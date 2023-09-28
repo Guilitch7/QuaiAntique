@@ -89,4 +89,18 @@ class AdminController extends AbstractController
             'title' => 'wp',
         ]);
     }
+
+    #[Route('/error', name: 'error')]
+
+    public function error(ManagerRegistry $doctrine): Response
+    {
+        $repository = $doctrine->getRepository(Openingdays::class);
+        $isOpen = $repository->findAll();
+
+        return $this->render('home/page_error.html.twig', [
+            "horaires" => $isOpen,
+            'controller_name' => 'AdminController',
+            'title' => 'error',
+        ]);
+    }
 }

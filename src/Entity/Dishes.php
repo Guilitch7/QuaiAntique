@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\DishesRepository;
 
@@ -33,13 +34,9 @@ class Dishes
     #[ORM\Column(type: "string", nullable: true)]
     private ?string $DISHESphoto = null;
 
-    #[ORM\Column(type: "boolean", nullable: true)]
-    private string $DISHESmenusexpress;
-
-    #[ORM\Column(type: "boolean", nullable: true)]
-    private string $DISHESmenusmontagnard;
-
-   
+    #[ORM\ManyToOne(inversedBy: 'dishes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Menu $menu = null;
 
  
     public function getDISHESid()
@@ -138,31 +135,16 @@ class Dishes
         $this->DISHESphoto = $DISHESphoto;
     }
 
-  
-    public function getDISHESmenusexpress(): ?bool
+    public function getMenu(): ?Menu
     {
-        return $this->DISHESmenusexpress;
+        return $this->menu;
     }
 
- 
-    public function setDISHESmenusexpress(bool $DISHESmenusexpress): self
+    public function setMenu(?Menu $menuId): self
     {
-        $this->DISHESmenusexpress = $DISHESmenusexpress;
+        $this->menu = $menuId;
 
         return $this;
     }
 
- 
-    public function getDISHESmenusmontagnard(): ?bool
-    {
-        return $this->DISHESmenusmontagnard;
-    }
-
-  
-    public function setDISHESmenusmontagnard(bool $DISHESmenusmontagnard): self
-    {
-        $this->DISHESmenusmontagnard = $DISHESmenusmontagnard;
-
-        return $this;
-    }
 }

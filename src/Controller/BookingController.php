@@ -10,10 +10,17 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class BookingController extends AbstractController
 {
+
+    private $doctrine; // Déclarez une variable pour le ManagerRegistry
+
+    public function __construct(ManagerRegistry $doctrine) // Injectez le ManagerRegistry
+    {
+        $this->doctrine = $doctrine;
+    }
 
     // page de réservation
 
@@ -28,11 +35,39 @@ class BookingController extends AbstractController
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($booking);
-            $entityManager->flush();
-            return $this->redirectToRoute('confirm_booking');
+        $user = $this->getUser();
+
+            if ($form->isSubmitted() && $form->isValid()) {
+        
+                $reservationDate = $booking->getBookSlotDate();
+                
+                // Calculer le jour de la semaine
+                $dayOfWeek = (int)$reservationDate->format('w');
+                
+
+                // Recherchez l'entité Openingdays correspondante
+                $openingdays = $this->doctrine
+                    ->getRepository(Openingdays::class)
+                    ->findOneBy(['id' => $dayOfWeek]);
+    
+
+                    // Associez l'entité Openingdays à la réservation
+                    $booking->setOpeningdays($openingdays);                  
+
+                    if ($user) {
+                        // Association de l'utilisateur à la réservation
+                        $booking->setUser($user);
+
+                        $entityManager = $doctrine->getManager();
+                        $entityManager->persist($booking);
+                        $entityManager->flush();
+                        return $this->redirectToRoute('confirm_booking');
+                    }
+
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($booking);
+                $entityManager->flush();
+                return $this->redirectToRoute('confirm_booking');
         }
         
         $repository = $doctrine->getRepository(Openingdays::class);

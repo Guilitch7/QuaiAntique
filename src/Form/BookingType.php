@@ -45,8 +45,8 @@ class BookingType extends AbstractType
           $covers = $user->getcoversNumber();
           $allergies = $user->getfoodAllergies();
           $builder
-            ->add('day', HiddenType::class, [])
-            ->add('avaibilities', HiddenType::class, [])
+            ->add('day', HiddenType::class, ['mapped' => false])
+            ->add('avaibilities', HiddenType::class, ['mapped' => false])
             ->add('service', HiddenType::class, ['data' => 'null'])
             ->add('BookSlotDate', DateType::class, [
                 'label' => "A quelle date ?",
@@ -75,8 +75,8 @@ class BookingType extends AbstractType
         }
         else {
           $builder
-          ->add('day', HiddenType::class, [])
-          ->add('avaibilities', HiddenType::class, [])
+          ->add('day', HiddenType::class, ['mapped' => false])
+          ->add('avaibilities', HiddenType::class, ['mapped' => false])
           ->add('service', HiddenType::class, ['data' => 'null'])
           ->add('BookSlotDate', DateType::class, [
               'label' => "A quelle date ?",

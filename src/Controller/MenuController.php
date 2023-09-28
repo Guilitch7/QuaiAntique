@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Menu;
-use App\Entity\Dishes;
+use App\Repository\MenuRepository;
+use App\Repository\FormuleRepository;
+use App\Repository\DishesRepository;
 use App\Entity\Openingdays;
-use App\Entity\Formule;
+use App\Entity\Dishes;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,57 +19,40 @@ class MenuController extends AbstractController
 
     #[Route('/menus', name: 'menus')]
 
-    public function readAll(ManagerRegistry $doctrine): Response
+    public function readAll(ManagerRegistry $doctrine, MenuRepository $menuRepo, FormuleRepository $formuleRepo, DishesRepository $dishesRepo): Response
     {
-        $repository = $doctrine->getRepository(Menu::class);
-        $menu1 = $repository->findBy(['id' => '1']);
-        $menu2 = $repository->findBy(['id' => '2']);
+        $menus = $menuRepo->getMenuDishes();
 
-        $repository = $doctrine->getRepository(Dishes::class);
-        $dishes1c1 = $repository->findBy(array('DISHEScategory' => 'Entrée', 'DISHESmenusexpress' => 'true'));
-        $dishes1c2 = $repository->findBy(array('DISHESmenusexpress' => 'true','DISHEScategory' => 'Plat'));
-        $dishes1c3 = $repository->findBy(['DISHESmenusexpress' => 'true', 'DISHEScategory' => 'Dessert']);
-        $dishes2c1 = $repository->findBy(['DISHESmenusmontagnard' => 'true', 'DISHEScategory' => 'Entrée']);
-        $dishes2c2 = $repository->findBy(['DISHESmenusmontagnard' => 'true', 'DISHEScategory' => 'Plat']);
-        $dishes2c3 = $repository->findBy(['DISHESmenusmontagnard' => 'true', 'DISHEScategory' => 'Dessert']);
+        $dishes = $dishesRepo->dishesMenu();
 
-        $repository = $doctrine->getRepository(Formule::class);
-        $formula1 = $repository->findBy(['menu' => '1']);
-        $formula2 = $repository->findBy(['menu' => '2']);
-        $formula3 = $repository->findBy(['menu' => '3']);
+        $formulesMenus = $formuleRepo->formuleMenu();
 
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
         return $this->render('menus/menu.html.twig', [
-            'menu1' => $menu1,
-            'menu2' => $menu2,
-            'dishes1c1' => $dishes1c1,
-            'dishes1c2' => $dishes1c2,
-            'dishes1c3' => $dishes1c3,
-            'dishes2c1' => $dishes2c1,
-            'dishes2c2' => $dishes2c2,
-            'dishes2c3' => $dishes2c3,
-            'formule1' => $formula1,
-            'formule2' => $formula2,
-            'formule3' => $formula3,
             'controller_name' => 'MenusController',
             'title' => 'Nos menus',
             'current_menu' => 'menus',
             "horaires" => $isOpen,
+            "menus" => $menus,
+            "dishes" => $dishes,
+            "formulesMenus" => $formulesMenus,
         ]);
     }
 
     // page carte
 
     #[Route('/menu}', name:'carte')]
-    public function menu(ManagerRegistry $doctrine): Response
+    public function menu(ManagerRegistry $doctrine, DishesRepository $dishesRepo): Response
      {
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
 
         $repositoryDishes = $doctrine->getRepository(Dishes::class);
         $dishes = $repositoryDishes->findAll();
+   
+        $categories = $dishesRepo->category();
 
          return $this->render('menus/carte.html.twig', [
             'controller_name' => 'MenuController',
@@ -76,6 +60,7 @@ class MenuController extends AbstractController
             'current_menu' => 'carte',
             'horaires' => $isOpen,
             'dishes' => $dishes,
+            "categories" => $categories,
         ]);
      }
 }
