@@ -14,7 +14,6 @@ document.getElementById('btn5').style.display = 'none';
 // initialisation des variables
 
 var date = document.getElementById('booking_BookSlotDate').value;
-console.log(date);
 var slotMin = document.getElementById('booking_slotLunch_minute').value;
 var slotHour = document.getElementById('booking_slotLunch_hour').value;
 
@@ -168,9 +167,7 @@ document.getElementById('btn1').addEventListener('click', () => {
     // Récupération de la date souhaitée pour la réservation et du service, et conversion en timestamp
     const dateBooked = document.getElementById('booking_BookSlotDate').value;
     const dateBookedTimestamp = (Date.parse(dateBooked) / 1000);
-    console.log(dateBookedTimestamp);
     const serviceBooked = document.getElementById('booking_service').value;
-    console.log(serviceBooked);
   
     // Construction de l'URL de l'API
     const apiUrl = '/api/api-liste';
@@ -189,9 +186,7 @@ document.getElementById('btn1').addEventListener('click', () => {
           .filter(element => element.service === serviceBooked && element.BOOKINGSLOTdatetime.timestamp === dateBookedTimestamp)
           .map(element => element.BOOKINGSLOTcoversnumber);
         // Calcul du total réservé à la date et au service souhaité
-        console.log(covers);
         const sum = covers.reduce((a, b) => a + b, 0);
-        console.log(sum);
         return sum;
       })
       .catch(error => {

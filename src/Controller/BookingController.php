@@ -40,22 +40,17 @@ class BookingController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
         
                 $reservationDate = $booking->getBookSlotDate();
-                
-                // Calculer le jour de la semaine
+        // Calcul le jour de la semaine
                 $dayOfWeek = (int)$reservationDate->format('w');
-                
-
-                // Recherchez l'entité Openingdays correspondante
+        // Recherche de l'entité Openingdays correspondante
                 $openingdays = $this->doctrine
                     ->getRepository(Openingdays::class)
                     ->findOneBy(['id' => $dayOfWeek]);
-    
-
-                    // Associez l'entité Openingdays à la réservation
-                    $booking->setOpeningdays($openingdays);                  
+        // Associe l'entité Openingdays à la réservation
+                $booking->setOpeningdays($openingdays);                  
 
                     if ($user) {
-                        // Association de l'utilisateur à la réservation
+        // Association de l'utilisateur à la réservation
                         $booking->setUser($user);
 
                         $entityManager = $doctrine->getManager();

@@ -23,6 +23,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Webmozart\Assert\Assert as AssertAssert;
 
 use function PHPUnit\Framework\greaterThanOrEqual;
@@ -38,15 +39,13 @@ class BookingType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $table = new Bookings();
         $user = $this->security->getUser();
-
         if(isset($user)){
           $covers = $user->getcoversNumber();
           $allergies = $user->getfoodAllergies();
+
           $builder
             ->add('day', HiddenType::class, ['mapped' => false])
-            ->add('avaibilities', HiddenType::class, ['mapped' => false])
             ->add('service', HiddenType::class, ['data' => 'null'])
             ->add('BookSlotDate', DateType::class, [
                 'label' => "A quelle date ?",
@@ -54,8 +53,7 @@ class BookingType extends AbstractType
                 'required' => true,
                 'attr' => ['class' => 'text-center fw-bold'],
                 'constraints' => [new Assert\GreaterThanOrEqual(new DateTime(), message: 'Il n\'est pas possible de réserver dans le passé !')
-            ],
-            ])
+            ],])
             ->add('slotLunch', TimeType::class, [ 'label' => 'Choisissez un créneau de réservation', 'placeholder' => 'Heure/minutes', 'required' => true,
                                                 'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
                                                 'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45'],
@@ -70,7 +68,8 @@ class BookingType extends AbstractType
                     'Arachide' => 'Arachide',
                     'Lactose' => 'Lactose',
                     'Poisson' => 'Poisson',
-                    'Gluten' => 'Gluten'],'attr' => ['class' => 'text-center fw-bold'],])
+                    'Gluten' => 'Gluten'],
+                    'attr' => ['class' => 'text-center fw-bold'],])
             ->getForm();
         }
         else {

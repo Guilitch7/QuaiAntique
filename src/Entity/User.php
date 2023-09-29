@@ -31,8 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     private $passwordHasher;
 
-    private ?string $userConfirm = null;
-
     #[ORM\Column(type: "integer", nullable: true)]
     private ?int $userCoversNumber;
 
@@ -141,20 +139,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setcoversNumber($userCoversNumber)
     {
         $this->userCoversNumber = $userCoversNumber;
-
-        return $this;
-    }
-
-    
-    public function getconfirm()
-    {
-        return $this->userConfirm;
-    }
-
-    
-    public function setconfirm($userConfirm)
-    {
-        $this->userConfirm = $userConfirm;
 
         return $this;
     }

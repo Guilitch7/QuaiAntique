@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
+use Nelmio\CorsBundle\Annotation\Cors;
 
 class APIController extends AbstractController
 {
@@ -25,15 +26,12 @@ class APIController extends AbstractController
         // instanciation du normalizer pour convertir la collection en tableau
         $normalizers = [new ObjectNormalizer()];
 
-        // conversion en Json
         // instanciation  du convertisseur
         $serializer = new Serializer($normalizers, $encoders);
 
         // conversion en Json
-        $jsonContent = $serializer->serialize($bookings, 'json', ['circular_reference_handler' => function($object){
-            return $object->getId();
-                    }
-                ]);
+        $jsonContent = $serializer->serialize($bookings, 'json', ['circular_reference_handler' 
+        => function($object){ return $object->getId(); }]);
 
         // instanciation de la réponse
         $response = new Response($jsonContent);
