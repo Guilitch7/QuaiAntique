@@ -34,7 +34,7 @@ class Bookings
     private ?string $BOOKINGSLOTfoodallergies;
 
     #[ORM\ManyToOne(inversedBy: 'BOOKINGSLOTid')]
-    private ?User $user = null;
+    private ?User $user;
 
     #[ORM\ManyToOne(inversedBy: 'id')]
     private ?Openingdays $openingdays;
@@ -142,5 +142,10 @@ class Bookings
         $this->openingdays = $openingdays;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->user;
     }
 }

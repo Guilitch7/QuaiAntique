@@ -15,9 +15,11 @@
                             <thead class="table-dark">
                                 <tr class="text-center">
                                 <th scope="col">N° résa.</th>
+                                <th scope="col">Jour</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Service</th>
                                 <th scope="col">Créneau horaire</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Nom client</th>
                                 <th scope="col">Nombre de couvert</th>
                                 <th scope="col">Allergies</th>
@@ -28,9 +30,19 @@
                                     {% if Booking.BookSlotDate|date_modify("+1 day") >= date() %}
                                 <tr class="text-center">
                                 <th scope="row">{{ Booking.id }}</th>
+                            {% if Booking.openingdays == null %}
+                                <th scope="row"></th>
+                            {% else %}
+                                <th scope="row">{{ Booking.openingdays.OPENINGDAYSday }}</th>
+                            {% endif %}
                                 <td id="date{{ Booking.id }}">{{ Booking.BookSlotDate|date('d-m-y') }}</td>
                                 <td id="service{{ Booking.id }}">{{ Booking.service }}</td>
                                 <td>{{ Booking.slotLunch|date('H:i') }}</td>
+                            {% if Booking.user == null %}
+                                <td></td>
+                            {% else %}
+                                <td>{{ Booking.user.userIdentifier }}</td>
+                            {% endif %}
                                 <td>{{ Booking.BookSlotUser }}</td>
                                 <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
                                 <td>{{ Booking.BookSlotAllergies }}</td>

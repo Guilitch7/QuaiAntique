@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Bookings;
 use App\Entity\Openingdays;
 use App\Form\BookingType;
+use App\Repository\BookingsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -81,10 +82,10 @@ class BookingController extends AbstractController
 
     #[Route('/admin_resa', name: 'resa_admin')]
 
-    public function newBookingsDisplayed(ManagerRegistry $doctrine): Response
+    public function newBookingsDisplayed(ManagerRegistry $doctrine, BookingsRepository $bookingsRepository): Response
     {
         $repository = $doctrine->getRepository(Bookings::class);
-        $newBookings = $repository->findAll();
+        $newBookings = $bookingsRepository->findAll();
 
         $repository = $doctrine->getRepository(Openingdays::class);
         $isOpen = $repository->findAll();
