@@ -20,24 +20,24 @@
                         <ul class="details">
                             <a href="{{path('entrées')}}" class="card-link mt-2"><li class="mainLi">Entrées</li></a>
                                 <ul>
-                            {% for dishe in dishes %}
-                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Entrée" %}
+                            {% for dishe in menu.dishes %}
+                                    {% if dishe.DISHEScategory == "Entrée" %}
                                     <li class="text-center"> {{ dishe.DISHESname }} </li>
                                     {% endif %}
                             {% endfor %}
                                 </ul>
                             <a href="{{path('mainCourses')}}"><li class="mainLi mt-2">Plats</li></a>
                                 <ul>
-                            {% for dishe in dishes %}
-                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Plat" %}
+                            {% for dishe in menu.dishes %}
+                                    {% if dishe.DISHEScategory == "Plat" %}
                                     <li class="text-center"> {{ dishe.DISHESname }} </li>
                                     {% endif %}
                             {% endfor %}
                                 </ul>
                             <a href="{{path('desserts')}}"><li class="mainLi mt-2">Desserts</li></a>
                                 <ul>
-                            {% for dishe in dishes %}
-                                    {% if dishe.menu.name == menu.name and dishe.DISHEScategory == "Dessert" %}
+                            {% for dishe in menu.dishes %}
+                                    {% if dishe.DISHEScategory == "Dessert" %}
                                     <li class="text-center"> {{ dishe.DISHESname }} </li>
                                     {% endif %}
                             {% endfor %}

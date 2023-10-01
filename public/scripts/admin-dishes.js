@@ -54,8 +54,8 @@ function createDishesList(dishesList) {
     <td class="container-img">
     <img class="mt-3 mb-3" width="50" src=uploads/${dishe.DISHESphoto}>
     </td>
-    <td><a href="/admin-plats-delete-${dishe.DISHESid}" class="btn btn-danger">Supprimer</a></td>
-    <td><a href="/admin-plats-edit-${dishe.DISHESid}" class="btn btn-warning">Modifier</a></td>
+    <td><a href="/admin-plats-delete-${dishe.id}" class="btn btn-danger">Supprimer</a></td>
+    <td><a href="/admin-plats-edit-${dishe.id}" class="btn btn-warning">Modifier</a></td>
     `
     searchResult.appendChild(listItem);
   })

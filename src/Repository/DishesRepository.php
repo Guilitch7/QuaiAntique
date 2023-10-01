@@ -52,7 +52,7 @@ class DishesRepository extends ServiceEntityRepository
             'SELECT d
             FROM App\Entity\Dishes d
             WHERE d.DISHEScategory = :category AND d.DISHESphoto IS NOT NULL
-            ORDER BY d.DISHESid
+            ORDER BY d.id
             DESC'
         )
         ->setParameter("category", $category)
@@ -65,7 +65,7 @@ class DishesRepository extends ServiceEntityRepository
     public function apiFindAll():array
     {
         $qb = $this->createQueryBuilder('b')
-        ->select('b.DISHESid', 'b.DISHESname', 'b.DISHESprice', 'b.DISHESdescription', 'b.DISHESphoto')
+        ->select('b.id', 'b.DISHESname', 'b.DISHESprice', 'b.DISHESdescription', 'b.DISHESphoto')
         ->orderBy('b.DISHESname','ASC');
 
         $query = $qb->getQuery();

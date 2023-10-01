@@ -21,9 +21,9 @@ class MenuController extends AbstractController
 
     public function readAll(ManagerRegistry $doctrine, MenuRepository $menuRepo, FormuleRepository $formuleRepo, DishesRepository $dishesRepo): Response
     {
-        $menus = $menuRepo->getMenuDishes();
+        $menus = $menuRepo->findAll();
 
-        $dishes = $dishesRepo->dishesMenu();
+        $dishes = $dishesRepo->findAll();
 
         $formulesMenus = $formuleRepo->formuleMenu();
 

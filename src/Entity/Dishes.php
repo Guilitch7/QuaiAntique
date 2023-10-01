@@ -5,6 +5,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\DishesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: DishesRepository::class)]
 #[ORM\Table(name: "DISHES")]
@@ -14,7 +16,7 @@ class Dishes
     #[ORM\Id()]
     #[ORM\GeneratedValue(strategy: "AUTO")]
     #[ORM\Column(type: "integer")]
-    private int $DISHESid;
+    private int $id;
 
     #[ORM\Column(type: "string", nullable: false)]
     private string $DISHESname;
@@ -34,22 +36,18 @@ class Dishes
     #[ORM\Column(type: "string", nullable: true)]
     private ?string $DISHESphoto = null;
 
-    #[ORM\ManyToOne(inversedBy: 'dishes')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Menu $menu = null;
+    #[ORM\ManyToMany(targetEntity: Menu::class, inversedBy: 'dishes')]
+    #[ORM\JoinTable(name: 'menu_dishes')]
+    private Collection $menu;
 
- 
-    public function getDISHESid()
+    public function __construct()
     {
-        return $this->DISHESid;
+        $this->menu = new ArrayCollection();
     }
-
-
-    public function setDISHESid($id)
+ 
+    public function getId(): ?int
     {
-        $this->DISHESid = $id;
-
-        return $this;
+        return $this->id;
     }
 
 
@@ -135,16 +133,8 @@ class Dishes
         $this->DISHESphoto = $DISHESphoto;
     }
 
-    public function getMenu(): ?Menu
+    public function getMenu(): Collection
     {
         return $this->menu;
     }
-
-    public function setMenu(?Menu $menuId): self
-    {
-        $this->menu = $menuId;
-
-        return $this;
-    }
-
 }

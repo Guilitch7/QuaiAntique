@@ -53,7 +53,8 @@ class DishesType extends AbstractType
             ->add("menu", EntityType::class, [      "class" => Menu::class,
                                                     "label" => "Menu",
                                                     "required" => false,
-                                                    "choice_label"  => 'name'
+                                                    "choice_label"  => 'name',
+                                                    "multiple" => true
                                                             ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
             ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])

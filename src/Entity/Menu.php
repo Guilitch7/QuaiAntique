@@ -21,7 +21,7 @@ class Menu
     #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Formule::class)]
     private Collection $formule;
 
-    #[ORM\OneToMany(mappedBy: 'menu', targetEntity: Dishes::class)]
+    #[ORM\ManyToMany(targetEntity: Dishes::class, mappedBy: 'menu')]
     private Collection $dishes;
 
     public function __construct()
