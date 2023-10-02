@@ -42,3 +42,9 @@ main {
     margin-top: 40px;
     flex-grow: 1;
 }
+
+.img-uni {
+    width: 450px;
+    height: 311px;
+    object-fit: cover;
+  }

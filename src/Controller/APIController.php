@@ -30,8 +30,7 @@ class APIController extends AbstractController
         $serializer = new Serializer($normalizers, $encoders);
 
         // conversion en Json
-        $jsonContent = $serializer->serialize($bookings, 'json', ['circular_reference_handler' 
-        => function($object){ return $object->getId(); }]);
+        $jsonContent = $serializer->serialize($bookings, 'json');
 
         // instanciation de la réponse
         $response = new Response($jsonContent);
