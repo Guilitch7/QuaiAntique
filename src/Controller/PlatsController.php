@@ -220,6 +220,16 @@ class PlatsController extends AbstractController
          return $this->redirectToRoute('plats');
      }
 
+     #[Route('/admin-photos-delete-{id<\d+>}', name:"delete-dish-photo")]
+     public function deletePhoto(Dishes $photo, ManagerRegistry $doctrine): Response
+      {
+          $photo->getDISHESphoto();
+          $em = $doctrine->getManager();
+          $em->remove($photo);
+          $em->flush();
+          return $this->redirectToRoute('plats');
+      }
+
     // modifcation d'un plat à partir de page récap plats
 
      #[Route('/admin-plats-edit-{id<\d+>}', name:"edit-dish")]
@@ -250,7 +260,9 @@ class PlatsController extends AbstractController
                   $createDish->setDISHESphoto($newFilename);
               }
 
+
              $entityManager = $doctrine->getManager();
+             $entityManager->persist($createDish);
              $entityManager->flush();
              return $this->redirectToRoute('plats');
       }
