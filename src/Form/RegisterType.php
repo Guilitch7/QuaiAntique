@@ -36,7 +36,7 @@ class RegisterType extends AbstractType
                                                             new NotBlank(["message" => 'Ce champ ne peut être vide'])]
                                                     ])
             ->add("coversNumber", IntegerType::class, ["label" => "Votre nombre de convives par défaut ?", "required" => false])
-            ->add("foodAllergies", ChoiceType::class, ["label" => "Vos éventuelles allergies alimentaires ?", "required" => false,
+            ->add("foodAllergies", ChoiceType::class, ["label" => "Vos éventuelles allergies alimentaires ?", "required" => false, "multiple" => true,
                                                         'choices'  => [
                                                             'Crustacés' => 'Crustacés',
                                                             'Viande' => 'Viande',

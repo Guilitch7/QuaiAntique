@@ -34,8 +34,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "integer", nullable: true)]
     private ?int $userCoversNumber;
 
-    #[ORM\Column(type: "string", nullable: false)]
-    private ?string $userFoodAllergies;
+    #[ORM\Column(type: "json", nullable: false)]
+    private ?array $userFoodAllergies;
 
     /**
      * @var string The hashed password

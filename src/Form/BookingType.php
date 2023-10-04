@@ -18,7 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\SelectType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -56,7 +56,13 @@ class BookingType extends AbstractType
                                                 'hours' => [ '11' => '11', '12' => '12','13' => '13','14' => '14','18' => '18', '19' => '19', '20' => '20', '21' => '21', '22' =>'22', '23' => '23'],
                                                 'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45'],
                                                 'attr' => ['class' => 'text-center fw-bold'],])
-            ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],])
+            ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],"constraints" => [
+                new Regex([
+                    "pattern" => "/^[^\d]+$/",
+                    "message" => "Ce champ ne doit pas contenir de chiffres."
+                ])
+            ]
+            ])
             ->add("BookSlotCovers", IntegerType::class, ["label" => "Nombre de personnes ?", "required" => true, "data" => $covers,'attr' => ['class' => 'text-center fw-bold'], 'invalid_message' => "le nombre de couverts n'est pas cohérent"])
             ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "data" => $allergies, "multiple" => true,
                 'choices'  => [
@@ -85,7 +91,13 @@ class BookingType extends AbstractType
                                               'minutes' => [ '00' => '00','15' => '15','30' => '30', '45' => '45'],
                                               'attr' => ['class' => 'text-center fw-bold'],
                                               ])
-          ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],])
+          ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],"constraints" => [
+                                                new Regex([
+                                                    "pattern" => "/^[^\d]+$/",
+                                                    "message" => "Ce champ ne doit pas contenir de chiffres."
+                                                ])
+                                            ]
+                                            ])
           ->add("BookSlotCovers", IntegerType::class, ["label" => "Nombre de personnes ?", "required" => true, 'attr' => ['class' => 'text-center fw-bold'],])
           ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "multiple" => true,
               'choices'  => [

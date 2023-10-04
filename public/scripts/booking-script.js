@@ -228,6 +228,7 @@ document.getElementById('btn3').addEventListener('click', () => {
     // récupération de l'allergie déclarée
     var allergie = document.getElementById('booking_BookSlotAllergies').value;
 
+
     // transformation de la date format US en format FR
     let year = date.substring(0, 4);
     let month = date.substring(5, 7);
@@ -249,7 +250,7 @@ document.getElementById('btn3').addEventListener('click', () => {
         document.getElementById('alert3').style.display = 'none';
     
         confirmMessage.innerHTML = "";
-
+        
               if (allergie) {
                   confirmMessage.innerHTML =
                       "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +
