@@ -14,6 +14,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SelectType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -57,7 +58,7 @@ class BookingType extends AbstractType
                                                 'attr' => ['class' => 'text-center fw-bold'],])
             ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],])
             ->add("BookSlotCovers", IntegerType::class, ["label" => "Nombre de personnes ?", "required" => true, "data" => $covers,'attr' => ['class' => 'text-center fw-bold'], 'invalid_message' => "le nombre de couverts n'est pas cohérent"])
-            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "data" => $allergies,
+            ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "data" => $allergies, "multiple" => true,
                 'choices'  => [
                     'Crustacés' => 'Crustacés',
                     'Viande' => 'Viande',
@@ -86,7 +87,7 @@ class BookingType extends AbstractType
                                               ])
           ->add("BookSlotUser", TextType::class, ["label" => "Quel est votre nom ?","required" => true,'attr' => ['class' => 'text-center fw-bold'],])
           ->add("BookSlotCovers", IntegerType::class, ["label" => "Nombre de personnes ?", "required" => true, 'attr' => ['class' => 'text-center fw-bold'],])
-          ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false,
+          ->add("BookSlotAllergies", ChoiceType::class, ["label" => "Avez-vous une allergie alimentaire à nous signaler ?", "required" => false, "multiple" => true,
               'choices'  => [
                   'Crustacés' => 'Crustacés',
                   'Viande' => 'Viande',

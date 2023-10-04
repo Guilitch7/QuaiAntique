@@ -32,9 +32,6 @@
                                 </div>
                             </div>
                     </div>
-                    {% if is_granted("ROLE_ADMIN") %}
-                        <a href="/admin-photos-delete-{{ dessert.DISHESphoto }}" class="btn btn-danger">Supprimer</a>
-                    {% endif %}
                 </div>  
             {% endif %}
             {% endfor %} 

@@ -45,7 +45,12 @@
                             {% endif %}
                                 <td>{{ Booking.BookSlotUser }}</td>
                                 <td id="covers{{ Booking.id }}">{{ Booking.BookSlotCovers }}</td>
-                                <td>{{ Booking.BookSlotAllergies }}</td>
+                                <td>
+                                    {% for allergy in Booking.BookSlotAllergies %}
+                                    {{ allergy }}
+                                    {% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </td>
                                 </tr>
                                     {% endif %}
                                 {% endfor %}

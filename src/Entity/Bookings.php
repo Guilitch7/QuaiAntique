@@ -30,8 +30,8 @@ class Bookings
     #[ORM\Column(type: "integer", nullable: false)]
     private ?int $BOOKINGSLOTcoversnumber;
 
-    #[ORM\Column(type: "string", nullable: false)]
-    private ?string $BOOKINGSLOTfoodallergies;
+    #[ORM\Column(type: "json", nullable: false)]
+    private ?array $BOOKINGSLOTfoodallergies;
 
     #[ORM\ManyToOne(inversedBy: 'BOOKINGSLOTid')]
     private ?User $user;

@@ -248,9 +248,23 @@ document.getElementById('btn3').addEventListener('click', () => {
         document.getElementById('alert2').style.display = 'none';
         document.getElementById('alert3').style.display = 'none';
     
-        confirmMessage.innerHTML = "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +" à "+ "<span class=\"text-success fw-bold\">" + slotHour + ":"+ slotMin +"h" + "</span>" +" pour "+ "<span class=\"text-success fw-bold\">" + coversWished + " couvert(s)"+ "</span>" +" dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : "+ "<span class=\"text-success fw-bold\">" + allergie+"</span>";
-        }
-    }
+        confirmMessage.innerHTML = "";
+
+              if (allergie) {
+                  confirmMessage.innerHTML =
+                      "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +
+                      " à " + "<span class=\"text-success fw-bold\">" + slotHour + ":" + slotMin + "h" + "</span>" +
+                      " pour " + "<span class=\"text-success fw-bold\">" + coversWished + " couvert(s)" + "</span>" +
+                      " dont une ou plusieurs personnes souffrent de l'allergie alimentaire suivante : " +
+                      "<span class=\"text-success fw-bold\">" + allergie + "</span>";
+              } else {
+                  confirmMessage.innerHTML =
+                      "Vous souhaitez réserver pour le " + "<span class=\"text-success fw-bold\">" + dateFr + "</span>" +
+                      " à " + "<span class=\"text-success fw-bold\">" + slotHour + ":" + slotMin + "h" + "</span>" +
+                      " pour " + "<span class=\"text-success fw-bold\">" + coversWished + " couvert(s)" + "</span>";
+              }
+            }
+          }
     else
     {
         if(coversWished > 0 || nameUser != "") {

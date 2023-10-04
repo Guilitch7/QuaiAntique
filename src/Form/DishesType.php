@@ -57,10 +57,11 @@ class DishesType extends AbstractType
                                                     "multiple" => true
                                                             ])
             ->add("DISHESprice", IntegerType::class, ["label" => "Prix", "required" => true])
-            ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => true])
+            ->add("DISHESdescription", TextType::class, ["label" => "Description", "required" => false])
             ->add("DISHESphoto", FileType::class, ["label" =>"Image",
                                             "required" => false,
                                             "mapped" => false,
+                                            'attr' => ['id' => 'picDishe'],
                                             'constraints' => [ new File ([
                                                                             'maxSize' => '2048k',
                                                                             'mimeTypes' => [

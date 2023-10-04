@@ -19,6 +19,7 @@
                                         {{ form_row(dishes_form.DISHESprice)}}
                                         {{ form_row(dishes_form.DISHESdescription)}}
                                         {{ form_row(dishes_form.DISHESphoto)}}
+ 
                                         <input type="submit" class="mb-3" value="Envoyer">
                                 {{ form_end(dishes_form)}}
                             </div>
@@ -29,4 +30,7 @@
         </div>
     </div>
 </main>
+{% block javascript %}
+        <script src="{{ asset('scripts/deletePic.js') }}"></script>
+{% endblock %}
 {% endblock %}
