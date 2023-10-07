@@ -57,11 +57,7 @@ function fetchTransgene() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('date');
@@ -69,8 +65,9 @@ function fetchTransgene() {
       const slugElement = document.getElementById('slug');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('link');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('source');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -93,20 +90,17 @@ function fetchTransgene() {
           const lastDate = lastPost.date;
           const lastSlug = lastPost.slug;
           const lastLink = lastPost.link;
-    
-          // Affichage des informations dans la console
-          console.log(`Dernière Date: ${lastDate}`);
-          console.log(`Dernier Slug: ${lastSlug}`);
-          console.log(`Dernier Link: ${lastLink}`);
-    
+          const lastSource = lastPost.source_url;
+
           // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
           const dateElement = document.getElementById('datePix');
           dateElement.textContent = lastDate;
           const slugElement = document.getElementById('slugPix');
           slugElement.textContent = lastSlug;
           const linkElement = document.getElementById('linkPix');
-          linkElement.textContent = lastLink;
           linkElement.setAttribute('href', lastLink);
+          const sourceElement = document.getElementById('sourcePix');
+          sourceElement.setAttribute('href', lastSource);
         })
         .catch(error => {
           console.error(error);
@@ -130,11 +124,7 @@ function fetchAbivax() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateAbi');
@@ -142,8 +132,9 @@ function fetchAbivax() {
       const slugElement = document.getElementById('slugAbi');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkAbi');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceAbi');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -167,11 +158,7 @@ function fetchNovacyt() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateNov');
@@ -179,8 +166,9 @@ function fetchNovacyt() {
       const slugElement = document.getElementById('slugNov');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkNov');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceNov');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -204,11 +192,7 @@ function fetchMedincell() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateMed');
@@ -216,8 +200,9 @@ function fetchMedincell() {
       const slugElement = document.getElementById('slugMed');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkMed');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceMed');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -241,11 +226,7 @@ function fetchAdvincenne() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateAdv');
@@ -253,8 +234,9 @@ function fetchAdvincenne() {
       const slugElement = document.getElementById('slugAdv');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkAdv');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceAdv');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -278,11 +260,7 @@ function fetchLumibird() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateLum');
@@ -290,8 +268,9 @@ function fetchLumibird() {
       const slugElement = document.getElementById('slugLum');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkLum');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceLum');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -315,11 +294,7 @@ function fetchEquasens() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateEqu');
@@ -327,8 +302,9 @@ function fetchEquasens() {
       const slugElement = document.getElementById('slugEqu');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkEqu');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceEqu');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -352,11 +328,7 @@ function fetchAmoeba() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateAmo');
@@ -364,8 +336,9 @@ function fetchAmoeba() {
       const slugElement = document.getElementById('slugAmo');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkAmo');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceAmo');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -389,11 +362,7 @@ function fetchTheraclion() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateThe');
@@ -401,8 +370,9 @@ function fetchTheraclion() {
       const slugElement = document.getElementById('slugThe');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkThe');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceThe');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -426,11 +396,7 @@ function fetchSolutions() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateSol');
@@ -438,8 +404,9 @@ function fetchSolutions() {
       const slugElement = document.getElementById('slugSol');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkSol');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceSol');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -463,11 +430,7 @@ function fetchFonciere() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateFon');
@@ -475,8 +438,9 @@ function fetchFonciere() {
       const slugElement = document.getElementById('slugFon');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkFon');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceFon');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -500,11 +464,7 @@ function fetchVerallia() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateVer');
@@ -512,8 +472,9 @@ function fetchVerallia() {
       const slugElement = document.getElementById('slugVer');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkVer');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceVer');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -537,11 +498,7 @@ function fetchCriteo() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateCri');
@@ -549,8 +506,9 @@ function fetchCriteo() {
       const slugElement = document.getElementById('slugCri');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkCri');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceCri');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -574,11 +532,7 @@ function fetchWaga() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateWag');
@@ -586,8 +540,9 @@ function fetchWaga() {
       const slugElement = document.getElementById('slugWag');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkWag');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceWag');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -611,11 +566,7 @@ function fetchBonduelle() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateBon');
@@ -623,8 +574,9 @@ function fetchBonduelle() {
       const slugElement = document.getElementById('slugBon');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkBon');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceBon');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -648,20 +600,17 @@ function fetchBonduelle() {
           const lastDate = lastPost.date;
           const lastSlug = lastPost.slug;
           const lastLink = lastPost.link;
-    
-          // Affichage des informations dans la console
-          console.log(`Dernière Date: ${lastDate}`);
-          console.log(`Dernier Slug: ${lastSlug}`);
-          console.log(`Dernier Link: ${lastLink}`);
-    
+          const lastSource = lastPost.source_url;
+
           // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
           const dateElement = document.getElementById('datePixP');
           dateElement.textContent = lastDate;
           const slugElement = document.getElementById('slugPixP');
           slugElement.textContent = lastSlug;
           const linkElement = document.getElementById('linkPixP');
-          linkElement.textContent = lastLink;
           linkElement.setAttribute('href', lastLink);
+          const sourceElement = document.getElementById('sourcePixp');
+          sourceElement.setAttribute('href', lastSource);
         })
         .catch(error => {
           console.error(error);
@@ -685,11 +634,7 @@ function fetchValnevaP() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateValP');
@@ -697,8 +642,9 @@ function fetchValnevaP() {
       const slugElement = document.getElementById('slugValP');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkValP');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceValP');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -722,11 +668,7 @@ function fetchCarbios() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateBonP');
@@ -734,8 +676,9 @@ function fetchCarbios() {
       const slugElement = document.getElementById('slugBonP');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkBonP');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceBonP');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -759,11 +702,7 @@ function fetchEramet() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateEra');
@@ -771,8 +710,9 @@ function fetchEramet() {
       const slugElement = document.getElementById('slugEra');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkEra');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceEra');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -796,11 +736,7 @@ function fetchAubay() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateAub');
@@ -808,8 +744,9 @@ function fetchAubay() {
       const slugElement = document.getElementById('slugAub');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkAub');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceAub');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -833,11 +770,7 @@ function fetchDekuple() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
+      const lastSource = lastPost.source_url;
 
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateDek');
@@ -845,8 +778,9 @@ function fetchDekuple() {
       const slugElement = document.getElementById('slugDek');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkDek');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceDek');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -870,20 +804,17 @@ function fetchBiophytis() {
     const lastDate = lastPost.date;
     const lastSlug = lastPost.slug;
     const lastLink = lastPost.link;
-  
-    // Affichage des informations dans la console
-    console.log(`Dernière Date: ${lastDate}`);
-    console.log(`Dernier Slug: ${lastSlug}`);
-    console.log(`Dernier Link: ${lastLink}`);
-  
+    const lastSource = lastPost.source_url;
+
     // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
     const dateElement = document.getElementById('dateBio');
     dateElement.textContent = lastDate;
     const slugElement = document.getElementById('slugBio');
     slugElement.textContent = lastSlug;
     const linkElement = document.getElementById('linkBio');
-    linkElement.textContent = lastLink;
     linkElement.setAttribute('href', lastLink);
+    const sourceElement = document.getElementById('sourceBio');
+    sourceElement.setAttribute('href', lastSource);
   })
   .catch(error => {
     console.error(error);
@@ -908,11 +839,7 @@ fetch('https://www.spineguard.com/wp-json/wp/v2/media')
   const lastDate = lastPost.date;
   const lastSlug = lastPost.slug;
   const lastLink = lastPost.link;
-
-  // Affichage des informations dans la console
-  console.log(`Dernière Date: ${lastDate}`);
-  console.log(`Dernier Slug: ${lastSlug}`);
-  console.log(`Dernier Link: ${lastLink}`);
+  const lastSource = lastPost.source_url;
 
   // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
   const dateElement = document.getElementById('dateSpin');
@@ -920,8 +847,9 @@ fetch('https://www.spineguard.com/wp-json/wp/v2/media')
   const slugElement = document.getElementById('slugSpin');
   slugElement.textContent = lastSlug;
   const linkElement = document.getElementById('linkSpin');
-  linkElement.textContent = lastLink;
   linkElement.setAttribute('href', lastLink);
+  const sourceElement = document.getElementById('sourceSpin');
+  sourceElement.setAttribute('href', lastSource);
 })
 .catch(error => {
   console.error(error);
@@ -946,20 +874,17 @@ function fetchNicox() {
     const lastDate = lastPost.date;
     const lastSlug = lastPost.slug;
     const lastLink = lastPost.link;
-  
-    // Affichage des informations dans la console
-    console.log(`Dernière Date: ${lastDate}`);
-    console.log(`Dernier Slug: ${lastSlug}`);
-    console.log(`Dernier Link: ${lastLink}`);
-  
+    const lastSource = lastPost.source_url;
+
     // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
     const dateElement = document.getElementById('dateNic');
     dateElement.textContent = lastDate;
     const slugElement = document.getElementById('slugNic');
     slugElement.textContent = lastSlug;
     const linkElement = document.getElementById('linkNic');
-    linkElement.textContent = lastLink;
     linkElement.setAttribute('href', lastLink);
+    const sourceElement = document.getElementById('sourceNic');
+    sourceElement.setAttribute('href', lastSource);
   })
   .catch(error => {
     console.error(error);
@@ -983,20 +908,17 @@ function fetchNicox() {
       const lastDate = lastPost.date;
       const lastSlug = lastPost.slug;
       const lastLink = lastPost.link;
-    
-      // Affichage des informations dans la console
-      console.log(`Dernière Date: ${lastDate}`);
-      console.log(`Dernier Slug: ${lastSlug}`);
-      console.log(`Dernier Link: ${lastLink}`);
-    
+      const lastSource = lastPost.source_url;
+
       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
       const dateElement = document.getElementById('dateEno');
       dateElement.textContent = lastDate;
       const slugElement = document.getElementById('slugEno');
       slugElement.textContent = lastSlug;
       const linkElement = document.getElementById('linkEno');
-      linkElement.textContent = lastLink;
       linkElement.setAttribute('href', lastLink);
+      const sourceElement = document.getElementById('sourceEno');
+      sourceElement.setAttribute('href', lastSource);
     })
     .catch(error => {
       console.error(error);
@@ -1020,20 +942,17 @@ function fetchNicox() {
         const lastDate = lastPost.date;
         const lastSlug = lastPost.slug;
         const lastLink = lastPost.link;
-      
-        // Affichage des informations dans la console
-        console.log(`Dernière Date: ${lastDate}`);
-        console.log(`Dernier Slug: ${lastSlug}`);
-        console.log(`Dernier Link: ${lastLink}`);
-      
+        const lastSource = lastPost.source_url;
+
         // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
         const dateElement = document.getElementById('dateAfy');
         dateElement.textContent = lastDate;
         const slugElement = document.getElementById('slugAfy');
         slugElement.textContent = lastSlug;
         const linkElement = document.getElementById('linkAfy');
-        linkElement.textContent = lastLink;
         linkElement.setAttribute('href', lastLink);
+        const sourceElement = document.getElementById('sourceAfy');
+        sourceElement.setAttribute('href', lastSource);
       })
       .catch(error => {
         console.error(error);
@@ -1057,20 +976,17 @@ function fetchNicox() {
           const lastDate = lastPost.date;
           const lastSlug = lastPost.slug;
           const lastLink = lastPost.link;
-        
-          // Affichage des informations dans la console
-          console.log(`Dernière Date: ${lastDate}`);
-          console.log(`Dernier Slug: ${lastSlug}`);
-          console.log(`Dernier Link: ${lastLink}`);
-        
+          const lastSource = lastPost.source_url;
+
           // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
           const dateElement = document.getElementById('dateDol');
           dateElement.textContent = lastDate;
           const slugElement = document.getElementById('slugDol');
           slugElement.textContent = lastSlug;
           const linkElement = document.getElementById('linkDol');
-          linkElement.textContent = lastLink;
           linkElement.setAttribute('href', lastLink);
+          const sourceElement = document.getElementById('sourceDol');
+          sourceElement.setAttribute('href', lastSource);
         })
         .catch(error => {
           console.error(error);
@@ -1094,20 +1010,17 @@ function fetchNicox() {
             const lastDate = lastPost.date;
             const lastSlug = lastPost.slug;
             const lastLink = lastPost.link;
-          
-            // Affichage des informations dans la console
-            console.log(`Dernière Date: ${lastDate}`);
-            console.log(`Dernier Slug: ${lastSlug}`);
-            console.log(`Dernier Link: ${lastLink}`);
-          
+            const lastSource = lastPost.source_url;
+
             // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
             const dateElement = document.getElementById('dateEco');
             dateElement.textContent = lastDate;
             const slugElement = document.getElementById('slugEco');
             slugElement.textContent = lastSlug;
             const linkElement = document.getElementById('linkEco');
-            linkElement.textContent = lastLink;
             linkElement.setAttribute('href', lastLink);
+            const sourceElement = document.getElementById('sourceEco');
+            sourceElement.setAttribute('href', lastSource);
           })
           .catch(error => {
             console.error(error);
@@ -1131,20 +1044,17 @@ function fetchNicox() {
               const lastDate = lastPost.date;
               const lastSlug = lastPost.slug;
               const lastLink = lastPost.link;
-            
-              // Affichage des informations dans la console
-              console.log(`Dernière Date: ${lastDate}`);
-              console.log(`Dernier Slug: ${lastSlug}`);
-              console.log(`Dernier Link: ${lastLink}`);
-            
+              const lastSource = lastPost.source_url;
+
               // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
               const dateElement = document.getElementById('dateAdo');
               dateElement.textContent = lastDate;
               const slugElement = document.getElementById('slugAdo');
               slugElement.textContent = lastSlug;
               const linkElement = document.getElementById('linkAdo');
-              linkElement.textContent = lastLink;
               linkElement.setAttribute('href', lastLink);
+              const sourceElement = document.getElementById('sourceAdo');
+              sourceElement.setAttribute('href', lastSource);
             })
             .catch(error => {
               console.error(error);
@@ -1168,20 +1078,17 @@ function fetchNicox() {
                 const lastDate = lastPost.date;
                 const lastSlug = lastPost.slug;
                 const lastLink = lastPost.link;
-              
-                // Affichage des informations dans la console
-                console.log(`Dernière Date: ${lastDate}`);
-                console.log(`Dernier Slug: ${lastSlug}`);
-                console.log(`Dernier Link: ${lastLink}`);
-              
+                const lastSource = lastPost.source_url;
+
                 // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                 const dateElement = document.getElementById('dateAkw');
                 dateElement.textContent = lastDate;
                 const slugElement = document.getElementById('slugAkw');
                 slugElement.textContent = lastSlug;
                 const linkElement = document.getElementById('linkAkw');
-                linkElement.textContent = lastLink;
                 linkElement.setAttribute('href', lastLink);
+                const sourceElement = document.getElementById('sourceAkw');
+                sourceElement.setAttribute('href', lastSource);
               })
               .catch(error => {
                 console.error(error);
@@ -1205,20 +1112,17 @@ function fetchNicox() {
                     const lastDate = lastPost.date;
                     const lastSlug = lastPost.slug;
                     const lastLink = lastPost.link;
-                  
-                    // Affichage des informations dans la console
-                    console.log(`Dernière Date: ${lastDate}`);
-                    console.log(`Dernier Slug: ${lastSlug}`);
-                    console.log(`Dernier Link: ${lastLink}`);
-                  
+                    const lastSource = lastPost.source_url;
+ 
                     // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                     const dateElement = document.getElementById('dateMem');
                     dateElement.textContent = lastDate;
                     const slugElement = document.getElementById('slugMem');
                     slugElement.textContent = lastSlug;
                     const linkElement = document.getElementById('linkMem');
-                    linkElement.textContent = lastLink;
                     linkElement.setAttribute('href', lastLink);
+                    const sourceElement = document.getElementById('sourceMem');
+                    sourceElement.setAttribute('href', lastSource);
                   })
                   .catch(error => {
                     console.error(error);
@@ -1242,20 +1146,17 @@ function fetchNicox() {
                       const lastDate = lastPost.date;
                       const lastSlug = lastPost.slug;
                       const lastLink = lastPost.link;
-                    
-                      // Affichage des informations dans la console
-                      console.log(`Dernière Date: ${lastDate}`);
-                      console.log(`Dernier Slug: ${lastSlug}`);
-                      console.log(`Dernier Link: ${lastLink}`);
-                    
+                      const lastSource = lastPost.source_url;
+
                       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                       const dateElement = document.getElementById('dateGui');
                       dateElement.textContent = lastDate;
                       const slugElement = document.getElementById('slugGui');
                       slugElement.textContent = lastSlug;
                       const linkElement = document.getElementById('linkGui');
-                      linkElement.textContent = lastLink;
                       linkElement.setAttribute('href', lastLink);
+                      const sourceElement = document.getElementById('sourceGui');
+                      sourceElement.setAttribute('href', lastSource);
                     })
                     .catch(error => {
                       console.error(error);
@@ -1279,20 +1180,17 @@ function fetchNicox() {
                         const lastDate = lastPost.date;
                         const lastSlug = lastPost.slug;
                         const lastLink = lastPost.link;
-                      
-                        // Affichage des informations dans la console
-                        console.log(`Dernière Date: ${lastDate}`);
-                        console.log(`Dernier Slug: ${lastSlug}`);
-                        console.log(`Dernier Link: ${lastLink}`);
-                      
+                        const lastSource = lastPost.source_url;
+ 
                         // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                         const dateElement = document.getElementById('dateKla');
                         dateElement.textContent = lastDate;
                         const slugElement = document.getElementById('slugKla');
                         slugElement.textContent = lastSlug;
                         const linkElement = document.getElementById('linkKla');
-                        linkElement.textContent = lastLink;
                         linkElement.setAttribute('href', lastLink);
+                        const sourceElement = document.getElementById('sourceKla');
+                        sourceElement.setAttribute('href', lastSource);
                       })
                       .catch(error => {
                         console.error(error);
@@ -1317,20 +1215,17 @@ function fetchNicox() {
                   const lastDate = lastPost.date;
                   const lastSlug = lastPost.slug;
                   const lastLink = lastPost.link;
-                
-                  // Affichage des informations dans la console
-                  console.log(`Dernière Date: ${lastDate}`);
-                  console.log(`Dernier Slug: ${lastSlug}`);
-                  console.log(`Dernier Link: ${lastLink}`);
-                
+                  const lastSource = lastPost.source_url;
+
                   // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                   const dateElement = document.getElementById('dateOse');
                   dateElement.textContent = lastDate;
                   const slugElement = document.getElementById('slugOse');
                   slugElement.textContent = lastSlug;
                   const linkElement = document.getElementById('linkOse');
-                  linkElement.textContent = lastLink;
                   linkElement.setAttribute('href', lastLink);
+                  const sourceElement = document.getElementById('sourceOse');
+                  sourceElement.setAttribute('href', lastSource);
                 })
                 .catch(error => {
                   console.error(error);
@@ -1354,20 +1249,17 @@ function fetchNicox() {
                     const lastDate = lastPost.date;
                     const lastSlug = lastPost.slug;
                     const lastLink = lastPost.link;
-                  
-                    // Affichage des informations dans la console
-                    console.log(`Dernière Date: ${lastDate}`);
-                    console.log(`Dernier Slug: ${lastSlug}`);
-                    console.log(`Dernier Link: ${lastLink}`);
-                  
+                    const lastSource = lastPost.source_url;
+
                     // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                     const dateElement = document.getElementById('dateSid');
                     dateElement.textContent = lastDate;
                     const slugElement = document.getElementById('slugSid');
                     slugElement.textContent = lastSlug;
                     const linkElement = document.getElementById('linkSid');
-                    linkElement.textContent = lastLink;
                     linkElement.setAttribute('href', lastLink);
+                    const sourceElement = document.getElementById('sourceSid');
+                    sourceElement.setAttribute('href', lastSource);
                   })
                   .catch(error => {
                     console.error(error);
@@ -1391,20 +1283,17 @@ function fetchNicox() {
                       const lastDate = lastPost.date;
                       const lastSlug = lastPost.slug;
                       const lastLink = lastPost.link;
-                    
-                      // Affichage des informations dans la console
-                      console.log(`Dernière Date: ${lastDate}`);
-                      console.log(`Dernier Slug: ${lastSlug}`);
-                      console.log(`Dernier Link: ${lastLink}`);
-                    
+                      const lastSource = lastPost.source_url;
+ 
                       // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                       const dateElement = document.getElementById('dateThera');
                       dateElement.textContent = lastDate;
                       const slugElement = document.getElementById('slugThera');
                       slugElement.textContent = lastSlug;
                       const linkElement = document.getElementById('linkThera');
-                      linkElement.textContent = lastLink;
                       linkElement.setAttribute('href', lastLink);
+                      const sourceElement = document.getElementById('sourceThera');
+                      sourceElement.setAttribute('href', lastSource);
                     })
                     .catch(error => {
                       console.error(error);
@@ -1428,20 +1317,17 @@ function fetchNicox() {
                         const lastDate = lastPost.date;
                         const lastSlug = lastPost.slug;
                         const lastLink = lastPost.link;
-                      
-                        // Affichage des informations dans la console
-                        console.log(`Dernière Date: ${lastDate}`);
-                        console.log(`Dernier Slug: ${lastSlug}`);
-                        console.log(`Dernier Link: ${lastLink}`);
-                      
+                        const lastSource = lastPost.source_url;
+
                         // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                         const dateElement = document.getElementById('dateCim');
                         dateElement.textContent = lastDate;
                         const slugElement = document.getElementById('slugCim');
                         slugElement.textContent = lastSlug;
                         const linkElement = document.getElementById('linkCim');
-                        linkElement.textContent = lastLink;
                         linkElement.setAttribute('href', lastLink);
+                        const sourceElement = document.getElementById('sourceCim');
+                        sourceElement.setAttribute('href', lastSource);
                       })
                       .catch(error => {
                         console.error(error);
@@ -1465,20 +1351,17 @@ function fetchNicox() {
                           const lastDate = lastPost.date;
                           const lastSlug = lastPost.slug;
                           const lastLink = lastPost.link;
-                        
-                          // Affichage des informations dans la console
-                          console.log(`Dernière Date: ${lastDate}`);
-                          console.log(`Dernier Slug: ${lastSlug}`);
-                          console.log(`Dernier Link: ${lastLink}`);
-                        
+                          const lastSource = lastPost.source_url;
+
                           // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                           const dateElement = document.getElementById('dateVis');
                           dateElement.textContent = lastDate;
                           const slugElement = document.getElementById('slugVis');
                           slugElement.textContent = lastSlug;
                           const linkElement = document.getElementById('linkVis');
-                          linkElement.textContent = lastLink;
                           linkElement.setAttribute('href', lastLink);
+                          const sourceElement = document.getElementById('sourceVis');
+                          sourceElement.setAttribute('href', lastSource);
                         })
                         .catch(error => {
                           console.error(error);
@@ -1502,20 +1385,17 @@ function fetchNicox() {
                             const lastDate = lastPost.date;
                             const lastSlug = lastPost.slug;
                             const lastLink = lastPost.link;
-                          
-                            // Affichage des informations dans la console
-                            console.log(`Dernière Date: ${lastDate}`);
-                            console.log(`Dernier Slug: ${lastSlug}`);
-                            console.log(`Dernier Link: ${lastLink}`);
-                          
+                            const lastSource = lastPost.source_url;
+                                            
                             // Assigner la valeur de lastDate à l'élément avec l'id "date" dans votre page HTML
                             const dateElement = document.getElementById('dateBioUv');
                             dateElement.textContent = lastDate;
                             const slugElement = document.getElementById('slugBioUv');
                             slugElement.textContent = lastSlug;
                             const linkElement = document.getElementById('linkBioUv');
-                            linkElement.textContent = lastLink;
                             linkElement.setAttribute('href', lastLink);
+                            const sourceElement = document.getElementById('sourceBioUv');
+                            sourceElement.setAttribute('href', lastSource);
                           })
                           .catch(error => {
                             console.error(error);
