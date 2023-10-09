@@ -70,14 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
         linkElement.setAttribute('href', lastLink);
         if(lastDate > dayDate)
             {
-                const sourceElement = document.getElementById(sourceId);
-                sourceElement.setAttribute('href', lastSource);
-                sourceElement.setAttribute('class', 'text-alert');
+                dateElement.classList.add('text-alert');
             }
-            {
-                const sourceElement = document.getElementById(sourceId);
-                sourceElement.setAttribute('href', lastSource);
-            }
+        const sourceElement = document.getElementById(sourceId);
+        sourceElement.setAttribute('href', lastSource);
       })
       .catch(error => {
         console.error(error);
