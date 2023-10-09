@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   function fetchInformation(url, dateId, slugId, linkId, sourceId) {
-    let dayDate = new date()
+    let dayDate = new Date()
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -68,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         slugElement.textContent = lastSlug;
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
-        console.log(dayDate);
         if(lastDate > dayDate)
             {
                 const sourceElement = document.getElementById(sourceId);
