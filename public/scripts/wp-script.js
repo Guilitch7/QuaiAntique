@@ -68,6 +68,8 @@ document.addEventListener('DOMContentLoaded', function () {
         slugElement.textContent = lastSlug;
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
+        console.log(lastDate);
+        console.log(dayDate);
         if(lastDate > dayDate)
             {
                 dateElement.classList.add('text-alert');
