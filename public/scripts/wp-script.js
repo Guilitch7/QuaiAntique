@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const lastSlug = lastPost.slug;
         const lastLink = lastPost.link;
         const lastSource = lastPost.source_url;
-        let dayDate = new Date.now()-10800;
+        let date = new Date();
+        let dayDate = Date.parse(date);
   
         // Assigner les valeurs aux éléments HTML correspondants
         const dateElement = document.getElementById(dateId);
@@ -68,9 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
         slugElement.textContent = lastSlug;
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
-        console.log(lastDate);
-        console.log(dayDate);
-        if(Date.now(lastDate) > dayDate)
+        postDate = Date.parse(lastDate);
+        if(postDate > (dayDate - 72000))
             {
                 dateElement.classList.add('text-alert');
             }
