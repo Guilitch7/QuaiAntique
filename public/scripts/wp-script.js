@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const lastSlug = lastPost.slug;
         const lastLink = lastPost.link;
         const lastSource = lastPost.source_url;
-        let dayDate = new Date();
+        let dayDate = new Date.now()-10800;
   
         // Assigner les valeurs aux éléments HTML correspondants
         const dateElement = document.getElementById(dateId);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         linkElement.setAttribute('href', lastLink);
         console.log(lastDate);
         console.log(dayDate);
-        if(lastDate > dayDate)
+        if(Date.now(lastDate) > dayDate)
             {
                 dateElement.classList.add('text-alert');
             }
