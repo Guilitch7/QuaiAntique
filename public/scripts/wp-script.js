@@ -70,8 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
         postDate = Date.parse(lastDate);
-        console.log(dayDate);
-        console.log(postDate);
+        console.log(postDate > (dayDate - 87400000));
         if(postDate > (dayDate - 87400000))
             {
                 dateElement.classList.add('text-danger fw-bold');
