@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://afyren.com/wp-json/wp/v2/media', 'dateAfy', 'slugAfy', 'linkAfy', 'sourceAfy');
     fetchInformation('https://www.dolfines.com/wp-json/wp/v2/media', 'dateDol', 'slugDol', 'linkDol', 'sourceDol');
     fetchInformation('https://www.ecoslops.com/wp-json/wp/v2/media', 'dateEco', 'slugEco', 'linkEco', 'sourceEco');
-    fetchInformation('https://www.adocia.com/wp-json/wp/v2/media', 'dateAdo', 'slugAdo', 'linkAdo', 'sourceAdo');
     fetchInformation('https://akwel-automotive.com/wp-json/wp/v2/media', 'dateAkw', 'slugAkw', 'linkAkw', 'sourceAkw');
     fetchInformation('https://www.klarsen.com/wp-json/wp/v2/media', 'dateKla', 'slugKla', 'linkKla', 'sourceKla');
     fetchInformation('https://www.ose-immuno.com/wp-json/wp/v2/media', 'dateOse', 'slugOse', 'linkOse', 'sourceOse');
@@ -39,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://www.acteos.fr/wp-json/wp/v2/media', 'dateAct', 'slugAct', 'linkAct', 'sourceAct');
     fetchInformation('https://www.adux.com/wp-json/wp/v2/media', 'dateAdu', 'slugAdu', 'linkAdu', 'sourceAdu');
     fetchInformation('https://www.argan.fr/wp-json/wp/v2/media', 'dateArg', 'slugArg', 'linkArg', 'sourceArg');
+    fetchInformation('https://bastide-groupe.fr/wp-json/wp/v2/media', 'dateBas', 'slugBas', 'linkBas', 'sourceBas');
   });
   
   function fetchInformation(url, dateId, slugId, linkId, sourceId) {
@@ -70,8 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
         postDate = Date.parse(lastDate);
-        console.log(postDate > (dayDate - 87400000));
-        if(postDate > (dayDate - 87400000))
+        if(postDate > (dayDate - 77400000))
             {
                 dateElement.classList.add("text-danger");
                 dateElement.classList.add("fw-bold");
