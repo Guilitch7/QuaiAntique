@@ -73,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(postDate > (dayDate - 87400000));
         if(postDate > (dayDate - 87400000))
             {
-                dateElement.classList.add('text-danger fw-bold');
+                dateElement.classList.add("text-danger");
+                dateElement.classList.add("fw-bold");
             }
         const sourceElement = document.getElementById(sourceId);
         sourceElement.setAttribute('href', lastSource);
