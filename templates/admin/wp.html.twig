@@ -4,20 +4,21 @@
 
 {% block stylesheets %}
         <head>
-                <link rel="stylesheet" href="{{ asset('styles/admin-style.css') }}">
+                <link rel="stylesheet" href="{{ asset('styles/wp-style.css') }}">
         </head>
 {% endblock %}
 
 {% block body %}
-<div class="container">
+<div class="container-fluid">
   <div class="row p-0">
+    <div id="loader"></div>
       <div class="card col-3" style="width: 18rem;">
       <h4>TRANSGENE</h4>
         <div class="card-body">
           <h5 class="card-title" id="date"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slug"></h6>
           <a href="" target="_blank" class="card-link" id="link">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="source">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="source">Fichier joint</a>
         </div>
       </div>
 
@@ -27,7 +28,7 @@
           <h5 class="card-title" id="datePix"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugPix"></h6>
           <a href="" target="_blank" class="card-link" id="linkPix">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourcePix">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourcePix">Fichier joint</a>
         </div>
       </div>
 
@@ -37,7 +38,7 @@
           <h5 class="card-title" id="dateAbi"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAbi"></h6>
           <a href="" target="_blank" class="card-link" id="linkAbi">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAbi">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAbi">Fichier joint</a>
         </div>
       </div>
 
@@ -47,7 +48,7 @@
           <h5 class="card-title" id="dateNov"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugNov"></h6>
           <a href="" target="_blank" class="card-link" id="linkNov">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceNov">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceNov">Fichier joint</a>
         </div>
       </div>
 
@@ -57,7 +58,7 @@
           <h5 class="card-title" id="dateMed"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugMed"></h6>
           <a href="" target="_blank" class="card-link" id="linkMed">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceMed">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceMed">Fichier joint</a>
         </div>
       </div>
 
@@ -67,7 +68,7 @@
           <h5 class="card-title" id="dateAdv"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAdv"></h6>
           <a href="" target="_blank" class="card-link" id="linkAdv">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAdv">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAdv">Fichier joint</a>
         </div>
       </div>
 
@@ -77,7 +78,7 @@
           <h5 class="card-title" id="dateLum"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugLum"></h6>
           <a href="" target="_blank" class="card-link" id="linkLum">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceLum">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceLum">Fichier joint</a>
         </div>
       </div>
 
@@ -87,7 +88,7 @@
           <h5 class="card-title" id="dateEqu"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugEqu"></h6>
           <a href="" target="_blank" class="card-link" id="linkEqu">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceEqu">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceEqu">Fichier joint</a>
         </div>
       </div>
 
@@ -97,7 +98,7 @@
           <h5 class="card-title" id="dateAmo"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAmo"></h6>
           <a href="" target="_blank" class="card-link" id="linkAmo">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAmo">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAmo">Fichier joint</a>
         </div>
       </div>
 
@@ -107,7 +108,7 @@
           <h5 class="card-title" id="dateThe"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugThe"></h6>
           <a href="" target="_blank" class="card-link" id="linkThe">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceThe">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceThe">Fichier joint</a>
         </div>
       </div>
 
@@ -117,7 +118,7 @@
           <h5 class="card-title" id="dateSol"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugSol"></h6>
           <a href="" target="_blank" class="card-link" id="linkSol">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceSol">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceSol">Fichier joint</a>
         </div>
       </div>
 
@@ -127,7 +128,7 @@
           <h5 class="card-title" id="dateFon"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugFon"></h6>
           <a href="" target="_blank" class="card-link" id="linkFon">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceFon">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceFon">Fichier joint</a>
         </div>
       </div>
 
@@ -137,7 +138,7 @@
           <h5 class="card-title" id="dateVer"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugVer"></h6>
           <a href="" target="_blank" class="card-link" id="linkVer">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceVer">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceVer">Fichier joint</a>
         </div>
       </div>
 
@@ -147,7 +148,7 @@
           <h5 class="card-title" id="dateCri"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugCri"></h6>
           <a href="" target="_blank" class="card-link" id="linkCri">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceCri">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceCri">Fichier joint</a>
         </div>
       </div>
 
@@ -157,7 +158,7 @@
           <h5 class="card-title" id="dateWag"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugWag"></h6>
           <a href="" target="_blank" class="card-link" id="linkWag">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceWag">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceWag">Fichier joint</a>
         </div>
       </div>
 
@@ -167,7 +168,7 @@
           <h5 class="card-title" id="dateBon"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugBon"></h6>
           <a href="" target="_blank" class="card-link" id="linkBon">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceBon">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceBon">Fichier joint</a>
         </div>
       </div>
 
@@ -177,7 +178,7 @@
           <h5 class="card-title" id="datePixP"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugHun"></h6>
           <a href="" target="_blank" class="card-link" id="linkHun">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceHun">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceHun">Fichier joint</a>
         </div>
       </div>
 
@@ -187,7 +188,7 @@
           <h5 class="card-title" id="dateBonP"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugCar"></h6>
           <a href="" target="_blank" class="card-link" id="linkCar">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceCar">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceCar">Fichier joint</a>
         </div>
       </div>
 
@@ -197,17 +198,14 @@
           <h5 class="card-title" id="dateEra"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugEra"></h6>
           <a href="" target="_blank" class="card-link" id="linkEra">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceEra">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceEra">Fichier joint</a>
         </div>
       </div>
 
       <div class="card col-3" style="width: 18rem;">
       <h4>AUBAY</h4>
         <div class="card-body">
-          <h5 class="card-title" id="dateAub"></h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="slugAub"></h6>
-          <a href="" target="_blank" class="card-link" id="linkAub">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAub">Fichier joint</a>
+          <a href="https://www.aubay.com/wp-json/wp/v2/media" target="_blank" class="card-link" id="linkAub">Lien direct</a>
         </div>
       </div>
 
@@ -217,17 +215,14 @@
           <h5 class="card-title" id="dateDek"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugDek"></h6>
           <a href="" target="_blank" class="card-link" id="linkDek">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceDek">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceDek">Fichier joint</a>
         </div>
       </div>
 
       <div class="card col-3" style="width: 18rem;">
       <h4>BIOPHYTIS</h4>
         <div class="card-body">
-          <h5 class="card-title" id="dateBio"></h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="slugBio"></h6>
-          <a href="" target="_blank" class="card-link" id="linkBio">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceBio">Fichier joint</a>
+          <a href="https://www.biophytis.com/wp-json/wp/v2/media" target="_blank" class="card-link" id="linkBio">Lien direct</a>
         </div>
       </div>
 
@@ -237,7 +232,7 @@
           <h5 class="card-title" id="dateSpin"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugSpin"></h6>
           <a href="" target="_blank" class="card-link" id="linkSpin">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceSpin">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceSpin">Fichier joint</a>
         </div>
       </div>
 
@@ -247,7 +242,7 @@
           <h5 class="card-title" id="dateNic"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugNic"></h6>
           <a href="" target="_blank" class="card-link" id="linkNic">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceNic">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceNic">Fichier joint</a>
         </div>
       </div>
 
@@ -257,7 +252,7 @@
           <h5 class="card-title" id="dateEno"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugEno"></h6>
           <a href="" target="_blank" class="card-link" id="linkEno">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceEno">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceEno">Fichier joint</a>
         </div>
       </div>
 
@@ -267,7 +262,7 @@
           <h5 class="card-title" id="dateAfy"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAfy"></h6>
           <a href="" target="_blank" class="card-link" id="linkAfy">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAfy">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAfy">Fichier joint</a>
         </div>
       </div>
 
@@ -278,7 +273,7 @@
           <h5 class="card-title" id="dateDol"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugDol"></h6>
           <a href="" target="_blank" class="card-link" id="linkDol">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceDol">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceDol">Fichier joint</a>
         </div>
       </div>
 
@@ -289,7 +284,7 @@
           <h5 class="card-title" id="dateEco"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugEco"></h6>
           <a href="" target="_blank" class="card-link" id="linkEco">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceEco">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceEco">Fichier joint</a>
         </div>
       </div>
 
@@ -299,7 +294,7 @@
           <h5 class="card-title" id="dateAdo"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAdo"></h6>
           <a href="" target="_blank" class="card-link" id="linkAdo">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAdo">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAdo">Fichier joint</a>
         </div>
       </div>
 
@@ -309,17 +304,14 @@
           <h5 class="card-title" id="dateAkw"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugAkw"></h6>
           <a href="" target="_blank" class="card-link" id="linkAkw">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceAkw">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceAkw">Fichier joint</a>
         </div>
       </div>
 
       <div class="card col-3" style="width: 18rem;">
       <h4>MEMSCAP</h4>
         <div class="card-body">
-          <h5 class="card-title" id="dateMem"></h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="slugMem"></h6>
-          <a href="" target="_blank" class="card-link" id="linkMem">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceMem">Fichier joint</a>
+          <a href="https://www.memscap.com/wp-json/wp/v2/media" target="_blank" class="card-link" id="linkMem">Lien direct</a>
         </div>
       </div>
 
@@ -329,7 +321,7 @@
           <h5 class="card-title" id="dateKla"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugKla"></h6>
           <a href="" target="_blank" class="card-link" id="linkKla">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceKla">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceKla">Fichier joint</a>
         </div>
       </div>
 
@@ -339,7 +331,7 @@
           <h5 class="card-title" id="dateOse"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugOse"></h6>
           <a href="" target="_blank" class="card-link" id="linkOse">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceOse">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceOse">Fichier joint</a>
         </div>
       </div>
 
@@ -349,17 +341,7 @@
           <h5 class="card-title" id="dateSid"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugSid"></h6>
           <a href="" target="_blank" class="card-link" id="linkSid">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceSid">Fichier joint</a>
-        </div>
-      </div>
-
-      <div class="card col-3" style="width: 18rem;">
-      <h4>THERADIAG</h4>
-        <div class="card-body">
-          <h5 class="card-title" id="dateThera"></h5>
-          <h6 class="card-subtitle mb-2 text-muted" id="slugThera"></h6>
-          <a href="" target="_blank" class="card-link" id="linkThera">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceThera">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceSid">Fichier joint</a>
         </div>
       </div>
       
@@ -369,7 +351,7 @@
           <h5 class="card-title" id="dateCim"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugCim"></h6>
           <a href="" target="_blank" class="card-link" id="linkCim">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceCim">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceCim">Fichier joint</a>
         </div>
       </div>
 
@@ -379,7 +361,7 @@
           <h5 class="card-title" id="dateVis"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugVis"></h6>
           <a href="" target="_blank" class="card-link" id="linkVis">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceVis">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceVis">Fichier joint</a>
         </div>
       </div>
       
@@ -389,7 +371,47 @@
           <h5 class="card-title" id="dateBioUv"></h5>
           <h6 class="card-subtitle mb-2 text-muted" id="slugBioUv"></h6>
           <a href="" target="_blank" class="card-link" id="linkBioUv">Lien média</a>
-          <a href="" target"_blank" class="card-link" id="sourceBioUv">Fichier joint</a>
+          <a href="" target="_blank" class="card-link" id="sourceBioUv">Fichier joint</a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>AB SCIENCES</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBioUv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAbs"></h6>
+          <a href="" target="_blank" class="card-link" id="linkAbs">Lien média</a>
+          <a href="" target="_blank" class="card-link" id="sourceAbs">Fichier joint</a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ACTEOS</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBioUv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAct"></h6>
+          <a href="" target="_blank" class="card-link" id="linkAct">Lien média</a>
+          <a href="" target="_blank" class="card-link" id="sourceAct">Fichier joint</a>
+        </div>
+      </div>
+
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ADUX</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBioUv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugAdu"></h6>
+          <a href="" target="_blank" class="card-link" id="linkAdu">Lien média</a>
+          <a href="" target="_blank" class="card-link" id="sourceAdu">Fichier joint</a>
+        </div>
+      </div>
+      
+      <div class="card col-3" style="width: 18rem;">
+      <h4>ARGAN</h4>
+        <div class="card-body">
+          <h5 class="card-title" id="dateBioUv"></h5>
+          <h6 class="card-subtitle mb-2 text-muted" id="slugArg"></h6>
+          <a href="" target="_blank" class="card-link" id="linkArg">Lien média</a>
+          <a href="" target="_blank" class="card-link" id="sourceArg">Fichier joint</a>
         </div>
       </div>
 

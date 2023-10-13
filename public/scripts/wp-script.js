@@ -20,9 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://www.valneva.com/wp-json/wp/v2/media', 'dateVal', 'slugVal', 'linkVal', 'sourceVal');
     fetchInformation('https://www.carbios.com/wp-json/wp/v2/media', 'dateCar', 'slugCar', 'linkCar', 'sourceCar');
     fetchInformation('https://www.eramet.com/wp-json/wp/v2/media', 'dateEra', 'slugEra', 'linkEra', 'sourceEra');
-    fetchInformation('https://www.aubay.com/wp-json/wp/v2/media', 'dateAub', 'slugAub', 'linkAub', 'sourceAub');
     fetchInformation('https://www.dekuple.com/wp-json/wp/v2/media', 'dateDek', 'slugDek', 'linkDek', 'sourceDek');
-    fetchInformation('https://www.biophytis.com/wp-json/wp/v2/media', 'dateBio', 'slugBio', 'linkBio', 'sourceBio');
     fetchInformation('https://www.spineguard.com/wp-json/wp/v2/media', 'dateSpin', 'slugSpin', 'linkSpin', 'sourceSpin');
     fetchInformation('https://www.nicox.com/wp-json/wp/v2/media', 'dateNic', 'slugNic', 'linkNic', 'sourceNic');
     fetchInformation('https://enogia.com/wp-json/wp/v2/media', 'dateEno', 'slugEno', 'linkEno', 'sourceEno');
@@ -31,14 +29,16 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://www.ecoslops.com/wp-json/wp/v2/media', 'dateEco', 'slugEco', 'linkEco', 'sourceEco');
     fetchInformation('https://www.adocia.com/wp-json/wp/v2/media', 'dateAdo', 'slugAdo', 'linkAdo', 'sourceAdo');
     fetchInformation('https://akwel-automotive.com/wp-json/wp/v2/media', 'dateAkw', 'slugAkw', 'linkAkw', 'sourceAkw');
-    fetchInformation('https://www.guillemot.com/wp-json/wp/v2/media', 'dateGui', 'slugGui', 'linkGui', 'sourceGui');
     fetchInformation('https://www.klarsen.com/wp-json/wp/v2/media', 'dateKla', 'slugKla', 'linkKla', 'sourceKla');
     fetchInformation('https://www.ose-immuno.com/wp-json/wp/v2/media', 'dateOse', 'slugOse', 'linkOse', 'sourceOse');
     fetchInformation('https://www.sidetrade.fr/wp-json/wp/v2/media', 'dateSid', 'slugSid', 'linkSid', 'sourceSid');
-    fetchInformation('https://www.theradiag.com/wp-json/wp/v2/media', 'dateThe', 'slugThe', 'linkThe', 'sourceThe');
     fetchInformation('https://www.ciments-hoffmann.fr/wp-json/wp/v2/media', 'dateCim', 'slugCim', 'linkCim', 'sourceCim');
     fetchInformation('https://www.visiativ.com/wp-json/wp/v2/media', 'dateVis', 'slugVis', 'linkVis', 'sourceVis');
     fetchInformation('https://www.bio-uv.com/wp-json/wp/v2/media', 'dateBioUv', 'slugBioUv', 'linkBioUv', 'sourceBioUv');
+    fetchInformation('https://www.ab-science.com/wp-json/wp/v2/media', 'dateAbs', 'slugAbs', 'linkAbs', 'sourceAbs');
+    fetchInformation('https://www.acteos.fr/wp-json/wp/v2/media', 'dateAct', 'slugAct', 'linkAct', 'sourceAct');
+    fetchInformation('https://www.adux.com/wp-json/wp/v2/media', 'dateAdu', 'slugAdu', 'linkAdu', 'sourceAdu');
+    fetchInformation('https://www.argan.fr/wp-json/wp/v2/media', 'dateArg', 'slugArg', 'linkArg', 'sourceArg');
   });
   
   function fetchInformation(url, dateId, slugId, linkId, sourceId) {
@@ -70,9 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
         postDate = Date.parse(lastDate);
+        console.log(dayDate);
+        console.log(postDate);
         if(postDate > (dayDate - 72000))
             {
-                dateElement.classList.add('text-alert');
+                dateElement.classList.add('text-danger fw-bold');
             }
         const sourceElement = document.getElementById(sourceId);
         sourceElement.setAttribute('href', lastSource);
@@ -81,4 +83,5 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error(error);
       });
   }
+  document.getElementById('loader').classList.add("hide-loader");
   
