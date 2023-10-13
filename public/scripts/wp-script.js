@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
         postDate = Date.parse(lastDate);
         console.log(dayDate);
         console.log(postDate);
-        if(postDate > (dayDate - 72000))
+        if(postDate > (dayDate - 72000000))
             {
                 dateElement.classList.add('text-danger fw-bold');
             }
