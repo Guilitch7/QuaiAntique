@@ -39,6 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://www.adux.com/wp-json/wp/v2/media', 'dateAdu', 'slugAdu', 'linkAdu', 'sourceAdu');
     fetchInformation('https://www.argan.fr/wp-json/wp/v2/media', 'dateArg', 'slugArg', 'linkArg', 'sourceArg');
     fetchInformation('https://bastide-groupe.fr/wp-json/wp/v2/media', 'dateBas', 'slugBas', 'linkBas', 'sourceBas');
+    fetchInformation('https://cafom.com/wp-json/wp/v2/media', 'dateCaf', 'slugCaf', 'linkCaf', 'sourceCaf');
+    fetchInformation('https://www.chargeurs.com//wp-json/wp/v2/media', 'dateCha', 'slugCha', 'linkCha', 'sourceCha');
+    
   });
   
   function fetchInformation(url, dateId, slugId, linkId, sourceId) {
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const linkElement = document.getElementById(linkId);
         linkElement.setAttribute('href', lastLink);
         postDate = Date.parse(lastDate);
-        if(postDate > (dayDate - 77400000))
+        if(postDate > (dayDate - 40400000))
             {
                 dateElement.classList.add("text-danger");
                 dateElement.classList.add("fw-bold");
