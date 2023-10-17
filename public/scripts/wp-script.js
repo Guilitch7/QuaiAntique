@@ -40,7 +40,14 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://www.argan.fr/wp-json/wp/v2/media', 'dateArg', 'slugArg', 'linkArg', 'sourceArg');
     fetchInformation('https://bastide-groupe.fr/wp-json/wp/v2/media', 'dateBas', 'slugBas', 'linkBas', 'sourceBas');
     fetchInformation('https://cafom.com/wp-json/wp/v2/media', 'dateCaf', 'slugCaf', 'linkCaf', 'sourceCaf');
-    fetchInformation('https://www.chargeurs.com//wp-json/wp/v2/media', 'dateCha', 'slugCha', 'linkCha', 'sourceCha');
+    fetchInformation('https://www.chargeurs.com/wp-json/wp/v2/media', 'dateCha', 'slugCha', 'linkCha', 'sourceCha');
+    fetchInformation('https://www.covivio.eu/fr/wp-json/wp/v2/media', 'dateCov', 'slugCov', 'linkCov', 'sourceCov');
+    fetchInformation('https://www.exclusive-networks.com/wp-json/wp/v2/media', 'dateExc', 'slugExc', 'linkExc', 'sourceExc');
+    fetchInformation('https://www.fermentalg.com/wp-json/wp/v2/media', 'dateFer', 'slugFer', 'linkFer', 'sourceFer');
+    fetchInformation('https://www.francaisedelenergie.fr/wp-json/wp/v2/media', 'dateFra', 'slugFra', 'linkFra', 'sourceFra');
+    fetchInformation('https://www.genomicvision.com/wp-json/wp/v2/media', 'dateGen', 'slugGen', 'linkGen', 'sourceGen');
+    fetchInformation('https://www.ipsen.com/fr/wp-json/wp/v2/media', 'dateIps', 'slugIps', 'linkIps', 'sourceIps');
+    fetchInformation('https://www.manitou-group.com/wp-json/wp/v2/media', 'dateMan', 'slugMan', 'linkMan', 'sourceMan');
     
   });
   
