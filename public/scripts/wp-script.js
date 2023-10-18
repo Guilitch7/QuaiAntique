@@ -60,37 +60,47 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(posts => {
+        // Filtrer les données pour ne conserver que les "posts" avec une extension .pdf
+        const pdfPosts = posts.filter(post => {
+          return post.link.toLowerCase().endsWith('.pdf');
+        });
+  
         // Tri des articles par date dans l'ordre décroissant
-        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        pdfPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
   
-        // Récupération des informations du dernier article
-        const lastPost = posts[0];
-        const lastDate = lastPost.date;
-        const lastSlug = lastPost.slug;
-        const lastLink = lastPost.link;
-        const lastSource = lastPost.source_url;
-        let date = new Date();
-        let dayDate = Date.parse(date);
+        if (pdfPosts.length > 0) {
+          // Récupération des informations du dernier "post" avec une extension .pdf
+          const lastPost = pdfPosts[0];
+          const lastDate = lastPost.date;
+          const lastSlug = lastPost.slug;
+          const lastLink = lastPost.link;
+          const lastSource = lastPost.source_url;
+          let date = new Date();
+          let dayDate = Date.parse(date);
   
-        // Assigner les valeurs aux éléments HTML correspondants
-        const dateElement = document.getElementById(dateId);
-        dateElement.textContent = lastDate;
-        const slugElement = document.getElementById(slugId);
-        slugElement.textContent = lastSlug;
-        const linkElement = document.getElementById(linkId);
-        linkElement.setAttribute('href', lastLink);
-        postDate = Date.parse(lastDate);
-        if(postDate > (dayDate - 40400000))
-            {
-                dateElement.classList.add("text-danger");
-                dateElement.classList.add("fw-bold");
-            }
-        const sourceElement = document.getElementById(sourceId);
-        sourceElement.setAttribute('href', lastSource);
+          // Assigner les valeurs aux éléments HTML correspondants
+          const dateElement = document.getElementById(dateId);
+          dateElement.textContent = lastDate;
+          const slugElement = document.getElementById(slugId);
+          slugElement.textContent = lastSlug;
+          const linkElement = document.getElementById(linkId);
+          linkElement.setAttribute('href', lastLink);
+          postDate = Date.parse(lastDate);
+          if (postDate > (dayDate - 40400000)) {
+            dateElement.classList.add("text-danger");
+            dateElement.classList.add("fw-bold");
+          }
+          const sourceElement = document.getElementById(sourceId);
+          sourceElement.setAttribute('href', lastSource);
+        } else {
+          // Gérer le cas où il n'y a pas de "posts" avec l'extension .pdf
+          console.error('Aucun post avec une extension .pdf trouvé.');
+        }
       })
       .catch(error => {
         console.error(error);
       });
   }
+  
   document.getElementById('loader').classList.add("hide-loader");
   
