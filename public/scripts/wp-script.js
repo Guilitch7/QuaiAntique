@@ -60,21 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
         return response.json();
       })
       .then(posts => {
-        // Filtrer les données pour ne conserver que les "posts" avec une extension .pdf
-        const pdfPosts = posts.filter(post => {
-          return post.link.toLowerCase().endsWith('.pdf');
+        // Filtrer les données pour ne conserver que les "source_url" avec une extension .pdf
+        const pdfSources = posts.filter(post => {
+          return post.source_url.toLowerCase().endsWith('.pdf');
         });
   
         // Tri des articles par date dans l'ordre décroissant
-        pdfPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+        pdfSources.sort((a, b) => new Date(b.date) - new Date(a.date));
   
-        if (pdfPosts.length > 0) {
-          // Récupération des informations du dernier "post" avec une extension .pdf
-          const lastPost = pdfPosts[0];
-          const lastDate = lastPost.date;
-          const lastSlug = lastPost.slug;
-          const lastLink = lastPost.link;
-          const lastSource = lastPost.source_url;
+        if (pdfSources.length > 0) {
+          // Récupération des informations du dernier "source_url" avec une extension .pdf
+          const lastSource = pdfSources[0];
+          const lastDate = lastSource.date;
+          const lastSlug = lastSource.slug;
+          const lastLink = lastSource.link;
+          const lastSourceUrl = lastSource.source_url;
           let date = new Date();
           let dayDate = Date.parse(date);
   
@@ -91,16 +91,17 @@ document.addEventListener('DOMContentLoaded', function () {
             dateElement.classList.add("fw-bold");
           }
           const sourceElement = document.getElementById(sourceId);
-          sourceElement.setAttribute('href', lastSource);
+          sourceElement.setAttribute('href', lastSourceUrl);
         } else {
-          // Gérer le cas où il n'y a pas de "posts" avec l'extension .pdf
-          console.error('Aucun post avec une extension .pdf trouvé.');
+          // Gérer le cas où il n'y a pas de "source_url" avec l'extension .pdf
+          console.error('Aucun source_url avec une extension .pdf trouvé.');
         }
       })
       .catch(error => {
         console.error(error);
       });
   }
+  
   
   document.getElementById('loader').classList.add("hide-loader");
   
