@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchInformation('https://valeriotx.com/wp-json/wp/v2/media', 'dateVale', 'slugVale', 'linkVale', 'sourceVale');
     fetchInformation('https://corporate.coheris.com/wp-json/wp/v2/media', 'dateCor', 'slugCor', 'linkCor', 'sourceCor');
     fetchInformation('https://www.baikowski.com/wp-json/wp/v2/media', 'dateBai', 'slugBai', 'linkBai', 'sourceBai');
+    fetchInformation('https://www.celyad.com/wp-json/wp/v2/media', 'dateCel', 'slugCel', 'linkCel', 'sourceCel');
+    fetchInformation('https://www.affluentmedical.com/wp-json/wp/v2/media', 'dateAff', 'slugAff', 'linkAff', 'sourceAff');
   });
   
   function fetchInformation(url, dateId, slugId, linkId, sourceId) {
